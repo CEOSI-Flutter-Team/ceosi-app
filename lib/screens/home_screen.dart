@@ -1,4 +1,6 @@
+import 'package:ceosi_app/constants/app_names.dart';
 import 'package:ceosi_app/constants/colors.dart';
+import 'package:ceosi_app/constants/images.dart';
 import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              'assets/icons/logo.png',
+              coesiIcon,
               width: 60,
             ),
             const SizedBox(
@@ -42,9 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
               buttonHeight: 100,
               buttonWidth: 300,
               textWidget: BoldTextWidget(
-                  color: Colors.white,
-                  fontSize: 15,
-                  text: 'CEOSI Flutter Catalog App'),
+                  color: Colors.white, fontSize: 15, text: juneApp),
             ),
             const SizedBox(
               height: 20,
@@ -55,9 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
               buttonHeight: 100,
               buttonWidth: 300,
               textWidget: BoldTextWidget(
-                  color: Colors.white,
-                  fontSize: 15,
-                  text: 'CEOSI Freedom Wall'),
+                  color: Colors.white, fontSize: 15, text: carlApp),
             ),
             const SizedBox(
               height: 20,
@@ -68,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
               buttonHeight: 100,
               buttonWidth: 300,
               textWidget: BoldTextWidget(
-                  color: Colors.white, fontSize: 15, text: 'CEOSI Company App'),
+                  color: Colors.white, fontSize: 15, text: chloieApp),
             ),
             const SizedBox(
               height: 20,
@@ -79,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
               buttonHeight: 100,
               buttonWidth: 300,
               textWidget: BoldTextWidget(
-                  color: Colors.white, fontSize: 15, text: 'CEOSI Rewards'),
+                  color: Colors.white, fontSize: 15, text: lanceApp),
             ),
           ],
         ),
