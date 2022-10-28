@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(errorColor: Colors.white),
-      title: "api app",
+      title: "CEOSI App",
       initialRoute: '/',
       routes: {
         '/': (context) => LoginScreen(),
