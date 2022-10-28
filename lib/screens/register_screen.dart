@@ -1,3 +1,4 @@
+import 'package:ceosi_app/constants/colors.dart';
 import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:ceosi_app/widgets/textformfield_widget.dart';
@@ -66,6 +67,7 @@ class RegisterScreen extends StatelessWidget {
                 height: 50,
               ),
               ButtonWidget(
+                  buttonColor: primaryColor,
                   borderRadius: 100,
                   onPressed: () {},
                   buttonHeight: 50,
