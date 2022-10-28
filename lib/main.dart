@@ -1,5 +1,4 @@
-import 'package:ceosi_app/screens/ceosi_rewards/screens/view_item_screen.dart';
-import 'package:ceosi_app/screens/register_screen.dart';
+import 'package:ceosi_app/ceosi_rewards/screens/reward_home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: RewardViewItemScreen(),
+      home: RewardHomeScreen(),
     );
   }
 }
