@@ -1,4 +1,4 @@
-import 'package:ceosi_app/widgets/text_widget.dart';
+import 'package:ceosi_app/lib/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/colors.dart';
@@ -39,7 +39,7 @@ class SingleItemWidget extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         BoldTextWidget(
                             color: Colors.black, fontSize: 16, text: 'Piattos'),
                         NormalTextWidget(
@@ -61,7 +61,7 @@ class SingleItemWidget extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              BoldTextWidget(
+              const BoldTextWidget(
                   color: primaryColor, fontSize: 14, text: '1,000cc'),
               const SizedBox(
                 width: 10,

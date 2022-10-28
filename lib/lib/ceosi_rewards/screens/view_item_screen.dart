@@ -1,7 +1,8 @@
-import 'package:ceosi_app/constants/colors.dart';
-import 'package:ceosi_app/widgets/button_widget.dart';
-import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../../constants/colors.dart';
+import '../../widgets/button_widget.dart';
+import '../../widgets/text_widget.dart';
 
 class RewardViewItemScreen extends StatelessWidget {
   const RewardViewItemScreen({super.key});
@@ -26,12 +27,12 @@ class RewardViewItemScreen extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                NormalTextWidget(
+                const NormalTextWidget(
                     color: Colors.black, fontSize: 12, text: 'Snack'),
                 const SizedBox(
                   height: 20,
                 ),
-                BoldTextWidget(
+                const BoldTextWidget(
                     color: Colors.black, fontSize: 24, text: 'Piattos (1pc)'),
                 const SizedBox(
                   height: 10,
@@ -52,11 +53,11 @@ class RewardViewItemScreen extends StatelessWidget {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            NormalTextWidget(
+                            const NormalTextWidget(
                                 color: Colors.white,
                                 fontSize: 18,
                                 text: 'Details'),
-                            NormalTextWidget(
+                            const NormalTextWidget(
                                 color: Colors.white,
                                 fontSize: 12,
                                 text:
@@ -64,11 +65,11 @@ class RewardViewItemScreen extends StatelessWidget {
                             const SizedBox(
                               height: 50,
                             ),
-                            NormalTextWidget(
+                            const NormalTextWidget(
                                 color: Colors.white,
                                 fontSize: 18,
                                 text: 'Reminders'),
-                            NormalTextWidget(
+                            const NormalTextWidget(
                                 color: Colors.white,
                                 fontSize: 12,
                                 text:
@@ -78,12 +79,12 @@ class RewardViewItemScreen extends StatelessWidget {
                             ),
                             Center(
                               child: ButtonWidget(
-                                  buttonColor: Colors.white,
+                                  //  buttonColor: Colors.white,
                                   borderRadius: 100,
                                   onPressed: () {},
                                   buttonHeight: 50,
                                   buttonWidth: 300,
-                                  textWidget: BoldTextWidget(
+                                  textWidget: const BoldTextWidget(
                                       color: primaryColor,
                                       fontSize: 18,
                                       text: 'Claim Reward')),
@@ -97,7 +98,9 @@ class RewardViewItemScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/rewardhomescreen');
+                  },
                   icon: const Icon(
                     Icons.arrow_circle_left_rounded,
                     color: primaryColor,

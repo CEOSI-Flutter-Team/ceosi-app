@@ -1,5 +1,5 @@
-import 'package:ceosi_app/constants/colors.dart';
-import 'package:ceosi_app/widgets/text_widget.dart';
+import 'package:ceosi_app/lib/constants/colors.dart';
+import 'package:ceosi_app/lib/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
 class BannerWidget extends StatelessWidget {
@@ -30,7 +30,7 @@ class BannerWidget extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   BoldTextWidget(
                       color: Colors.black, fontSize: 16, text: 'Lance Olana'),
                   NormalTextWidget(
@@ -61,7 +61,7 @@ class BannerWidget extends StatelessWidget {
                         const SizedBox(
                           width: 5,
                         ),
-                        BoldTextWidget(
+                        const BoldTextWidget(
                             color: primaryColor, fontSize: 14, text: '1,000cc')
                       ],
                     ),

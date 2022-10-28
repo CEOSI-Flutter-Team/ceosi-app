@@ -1,4 +1,4 @@
-import 'package:ceosi_app/constants/colors.dart';
+import 'package:ceosi_app/lib/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class TextformfieldWidget extends StatelessWidget {
@@ -6,11 +6,13 @@ class TextformfieldWidget extends StatelessWidget {
   late Color colorFill;
 
   late bool isObscure;
-
+  Widget? suffixIcon;
   late TextEditingController textFieldController;
 
   TextformfieldWidget(
-      {required this.label,
+      {super.key,
+      required this.label,
+      this.suffixIcon,
       required this.isObscure,
       required this.colorFill,
       required this.textFieldController});
@@ -24,6 +26,7 @@ class TextformfieldWidget extends StatelessWidget {
         controller: textFieldController,
         style: const TextStyle(color: Colors.black),
         decoration: InputDecoration(
+          suffixIcon: suffixIcon,
           fillColor: colorFill,
           filled: true,
           enabledBorder: OutlineInputBorder(

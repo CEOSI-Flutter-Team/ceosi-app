@@ -1,9 +1,10 @@
-import 'package:ceosi_app/constants/colors.dart';
-import 'package:ceosi_app/widgets/banner_widget.dart';
-import 'package:ceosi_app/widgets/header_widget.dart';
-import 'package:ceosi_app/widgets/single_item_widget.dart';
-import 'package:ceosi_app/widgets/text_widget.dart';
+import 'package:ceosi_app/lib/widgets/list_item_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../../constants/colors.dart';
+import '../../widgets/banner_widget.dart';
+import '../../widgets/header_widget.dart';
+import '../../widgets/text_widget.dart';
 
 class RewardHomeScreen extends StatelessWidget {
   const RewardHomeScreen({super.key});
@@ -43,14 +44,19 @@ class RewardHomeScreen extends StatelessWidget {
                         color: primaryColor,
                       ),
                       const Expanded(child: SizedBox()),
-                      NormalTextWidget(
+                      const NormalTextWidget(
                           color: primaryColor, fontSize: 12, text: 'Snacks'),
                       const SizedBox(
                         width: 10,
                       ),
-                      const Icon(
-                        Icons.arrow_drop_down_circle_rounded,
-                        color: primaryColor,
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/rewardhomescreen');
+                        },
+                        icon: const Icon(
+                          Icons.arrow_drop_down_circle_rounded,
+                          color: primaryColor,
+                        ),
                       ),
                       const SizedBox(
                         width: 10,
@@ -60,13 +66,7 @@ class RewardHomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(
-              child: SizedBox(
-                child: ListView.builder(itemBuilder: ((context, index) {
-                  return const SizedBox();
-                })),
-              ),
-            )
+            const ListItemWidget(),
           ],
         ),
       ),

@@ -1,6 +1,7 @@
-import 'package:ceosi_app/constants/colors.dart';
-import 'package:ceosi_app/widgets/text_widget.dart';
+import 'package:ceosi_app/lib/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../constants/colors.dart';
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({super.key});
@@ -25,7 +26,8 @@ class HeaderWidget extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              BoldTextWidget(color: Colors.white, fontSize: 28, text: 'HOME'),
+              const BoldTextWidget(
+                  color: Colors.white, fontSize: 28, text: 'HOME'),
               const SizedBox(
                 width: 50,
               ),
