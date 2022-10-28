@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/rewardhomescreen',
+      initialRoute: '/rewardviewitemscreen',
       routes: {
         '/': (context) => LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),

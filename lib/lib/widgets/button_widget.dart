@@ -1,4 +1,3 @@
-import 'package:ceosi_app/lib/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class ButtonWidget extends StatelessWidget {
@@ -8,6 +7,7 @@ class ButtonWidget extends StatelessWidget {
   late double buttonHeight;
   late double? borderRadius = 0;
   late Widget textWidget;
+  late Color color;
 
   ButtonWidget(
       {super.key,
@@ -15,6 +15,7 @@ class ButtonWidget extends StatelessWidget {
       required this.buttonHeight,
       required this.buttonWidth,
       required this.textWidget,
+      required this.color,
       this.borderRadius});
 
   @override
@@ -22,7 +23,7 @@ class ButtonWidget extends StatelessWidget {
     return MaterialButton(
         minWidth: buttonWidth,
         height: buttonHeight,
-        color: primaryColor,
+        color: color,
         onPressed: onPressed,
         shape: RoundedRectangleBorder(
           borderRadius:

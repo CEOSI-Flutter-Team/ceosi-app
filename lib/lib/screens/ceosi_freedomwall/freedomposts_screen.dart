@@ -42,6 +42,7 @@ class _FreedomPostsScreenState extends State<FreedomPostsScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ButtonWidget(
+                    color: primaryColor,
                     borderRadius: 20,
                     onPressed: () {},
                     buttonHeight: 80,
@@ -49,6 +50,7 @@ class _FreedomPostsScreenState extends State<FreedomPostsScreen> {
                     textWidget: const NormalTextWidget(
                         color: Colors.white, fontSize: 18, text: 'Login')),
                 ButtonWidget(
+                    color: primaryColor,
                     borderRadius: 20,
                     onPressed: () {},
                     buttonHeight: 80,

@@ -1,3 +1,4 @@
+import 'package:ceosi_app/lib/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/images.dart';
@@ -65,6 +66,7 @@ class RegisterScreen extends StatelessWidget {
               height: 50,
             ),
             ButtonWidget(
+                color: primaryColor,
                 borderRadius: 100,
                 onPressed: () {},
                 buttonHeight: 50,
