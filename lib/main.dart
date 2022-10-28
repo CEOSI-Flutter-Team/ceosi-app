@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/sidebar_widget.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -40,6 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const SidebarWidget(),
       appBar: AppBar(
         title: Text(widget.title),
       ),
