@@ -10,7 +10,8 @@ class TextformfieldWidget extends StatelessWidget {
   late TextEditingController textFieldController;
 
   TextformfieldWidget(
-      {required this.label,
+      {super.key,
+      required this.label,
       this.suffixIcon,
       required this.isObscure,
       required this.colorFill,

@@ -7,11 +7,11 @@ class ButtonWidget extends StatelessWidget {
   late double buttonWidth;
   late double buttonHeight;
   late double? borderRadius = 0;
-
   late Widget textWidget;
 
   ButtonWidget(
-      {required this.onPressed,
+      {super.key,
+      required this.onPressed,
       required this.buttonHeight,
       required this.buttonWidth,
       required this.textWidget,

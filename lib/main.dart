@@ -1,4 +1,5 @@
 import 'package:ceosi_app/screens/login_screen.dart';
+import 'package:ceosi_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,12 +13,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(errorColor: Colors.white),
-      title: "api app",
+      theme: ThemeData(
+        errorColor: Colors.white,
+        primarySwatch: Colors.blue,
+      ),
       initialRoute: '/',
       routes: {
         '/': (context) => LoginScreen(),
       },
+      title: 'CEOSI App',
     );
   }
 }
