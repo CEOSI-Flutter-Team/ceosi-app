@@ -1,7 +1,7 @@
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-class TextformfieldWidget extends StatelessWidget {
+class AddTeamtextformfieldWidget extends StatelessWidget {
   late String label;
   late Color colorFill;
 
@@ -9,7 +9,7 @@ class TextformfieldWidget extends StatelessWidget {
   Widget? suffixIcon;
   late TextEditingController textFieldController;
 
-  TextformfieldWidget(
+  AddTeamtextformfieldWidget(
       {super.key,
       required this.label,
       this.suffixIcon,
@@ -30,14 +30,14 @@ class TextformfieldWidget extends StatelessWidget {
           fillColor: colorFill,
           filled: true,
           enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 1, color: Colors.white),
+            borderSide: const BorderSide(width: 2, color: primaryColor),
             borderRadius: BorderRadius.circular(10),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 1, color: primaryColor),
+            borderSide: const BorderSide(width: 2, color: primaryColor),
             borderRadius: BorderRadius.circular(10),
           ),
-          labelText: label,
+          hintText: label,
           labelStyle: const TextStyle(
             color: Colors.black,
             fontSize: 12.0,

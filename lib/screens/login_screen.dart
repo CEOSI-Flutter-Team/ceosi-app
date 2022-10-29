@@ -1,6 +1,6 @@
 import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
-import 'package:ceosi_app/widgets/textformfield/authtextformfield_widget.dart';
+import 'package:ceosi_app/widgets/textformfield.dart/authtextformfield_widget.dart';
 import 'package:flutter/material.dart';
 import '../constants/images.dart';
 
@@ -34,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 10,
               ),
-              TextformfieldWidget(
+              AuthtextformfieldWidget(
                 isObscure: false,
                 textFieldController: _usernameController,
                 label: 'Username',
@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 10,
               ),
-              TextformfieldWidget(
+              AuthtextformfieldWidget(
                 isObscure: _secureText,
                 textFieldController: _passwordController,
                 label: 'Password',

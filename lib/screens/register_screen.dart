@@ -1,6 +1,6 @@
 import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
-import 'package:ceosi_app/widgets/textformfield/authtextformfield_widget.dart';
+import 'package:ceosi_app/widgets/textformfield.dart/authtextformfield_widget.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -26,7 +26,7 @@ class RegisterScreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            TextformfieldWidget(
+            AuthtextformfieldWidget(
               isObscure: false,
               textFieldController: _nameController,
               label: 'Name',
@@ -35,7 +35,7 @@ class RegisterScreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            TextformfieldWidget(
+            AuthtextformfieldWidget(
               isObscure: false,
               textFieldController: _emailController,
               label: 'Email',
@@ -44,7 +44,7 @@ class RegisterScreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            TextformfieldWidget(
+            AuthtextformfieldWidget(
               isObscure: true,
               textFieldController: _passwordController,
               label: 'Password',
@@ -53,7 +53,7 @@ class RegisterScreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            TextformfieldWidget(
+            AuthtextformfieldWidget(
               isObscure: true,
               textFieldController: _confirmPasswordController,
               label: 'Confirm Password',
