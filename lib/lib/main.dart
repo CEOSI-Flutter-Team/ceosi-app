@@ -1,3 +1,4 @@
+import 'package:ceosi_app/lib/ceosi_rewards/screens/admin_panel_screen.dart';
 import 'package:ceosi_app/lib/ceosi_rewards/screens/profile_screen.dart';
 import 'package:ceosi_app/lib/ceosi_rewards/screens/reward_home_screen.dart';
 import 'package:ceosi_app/lib/constants/app_names.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/profilescreenreward',
+      initialRoute: '/adminpanelscreenreward',
       routes: {
         '/': (context) => LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
@@ -32,9 +33,10 @@ class MyApp extends StatelessWidget {
         '/freedompostsscreen': (context) => const FreedomPostsScreen(),
         '/rewardhomescreen': (context) => const RewardHomeScreen(),
         '/rewardviewitemscreen': (context) => const RewardViewItemScreen(),
-        '/profilescreenreward': (context) => ProfileScreenReward(),
+        '/profilescreenreward': (context) => const ProfileScreenReward(),
+        '/adminpanelscreenreward': (context) => const AdminPanelScreen(),
       },
-      title: carlApp,
+      title: lanceApp,
     );
   }
 }

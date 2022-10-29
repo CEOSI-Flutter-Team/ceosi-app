@@ -1,4 +1,4 @@
-import 'package:ceosi_app/lib/widgets/single_item_widget.dart';
+import 'package:ceosi_app/lib/widgets/single_item_widgets/single_item_widget.dart';
 import 'package:flutter/material.dart';
 
 class ListItemWidget extends StatelessWidget {

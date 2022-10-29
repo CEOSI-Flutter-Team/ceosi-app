@@ -1,9 +1,9 @@
-import 'package:ceosi_app/lib/widgets/drawer_widget.dart';
-import 'package:ceosi_app/lib/widgets/list_item_widget.dart';
+import 'package:ceosi_app/lib/widgets/drawer/drawer_widget.dart';
+import 'package:ceosi_app/lib/widgets/list_widgets/list_item_widget.dart';
 import 'package:flutter/material.dart';
 import '../../constants/colors.dart';
 import '../../widgets/banner_widget.dart';
-import '../../widgets/header_widget.dart';
+import '../../widgets/header/header_widget.dart';
 import '../../widgets/text_widget.dart';
 
 class RewardHomeScreen extends StatelessWidget {

@@ -1,9 +1,9 @@
 import 'package:ceosi_app/lib/constants/images.dart';
-import 'package:ceosi_app/lib/widgets/drawer_button_widget.dart';
+import 'package:ceosi_app/lib/widgets/drawer/drawer_button_widget.dart';
 import 'package:ceosi_app/lib/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../constants/colors.dart';
+import '../../constants/colors.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});

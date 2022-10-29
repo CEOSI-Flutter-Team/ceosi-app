@@ -2,7 +2,7 @@ import 'package:ceosi_app/lib/constants/icons.dart';
 import 'package:ceosi_app/lib/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../constants/colors.dart';
+import '../../constants/colors.dart';
 
 class RewardsClaimedSingleItemWidget extends StatelessWidget {
   const RewardsClaimedSingleItemWidget({super.key});

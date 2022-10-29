@@ -1,12 +1,12 @@
 import 'package:ceosi_app/lib/constants/colors.dart';
-import 'package:ceosi_app/lib/widgets/drawer_widget.dart';
-import 'package:ceosi_app/lib/widgets/list_rewards_claimed_item_widget.dart';
-import 'package:ceosi_app/lib/widgets/list_rewards_earned_widget.dart';
+import 'package:ceosi_app/lib/widgets/drawer/drawer_widget.dart';
+import 'package:ceosi_app/lib/widgets/list_widgets/list_rewards_claimed_item_widget.dart';
+import 'package:ceosi_app/lib/widgets/list_widgets/list_rewards_earned_widget.dart';
 import 'package:ceosi_app/lib/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/banner_widget.dart';
-import '../../widgets/header_widget.dart';
+import '../../widgets/header/header_widget.dart';
 
 class ProfileScreenReward extends StatefulWidget {
   const ProfileScreenReward({super.key});

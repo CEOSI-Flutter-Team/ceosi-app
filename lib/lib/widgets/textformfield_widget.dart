@@ -31,11 +31,11 @@ class TextformfieldWidget extends StatelessWidget {
           filled: true,
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(width: 1, color: Colors.white),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(5),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: const BorderSide(width: 1, color: primaryColor),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(5),
           ),
           labelText: label,
           labelStyle: const TextStyle(
