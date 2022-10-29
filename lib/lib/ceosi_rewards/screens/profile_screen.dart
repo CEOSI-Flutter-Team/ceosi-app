@@ -9,6 +9,8 @@ import '../../widgets/banner_widget.dart';
 import '../../widgets/header_widget.dart';
 
 class ProfileScreenReward extends StatefulWidget {
+  const ProfileScreenReward({super.key});
+
   @override
   State<ProfileScreenReward> createState() => _ProfileScreenRewardState();
 }
