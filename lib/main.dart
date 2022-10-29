@@ -1,4 +1,6 @@
 import 'package:ceosi_app/constants/app_names.dart';
+import 'package:ceosi_app/screens/ceosi_company_app/screens/add_team_screen.dart';
+import 'package:ceosi_app/screens/ceosi_company_app/screens/team_screen.dart';
 import 'package:ceosi_app/screens/login_screen.dart';
 import 'package:ceosi_app/screens/home_screen.dart';
 import 'package:ceosi_app/screens/register_screen.dart';
@@ -27,6 +29,8 @@ class MyApp extends StatelessWidget {
         '/homescreen': (context) => const HomeScreen(),
         '/registerscreen': (context) => RegisterScreen(),
         '/announcementscreen': (context) => const AnnouncementScreen(),
+        '/teamscreen': (context) => const TeamScreen(),
+        '/addteamscreen': (context) => const AddTeamScreen(),
       },
       title: chloieApp,
     );
