@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NormalTextWidget extends StatelessWidget {
-  late String text;
+  final String text;
+  final double fontSize;
+  final Color color;
 
-  late double fontSize;
-  late Color color;
-
-  NormalTextWidget(
-      {required this.color, required this.fontSize, required this.text});
+  const NormalTextWidget({
+    super.key,
+    required this.color,
+    required this.fontSize,
+    required this.text,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +23,16 @@ class NormalTextWidget extends StatelessWidget {
 }
 
 class BoldTextWidget extends StatelessWidget {
-  late String text;
+  final String text;
+  final double fontSize;
+  final Color color;
 
-  late double fontSize;
-  late Color color;
-
-  BoldTextWidget(
-      {required this.color, required this.fontSize, required this.text});
+  const BoldTextWidget({
+    super.key,
+    required this.color,
+    required this.fontSize,
+    required this.text,
+  });
 
   @override
   Widget build(BuildContext context) {

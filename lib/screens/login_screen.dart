@@ -1,8 +1,7 @@
 import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
-import 'package:ceosi_app/widgets/textformfield_widget.dart';
+import 'package:ceosi_app/widgets/textformfield/authtextformfield_widget.dart';
 import 'package:flutter/material.dart';
-
 import '../constants/images.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -68,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {},
                   buttonHeight: 50,
                   buttonWidth: 300,
-                  textWidget: NormalTextWidget(
+                  textWidget: const NormalTextWidget(
                       color: Colors.white, fontSize: 18, text: 'Login')),
               const SizedBox(
                 height: 10,
@@ -78,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {},
                   buttonHeight: 50,
                   buttonWidth: 300,
-                  textWidget: NormalTextWidget(
+                  textWidget: const NormalTextWidget(
                       color: Colors.white, fontSize: 18, text: 'Register')),
             ],
           ),

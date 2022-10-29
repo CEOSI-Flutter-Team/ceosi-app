@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: greyAccentColor,
+        backgroundColor: greyAccent,
         leading: Builder(
             builder: (context) => IconButton(
                   icon: const Icon(
@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {},
               buttonHeight: 100,
               buttonWidth: 300,
-              textWidget: BoldTextWidget(
+              textWidget: const BoldTextWidget(
                   color: Colors.white, fontSize: 15, text: juneApp),
             ),
             const SizedBox(
@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {},
               buttonHeight: 100,
               buttonWidth: 300,
-              textWidget: BoldTextWidget(
+              textWidget: const BoldTextWidget(
                   color: Colors.white, fontSize: 15, text: carlApp),
             ),
             const SizedBox(
@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {},
               buttonHeight: 100,
               buttonWidth: 300,
-              textWidget: BoldTextWidget(
+              textWidget: const BoldTextWidget(
                   color: Colors.white, fontSize: 15, text: chloieApp),
             ),
             const SizedBox(
@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {},
               buttonHeight: 100,
               buttonWidth: 300,
-              textWidget: BoldTextWidget(
+              textWidget: const BoldTextWidget(
                   color: Colors.white, fontSize: 15, text: lanceApp),
             ),
           ],
