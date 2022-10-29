@@ -1,4 +1,5 @@
 import 'package:ceosi_app/lib/constants/images.dart';
+import 'package:ceosi_app/lib/widgets/dialogs/logout_prompt_dialog_widget.dart';
 import 'package:ceosi_app/lib/widgets/drawer/drawer_button_widget.dart';
 import 'package:ceosi_app/lib/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
@@ -20,22 +21,7 @@ class DrawerWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: Container(
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(3.0),
-                    child: Image.asset(
-                      coesiIcon,
-                      height: 20,
-                    ),
-                  ),
-                ),
-              ),
+              const SizedBox(),
               IconButton(
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -90,21 +76,54 @@ class DrawerWidget extends StatelessWidget {
               thickness: 1.5,
             ),
           ),
-          DrawerButtonWidget(icon: Icons.home, onPressed: () {}, text: 'HOME'),
           DrawerButtonWidget(
-              icon: Icons.person, onPressed: () {}, text: 'PROFILE'),
-          DrawerButtonWidget(icon: Icons.info, onPressed: () {}, text: 'ABOUT'),
+              icon: Icons.home,
+              onPressed: () {
+                Navigator.pushNamed(context, '/rewardhomescreen');
+              },
+              text: 'HOME'),
+          DrawerButtonWidget(
+              icon: Icons.person,
+              onPressed: () {
+                Navigator.pushNamed(context, '/profilescreenreward');
+              },
+              text: 'PROFILE'),
+          DrawerButtonWidget(
+              icon: Icons.info,
+              onPressed: () {
+                showAboutDialog(
+                    context: context,
+                    applicationName: 'CEOSI Rewards',
+                    applicationIcon: Image.asset(
+                      coesiIcon,
+                      height: 20,
+                    ),
+                    applicationLegalese:
+                        "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+                    applicationVersion: 'v1.0');
+              },
+              text: 'ABOUT'),
           DrawerButtonWidget(
               icon: Icons.admin_panel_settings_rounded,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/adminpanelscreenreward');
+              },
               text: 'ADMIN'),
           DrawerButtonWidget(
-              icon: Icons.logout, onPressed: () {}, text: 'LOGOUT'),
+              icon: Icons.logout,
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: ((context) {
+                      return const LogoutPromptDialogWidget();
+                    }));
+              },
+              text: 'LOGOUT'),
           const Expanded(child: SizedBox()),
           Padding(
             padding: const EdgeInsets.only(left: 30, right: 30),
             child: Container(
-              height: 100,
+              height: 80,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
@@ -118,6 +137,15 @@ class DrawerWidget extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(
+            height: 20,
+          ),
+          const NormalTextWidget(
+              color: Colors.white, fontSize: 10, text: 'All right reserved'),
+          const NormalTextWidget(
+              color: Colors.white,
+              fontSize: 10,
+              text: 'Cyber Ensemble Outsourcing Services Inc.  2022'),
           const SizedBox(
             height: 20,
           ),

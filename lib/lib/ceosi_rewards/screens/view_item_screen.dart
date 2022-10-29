@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../constants/colors.dart';
 import '../../widgets/button_widget.dart';
+import '../../widgets/dialogs/claim_reward_dialog_widget.dart';
 import '../../widgets/text_widget.dart';
 
 class RewardViewItemScreen extends StatelessWidget {
@@ -85,54 +86,7 @@ class RewardViewItemScreen extends StatelessWidget {
                                     showDialog(
                                         context: context,
                                         builder: (context) {
-                                          return Dialog(
-                                            backgroundColor: primaryColor,
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: primaryColor,
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                              ),
-                                              height: 350,
-                                              width: 300,
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  const SizedBox(
-                                                    height: 20,
-                                                  ),
-                                                  const BoldTextWidget(
-                                                      color: Colors.white,
-                                                      fontSize: 18,
-                                                      text: 'ITEM CLAIMED!'),
-                                                  const SizedBox(
-                                                    height: 20,
-                                                  ),
-                                                  Image.asset(
-                                                    'assets/icons/check.png',
-                                                    height: 150,
-                                                  ),
-                                                  const SizedBox(
-                                                    height: 50,
-                                                  ),
-                                                  ButtonWidget(
-                                                      borderRadius: 100,
-                                                      onPressed: () {},
-                                                      buttonHeight: 50,
-                                                      buttonWidth: 220,
-                                                      textWidget:
-                                                          const BoldTextWidget(
-                                                              color:
-                                                                  primaryColor,
-                                                              fontSize: 18,
-                                                              text:
-                                                                  'Claim Reward'),
-                                                      color: Colors.white)
-                                                ],
-                                              ),
-                                            ),
-                                          );
+                                          return const ClaimRewardDialogWidget();
                                         });
                                   },
                                   buttonHeight: 50,
@@ -152,7 +106,7 @@ class RewardViewItemScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 20),
               child: IconButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/rewardhomescreen');
+                    Navigator.of(context).pop();
                   },
                   icon: const Icon(
                     Icons.arrow_circle_left_rounded,

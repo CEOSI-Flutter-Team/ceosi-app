@@ -12,7 +12,9 @@ class SingleItemWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 5, 20, 10),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, '/rewardviewitemscreen');
+        },
         child: Container(
           height: 75,
           decoration: BoxDecoration(
