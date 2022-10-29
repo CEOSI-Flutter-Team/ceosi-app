@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../constants/colors.dart';
 
-class SingleItemWidget extends StatelessWidget {
-  const SingleItemWidget({super.key});
+class RewardsClaimedSingleItemWidget extends StatelessWidget {
+  const RewardsClaimedSingleItemWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +16,9 @@ class SingleItemWidget extends StatelessWidget {
         child: Container(
           height: 75,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.white,
-              border: Border.all(
-                color: primaryColor,
-              )),
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -63,7 +61,7 @@ class SingleItemWidget extends StatelessWidget {
                 width: 10,
               ),
               const BoldTextWidget(
-                  color: primaryColor, fontSize: 14, text: '1,000cc'),
+                  color: primaryColor, fontSize: 14, text: '-1,000cc'),
               const SizedBox(
                 width: 10,
               ),

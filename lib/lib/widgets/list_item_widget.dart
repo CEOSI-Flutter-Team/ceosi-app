@@ -6,12 +6,10 @@ class ListItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: SizedBox(
-        child: ListView.builder(itemBuilder: ((context, index) {
-          return const SingleItemWidget();
-        })),
-      ),
+    return SizedBox(
+      child: ListView.builder(itemBuilder: ((context, index) {
+        return const SingleItemWidget();
+      })),
     );
   }
 }

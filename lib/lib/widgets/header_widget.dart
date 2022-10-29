@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 
 class HeaderWidget extends StatelessWidget {
-  const HeaderWidget({super.key});
+  late String headerTitle;
+
+  HeaderWidget({required this.headerTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +22,16 @@ class HeaderWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
                 icon: const Icon(
                   Icons.menu,
                   color: Colors.white,
                 ),
               ),
-              const BoldTextWidget(
-                  color: Colors.white, fontSize: 28, text: 'HOME'),
+              BoldTextWidget(
+                  color: Colors.white, fontSize: 28, text: headerTitle),
               const SizedBox(
                 width: 50,
               ),

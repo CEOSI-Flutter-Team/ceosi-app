@@ -1,6 +1,6 @@
+import 'package:ceosi_app/lib/widgets/drawer_widget.dart';
 import 'package:ceosi_app/lib/widgets/list_item_widget.dart';
 import 'package:flutter/material.dart';
-
 import '../../constants/colors.dart';
 import '../../widgets/banner_widget.dart';
 import '../../widgets/header_widget.dart';
@@ -12,14 +12,17 @@ class RewardHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const DrawerWidget(),
       backgroundColor: Colors.grey[200],
       body: Center(
         child: Column(
           children: [
             Stack(
-              children: const [
-                HeaderWidget(),
-                BannerWidget(),
+              children: [
+                HeaderWidget(
+                  headerTitle: 'HOME',
+                ),
+                const BannerWidget(),
               ],
             ),
             const SizedBox(
@@ -66,7 +69,9 @@ class RewardHomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const ListItemWidget(),
+            const Expanded(
+              child: ListItemWidget(),
+            )
           ],
         ),
       ),

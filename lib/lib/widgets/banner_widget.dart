@@ -1,4 +1,6 @@
 import 'package:ceosi_app/lib/constants/colors.dart';
+import 'package:ceosi_app/lib/constants/icons.dart';
+import 'package:ceosi_app/lib/constants/images.dart';
 import 'package:ceosi_app/lib/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -48,14 +50,14 @@ class BannerWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image.asset(
-                      'assets/icons/logo.png',
+                      coesiIcon,
                       height: 40,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          'assets/icons/coin.png',
+                          coinIcon,
                           height: 18,
                         ),
                         const SizedBox(
