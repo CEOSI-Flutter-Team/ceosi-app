@@ -3,6 +3,8 @@ import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:ceosi_app/widgets/textformfield_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../constants/images.dart';
+
 class RegisterScreen extends StatelessWidget {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
@@ -20,7 +22,7 @@ class RegisterScreen extends StatelessWidget {
               height: 50,
             ),
             Image.asset(
-              'assets/images/FINAL-LOGO-1.0.png',
+              coesiLogoCompleteAndMaroonBlueText,
               width: 350,
             ),
             const SizedBox(
@@ -67,7 +69,7 @@ class RegisterScreen extends StatelessWidget {
                 onPressed: () {},
                 buttonHeight: 50,
                 buttonWidth: 300,
-                textWidget: NormalTextWidget(
+                textWidget: const NormalTextWidget(
                     color: Colors.white, fontSize: 18, text: 'Register')),
             const Expanded(
               child: SizedBox(),
@@ -75,13 +77,13 @@ class RegisterScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                NormalTextWidget(
+                const NormalTextWidget(
                     color: Colors.black,
                     fontSize: 14,
                     text: 'Already have an account?'),
                 TextButton(
                   onPressed: () {},
-                  child: BoldTextWidget(
+                  child: const BoldTextWidget(
                       color: Colors.black, fontSize: 18, text: 'Login'),
                 ),
               ],
