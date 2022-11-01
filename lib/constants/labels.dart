@@ -4,5 +4,6 @@ class Label {
       ceosiCompanyApp = 'CEOSI Company App',
       ceosiRewards = 'CEOSI Rewards',
       codeList = 'CODE LIST',
-      ceosiApp = 'CEOSI App';
+      ceosiApp = 'CEOSI App',
+      categories = 'Categories';
 }
