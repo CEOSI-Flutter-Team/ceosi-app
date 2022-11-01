@@ -23,7 +23,7 @@ class CodeListScreen extends StatelessWidget {
       drawer: const SidebarWidget(),
       body: Column(
         children: [
-          AppbarExtensionWidget(),
+          const AppbarExtensionWidget(),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -39,9 +39,7 @@ class CodeListScreen extends StatelessWidget {
 }
 
 class AppbarExtensionWidget extends StatelessWidget {
-  AppbarExtensionWidget({super.key});
-
-  final TextEditingController searchController = TextEditingController();
+  const AppbarExtensionWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,34 +58,7 @@ class AppbarExtensionWidget extends StatelessWidget {
         ),
         child: Row(
           children: <Widget>[
-            Expanded(
-              child: TextFormField(
-                controller: searchController,
-                style: const TextStyle(color: Colors.black),
-                decoration: InputDecoration(
-                    isDense: true,
-                    border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10.0),
-                      ),
-                      borderSide: BorderSide(color: Colors.transparent),
-                    ),
-                    focusedBorder: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10.0),
-                      ),
-                      borderSide: BorderSide(color: Colors.transparent),
-                    ),
-                    fillColor: Colors.white,
-                    filled: true,
-                    prefixIcon: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.search,
-                          color: primaryColor,
-                        ))),
-              ),
-            ),
+            CodeListSearchFieldWidget(),
             IconButton(
               onPressed: () {},
               icon: const Icon(
@@ -132,10 +103,20 @@ class CodeListViewWidget extends ConsumerWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        BoldTextWidget(
-                          color: Colors.white,
-                          fontSize: 12.0,
-                          text: codeList[index]['title'],
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Image.asset(
+                              'assets/icons/code.png',
+                              scale: 25.0,
+                            ),
+                            const SizedBox(width: 5.0),
+                            BoldTextWidget(
+                              color: Colors.white,
+                              fontSize: 12.0,
+                              text: codeList[index]['title'],
+                            ),
+                          ],
                         ),
                         BoldTextWidget(
                           color: Colors.white,
@@ -156,6 +137,44 @@ class CodeListViewWidget extends ConsumerWidget {
           child: CircularProgressIndicator(
         color: primaryColor,
       )),
+    );
+  }
+}
+
+class CodeListSearchFieldWidget extends StatelessWidget {
+  CodeListSearchFieldWidget({super.key});
+
+  final TextEditingController searchController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: TextFormField(
+        controller: searchController,
+        style: const TextStyle(color: Colors.black),
+        decoration: InputDecoration(
+            isDense: true,
+            border: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(10.0),
+              ),
+              borderSide: BorderSide(color: Colors.transparent),
+            ),
+            focusedBorder: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(10.0),
+              ),
+              borderSide: BorderSide(color: Colors.transparent),
+            ),
+            fillColor: Colors.white,
+            filled: true,
+            prefixIcon: IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.search,
+                  color: primaryColor,
+                ))),
+      ),
     );
   }
 }
