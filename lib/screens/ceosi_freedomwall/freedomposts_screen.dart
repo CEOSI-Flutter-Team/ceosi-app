@@ -1,11 +1,11 @@
 import 'dart:math';
 
 import 'package:ceosi_app/constants/colors.dart';
+import 'package:ceosi_app/widgets/gesture_detector_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../widgets/button_widget.dart';
-import '../../widgets/postbutton_widget.dart';
 import '../../widgets/text_widget.dart';
 
 class FreedomPostsScreen extends StatefulWidget {
@@ -190,16 +190,15 @@ class _FreedomPostsScreenState extends State<FreedomPostsScreen> {
               ]),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(100, 0, 0, 0),
-              child: PostButtonWidget(
-                  color: Colors.grey.withOpacity(1.0),
-                  onPressed: () {},
-                  buttonHeight: 10,
-                  buttonWidth: 10,
-                  borderRadius: 50,
-                  textWidget: Image.asset('assets/icons/continuousdot.png',
-                      fit: BoxFit.contain)),
-            ),
+              padding: const EdgeInsets.fromLTRB(130, 10, 0, 0),
+              child: GestureDetectorWidget(
+                childWidget: Image.asset('assets/icons/continuousdot.png',
+                    fit: BoxFit.contain),
+                onTap: () {
+                  print('hello id $index');
+                },
+              ),
+            )
           ]),
         );
       },
