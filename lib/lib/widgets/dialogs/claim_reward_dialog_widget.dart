@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/colors.dart';
-import '../button_widget.dart';
+import '../buttons/button_widget.dart';
 import '../text_widget.dart';
 
 class ClaimRewardDialogWidget extends StatelessWidget {

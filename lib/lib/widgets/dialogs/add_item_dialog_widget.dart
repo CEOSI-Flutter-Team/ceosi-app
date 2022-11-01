@@ -3,7 +3,7 @@ import 'package:ceosi_app/lib/widgets/text_widget.dart';
 import 'package:ceosi_app/lib/widgets/textformfield_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../button_widget.dart';
+import '../buttons/button_widget.dart';
 
 class AddItemDialogWidget extends StatelessWidget {
   late var itemNameController = TextEditingController();

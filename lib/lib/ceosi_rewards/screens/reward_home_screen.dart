@@ -1,13 +1,23 @@
+import 'package:ceosi_app/lib/widgets/buttons/dropdown_item_widget.dart';
 import 'package:ceosi_app/lib/widgets/drawer/drawer_widget.dart';
 import 'package:ceosi_app/lib/widgets/list_widgets/list_item_widget.dart';
+import 'package:ceosi_app/lib/widgets/search_delegate/search_delegate_item_widget.dart';
 import 'package:flutter/material.dart';
 import '../../constants/colors.dart';
 import '../../widgets/banner_widget.dart';
 import '../../widgets/header/header_widget.dart';
-import '../../widgets/text_widget.dart';
 
-class RewardHomeScreen extends StatelessWidget {
+class RewardHomeScreen extends StatefulWidget {
   const RewardHomeScreen({super.key});
+
+  @override
+  State<RewardHomeScreen> createState() => _RewardHomeScreenState();
+}
+
+class _RewardHomeScreenState extends State<RewardHomeScreen> {
+  int _dropdownValue = 0;
+
+  String itemCategory = 'Snacks';
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +41,9 @@ class RewardHomeScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  showSearch(context: context, delegate: SearchDelegateItem());
+                },
                 child: Container(
                   height: 35,
                   decoration: BoxDecoration(
@@ -47,22 +59,45 @@ class RewardHomeScreen extends StatelessWidget {
                         color: primaryColor,
                       ),
                       const Expanded(child: SizedBox()),
-                      const NormalTextWidget(
-                          color: primaryColor, fontSize: 12, text: 'Snacks'),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/rewardhomescreen');
-                        },
-                        icon: const Icon(
-                          Icons.arrow_drop_down_circle_rounded,
-                          color: primaryColor,
+                      SizedBox(
+                        width: 120,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 2, 20, 2),
+                          child: DropdownButton(
+                            underline: Container(color: Colors.transparent),
+                            iconEnabledColor: Colors.black,
+                            isExpanded: true,
+                            value: _dropdownValue,
+                            items: [
+                              DropdownMenuItem(
+                                onTap: () {
+                                  itemCategory = "Snacks";
+                                },
+                                value: 0,
+                                child: DropDownItem(label: 'Snacks'),
+                              ),
+                              DropdownMenuItem(
+                                onTap: () {
+                                  itemCategory = "Drinks";
+                                },
+                                value: 1,
+                                child: DropDownItem(label: 'Drinks'),
+                              ),
+                              DropdownMenuItem(
+                                onTap: () {
+                                  itemCategory = "Candies";
+                                },
+                                value: 2,
+                                child: DropDownItem(label: 'Candies'),
+                              ),
+                            ],
+                            onChanged: (value) {
+                              setState(() {
+                                _dropdownValue = int.parse(value.toString());
+                              });
+                            },
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 10,
                       ),
                     ],
                   ),

@@ -2,7 +2,7 @@ import 'package:ceosi_app/lib/widgets/drawer/drawer_widget.dart';
 import 'package:ceosi_app/lib/widgets/header/header_admin_panel_widget.dart';
 import 'package:ceosi_app/lib/widgets/list_widgets/admin_list_rewards_widget.dart';
 import 'package:ceosi_app/lib/widgets/list_widgets/list_users_widget.dart';
-import 'package:ceosi_app/lib/widgets/search_bar_widget.dart';
+import 'package:ceosi_app/lib/widgets/search_delegate/search_bar_widget.dart';
 import 'package:ceosi_app/lib/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 

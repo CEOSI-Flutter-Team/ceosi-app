@@ -1,4 +1,4 @@
-import 'package:ceosi_app/lib/widgets/button_widget.dart';
+import 'package:ceosi_app/lib/widgets/buttons/button_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/colors.dart';

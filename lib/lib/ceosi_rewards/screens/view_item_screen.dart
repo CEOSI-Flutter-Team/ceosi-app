@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/colors.dart';
-import '../../widgets/button_widget.dart';
+import '../../widgets/buttons/button_widget.dart';
 import '../../widgets/dialogs/claim_reward_dialog_widget.dart';
 import '../../widgets/text_widget.dart';
 

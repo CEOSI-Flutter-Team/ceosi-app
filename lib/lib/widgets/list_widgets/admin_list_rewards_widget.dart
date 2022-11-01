@@ -1,5 +1,5 @@
 import 'package:ceosi_app/lib/constants/colors.dart';
-import 'package:ceosi_app/lib/widgets/button_widget.dart';
+import 'package:ceosi_app/lib/widgets/buttons/button_widget.dart';
 import 'package:ceosi_app/lib/widgets/list_widgets/list_item_widget.dart';
 import 'package:flutter/material.dart';
 
