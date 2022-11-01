@@ -1,4 +1,3 @@
-import 'package:ceosi_app/screens/login_screen.dart';
 import 'package:ceosi_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +18,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => LoginScreen(),
+        '/': (context) => HomeScreen(),
       },
       title: 'CEOSI App',
     );

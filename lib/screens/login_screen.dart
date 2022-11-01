@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 50,
               ),
               Image.asset(
-                coesiLogoCompleteAndMaroonBlueText,
+                Images.coesiLogoCompleteAndMaroonBlueText,
                 width: 350,
               ),
               const SizedBox(
@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {},
                   buttonHeight: 50,
                   buttonWidth: 300,
-                  textWidget: NormalTextWidget(
+                  textWidget: const NormalTextWidget(
                       color: Colors.white, fontSize: 18, text: 'Login')),
               const SizedBox(
                 height: 10,
@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {},
                   buttonHeight: 50,
                   buttonWidth: 300,
-                  textWidget: NormalTextWidget(
+                  textWidget: const NormalTextWidget(
                       color: Colors.white, fontSize: 18, text: 'Register')),
             ],
           ),
