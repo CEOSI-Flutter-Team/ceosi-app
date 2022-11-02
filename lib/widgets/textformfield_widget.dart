@@ -37,6 +37,9 @@ class TextformfieldWidget extends StatelessWidget {
             borderSide: const BorderSide(width: 1, color: CustomColors.primary),
             borderRadius: BorderRadius.circular(10),
           ),
+          constraints: const BoxConstraints(
+            maxHeight: 48,
+          ),
           labelText: label,
           labelStyle: const TextStyle(
             color: Colors.black,
