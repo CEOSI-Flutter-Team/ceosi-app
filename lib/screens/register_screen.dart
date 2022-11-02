@@ -41,6 +41,7 @@ class RegisterScreen extends StatelessWidget {
               height: 10,
             ),
             TextformfieldWidget(
+              isObscure: true,
               textFieldController: _passwordController,
               label: 'Password',
             ),
@@ -48,6 +49,7 @@ class RegisterScreen extends StatelessWidget {
               height: 10,
             ),
             TextformfieldWidget(
+              isObscure: true,
               textFieldController: _confirmPasswordController,
               label: 'Confirm Password',
             ),
