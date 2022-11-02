@@ -1,4 +1,4 @@
-import 'package:ceosi_app/repositories/freedom_posts_repository_interface.dart';
+import 'freedom_posts_repository_interface.dart';
 
 class FreedomPostsRepository extends FreedomPostsRepositoryInterface {
   @override
