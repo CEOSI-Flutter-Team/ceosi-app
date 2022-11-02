@@ -1,7 +1,7 @@
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-class AuthtextformfieldWidget extends StatelessWidget {
+class TextformfieldWidget extends StatelessWidget {
   late String label;
   late Color colorFill;
 
@@ -9,7 +9,7 @@ class AuthtextformfieldWidget extends StatelessWidget {
   Widget? suffixIcon;
   late TextEditingController textFieldController;
 
-  AuthtextformfieldWidget(
+  TextformfieldWidget(
       {super.key,
       required this.label,
       this.suffixIcon,
