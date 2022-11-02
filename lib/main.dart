@@ -1,9 +1,8 @@
-import 'package:ceosi_app/constants/app_names.dart';
-import 'package:ceosi_app/screens/login_screen.dart';
+import 'package:ceosi_app/screens/ceosi_company_app/screens/announcement_screen.dart';
 import 'package:ceosi_app/screens/home_screen.dart';
+import 'package:ceosi_app/screens/login_screen.dart';
 import 'package:ceosi_app/screens/register_screen.dart';
 import 'package:flutter/material.dart';
-import 'screens/ceosi_company_app/screens/announcement_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
         '/registerscreen': (context) => RegisterScreen(),
         '/announcementscreen': (context) => const AnnouncementScreen(),
       },
-      title: chloieApp,
+      title: 'CEOSI App',
     );
   }
 }

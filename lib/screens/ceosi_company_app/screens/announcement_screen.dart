@@ -14,7 +14,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: greyAccent,
+        backgroundColor: CustomColors.greyAccent,
         leading: Builder(
             builder: (context) => IconButton(
                   icon: const Icon(
@@ -43,46 +43,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                 itemCount: 2,
                 itemBuilder: (context, index) {
                   return Column(children: [
-                    InkWell(
-                        onTap: (() {}),
-                        child: Card(
-                            color: primaryColor,
-                            elevation: 5.0,
-                            child: Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Icon(
-                                    Icons.campaign,
-                                    size: 50,
-                                    color: secondaryColor,
-                                  ),
-                                  const SizedBox(width: 5),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: const [
-                                        BoldTextWidget(
-                                            color: Colors.white,
-                                            fontSize: 13,
-                                            text: "Emergency Meeting"),
-                                        BoldTextWidget(
-                                            color: Colors.white,
-                                            fontSize: 11,
-                                            text: "October 25, 2022"),
-                                        BoldTextWidget(
-                                            color: Colors.white,
-                                            fontSize: 11,
-                                            text: "10:00 AM")
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )))
+                    InkWell(onTap: (() {}), child: const AnnouncementList())
                   ]);
                 },
               ),
@@ -100,47 +61,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                 itemCount: 4,
                 itemBuilder: (context, index) {
                   return Column(children: [
-                    InkWell(
-                        onTap: (() {}),
-                        child: Card(
-                            color: primaryColor,
-                            elevation: 10.0,
-                            child: Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Icon(
-                                    Icons.event,
-                                    size: 50,
-                                    color: secondaryColor,
-                                  ),
-                                  const SizedBox(width: 5),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: const [
-                                        BoldTextWidget(
-                                            color: Colors.white,
-                                            fontSize: 12,
-                                            text:
-                                                "CEOSI Town-Hall Meeting & Halloween Party"),
-                                        BoldTextWidget(
-                                            color: Colors.white,
-                                            fontSize: 11,
-                                            text: "October 25, 2022"),
-                                        BoldTextWidget(
-                                            color: Colors.white,
-                                            fontSize: 11,
-                                            text: "3:00 PM")
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )))
+                    InkWell(onTap: (() {}), child: const EventList())
                   ]);
                 },
               ),
@@ -149,5 +70,95 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
         ),
       ),
     );
+  }
+}
+
+class AnnouncementList extends StatelessWidget {
+  const AnnouncementList({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        color: CustomColors.primary,
+        elevation: 5.0,
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Icon(
+                Icons.campaign,
+                size: 50,
+                color: CustomColors.secondary,
+              ),
+              const SizedBox(width: 5),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: const [
+                    BoldTextWidget(
+                        color: Colors.white,
+                        fontSize: 13,
+                        text: "Emergency Meeting"),
+                    BoldTextWidget(
+                        color: Colors.white,
+                        fontSize: 11,
+                        text: "October 25, 2022"),
+                    BoldTextWidget(
+                        color: Colors.white, fontSize: 11, text: "10:00 AM")
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ));
+  }
+}
+
+class EventList extends StatelessWidget {
+  const EventList({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        color: CustomColors.primary,
+        elevation: 10.0,
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Icon(
+                Icons.event,
+                size: 50,
+                color: CustomColors.secondary,
+              ),
+              const SizedBox(width: 5),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: const [
+                    BoldTextWidget(
+                        color: Colors.white,
+                        fontSize: 12,
+                        text: "CEOSI Town-Hall Meeting & Halloween Party"),
+                    BoldTextWidget(
+                        color: Colors.white,
+                        fontSize: 11,
+                        text: "October 25, 2022"),
+                    BoldTextWidget(
+                        color: Colors.white, fontSize: 11, text: "3:00 PM")
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }
