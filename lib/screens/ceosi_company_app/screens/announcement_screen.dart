@@ -1,4 +1,5 @@
 import 'package:ceosi_app/constants/colors.dart';
+import 'package:ceosi_app/screens/ceosi_company_app/widgets/drawer_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -13,16 +14,10 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const DrawerWidget(),
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: CustomColors.greyAccent,
-        leading: Builder(
-            builder: (context) => IconButton(
-                  icon: const Icon(
-                    Icons.menu,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {},
-                )),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
