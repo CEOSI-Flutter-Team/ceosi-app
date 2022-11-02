@@ -8,14 +8,14 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'gesture_detector_widget.dart';
 
-class masonryListWidget extends StatefulWidget {
-  const masonryListWidget({super.key});
+class MasonryListWidget extends StatefulWidget {
+  const MasonryListWidget({super.key});
 
   @override
-  State<masonryListWidget> createState() => _masonryListWidgetState();
+  State<MasonryListWidget> createState() => _MasonryListWidgetState();
 }
 
-class _masonryListWidgetState extends State<masonryListWidget> {
+class _MasonryListWidgetState extends State<MasonryListWidget> {
   @override
   Widget build(BuildContext context) {
     List<String> myNoteContent = [

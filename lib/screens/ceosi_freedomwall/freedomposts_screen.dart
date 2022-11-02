@@ -27,7 +27,7 @@ class _FreedomPostsScreenState extends State<FreedomPostsScreen> {
           backgroundColor: CustomColors.primary,
         ),
         body: Stack(children: [
-          const masonryListWidget(),
+          const MasonryListWidget(),
           freedomWallButtons(),
         ]),
       ),
