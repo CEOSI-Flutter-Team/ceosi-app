@@ -1,7 +1,7 @@
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-class AuthtextformfieldWidget extends StatelessWidget {
+class TextformfieldWidget extends StatelessWidget {
   late String label;
   late Color colorFill;
 
@@ -9,12 +9,12 @@ class AuthtextformfieldWidget extends StatelessWidget {
   Widget? suffixIcon;
   late TextEditingController textFieldController;
 
-  AuthtextformfieldWidget(
+  TextformfieldWidget(
       {super.key,
       required this.label,
       this.suffixIcon,
-      required this.isObscure,
-      required this.colorFill,
+      this.colorFill = Colors.white,
+      this.isObscure = false,
       required this.textFieldController});
 
   @override
@@ -34,7 +34,7 @@ class AuthtextformfieldWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 1, color: primaryColor),
+            borderSide: const BorderSide(width: 1, color: CustomColors.primary),
             borderRadius: BorderRadius.circular(10),
           ),
           labelText: label,

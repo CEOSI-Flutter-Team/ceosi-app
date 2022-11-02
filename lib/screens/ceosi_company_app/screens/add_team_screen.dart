@@ -1,7 +1,8 @@
 import 'package:ceosi_app/constants/colors.dart';
+import 'package:ceosi_app/screens/ceosi_company_app/widgets/drawer_widget.dart';
 import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
-import 'package:ceosi_app/widgets/textformfield.dart/addteamtextformfield_widget.dart';
+import 'package:ceosi_app/screens/ceosi_company_app/widgets/addtextformfield_widget.dart';
 import 'package:flutter/material.dart';
 
 class AddTeamScreen extends StatefulWidget {
@@ -20,16 +21,10 @@ class _AddTeamScreenState extends State<AddTeamScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const DrawerWidget(),
       appBar: AppBar(
-        backgroundColor: greyAccent,
-        leading: Builder(
-            builder: (context) => IconButton(
-                  icon: const Icon(
-                    Icons.menu,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {},
-                )),
+        iconTheme: const IconThemeData(color: Colors.black),
+        backgroundColor: CustomColors.greyAccent,
       ),
       body: ListView(children: [
         Column(
@@ -44,7 +39,7 @@ class _AddTeamScreenState extends State<AddTeamScreen> {
                     child: Stack(children: [
                       const CircleAvatar(
                         radius: 65,
-                        backgroundColor: secondaryColor,
+                        backgroundColor: CustomColors.secondary,
                       ),
                       CircleAvatar(
                           radius: 65,

@@ -22,7 +22,7 @@ class ButtonWidget extends StatelessWidget {
     return MaterialButton(
       minWidth: buttonWidth,
       height: buttonHeight,
-      color: primaryColor,
+      color: CustomColors.primary,
       onPressed: onPressed,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius)),

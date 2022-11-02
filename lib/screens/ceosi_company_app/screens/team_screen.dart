@@ -1,6 +1,6 @@
 import 'package:ceosi_app/constants/colors.dart';
+import 'package:ceosi_app/screens/ceosi_company_app/widgets/drawer_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
-
 import 'package:flutter/material.dart';
 
 class TeamScreen extends StatefulWidget {
@@ -15,16 +15,10 @@ class _TeamScreenState extends State<TeamScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const DrawerWidget(),
       appBar: AppBar(
-        backgroundColor: greyAccent,
-        leading: Builder(
-            builder: (context) => IconButton(
-                  icon: const Icon(
-                    Icons.menu,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {},
-                )),
+        iconTheme: const IconThemeData(color: Colors.black),
+        backgroundColor: CustomColors.greyAccent,
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -35,51 +29,15 @@ class _TeamScreenState extends State<TeamScreen> {
             const SizedBox(
               height: 10,
             ),
-            Row(children: [
-              const BoldTextWidget(
+            Row(children: const [
+              BoldTextWidget(
                   color: Colors.black, fontSize: 23, text: "The Team"),
-              PopupMenuButton(
-                  padding: const EdgeInsets.only(left: 200),
-                  icon: const Icon(Icons.filter_list, color: Colors.black),
-                  itemBuilder: (ctx) => [
-                        PopupMenuItem(
-                          onTap: () {},
-                          child: const Text('Department'),
-                        ),
-                        PopupMenuItem(
-                          onTap: () {},
-                          child: const Text('Job Title'),
-                        ),
-                        PopupMenuItem(
-                          onTap: () {},
-                          child: const Text('Birth Date'),
-                        )
-                      ]),
+              FliterTeam(),
             ]),
             const SizedBox(
               height: 10,
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 5, right: 5),
-              child: TextField(
-                controller: searchController,
-                decoration: InputDecoration(
-                  hintText: "Search",
-                  prefixIcon: const Icon(
-                    Icons.search,
-                    color: primaryColor,
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(width: 2, color: primaryColor),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(width: 2, color: primaryColor),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-              ),
-            ),
+            SearchTeam(searchController: searchController),
             const SizedBox(
               height: 20,
             ),
@@ -93,7 +51,7 @@ class _TeamScreenState extends State<TeamScreen> {
                       child: Stack(
                         children: [
                           Card(
-                              color: primaryColor,
+                              color: CustomColors.primary,
                               elevation: 3.0,
                               margin: const EdgeInsets.only(left: 45.0),
                               child: Padding(
@@ -139,7 +97,7 @@ class _TeamScreenState extends State<TeamScreen> {
                           const Padding(
                             padding: EdgeInsets.only(top: 12),
                             child: CircleAvatar(
-                              backgroundColor: secondaryColor,
+                              backgroundColor: CustomColors.secondary,
                               radius: 45,
                             ),
                           ),
@@ -157,12 +115,73 @@ class _TeamScreenState extends State<TeamScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: secondaryColor,
+        backgroundColor: CustomColors.secondary,
         onPressed: () {
           Navigator.pushNamed(context, '/addteamscreen');
         },
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
+  }
+}
+
+class SearchTeam extends StatelessWidget {
+  const SearchTeam({
+    Key? key,
+    required this.searchController,
+  }) : super(key: key);
+
+  final TextEditingController searchController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 5, right: 5),
+      child: TextField(
+        controller: searchController,
+        decoration: InputDecoration(
+          hintText: "Search",
+          prefixIcon: const Icon(
+            Icons.search,
+            color: CustomColors.primary,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(width: 2, color: CustomColors.primary),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(width: 2, color: CustomColors.primary),
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class FliterTeam extends StatelessWidget {
+  const FliterTeam({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton(
+        padding: const EdgeInsets.only(left: 200),
+        icon: const Icon(Icons.filter_list, color: Colors.black),
+        itemBuilder: (ctx) => [
+              PopupMenuItem(
+                onTap: () {},
+                child: const Text('Department'),
+              ),
+              PopupMenuItem(
+                onTap: () {},
+                child: const Text('Job Title'),
+              ),
+              PopupMenuItem(
+                onTap: () {},
+                child: const Text('Birth Date'),
+              )
+            ]);
   }
 }

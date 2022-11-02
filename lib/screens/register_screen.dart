@@ -1,7 +1,8 @@
 import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
-import 'package:ceosi_app/widgets/textformfield.dart/authtextformfield_widget.dart';
+import 'package:ceosi_app/widgets/textformfield_widget.dart';
 import 'package:flutter/material.dart';
+import '../constants/images.dart';
 
 class RegisterScreen extends StatelessWidget {
   final _nameController = TextEditingController();
@@ -16,18 +17,17 @@ class RegisterScreen extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            const SizedBox(
+            SizedBox(
               height: 50,
             ),
             Image.asset(
-              'assets/images/FINAL-LOGO-1.0.png',
+              Images.coesiLogoCompleteAndMaroonBlueText,
               width: 350,
             ),
             const SizedBox(
               height: 10,
             ),
-            AuthtextformfieldWidget(
-              isObscure: false,
+            TextformfieldWidget(
               textFieldController: _nameController,
               label: 'Name',
               colorFill: Colors.white,
@@ -35,8 +35,7 @@ class RegisterScreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            AuthtextformfieldWidget(
-              isObscure: false,
+            TextformfieldWidget(
               textFieldController: _emailController,
               label: 'Email',
               colorFill: Colors.white,
@@ -44,7 +43,7 @@ class RegisterScreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            AuthtextformfieldWidget(
+            TextformfieldWidget(
               isObscure: true,
               textFieldController: _passwordController,
               label: 'Password',
@@ -53,7 +52,7 @@ class RegisterScreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            AuthtextformfieldWidget(
+            TextformfieldWidget(
               isObscure: true,
               textFieldController: _confirmPasswordController,
               label: 'Confirm Password',
