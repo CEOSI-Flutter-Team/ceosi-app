@@ -1,7 +1,7 @@
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
-import 'package:ceosi_app/widgets/textformfield.dart/addteamtextformfield_widget.dart';
+import 'package:ceosi_app/widgets/textformfield.dart/addtextformfield_widget.dart';
 import 'package:flutter/material.dart';
 
 class AddTeamScreen extends StatefulWidget {
@@ -63,8 +63,7 @@ class _AddTeamScreenState extends State<AddTeamScreen> {
             const SizedBox(
               height: 10,
             ),
-            AddTeamtextformfieldWidget(
-              isObscure: false,
+            AddtextformfieldWidget(
               textFieldController: _nameController,
               label: 'Name',
               colorFill: Colors.white,
@@ -72,8 +71,7 @@ class _AddTeamScreenState extends State<AddTeamScreen> {
             const SizedBox(
               height: 10,
             ),
-            AddTeamtextformfieldWidget(
-              isObscure: false,
+            AddtextformfieldWidget(
               textFieldController: _positionController,
               label: 'Position',
               colorFill: Colors.white,
@@ -81,8 +79,7 @@ class _AddTeamScreenState extends State<AddTeamScreen> {
             const SizedBox(
               height: 10,
             ),
-            AddTeamtextformfieldWidget(
-              isObscure: false,
+            AddtextformfieldWidget(
               textFieldController: _departmentController,
               label: 'Department',
               colorFill: Colors.white,
@@ -90,8 +87,7 @@ class _AddTeamScreenState extends State<AddTeamScreen> {
             const SizedBox(
               height: 10,
             ),
-            AddTeamtextformfieldWidget(
-              isObscure: false,
+            AddtextformfieldWidget(
               textFieldController: _emailController,
               label: 'Email',
               colorFill: Colors.white,
@@ -99,8 +95,7 @@ class _AddTeamScreenState extends State<AddTeamScreen> {
             const SizedBox(
               height: 10,
             ),
-            AddTeamtextformfieldWidget(
-              isObscure: false,
+            AddtextformfieldWidget(
               textFieldController: _birthdateController,
               label: 'Birth Date',
               colorFill: Colors.white,
