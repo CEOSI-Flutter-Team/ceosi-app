@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../repositories/code_repository.dart';
+import '../../repositories/ceosi_flutter_catalog/code_repository.dart';
 
 final codeListFutureProvider = FutureProvider<Map<String, dynamic>?>(
   (ref) async {
