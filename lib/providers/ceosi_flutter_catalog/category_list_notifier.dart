@@ -1,5 +1,12 @@
-import 'package:ceosi_app/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../repositories/ceosi_flutter_catalog/category_repository.dart';
+
+final categoryListFutureProvider = FutureProvider<Map<String, dynamic>?>(
+  (ref) async {
+    return ref.watch(categoryRepositoryProvider).getCategoryList();
+  },
+);
 
 class CategoryListNotifier
     extends StateNotifier<AsyncValue<Map<String, dynamic>?>> {
@@ -17,3 +24,10 @@ class CategoryListNotifier
     state = categoryList;
   }
 }
+
+final categoryListStateNotifierProvider = StateNotifierProvider.autoDispose<
+    CategoryListNotifier, AsyncValue<Map<String, dynamic>?>>(
+  (ref) {
+    return CategoryListNotifier(ref);
+  },
+);

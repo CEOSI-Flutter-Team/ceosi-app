@@ -1,4 +1,8 @@
-import 'package:ceosi_app/repositories/category_repository_interface.dart';
+import 'package:ceosi_app/repositories/ceosi_flutter_catalog/category_repository_interface.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+final categoryRepositoryProvider =
+    Provider<CategoryRepository>((ref) => CategoryRepository());
 
 class CategoryRepository implements CategoryRepositoryInterface {
   @override
