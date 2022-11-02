@@ -1,3 +1,4 @@
+import 'package:ceosi_app/lib/constants/images.dart';
 import 'package:ceosi_app/lib/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -58,7 +59,7 @@ class SearchDelegateProduct extends SearchDelegate {
           },
           leading: Padding(
             padding: const EdgeInsets.all(5.0),
-            child: Image.asset('assets/images/piattos.png'),
+            child: Image.asset(CustomImages().sampleProductImage),
           ),
           title: const BoldTextWidget(
               color: Colors.black, fontSize: 14, text: 'Piattos'),

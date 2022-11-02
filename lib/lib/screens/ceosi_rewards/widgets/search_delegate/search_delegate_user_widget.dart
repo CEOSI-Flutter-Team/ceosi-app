@@ -1,6 +1,8 @@
 import 'package:ceosi_app/lib/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../constants/images.dart';
+
 class SearchDelegateUser extends SearchDelegate {
   @override
   List<Widget>? buildActions(BuildContext context) {
@@ -58,7 +60,7 @@ class SearchDelegateUser extends SearchDelegate {
           },
           leading: Padding(
             padding: const EdgeInsets.all(5.0),
-            child: Image.asset('assets/images/profile.png'),
+            child: Image.asset(CustomImages().sampleProfileImage),
           ),
           title: const BoldTextWidget(
               color: Colors.black, fontSize: 14, text: 'Lance Olana'),
