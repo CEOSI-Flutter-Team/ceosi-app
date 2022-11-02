@@ -33,13 +33,14 @@ class DrawerButtonWidget extends StatelessWidget {
                 onPressed: () {},
                 icon: Icon(
                   icon,
-                  color: primaryColor,
+                  color: CustomColors().primaryColor,
                 ),
               ),
               const SizedBox(
                 width: 30,
               ),
-              NormalTextWidget(color: primaryColor, fontSize: 14, text: text),
+              NormalTextWidget(
+                  color: CustomColors().primaryColor, fontSize: 14, text: text),
             ],
           ),
         ),

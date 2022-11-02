@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: greyAccentColor,
+        backgroundColor: CustomColors().greyAccentColor,
         leading: Builder(
             builder: (context) => IconButton(
                   icon: const Icon(
@@ -33,56 +33,56 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              coesiIcon,
+              CustomImages().coesiIcon,
               width: 60,
             ),
             const SizedBox(
               height: 40,
             ),
             ButtonWidget(
-              color: primaryColor,
+              color: CustomColors().primaryColor,
               borderRadius: 20,
               onPressed: () {},
               buttonHeight: 100,
               buttonWidth: 300,
-              textWidget: const BoldTextWidget(
-                  color: Colors.white, fontSize: 15, text: juneApp),
+              textWidget: BoldTextWidget(
+                  color: Colors.white, fontSize: 15, text: Labels().static),
             ),
             const SizedBox(
               height: 20,
             ),
             ButtonWidget(
-              color: primaryColor,
+              color: CustomColors().primaryColor,
               borderRadius: 20,
               onPressed: () {},
               buttonHeight: 100,
               buttonWidth: 300,
-              textWidget: const BoldTextWidget(
-                  color: Colors.white, fontSize: 15, text: carlApp),
+              textWidget: BoldTextWidget(
+                  color: Colors.white, fontSize: 15, text: Labels().carlApp),
             ),
             const SizedBox(
               height: 20,
             ),
             ButtonWidget(
-              color: primaryColor,
+              color: CustomColors().primaryColor,
               borderRadius: 20,
               onPressed: () {},
               buttonHeight: 100,
               buttonWidth: 300,
-              textWidget: const BoldTextWidget(
-                  color: Colors.white, fontSize: 15, text: chloieApp),
+              textWidget: BoldTextWidget(
+                  color: Colors.white, fontSize: 15, text: Labels().chloieApp),
             ),
             const SizedBox(
               height: 20,
             ),
             ButtonWidget(
-              color: primaryColor,
+              color: CustomColors().primaryColor,
               borderRadius: 20,
               onPressed: () {},
               buttonHeight: 100,
               buttonWidth: 300,
-              textWidget: const BoldTextWidget(
-                  color: Colors.white, fontSize: 15, text: lanceApp),
+              textWidget: BoldTextWidget(
+                  color: Colors.white, fontSize: 15, text: Labels().lanceApp),
             ),
           ],
         ),

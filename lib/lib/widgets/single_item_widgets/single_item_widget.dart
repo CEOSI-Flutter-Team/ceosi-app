@@ -21,7 +21,7 @@ class SingleItemWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               color: Colors.white,
               border: Border.all(
-                color: primaryColor,
+                color: CustomColors().primaryColor,
               )),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -58,14 +58,16 @@ class SingleItemWidget extends StatelessWidget {
                 child: SizedBox(),
               ),
               Image.asset(
-                coinIcon,
+                CustomIcons().coinIcon,
                 height: 22,
               ),
               const SizedBox(
                 width: 10,
               ),
-              const BoldTextWidget(
-                  color: primaryColor, fontSize: 14, text: '1,000cc'),
+              BoldTextWidget(
+                  color: CustomColors().primaryColor,
+                  fontSize: 14,
+                  text: '1,000cc'),
               const SizedBox(
                 width: 10,
               ),

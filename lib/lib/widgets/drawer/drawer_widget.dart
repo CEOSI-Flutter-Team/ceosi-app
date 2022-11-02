@@ -12,7 +12,7 @@ class DrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: primaryColor,
+      backgroundColor: CustomColors().primaryColor,
       child: Column(
         children: [
           const SizedBox(
@@ -95,7 +95,7 @@ class DrawerWidget extends StatelessWidget {
                     context: context,
                     applicationName: 'CEOSI Rewards',
                     applicationIcon: Image.asset(
-                      coesiIcon,
+                      CustomImages().coesiIcon,
                       height: 20,
                     ),
                     applicationLegalese:
@@ -132,7 +132,8 @@ class DrawerWidget extends StatelessWidget {
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
-                  child: Image.asset(coesiLogoCompleteAndMaroonBlueText),
+                  child: Image.asset(
+                      CustomImages().coesiLogoCompleteAndMaroonBlueText),
                 ),
               ),
             ),

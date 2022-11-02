@@ -48,7 +48,7 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
                         _currentIndex = 0;
                       });
                     }),
-                    selectedColor: primaryColor,
+                    selectedColor: CustomColors().primaryColor,
                     label: const Padding(
                       padding: EdgeInsets.only(left: 10),
                       child: NormalTextWidget(
@@ -63,7 +63,7 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
                         color: Colors.white,
                       ),
                     ),
-                    selectedColor: primaryColor,
+                    selectedColor: CustomColors().primaryColor,
                     onSelected: ((value) {
                       setState(() {
                         _index1 = true;

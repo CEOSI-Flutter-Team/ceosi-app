@@ -1,1 +1,3 @@
-const coinIcon = 'assets/icons/coin.png';
+class CustomIcons {
+  var coinIcon = 'assets/icons/coin.png';
+}

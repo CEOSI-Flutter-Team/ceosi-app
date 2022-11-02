@@ -34,9 +34,9 @@ class _SearchUserWidgetState extends State<SearchUserWidget> {
               const SizedBox(
                 width: 10,
               ),
-              const Icon(
+              Icon(
                 Icons.search,
-                color: primaryColor,
+                color: CustomColors().primaryColor,
               ),
               const Expanded(child: SizedBox()),
               SizedBox(
@@ -116,9 +116,9 @@ class _SearchItemWidgetState extends State<SearchItemWidget> {
               const SizedBox(
                 width: 10,
               ),
-              const Icon(
+              Icon(
                 Icons.search,
-                color: primaryColor,
+                color: CustomColors().primaryColor,
               ),
               const Expanded(child: SizedBox()),
               SizedBox(

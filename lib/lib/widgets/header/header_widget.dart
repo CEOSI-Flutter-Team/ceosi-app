@@ -11,7 +11,7 @@ class HeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: primaryColor,
+      color: CustomColors().primaryColor,
       width: double.infinity,
       height: 150,
       child: Center(

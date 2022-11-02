@@ -1,7 +1,6 @@
-const juneApp = "CEOSI Flutter Catalog App";
-
-const carlApp = "CEOSI Freedom Wall";
-
-const chloieApp = "CEOSI Company App";
-
-const lanceApp = "CEOSI Rewards";
+class Labels {
+  final static = "CEOSI Flutter Catalog App",
+      carlApp = "CEOSI Freedom Wall",
+      chloieApp = "CEOSI Company App",
+      lanceApp = "CEOSI Rewards";
+}

@@ -50,21 +50,23 @@ class BannerWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image.asset(
-                      coesiIcon,
+                      CustomImages().coesiIcon,
                       height: 40,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          coinIcon,
+                          CustomIcons().coinIcon,
                           height: 18,
                         ),
                         const SizedBox(
                           width: 5,
                         ),
-                        const BoldTextWidget(
-                            color: primaryColor, fontSize: 14, text: '1,000cc')
+                        BoldTextWidget(
+                            color: CustomColors().primaryColor,
+                            fontSize: 14,
+                            text: '1,000cc')
                       ],
                     ),
                   ],

@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 50,
               ),
               Image.asset(
-                coesiLogoCompleteAndMaroonBlueText,
+                CustomImages().coesiLogoCompleteAndMaroonBlueText,
                 width: 350,
               ),
               const SizedBox(
@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 50,
               ),
               ButtonWidget(
-                  color: primaryColor,
+                  color: CustomColors().primaryColor,
                   borderRadius: 100,
                   onPressed: () {},
                   buttonHeight: 50,
@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 10,
               ),
               ButtonWidget(
-                  color: primaryColor,
+                  color: CustomColors().primaryColor,
                   borderRadius: 100,
                   onPressed: () {},
                   buttonHeight: 50,

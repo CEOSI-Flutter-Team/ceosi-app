@@ -17,7 +17,7 @@ class _FreedomPostsScreenState extends State<FreedomPostsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: greyAccentColor,
+        backgroundColor: CustomColors().greyAccentColor,
         leading: Builder(
             builder: (context) => IconButton(
                   icon: const Icon(
@@ -32,7 +32,7 @@ class _FreedomPostsScreenState extends State<FreedomPostsScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              coesiIcon,
+              CustomImages().coesiIcon,
               width: 60,
             ),
             const SizedBox(
@@ -42,7 +42,7 @@ class _FreedomPostsScreenState extends State<FreedomPostsScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ButtonWidget(
-                    color: primaryColor,
+                    color: CustomColors().primaryColor,
                     borderRadius: 20,
                     onPressed: () {},
                     buttonHeight: 80,
@@ -50,7 +50,7 @@ class _FreedomPostsScreenState extends State<FreedomPostsScreen> {
                     textWidget: const NormalTextWidget(
                         color: Colors.white, fontSize: 18, text: 'Login')),
                 ButtonWidget(
-                    color: primaryColor,
+                    color: CustomColors().primaryColor,
                     borderRadius: 20,
                     onPressed: () {},
                     buttonHeight: 80,

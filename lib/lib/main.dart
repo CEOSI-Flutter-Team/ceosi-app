@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         '/profilescreenreward': (context) => const ProfileScreenReward(),
         '/adminpanelscreenreward': (context) => const AdminPanelScreen(),
       },
-      title: lanceApp,
+      title: Labels().lanceApp,
     );
   }
 }

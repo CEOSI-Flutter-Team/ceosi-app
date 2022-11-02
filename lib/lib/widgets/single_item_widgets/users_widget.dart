@@ -51,12 +51,14 @@ class UsersWidget extends StatelessWidget {
                         return SubtractCoinDialogWidget();
                       });
                 },
-                icon: const Icon(
+                icon: Icon(
                   Icons.remove,
-                  color: primaryColor,
+                  color: CustomColors().primaryColor,
                 )),
-            const BoldTextWidget(
-                color: primaryColor, fontSize: 18, text: '1,000cc'),
+            BoldTextWidget(
+                color: CustomColors().primaryColor,
+                fontSize: 18,
+                text: '1,000cc'),
             IconButton(
                 onPressed: () {
                   showDialog(
@@ -65,9 +67,9 @@ class UsersWidget extends StatelessWidget {
                         return AddCoinDialogWidget();
                       });
                 },
-                icon: const Icon(
+                icon: Icon(
                   Icons.add,
-                  color: primaryColor,
+                  color: CustomColors().primaryColor,
                 )),
             const SizedBox(
               width: 10,

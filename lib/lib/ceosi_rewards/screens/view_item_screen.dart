@@ -41,9 +41,9 @@ class RewardViewItemScreen extends StatelessWidget {
                 Expanded(
                   child: Container(
                     width: double.infinity,
-                    decoration: const BoxDecoration(
-                      color: primaryColor,
-                      borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                      color: CustomColors().primaryColor,
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(20),
                         topRight: Radius.circular(20),
                       ),
@@ -91,8 +91,8 @@ class RewardViewItemScreen extends StatelessWidget {
                                   },
                                   buttonHeight: 50,
                                   buttonWidth: 300,
-                                  textWidget: const BoldTextWidget(
-                                      color: primaryColor,
+                                  textWidget: BoldTextWidget(
+                                      color: CustomColors().primaryColor,
                                       fontSize: 18,
                                       text: 'Claim Reward')),
                             )
@@ -108,9 +108,9 @@ class RewardViewItemScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.arrow_circle_left_rounded,
-                    color: primaryColor,
+                    color: CustomColors().primaryColor,
                   )),
             ),
           ],

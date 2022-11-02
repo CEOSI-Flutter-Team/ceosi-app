@@ -37,7 +37,7 @@ class AdminListReward extends StatelessWidget {
                 buttonWidth: 300,
                 textWidget: const BoldTextWidget(
                     color: Colors.white, fontSize: 18, text: 'ADD ITEM'),
-                color: primaryColor),
+                color: CustomColors().primaryColor),
           ),
         ),
       ],

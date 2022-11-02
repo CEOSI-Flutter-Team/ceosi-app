@@ -54,14 +54,16 @@ class RewardsClaimedSingleItemWidget extends StatelessWidget {
                 child: SizedBox(),
               ),
               Image.asset(
-                coinIcon,
+                CustomIcons().coinIcon,
                 height: 22,
               ),
               const SizedBox(
                 width: 10,
               ),
-              const BoldTextWidget(
-                  color: primaryColor, fontSize: 14, text: '-1,000cc'),
+              BoldTextWidget(
+                  color: CustomColors().primaryColor,
+                  fontSize: 14,
+                  text: '-1,000cc'),
               const SizedBox(
                 width: 10,
               ),

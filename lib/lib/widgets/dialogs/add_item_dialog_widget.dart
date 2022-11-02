@@ -27,7 +27,7 @@ class _AddItemDialogWidgetState extends State<AddItemDialogWidget> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: primaryColor,
+      backgroundColor: CustomColors().primaryColor,
       child: SingleChildScrollView(
         child: SizedBox(
           height: 510,
@@ -47,10 +47,10 @@ class _AddItemDialogWidgetState extends State<AddItemDialogWidget> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Icon(
                       Icons.camera_alt_rounded,
-                      color: primaryColor,
+                      color: CustomColors().primaryColor,
                     ),
                   ),
                 ),
@@ -133,8 +133,10 @@ class _AddItemDialogWidgetState extends State<AddItemDialogWidget> {
                   onPressed: () {},
                   buttonHeight: 50,
                   buttonWidth: 220,
-                  textWidget: const BoldTextWidget(
-                      color: primaryColor, fontSize: 18, text: 'ADD ITEM'),
+                  textWidget: BoldTextWidget(
+                      color: CustomColors().primaryColor,
+                      fontSize: 18,
+                      text: 'ADD ITEM'),
                   color: Colors.white)
             ],
           ),

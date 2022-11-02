@@ -34,7 +34,8 @@ class TextformfieldWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(5),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 1, color: primaryColor),
+            borderSide:
+                BorderSide(width: 1, color: CustomColors().primaryColor),
             borderRadius: BorderRadius.circular(5),
           ),
           labelText: label,

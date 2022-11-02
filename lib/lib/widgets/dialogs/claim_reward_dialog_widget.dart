@@ -10,10 +10,10 @@ class ClaimRewardDialogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: primaryColor,
+      backgroundColor: CustomColors().primaryColor,
       child: Container(
         decoration: BoxDecoration(
-          color: primaryColor,
+          color: CustomColors().primaryColor,
           borderRadius: BorderRadius.circular(20),
         ),
         height: 350,
@@ -43,8 +43,10 @@ class ClaimRewardDialogWidget extends StatelessWidget {
                 },
                 buttonHeight: 50,
                 buttonWidth: 220,
-                textWidget: const BoldTextWidget(
-                    color: primaryColor, fontSize: 18, text: 'Claim Reward'),
+                textWidget: BoldTextWidget(
+                    color: CustomColors().primaryColor,
+                    fontSize: 18,
+                    text: 'Claim Reward'),
                 color: Colors.white)
           ],
         ),

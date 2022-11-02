@@ -15,7 +15,7 @@ class SubtractCoinDialogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: primaryColor,
+      backgroundColor: CustomColors().primaryColor,
       child: SingleChildScrollView(
         child: SizedBox(
           height: 400,
@@ -70,8 +70,10 @@ class SubtractCoinDialogWidget extends StatelessWidget {
                   onPressed: () {},
                   buttonHeight: 50,
                   buttonWidth: 220,
-                  textWidget: const BoldTextWidget(
-                      color: primaryColor, fontSize: 18, text: 'CONTINUE'),
+                  textWidget: BoldTextWidget(
+                      color: CustomColors().primaryColor,
+                      fontSize: 18,
+                      text: 'CONTINUE'),
                   color: Colors.white),
             ],
           ),

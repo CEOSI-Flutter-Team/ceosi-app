@@ -9,7 +9,7 @@ class LogoutPromptDialogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: primaryColor,
+      backgroundColor: CustomColors().primaryColor,
       title: const Center(
         child: Icon(
           Icons.warning_rounded,

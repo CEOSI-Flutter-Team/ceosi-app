@@ -53,14 +53,14 @@ class _ProfileScreenRewardState extends State<ProfileScreenReward> {
                         _currentIndex = 0;
                       });
                     }),
-                    selectedColor: primaryColor,
+                    selectedColor: CustomColors().primaryColor,
                     label: const NormalTextWidget(
                         color: Colors.white,
                         fontSize: 12,
                         text: 'Rewards Claimed'),
                     selected: _index),
                 ChoiceChip(
-                    selectedColor: primaryColor,
+                    selectedColor: CustomColors().primaryColor,
                     onSelected: ((value) {
                       setState(() {
                         _index1 = true;
