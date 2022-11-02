@@ -4,19 +4,19 @@ import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:ceosi_app/widgets/textformfield.dart/addtextformfield_widget.dart';
 import 'package:flutter/material.dart';
 
-class AddTeamScreen extends StatefulWidget {
-  const AddTeamScreen({super.key});
+class AddAnnouncementscreen extends StatefulWidget {
+  const AddAnnouncementscreen({super.key});
 
   @override
-  State<AddTeamScreen> createState() => _AddTeamScreenState();
+  State<AddAnnouncementscreen> createState() => _AddAnnouncementscreenState();
 }
 
-class _AddTeamScreenState extends State<AddTeamScreen> {
-  final _nameController = TextEditingController();
-  final _positionController = TextEditingController();
-  final _departmentController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _birthdateController = TextEditingController();
+class _AddAnnouncementscreenState extends State<AddAnnouncementscreen> {
+  final _announcementController = TextEditingController();
+  final _dateController = TextEditingController();
+  final _timeController = TextEditingController();
+  final _locationController = TextEditingController();
+  final _descriptionController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,16 +39,14 @@ class _AddTeamScreenState extends State<AddTeamScreen> {
             ),
             GestureDetector(
                 onTap: () {},
-                child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+                child: ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                     child: Stack(children: [
-                      const CircleAvatar(
-                        radius: 65,
-                        backgroundColor: secondaryColor,
-                      ),
-                      CircleAvatar(
-                          radius: 65,
-                          backgroundColor: Colors.black54,
+                      Container(
+                          height: 160,
+                          width: 150,
+                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          color: secondaryColor,
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -64,40 +62,48 @@ class _AddTeamScreenState extends State<AddTeamScreen> {
               height: 10,
             ),
             AddtextformfieldWidget(
-              textFieldController: _nameController,
-              label: 'Name',
+              textFieldController: _announcementController,
+              label: 'Announcement/Event Name',
+              colorFill: Colors.white,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                Flexible(
+                  child: AddtextformfieldWidget(
+                    textFieldController: _dateController,
+                    label: 'Date',
+                    colorFill: Colors.white,
+                  ),
+                ),
+                Flexible(
+                  child: AddtextformfieldWidget(
+                    textFieldController: _timeController,
+                    label: 'Time',
+                    colorFill: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            AddtextformfieldWidget(
+              textFieldController: _locationController,
+              label: 'Location',
               colorFill: Colors.white,
             ),
             const SizedBox(
               height: 10,
             ),
             AddtextformfieldWidget(
-              textFieldController: _positionController,
-              label: 'Position',
-              colorFill: Colors.white,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            AddtextformfieldWidget(
-              textFieldController: _departmentController,
-              label: 'Department',
-              colorFill: Colors.white,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            AddtextformfieldWidget(
-              textFieldController: _emailController,
-              label: 'Email',
-              colorFill: Colors.white,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            AddtextformfieldWidget(
-              textFieldController: _birthdateController,
-              label: 'Birth Date',
+              textFieldController: _descriptionController,
+              label: 'Description',
               colorFill: Colors.white,
             ),
             const SizedBox(
@@ -109,7 +115,7 @@ class _AddTeamScreenState extends State<AddTeamScreen> {
                 buttonHeight: 50,
                 buttonWidth: 300,
                 textWidget: const BoldTextWidget(
-                    color: Colors.white, fontSize: 18, text: 'Add Team')),
+                    color: Colors.white, fontSize: 18, text: 'Post')),
             const SizedBox(
               height: 20,
             ),

@@ -27,7 +27,8 @@ class _AboutScreenState extends State<AboutScreen> {
                   onPressed: () {},
                 )),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           children: <Widget>[
             const SizedBox(
