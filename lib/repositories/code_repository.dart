@@ -1,4 +1,8 @@
 import 'package:ceosi_app/repositories/code_repository_interface.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+final codeRepositoryProvider =
+    Provider<CodeRepository>((ref) => CodeRepository());
 
 class CodeRepository implements CodeRepositoryInterface {
   @override

@@ -15,7 +15,7 @@ class SidebarWidget extends StatelessWidget {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(20.0),
               bottomRight: Radius.circular(20.0))),
-      backgroundColor: greyAccent,
+      backgroundColor: CustomColors.greyAccent,
       elevation: 1.0,
       child: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -62,7 +62,7 @@ class SidebarWidget extends StatelessWidget {
                       textWidget: const BoldTextWidget(
                           color: Colors.white,
                           fontSize: 12.0,
-                          text: Label.ceosiFlutterCatalog),
+                          text: Labels.ceosiFlutterCatalog),
                     ),
                     const SizedBox(height: 25.0),
                     ButtonWidget(
@@ -73,7 +73,7 @@ class SidebarWidget extends StatelessWidget {
                       textWidget: const BoldTextWidget(
                           color: Colors.white,
                           fontSize: 12.0,
-                          text: Label.ceosiFreedomWall),
+                          text: Labels.ceosiFreedomWall),
                     ),
                     const SizedBox(height: 25.0),
                     ButtonWidget(
@@ -84,7 +84,7 @@ class SidebarWidget extends StatelessWidget {
                       textWidget: const BoldTextWidget(
                           color: Colors.white,
                           fontSize: 12.0,
-                          text: Label.ceosiCompanyApp),
+                          text: Labels.ceosiCompanyApp),
                     ),
                     const SizedBox(height: 25.0),
                     ButtonWidget(
@@ -95,7 +95,7 @@ class SidebarWidget extends StatelessWidget {
                       textWidget: const BoldTextWidget(
                           color: Colors.white,
                           fontSize: 12.0,
-                          text: Label.ceosiRewards),
+                          text: Labels.ceosiRewards),
                     ),
                   ],
                 ),

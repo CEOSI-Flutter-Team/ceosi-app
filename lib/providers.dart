@@ -2,8 +2,8 @@ import 'package:ceosi_app/repositories/category_repository.dart';
 import 'package:ceosi_app/repositories/code_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'notifiers/category_list_notifier.dart';
-import 'notifiers/code_list_notifier.dart';
+import 'providers/category_list_notifier.dart';
+import 'providers/code_list_notifier.dart';
 
 //Provider for Code Repository
 final codeRepositoryProvider =

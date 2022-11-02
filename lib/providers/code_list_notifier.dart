@@ -1,5 +1,12 @@
-import 'package:ceosi_app/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../repositories/code_repository.dart';
+
+final codeListFutureProvider = FutureProvider<Map<String, dynamic>?>(
+  (ref) async {
+    return ref.watch(codeRepositoryProvider).getCodeList();
+  },
+);
 
 class CodeListNotifier
     extends StateNotifier<AsyncValue<Map<String, dynamic>?>> {

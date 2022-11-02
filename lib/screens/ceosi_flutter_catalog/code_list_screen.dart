@@ -1,11 +1,11 @@
 import 'package:ceosi_app/constants/colors.dart';
-import 'package:ceosi_app/providers.dart';
 import 'package:ceosi_app/widgets/sidebar_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../constants/labels.dart';
+import '../../constants/labels.dart';
+import '../../providers.dart';
 
 class CodeListScreen extends StatelessWidget {
   const CodeListScreen({super.key});
@@ -16,9 +16,9 @@ class CodeListScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         title: const BoldTextWidget(
-            color: Colors.white, fontSize: 14.0, text: Label.codeList),
+            color: Colors.white, fontSize: 14.0, text: Labels.codeList),
         centerTitle: true,
-        backgroundColor: primaryColor,
+        backgroundColor: CustomColors.primary,
       ),
       drawer: const SidebarWidget(),
       body: Column(
@@ -45,7 +45,7 @@ class AppbarExtensionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: primaryColor,
+        color: CustomColors.primary,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(10.0),
           bottomRight: Radius.circular(10.0),
@@ -75,7 +75,7 @@ class AppbarExtensionWidget extends StatelessWidget {
 
   void showCategoryFilter(context) {
     showModalBottomSheet(
-      backgroundColor: darkGrey,
+      backgroundColor: CustomColors.darkGrey,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
         topLeft: Radius.circular(20.0),
@@ -112,7 +112,7 @@ class CategoryListViewWidget extends ConsumerWidget {
                   BoldTextWidget(
                     color: Colors.white,
                     fontSize: 16.0,
-                    text: Label.categories,
+                    text: Labels.categories,
                   ),
                 ],
               ),
@@ -143,11 +143,11 @@ class CategoryListViewWidget extends ConsumerWidget {
                                   Image.asset(
                                     'assets/icons/category.png',
                                     scale: 25.0,
-                                    color: primaryColor,
+                                    color: CustomColors.primary,
                                   ),
                                   const SizedBox(width: 5.0),
                                   BoldTextWidget(
-                                    color: primaryColor,
+                                    color: CustomColors.primary,
                                     fontSize: 12.0,
                                     text:
                                         '${categoryList[index]['title']} (${categoryList[index]['items']})',
@@ -199,7 +199,9 @@ class CodeListViewWidget extends ConsumerWidget {
                   child: Container(
                     height: 120.0,
                     decoration: BoxDecoration(
-                        color: index % 2 == 0 ? secondaryColor : primaryColor,
+                        color: index % 2 == 0
+                            ? CustomColors.secondary
+                            : CustomColors.primary,
                         borderRadius: BorderRadius.circular(20.0)),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -236,7 +238,7 @@ class CodeListViewWidget extends ConsumerWidget {
       error: (error, stackTrace) => Text(error.toString()),
       loading: () => const Center(
           child: CircularProgressIndicator(
-        color: primaryColor,
+        color: CustomColors.primary,
       )),
     );
   }
@@ -273,7 +275,7 @@ class CodeListSearchFieldWidget extends StatelessWidget {
                 onPressed: () {},
                 icon: const Icon(
                   Icons.search,
-                  color: primaryColor,
+                  color: CustomColors.primary,
                 ))),
       ),
     );
