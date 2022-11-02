@@ -96,14 +96,14 @@ class AnnouncementList extends StatelessWidget {
                   children: const [
                     BoldTextWidget(
                         color: Colors.white,
-                        fontSize: 13,
+                        fontSize: 14,
                         text: "Emergency Meeting"),
-                    BoldTextWidget(
+                    NormalTextWidget(
                         color: Colors.white,
-                        fontSize: 11,
+                        fontSize: 13,
                         text: "October 25, 2022"),
-                    BoldTextWidget(
-                        color: Colors.white, fontSize: 11, text: "10:00 AM")
+                    NormalTextWidget(
+                        color: Colors.white, fontSize: 13, text: "10:00 AM")
                   ],
                 ),
               ),
@@ -141,14 +141,14 @@ class EventList extends StatelessWidget {
                   children: const [
                     BoldTextWidget(
                         color: Colors.white,
-                        fontSize: 12,
+                        fontSize: 14,
                         text: "CEOSI Town-Hall Meeting & Halloween Party"),
-                    BoldTextWidget(
+                    NormalTextWidget(
                         color: Colors.white,
-                        fontSize: 11,
+                        fontSize: 13,
                         text: "October 25, 2022"),
-                    BoldTextWidget(
-                        color: Colors.white, fontSize: 11, text: "3:00 PM")
+                    NormalTextWidget(
+                        color: Colors.white, fontSize: 13, text: "3:00 PM")
                   ],
                 ),
               ),
