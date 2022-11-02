@@ -26,11 +26,11 @@ class AddtextformfieldWidget extends StatelessWidget {
           fillColor: colorFill,
           filled: true,
           enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 2, color: primaryColor),
+            borderSide: const BorderSide(width: 2, color: CustomColors.primary),
             borderRadius: BorderRadius.circular(10),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 2, color: primaryColor),
+            borderSide: const BorderSide(width: 2, color: CustomColors.primary),
             borderRadius: BorderRadius.circular(10),
           ),
           hintText: label,

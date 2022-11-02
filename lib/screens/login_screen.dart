@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 50,
               ),
               Image.asset(
-                coesiLogoCompleteAndMaroonBlueText,
+                Images.coesiLogoCompleteAndMaroonBlueText,
                 width: 350,
               ),
               const SizedBox(

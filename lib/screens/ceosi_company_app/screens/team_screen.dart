@@ -16,7 +16,7 @@ class _TeamScreenState extends State<TeamScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: greyAccent,
+        backgroundColor: CustomColors.greyAccent,
         leading: Builder(
             builder: (context) => IconButton(
                   icon: const Icon(
@@ -67,14 +67,16 @@ class _TeamScreenState extends State<TeamScreen> {
                   hintText: "Search",
                   prefixIcon: const Icon(
                     Icons.search,
-                    color: primaryColor,
+                    color: CustomColors.primary,
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(width: 2, color: primaryColor),
+                    borderSide:
+                        const BorderSide(width: 2, color: CustomColors.primary),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(width: 2, color: primaryColor),
+                    borderSide:
+                        const BorderSide(width: 2, color: CustomColors.primary),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
@@ -93,7 +95,7 @@ class _TeamScreenState extends State<TeamScreen> {
                       child: Stack(
                         children: [
                           Card(
-                              color: primaryColor,
+                              color: CustomColors.primary,
                               elevation: 3.0,
                               margin: const EdgeInsets.only(left: 45.0),
                               child: Padding(
@@ -139,7 +141,7 @@ class _TeamScreenState extends State<TeamScreen> {
                           const Padding(
                             padding: EdgeInsets.only(top: 12),
                             child: CircleAvatar(
-                              backgroundColor: secondaryColor,
+                              backgroundColor: CustomColors.secondary,
                               radius: 45,
                             ),
                           ),
@@ -157,7 +159,7 @@ class _TeamScreenState extends State<TeamScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: secondaryColor,
+        backgroundColor: CustomColors.secondary,
         onPressed: () {
           Navigator.pushNamed(context, '/addteamscreen');
         },

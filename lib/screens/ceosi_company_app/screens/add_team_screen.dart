@@ -21,7 +21,7 @@ class _AddTeamScreenState extends State<AddTeamScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: greyAccent,
+        backgroundColor: CustomColors.greyAccent,
         leading: Builder(
             builder: (context) => IconButton(
                   icon: const Icon(
@@ -44,7 +44,7 @@ class _AddTeamScreenState extends State<AddTeamScreen> {
                     child: Stack(children: [
                       const CircleAvatar(
                         radius: 65,
-                        backgroundColor: secondaryColor,
+                        backgroundColor: CustomColors.secondary,
                       ),
                       CircleAvatar(
                           radius: 65,

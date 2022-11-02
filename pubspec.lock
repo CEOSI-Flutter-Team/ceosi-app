@@ -84,7 +84,11 @@ packages:
     source: hosted
     version: "2.0.1"
   flutter_riverpod:
+<<<<<<< HEAD
     dependency: "direct dev"
+=======
+    dependency: "direct main"
+>>>>>>> bfe028efb1833bdf4a49065289e0080139cc1734
     description:
       name: flutter_riverpod
       url: "https://pub.dartlang.org"

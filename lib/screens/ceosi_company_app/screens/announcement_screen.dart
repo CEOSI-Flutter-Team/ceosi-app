@@ -14,7 +14,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: greyAccent,
+        backgroundColor: CustomColors.greyAccent,
         leading: Builder(
             builder: (context) => IconButton(
                   icon: const Icon(
@@ -46,7 +46,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                     InkWell(
                         onTap: (() {}),
                         child: Card(
-                            color: primaryColor,
+                            color: CustomColors.primary,
                             elevation: 5.0,
                             child: Padding(
                               padding: const EdgeInsets.all(15.0),
@@ -56,7 +56,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                                   const Icon(
                                     Icons.campaign,
                                     size: 50,
-                                    color: secondaryColor,
+                                    color: CustomColors.secondary,
                                   ),
                                   const SizedBox(width: 5),
                                   Expanded(
@@ -103,7 +103,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                     InkWell(
                         onTap: (() {}),
                         child: Card(
-                            color: primaryColor,
+                            color: CustomColors.primary,
                             elevation: 10.0,
                             child: Padding(
                               padding: const EdgeInsets.all(15.0),
@@ -113,7 +113,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                                   const Icon(
                                     Icons.event,
                                     size: 50,
-                                    color: secondaryColor,
+                                    color: CustomColors.secondary,
                                   ),
                                   const SizedBox(width: 5),
                                   Expanded(
