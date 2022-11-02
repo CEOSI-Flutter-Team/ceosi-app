@@ -2,8 +2,7 @@ import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:ceosi_app/widgets/textformfield_widget.dart';
 import 'package:flutter/material.dart';
-
-import '../constants/images.dart';
+import 'package:ceosi_app/constants/images.dart';
 
 class RegisterScreen extends StatelessWidget {
   final _nameController = TextEditingController();
@@ -24,7 +23,7 @@ class RegisterScreen extends StatelessWidget {
               height: 50,
             ),
             Image.asset(
-              coesiLogoCompleteAndMaroonBlueText,
+              Images.coesiLogoCompleteAndMaroonBlueText,
               width: 350,
             ),
             const SizedBox(
@@ -34,7 +33,6 @@ class RegisterScreen extends StatelessWidget {
               isObscure: false,
               textFieldController: _nameController,
               label: 'Name',
-              colorFill: Colors.white,
             ),
             const SizedBox(
               height: 10,
@@ -43,7 +41,6 @@ class RegisterScreen extends StatelessWidget {
               isObscure: false,
               textFieldController: _emailController,
               label: 'Email',
-              colorFill: Colors.white,
             ),
             const SizedBox(
               height: 10,
@@ -52,7 +49,6 @@ class RegisterScreen extends StatelessWidget {
               isObscure: true,
               textFieldController: _passwordController,
               label: 'Password',
-              colorFill: Colors.white,
             ),
             const SizedBox(
               height: 10,
@@ -61,7 +57,6 @@ class RegisterScreen extends StatelessWidget {
               isObscure: true,
               textFieldController: _confirmPasswordController,
               label: 'Confirm Password',
-              colorFill: Colors.white,
             ),
             const SizedBox(
               height: 50,

@@ -1,9 +1,11 @@
-import 'package:ceosi_app/constants/app_names.dart';
 import 'package:ceosi_app/constants/colors.dart';
-import 'package:ceosi_app/constants/images.dart';
 import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../constants/images.dart';
+import '../constants/labels.dart';
+import '../widgets/sidebar_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,15 +18,18 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const SidebarWidget(),
       appBar: AppBar(
-        backgroundColor: greyAccentColor,
+        backgroundColor: CustomColors.greyAccent,
         leading: Builder(
             builder: (context) => IconButton(
                   icon: const Icon(
                     Icons.menu,
                     color: Colors.black,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
                 )),
       ),
       body: Center(
@@ -32,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              coesiIcon,
+              Images.coesiIcon,
               width: 60,
             ),
             const SizedBox(
@@ -44,7 +49,9 @@ class _HomeScreenState extends State<HomeScreen> {
               buttonHeight: 100,
               buttonWidth: 300,
               textWidget: const BoldTextWidget(
-                  color: Colors.white, fontSize: 15, text: juneApp),
+                  color: Colors.white,
+                  fontSize: 15,
+                  text: Labels.ceosiFlutterCatalog),
             ),
             const SizedBox(
               height: 20,
@@ -55,7 +62,9 @@ class _HomeScreenState extends State<HomeScreen> {
               buttonHeight: 100,
               buttonWidth: 300,
               textWidget: const BoldTextWidget(
-                  color: Colors.white, fontSize: 15, text: carlApp),
+                  color: Colors.white,
+                  fontSize: 15,
+                  text: Labels.ceosiFreedomWall),
             ),
             const SizedBox(
               height: 20,
@@ -66,7 +75,9 @@ class _HomeScreenState extends State<HomeScreen> {
               buttonHeight: 100,
               buttonWidth: 300,
               textWidget: const BoldTextWidget(
-                  color: Colors.white, fontSize: 15, text: chloieApp),
+                  color: Colors.white,
+                  fontSize: 15,
+                  text: Labels.ceosiCompanyApp),
             ),
             const SizedBox(
               height: 20,
@@ -77,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
               buttonHeight: 100,
               buttonWidth: 300,
               textWidget: const BoldTextWidget(
-                  color: Colors.white, fontSize: 15, text: lanceApp),
+                  color: Colors.white, fontSize: 15, text: Labels.ceosiRewards),
             ),
           ],
         ),
