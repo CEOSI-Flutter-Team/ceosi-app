@@ -5,6 +5,7 @@ import 'package:ceosi_app/screens/login_screen.dart';
 import 'package:ceosi_app/screens/home_screen.dart';
 import 'package:ceosi_app/screens/register_screen.dart';
 import 'package:flutter/material.dart';
+import 'screens/ceosi_company_app/screens/about_screen.dart';
 import 'screens/ceosi_company_app/screens/announcement_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/announcementscreen',
+      initialRoute: '/aboutscreen',
       routes: {
         '/': (context) => LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         '/announcementscreen': (context) => const AnnouncementScreen(),
         '/teamscreen': (context) => const TeamScreen(),
         '/addteamscreen': (context) => const AddTeamScreen(),
+        '/aboutscreen': (context) => const AboutScreen(),
       },
       title: chloieApp,
     );
