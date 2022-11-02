@@ -5,7 +5,7 @@ class TextformfieldWidget extends StatelessWidget {
   late String label;
   late Color colorFill;
 
-  late bool isObscure;
+  late bool? isObscure;
   Widget? suffixIcon;
   late TextEditingController textFieldController;
 
@@ -13,7 +13,7 @@ class TextformfieldWidget extends StatelessWidget {
       {super.key,
       required this.label,
       this.suffixIcon,
-      required this.isObscure,
+      this.isObscure = false,
       required this.colorFill,
       required this.textFieldController});
 
@@ -22,7 +22,7 @@ class TextformfieldWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
       child: TextFormField(
-        obscureText: isObscure,
+        obscureText: isObscure!,
         controller: textFieldController,
         style: const TextStyle(color: Colors.black),
         decoration: InputDecoration(
