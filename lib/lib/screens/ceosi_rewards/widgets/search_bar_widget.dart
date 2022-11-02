@@ -1,9 +1,9 @@
-import 'package:ceosi_app/lib/widgets/search_delegate/search_delegate_item_widget.dart';
-import 'package:ceosi_app/lib/widgets/search_delegate/search_delegate_user_widget.dart';
+import 'package:ceosi_app/lib/screens/ceosi_rewards/widgets/search_delegate/search_delegate_item_widget.dart';
+import 'package:ceosi_app/lib/screens/ceosi_rewards/widgets/search_delegate/search_delegate_user_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../constants/colors.dart';
-import '../buttons/dropdown_item_widget.dart';
+import '../../../constants/colors.dart';
+import 'buttons/dropdown_item_widget.dart';
 
 class SearchUserWidget extends StatefulWidget {
   const SearchUserWidget({super.key});
@@ -105,7 +105,7 @@ class _SearchItemWidgetState extends State<SearchItemWidget> {
       padding: const EdgeInsets.only(left: 20, right: 20),
       child: GestureDetector(
         onTap: () {
-          showSearch(context: context, delegate: SearchDelegateItem());
+          showSearch(context: context, delegate: SearchDelegateProduct());
         },
         child: Container(
           height: 35,

@@ -1,78 +1,55 @@
-import 'package:ceosi_app/lib/constants/colors.dart';
 import 'package:ceosi_app/lib/constants/icons.dart';
+import 'package:ceosi_app/lib/constants/images.dart';
 import 'package:ceosi_app/lib/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
-class RewardsEarnedWidget extends StatelessWidget {
-  const RewardsEarnedWidget({super.key});
+import '../../../../constants/colors.dart';
+
+class ProductItemWidget extends StatelessWidget {
+  const ProductItemWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 5, 20, 10),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, '/rewardviewitemscreen');
+        },
         child: Container(
-          height: 80,
+          height: 75,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-          ),
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.white,
+              border: Border.all(
+                color: CustomColors().primaryColor,
+              )),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(
                 width: 10,
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Image.asset(
-                    'assets/images/profile.png',
-                    height: 50,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  const NormalTextWidget(
-                      color: Colors.black, fontSize: 10, text: 'ADMIN'),
-                ],
-              ),
-              const SizedBox(
-                width: 10,
+              Image.asset(
+                CustomImages().sampleProductImage,
+                height: 60,
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
-                        NormalTextWidget(
-                            color: Colors.black,
-                            fontSize: 8,
-                            text: 'Earned through:'),
+                        BoldTextWidget(
+                            color: Colors.black, fontSize: 16, text: 'Piattos'),
                         NormalTextWidget(
                             color: Colors.black,
                             fontSize: 12,
-                            text: 'Pang limpyo sa CR'),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        SizedBox(
-                          width: 150,
-                          child: NormalTextWidget(
-                              color: Colors.black,
-                              fontSize: 8,
-                              text:
-                                  'Comment: Padayuna ang pag pang limpyo sa CR'),
-                        ),
+                            text: 'Type: Snack'),
                       ],
                     ),
                   ],
@@ -91,7 +68,7 @@ class RewardsEarnedWidget extends StatelessWidget {
               BoldTextWidget(
                   color: CustomColors().primaryColor,
                   fontSize: 14,
-                  text: '+1,000cc'),
+                  text: '1,000cc'),
               const SizedBox(
                 width: 10,
               ),

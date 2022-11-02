@@ -23,7 +23,7 @@ class BannerWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/images/profile.png',
+                CustomImages().sampleProfileImage,
                 height: 75,
               ),
               const SizedBox(

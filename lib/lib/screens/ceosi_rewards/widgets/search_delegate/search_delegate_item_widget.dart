@@ -1,7 +1,7 @@
 import 'package:ceosi_app/lib/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
-class SearchDelegateItem extends SearchDelegate {
+class SearchDelegateProduct extends SearchDelegate {
   @override
   List<Widget>? buildActions(BuildContext context) {
     // TODO: implement buildActions

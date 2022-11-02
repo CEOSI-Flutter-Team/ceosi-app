@@ -1,10 +1,10 @@
 import 'package:ceosi_app/lib/constants/images.dart';
-import 'package:ceosi_app/lib/widgets/dialogs/logout_prompt_dialog_widget.dart';
-import 'package:ceosi_app/lib/widgets/drawer/drawer_button_widget.dart';
+import 'package:ceosi_app/lib/screens/ceosi_rewards/widgets/dialogs/logout_prompt_dialog_widget.dart';
+import 'package:ceosi_app/lib/screens/ceosi_rewards/widgets/buttons/drawer_button_widget.dart';
 import 'package:ceosi_app/lib/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../constants/colors.dart';
+import '../../../constants/colors.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -46,7 +46,7 @@ class DrawerWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image.asset(
-                  'assets/images/profile.png',
+                  CustomImages().sampleProfileImage,
                   height: 90,
                 ),
                 const SizedBox(

@@ -10,4 +10,7 @@ class CustomImages {
   var coesiLogoMaroonText = 'assets/images/FINAL-LOGO-1.2.png';
 
   var coesiLogoWhiteText = 'assets/images/FINAL-LOGO-1.3.png';
+
+  var sampleProfileImage = 'assets/images/profile.png';
+  var sampleProductImage = 'assets/images/piattos.png';
 }

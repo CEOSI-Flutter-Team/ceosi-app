@@ -1,12 +1,12 @@
-import 'package:ceosi_app/lib/widgets/buttons/button_widget.dart';
+import 'package:ceosi_app/lib/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../constants/colors.dart';
-import '../text_widget.dart';
-import '../textformfield_widget.dart';
+import '../../../../constants/colors.dart';
+import '../../../../widgets/text_widget.dart';
+import '../../../../widgets/textformfield_widget.dart';
 
-class AddCoinDialogWidget extends StatelessWidget {
-  AddCoinDialogWidget({super.key});
+class SubtractCoinDialogWidget extends StatelessWidget {
+  SubtractCoinDialogWidget({super.key});
 
   final pointsEarnedController = TextEditingController();
 
@@ -27,12 +27,14 @@ class AddCoinDialogWidget extends StatelessWidget {
                 height: 20,
               ),
               const BoldTextWidget(
-                  color: Colors.white, fontSize: 18, text: 'ADDING CYBER COIN'),
+                  color: Colors.white,
+                  fontSize: 16,
+                  text: 'SUBTRACTING CYBER COIN'),
               const SizedBox(
                 height: 10,
               ),
               TextformfieldWidget(
-                  label: 'Coin earned through',
+                  label: 'Coin losed through',
                   isObscure: false,
                   colorFill: Colors.white,
                   textFieldController: pointsEarnedController),

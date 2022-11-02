@@ -1,11 +1,11 @@
-import 'package:ceosi_app/lib/widgets/buttons/dropdown_item_widget.dart';
-import 'package:ceosi_app/lib/widgets/drawer/drawer_widget.dart';
-import 'package:ceosi_app/lib/widgets/list_widgets/list_item_widget.dart';
-import 'package:ceosi_app/lib/widgets/search_delegate/search_delegate_item_widget.dart';
+import 'package:ceosi_app/lib/screens/ceosi_rewards/widgets/buttons/dropdown_item_widget.dart';
+import 'package:ceosi_app/lib/screens/ceosi_rewards/widgets/drawer_widget.dart';
+import 'package:ceosi_app/lib/screens/ceosi_rewards/widgets/product/product_list_widget.dart';
+import 'package:ceosi_app/lib/screens/ceosi_rewards/widgets/search_delegate/search_delegate_item_widget.dart';
 import 'package:flutter/material.dart';
-import '../../constants/colors.dart';
-import '../../widgets/banner_widget.dart';
-import '../../widgets/header/header_widget.dart';
+import '../../../constants/colors.dart';
+import '../widgets/banner_widget.dart';
+import '../widgets/header/header_widget.dart';
 
 class RewardHomeScreen extends StatefulWidget {
   const RewardHomeScreen({super.key});
@@ -42,7 +42,8 @@ class _RewardHomeScreenState extends State<RewardHomeScreen> {
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: GestureDetector(
                 onTap: () {
-                  showSearch(context: context, delegate: SearchDelegateItem());
+                  showSearch(
+                      context: context, delegate: SearchDelegateProduct());
                 },
                 child: Container(
                   height: 35,
@@ -105,7 +106,7 @@ class _RewardHomeScreenState extends State<RewardHomeScreen> {
               ),
             ),
             const Expanded(
-              child: ListItemWidget(),
+              child: ProductListWidget(),
             )
           ],
         ),

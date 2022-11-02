@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../constants/colors.dart';
-import '../buttons/button_widget.dart';
-import '../text_widget.dart';
+import '../../../../constants/colors.dart';
+import '../../../../widgets/button_widget.dart';
+import '../../../../widgets/text_widget.dart';
 
 class ClaimRewardDialogWidget extends StatelessWidget {
   const ClaimRewardDialogWidget({super.key});

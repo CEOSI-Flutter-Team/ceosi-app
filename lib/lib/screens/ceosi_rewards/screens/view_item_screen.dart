@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../constants/colors.dart';
-import '../../widgets/buttons/button_widget.dart';
-import '../../widgets/dialogs/claim_reward_dialog_widget.dart';
-import '../../widgets/text_widget.dart';
+import '../../../constants/colors.dart';
+import '../../../constants/images.dart';
+import '../../../widgets/button_widget.dart';
+import '../widgets/dialogs/claim_reward_dialog_widget.dart';
+import '../../../widgets/text_widget.dart';
 
 class RewardViewItemScreen extends StatelessWidget {
   const RewardViewItemScreen({super.key});
@@ -22,7 +23,7 @@ class RewardViewItemScreen extends StatelessWidget {
                   height: 30,
                 ),
                 Image.asset(
-                  'assets/images/piattos.png',
+                  CustomImages().sampleProductImage,
                   height: 280,
                 ),
                 const SizedBox(

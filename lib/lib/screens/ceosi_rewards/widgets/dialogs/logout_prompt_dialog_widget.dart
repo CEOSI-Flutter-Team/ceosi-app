@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../constants/colors.dart';
-import '../text_widget.dart';
+import '../../../../constants/colors.dart';
+import '../../../../widgets/text_widget.dart';
 
 class LogoutPromptDialogWidget extends StatelessWidget {
   const LogoutPromptDialogWidget({super.key});

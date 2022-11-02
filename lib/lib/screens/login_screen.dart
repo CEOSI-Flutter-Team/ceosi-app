@@ -2,7 +2,7 @@ import 'package:ceosi_app/lib/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/images.dart';
-import '../widgets/buttons/button_widget.dart';
+import '../widgets/button_widget.dart';
 import '../widgets/text_widget.dart';
 import '../widgets/textformfield_widget.dart';
 

@@ -3,7 +3,7 @@ import 'package:ceosi_app/lib/widgets/text_widget.dart';
 import 'package:ceosi_app/lib/widgets/textformfield_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../buttons/button_widget.dart';
+import '../../../../widgets/button_widget.dart';
 import '../buttons/dropdown_item_widget.dart';
 
 class AddItemDialogWidget extends StatefulWidget {

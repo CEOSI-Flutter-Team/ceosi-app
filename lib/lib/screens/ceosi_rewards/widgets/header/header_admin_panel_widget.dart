@@ -1,22 +1,20 @@
 import 'package:ceosi_app/lib/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../constants/colors.dart';
+import '../../../../constants/colors.dart';
 
-class HeaderWidget extends StatelessWidget {
-  late String headerTitle;
-
-  HeaderWidget({required this.headerTitle});
+class HeaderAdminPanelWidget extends StatelessWidget {
+  const HeaderAdminPanelWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: CustomColors().primaryColor,
       width: double.infinity,
-      height: 150,
+      height: 80,
       child: Center(
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 50),
+          padding: const EdgeInsets.only(top: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -30,8 +28,8 @@ class HeaderWidget extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              BoldTextWidget(
-                  color: Colors.white, fontSize: 28, text: headerTitle),
+              const BoldTextWidget(
+                  color: Colors.white, fontSize: 24, text: 'ADMIN PANEL'),
               const SizedBox(
                 width: 50,
               ),
