@@ -1,4 +1,5 @@
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/code_list_screen.dart';
+import 'package:ceosi_app/screens/ceosi_flutter_catalog/source_code_screen.dart';
 import 'package:ceosi_app/screens/home_screen.dart';
 import 'package:ceosi_app/screens/login_screen.dart';
 import 'package:ceosi_app/screens/register_screen.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         '/loginscreen': (context) => LoginScreen(),
         '/registerscreen': (context) => RegisterScreen(),
         '/codelistscreen': (context) => const CodeListScreen(),
+        '/sourcecodescreen': (context) => const SourceCodeScreen(),
       },
       title: Labels.ceosiApp,
     );

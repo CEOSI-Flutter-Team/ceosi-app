@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../constants/colors.dart';
 import '../../../constants/labels.dart';
-import '../../../providers/ceosi_flutter_catalog/category_list_notifier.dart';
+import '../../../providers/ceosi_flutter_catalog/category_list_provider.dart';
 import '../../../widgets/text_widget.dart';
 
 class CategoryListViewWidget extends ConsumerWidget {
