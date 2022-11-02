@@ -13,8 +13,8 @@ class TextformfieldWidget extends StatelessWidget {
       {super.key,
       required this.label,
       this.suffixIcon,
-      required this.isObscure,
-      required this.colorFill,
+      this.colorFill = Colors.white,
+      this.isObscure = false,
       required this.textFieldController});
 
   @override
@@ -34,7 +34,7 @@ class TextformfieldWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 1, color: primaryColor),
+            borderSide: const BorderSide(width: 1, color: CustomColors.primary),
             borderRadius: BorderRadius.circular(10),
           ),
           labelText: label,
