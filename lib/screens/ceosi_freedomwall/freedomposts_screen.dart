@@ -36,24 +36,12 @@ class _FreedomPostsScreenState extends State<FreedomPostsScreen> {
     'Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et',
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
     'Lorem ipsum dolor sit amet, consectetur ',
-    'Lorem ipsum dolor sit amet,',
+    'Lorem ipsum dolor sit amet',
     'Lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
     'Lorem ipsum dol Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et',
     'Lorem ipsum dolor sit Lorem'
   ];
 
-  List<String> myTitles = [
-    ' et dolore ',
-    'dolore',
-    'Lorem  ',
-    ' ipsum ',
-    'Lorem ',
-    ' consectetur ',
-    'sit amet,',
-    ' amet ',
-    'dol',
-    'Lorem dolor sit',
-  ];
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -135,72 +123,69 @@ class _FreedomPostsScreenState extends State<FreedomPostsScreen> {
         int randomNumber = random.nextInt(8) + 1;
         Color bg = myColors[(randomNumber)];
         String content = myNoteContent[(randomNumber)];
-        String title = myTitles[(randomNumber)];
-        return Container(
-          child: Stack(children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.grey,
-              ),
-              padding: const EdgeInsets.fromLTRB(5, 30, 5, 5),
-              child: Stack(children: [
-                InkWell(
-                  onTap: () {},
-                  child: Card(
-                    color: bg,
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            content,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 20.0,
-                              fontFamily: "lato",
-                              color: Colors.black87,
-                            ),
+        return Stack(children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.grey,
+            ),
+            padding: const EdgeInsets.fromLTRB(5, 30, 5, 5),
+            child: Stack(children: [
+              InkWell(
+                onTap: () {},
+                child: Card(
+                  color: bg,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          content,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 20.0,
+                            fontFamily: "lato",
+                            color: Colors.black87,
                           ),
-                          const Text(
-                            '12-21-22',
-                            textAlign: TextAlign.right,
-                            style: TextStyle(
-                              fontStyle: FontStyle.italic,
-                              fontSize: 12.0,
-                              fontFamily: "lato",
-                              color: Colors.black87,
-                            ),
+                        ),
+                        const Text(
+                          '12-21-22',
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            fontStyle: FontStyle.italic,
+                            fontSize: 12.0,
+                            fontFamily: "lato",
+                            color: Colors.black87,
                           ),
-                          Text(
-                            "FP ID# $index ",
-                            textAlign: TextAlign.right,
-                            style: const TextStyle(
-                              fontSize: 13.0,
-                              fontFamily: "lato",
-                              color: Colors.black87,
-                            ),
+                        ),
+                        Text(
+                          "FP ID# $index ",
+                          textAlign: TextAlign.right,
+                          style: const TextStyle(
+                            fontSize: 13.0,
+                            fontFamily: "lato",
+                            color: Colors.black87,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-              ]),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(130, 10, 0, 0),
-              child: GestureDetectorWidget(
-                childWidget: Image.asset('assets/icons/continuousdot.png',
-                    fit: BoxFit.contain),
-                onTap: () {
-                  print('hello id $index');
-                },
               ),
-            )
-          ]),
-        );
+            ]),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(140, 10, 0, 0),
+            child: GestureDetectorWidget(
+              childWidget: Image.asset('assets/icons/continuousdot.png',
+                  fit: BoxFit.contain),
+              onTap: () {
+                print('hello id $index');
+              },
+            ),
+          )
+        ]);
       },
       gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2),
