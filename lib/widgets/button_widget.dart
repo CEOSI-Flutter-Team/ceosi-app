@@ -2,31 +2,32 @@ import 'package:ceosi_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class ButtonWidget extends StatelessWidget {
-  final VoidCallback onPressed;
-  final double buttonWidth;
-  final double buttonHeight;
-  final double borderRadius;
-  final Widget textWidget;
+  late VoidCallback onPressed;
 
-  const ButtonWidget({
-    super.key,
-    required this.onPressed,
-    required this.buttonHeight,
-    required this.buttonWidth,
-    required this.textWidget,
-    this.borderRadius = 0,
-  });
+  late double buttonWidth;
+  late double buttonHeight;
+  late double? borderRadius = 0;
+  late Widget textWidget;
+
+  ButtonWidget(
+      {super.key,
+      required this.onPressed,
+      required this.buttonHeight,
+      required this.buttonWidth,
+      required this.textWidget,
+      this.borderRadius});
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      minWidth: buttonWidth,
-      height: buttonHeight,
-      color: CustomColors.primary,
-      onPressed: onPressed,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(borderRadius)),
-      child: textWidget,
-    );
+        minWidth: buttonWidth,
+        height: buttonHeight,
+        color: CustomColors.primary,
+        onPressed: onPressed,
+        shape: RoundedRectangleBorder(
+          borderRadius:
+              BorderRadius.circular(borderRadius == null ? 0 : borderRadius!),
+        ),
+        child: textWidget);
   }
 }

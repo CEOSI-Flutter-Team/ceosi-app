@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class CustomColors {
   static const primary = Color(0xff293462),
       secondary = Color(0xffD61C4A),
-      greyAccent = Color(0xffD9D9D9);
+      greyAccent = Color(0xffD9D9D9),
+      darkGrey = Color(0xFF5B6076);
 
   List<Color> masonryListbackgroundColors = [
     const Color.fromARGB(255, 159, 147, 46),

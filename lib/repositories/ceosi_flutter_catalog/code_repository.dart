@@ -1,4 +1,4 @@
-import 'package:ceosi_app/repositories/code_repository_interface.dart';
+import 'package:ceosi_app/repositories/ceosi_flutter_catalog/code_repository_interface.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final codeRepositoryProvider =

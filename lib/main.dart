@@ -1,7 +1,9 @@
-import 'package:ceosi_app/constants/labels.dart';
+import 'package:ceosi_app/screens/ceosi_flutter_catalog/code_list_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/freedomposts_screen.dart';
+import 'package:ceosi_app/screens/ceosi_company_app/screens/announcement_screen.dart';
 import 'package:ceosi_app/screens/home_screen.dart';
 import 'package:ceosi_app/screens/login_screen.dart';
+import 'package:ceosi_app/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -22,11 +24,14 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/freedompostsscreen',
       routes: {
-        '/': (context) => LoginScreen(),
+        '/': (context) => const HomeScreen(),
+        '/loginscreen': (context) => LoginScreen(),
+        '/registerscreen': (context) => RegisterScreen(),
+        '/codelistscreen': (context) => const CodeListScreen(),
         '/freedompostsscreen': (context) => const FreedomPostsScreen(),
-        '/homescreen': (context) => const HomeScreen(),
+        '/announcementscreen': (context) => const AnnouncementScreen(),
       },
-      title: Labels.ceosiFreedomWall,
+      title: 'CEOSI App',
     );
   }
 }

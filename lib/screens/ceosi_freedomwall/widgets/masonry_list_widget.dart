@@ -43,7 +43,7 @@ class _MasonryListWidgetState extends State<MasonryListWidget> {
           Color backgroudColor =
               CustomColors().masonryListbackgroundColors[(randomNumber)];
           String content = myNoteContent[(randomNumber)];
-          return MasonryPostList(
+          return MasonryItem(
             backgroudColor: backgroudColor,
             content: content,
             id: index,
@@ -56,8 +56,8 @@ class _MasonryListWidgetState extends State<MasonryListWidget> {
   }
 }
 
-class MasonryPostList extends StatelessWidget {
-  const MasonryPostList(
+class MasonryItem extends StatelessWidget {
+  const MasonryItem(
       {Key? key,
       required this.backgroudColor,
       required this.content,
@@ -70,10 +70,6 @@ class MasonryPostList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return masonry_item_widget();
-  }
-
-  Stack masonry_item_widget() {
     return Stack(children: [
       Container(
         decoration: BoxDecoration(
