@@ -30,7 +30,6 @@ class RegisterScreen extends StatelessWidget {
               height: 10,
             ),
             TextformfieldWidget(
-              isObscure: false,
               textFieldController: _nameController,
               label: 'Name',
             ),
@@ -38,7 +37,6 @@ class RegisterScreen extends StatelessWidget {
               height: 10,
             ),
             TextformfieldWidget(
-              isObscure: false,
               textFieldController: _emailController,
               label: 'Email',
             ),

@@ -2,7 +2,6 @@ import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:ceosi_app/widgets/textformfield_widget.dart';
 import 'package:flutter/material.dart';
-
 import '../constants/images.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -36,7 +35,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 10,
               ),
               TextformfieldWidget(
-                isObscure: false,
                 textFieldController: _usernameController,
                 label: 'Username',
                 colorFill: Colors.white,
