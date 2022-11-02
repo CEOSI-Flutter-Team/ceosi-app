@@ -1,4 +1,5 @@
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/code_list_screen.dart';
+import 'package:ceosi_app/screens/ceosi_freedomwall/freedomposts_screen.dart';
 import 'package:ceosi_app/screens/home_screen.dart';
 import 'package:ceosi_app/screens/login_screen.dart';
 import 'package:ceosi_app/screens/register_screen.dart';
@@ -22,12 +23,13 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/codelistscreen',
+      initialRoute: '/freedompostsscreen',
       routes: {
         '/': (context) => const HomeScreen(),
         '/loginscreen': (context) => LoginScreen(),
         '/registerscreen': (context) => RegisterScreen(),
         '/codelistscreen': (context) => const CodeListScreen(),
+        '/freedompostsscreen': (context) => const FreedomPostsScreen(),
       },
       title: Labels.ceosiFreedomWall,
     );
