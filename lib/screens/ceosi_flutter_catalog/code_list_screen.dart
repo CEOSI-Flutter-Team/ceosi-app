@@ -4,8 +4,9 @@ import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../constants/labels.dart';
-import '../providers/code_list_notifier.dart';
+import '../../constants/labels.dart';
+import '../../providers/ceosi_flutter_catalog/code_list_notifier.dart';
+import 'widgets/category_listview_widget.dart';
 
 class CodeListScreen extends StatelessWidget {
   const CodeListScreen({super.key});
@@ -41,6 +42,24 @@ class CodeListScreen extends StatelessWidget {
 class AppbarExtensionWidget extends StatelessWidget {
   const AppbarExtensionWidget({super.key});
 
+  void showCategoryFilter(context) {
+    showModalBottomSheet(
+      backgroundColor: CustomColors.darkGrey,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(20.0),
+        topRight: Radius.circular(20.0),
+      )),
+      isScrollControlled: true,
+      constraints:
+          BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 2 / 4),
+      context: context,
+      builder: (context) {
+        return const CategoryListViewWidget();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -60,7 +79,7 @@ class AppbarExtensionWidget extends StatelessWidget {
           children: <Widget>[
             CodeListSearchFieldWidget(),
             IconButton(
-              onPressed: () {},
+              onPressed: () => showCategoryFilter(context),
               icon: const Icon(
                 Icons.filter_list,
                 size: 24.0,
@@ -84,61 +103,71 @@ class CodeListViewWidget extends ConsumerWidget {
     return codeListData.when(
       data: (data) {
         List<Map<String, dynamic>> codeList = data!['code_list'];
-        return Expanded(
-          child: ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            itemCount: codeList.length,
-            itemBuilder: (context, index) {
-              return InkWell(
-                borderRadius: BorderRadius.circular(20.0),
-                splashColor: Colors.transparent,
-                onTap: () {},
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(36.0, 20.0, 36.0, 20.0),
-                  child: Container(
-                    height: 120.0,
-                    decoration: BoxDecoration(
-                        color: index % 2 == 0
-                            ? CustomColors.secondary
-                            : CustomColors.primary,
-                        borderRadius: BorderRadius.circular(20.0)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Image.asset(
-                              'assets/icons/code.png',
-                              scale: 25.0,
-                            ),
-                            const SizedBox(width: 5.0),
-                            BoldTextWidget(
-                              color: Colors.white,
-                              fontSize: 12.0,
-                              text: codeList[index]['title'],
-                            ),
-                          ],
-                        ),
-                        BoldTextWidget(
-                          color: Colors.white,
-                          fontSize: 10.0,
-                          text: codeList[index]['category'],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
-        );
+        return CodeListItemWidget(codeList);
       },
       error: (error, stackTrace) => Text(error.toString()),
       loading: () => const Center(
           child: CircularProgressIndicator(
         color: CustomColors.primary,
       )),
+    );
+  }
+}
+
+class CodeListItemWidget extends StatelessWidget {
+  const CodeListItemWidget(this.codeList, {super.key});
+  final List<Map<String, dynamic>> codeList;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
+        itemCount: codeList.length,
+        itemBuilder: (context, index) {
+          return InkWell(
+            borderRadius: BorderRadius.circular(20.0),
+            splashColor: Colors.transparent,
+            onTap: () {},
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(36.0, 20.0, 36.0, 20.0),
+              child: Container(
+                height: 120.0,
+                decoration: BoxDecoration(
+                    color: index % 2 == 0
+                        ? CustomColors.secondary
+                        : CustomColors.primary,
+                    borderRadius: BorderRadius.circular(20.0)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Image.asset(
+                          'assets/icons/code.png',
+                          scale: 25.0,
+                        ),
+                        const SizedBox(width: 5.0),
+                        BoldTextWidget(
+                          color: Colors.white,
+                          fontSize: 12.0,
+                          text: codeList[index]['title'],
+                        ),
+                      ],
+                    ),
+                    BoldTextWidget(
+                      color: Colors.white,
+                      fontSize: 10.0,
+                      text: codeList[index]['category'],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }

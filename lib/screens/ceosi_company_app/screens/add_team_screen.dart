@@ -98,8 +98,8 @@ class _AddTeamScreenState extends State<AddTeamScreen> {
         iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: CustomColors.greyAccent,
       ),
-      body: ListView(children: [
-        Form(
+      body: SingleChildScrollView(
+        child: Form(
           key: _addTeamFormKey,
           child: Column(
             children: <Widget>[
@@ -182,7 +182,7 @@ class _AddTeamScreenState extends State<AddTeamScreen> {
                 isProcessing: _isProcessing,
                 validated: () {
                   if (_addTeamFormKey.currentState!.validate()) {
-                    print("Validated");
+                    print('Validated');
                   }
                 },
               ),
@@ -192,7 +192,7 @@ class _AddTeamScreenState extends State<AddTeamScreen> {
             ],
           ),
         ),
-      ]),
+      ),
     );
   }
 }

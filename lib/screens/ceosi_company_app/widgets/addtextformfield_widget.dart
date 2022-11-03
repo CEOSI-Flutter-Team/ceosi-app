@@ -2,14 +2,14 @@ import 'package:ceosi_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class AddtextformfieldWidget extends StatelessWidget {
-  late String label;
-  late Color colorFill;
-  Widget? suffixIcon;
-  late TextEditingController textFieldController;
-  bool readOnly;
+  final String label;
+  final Color colorFill;
+  final Widget? suffixIcon;
+  final TextEditingController textFieldController;
+  final bool readOnly;
   final VoidCallback? onTap;
 
-  AddtextformfieldWidget(
+  const AddtextformfieldWidget(
       {super.key,
       required this.label,
       this.onTap,

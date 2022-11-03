@@ -109,7 +109,9 @@ class SidebarWidget extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 20.0),
                     child: ButtonWidget(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/');
+                      },
                       buttonHeight: 42.0,
                       buttonWidth: 57,
                       borderRadius: 10.0,

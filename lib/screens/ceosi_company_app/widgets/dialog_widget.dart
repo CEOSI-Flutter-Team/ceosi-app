@@ -11,7 +11,7 @@ class DialogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-        title: const Text("From where do you want to take the photo? "),
+        title: const Text('From where do you want to take the photo? '),
         content: SingleChildScrollView(
           child: ListBody(
             children: <Widget>[

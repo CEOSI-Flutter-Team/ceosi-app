@@ -22,7 +22,8 @@ class _AboutScreenState extends State<AboutScreen> {
         iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: CustomColors.greyAccent,
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           children: <Widget>[
             const SizedBox(
@@ -35,109 +36,147 @@ class _AboutScreenState extends State<AboutScreen> {
             const SizedBox(
               height: 40,
             ),
-            Card(
-                color: CustomColors.primary,
-                elevation: 3.0,
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const [
-                            BoldTextWidget(
-                                color: Colors.white,
-                                fontSize: 14,
-                                text: "About"),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                )),
+            const AboutWidget(),
             const SizedBox(
               height: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SocialMediaWidget(
-                    onTap: () {},
-                    containerColor: CustomColors.facebookIcon,
-                    icon: FontAwesomeIcons.facebookF,
-                    iconColor: Colors.white),
-                SocialMediaWidget(
-                    onTap: () {},
-                    containerColor: CustomColors.twitterIcon,
-                    icon: FontAwesomeIcons.twitter,
-                    iconColor: Colors.white),
-                SocialMediaWidget(
-                    onTap: () {},
-                    containerColor: CustomColors.instagramIcon,
-                    icon: FontAwesomeIcons.instagram,
-                    iconColor: Colors.white),
-                SocialMediaWidget(
-                    onTap: () {},
-                    containerColor: CustomColors.linkedinIcon,
-                    icon: FontAwesomeIcons.linkedinIn,
-                    iconColor: Colors.white),
-              ],
-            ),
+            const SocialMediaLinks(),
             const SizedBox(
               height: 20,
             ),
-            Card(
-                color: CustomColors.primary,
-                elevation: 3.0,
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const [
-                            BoldTextWidget(
-                                color: Colors.white,
-                                fontSize: 14,
-                                text: "Mission"),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                )),
+            const MissionWidget(),
             const SizedBox(
               height: 20,
             ),
-            Card(
-                color: CustomColors.primary,
-                elevation: 3.0,
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const [
-                            BoldTextWidget(
-                                color: Colors.white,
-                                fontSize: 14,
-                                text: "Vision"),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                )),
+            const VisionWidget(),
           ],
         ),
       ),
+    );
+  }
+}
+
+class AboutWidget extends StatelessWidget {
+  const AboutWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        color: CustomColors.primary,
+        elevation: 3.0,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    BoldTextWidget(
+                        color: Colors.white, fontSize: 14, text: 'About'),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ));
+  }
+}
+
+class VisionWidget extends StatelessWidget {
+  const VisionWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        color: CustomColors.primary,
+        elevation: 3.0,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    BoldTextWidget(
+                        color: Colors.white, fontSize: 14, text: 'Vision'),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ));
+  }
+}
+
+class MissionWidget extends StatelessWidget {
+  const MissionWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        color: CustomColors.primary,
+        elevation: 3.0,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    BoldTextWidget(
+                        color: Colors.white, fontSize: 14, text: 'Mission'),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ));
+  }
+}
+
+class SocialMediaLinks extends StatelessWidget {
+  const SocialMediaLinks({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        SocialMediaWidget(
+            onTap: () {},
+            containerColor: CustomColors.facebookIcon,
+            icon: FontAwesomeIcons.facebookF,
+            iconColor: Colors.white),
+        SocialMediaWidget(
+            onTap: () {},
+            containerColor: CustomColors.twitterIcon,
+            icon: FontAwesomeIcons.twitter,
+            iconColor: Colors.white),
+        SocialMediaWidget(
+            onTap: () {},
+            containerColor: CustomColors.instagramIcon,
+            icon: FontAwesomeIcons.instagram,
+            iconColor: Colors.white),
+        SocialMediaWidget(
+            onTap: () {},
+            containerColor: CustomColors.linkedinIcon,
+            icon: FontAwesomeIcons.linkedinIn,
+            iconColor: Colors.white),
+      ],
     );
   }
 }
