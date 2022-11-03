@@ -7,6 +7,7 @@ class ButtonWidget extends StatelessWidget {
   final double buttonHeight;
   final double borderRadius;
   final Widget textWidget;
+  final Color color;
 
   const ButtonWidget({
     super.key,
@@ -15,6 +16,7 @@ class ButtonWidget extends StatelessWidget {
     required this.buttonWidth,
     required this.textWidget,
     this.borderRadius = 0,
+    this.color = CustomColors.primary,
   });
 
   @override
@@ -22,7 +24,7 @@ class ButtonWidget extends StatelessWidget {
     return MaterialButton(
       minWidth: buttonWidth,
       height: buttonHeight,
-      color: CustomColors.primary,
+      color: color,
       onPressed: onPressed,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius)),
