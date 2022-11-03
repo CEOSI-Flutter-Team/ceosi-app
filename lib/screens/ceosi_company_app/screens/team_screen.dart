@@ -41,76 +41,7 @@ class _TeamScreenState extends State<TeamScreen> {
             const SizedBox(
               height: 20,
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 5,
-                itemBuilder: (context, index) {
-                  return Column(children: [
-                    InkWell(
-                      onTap: (() {}),
-                      child: Stack(
-                        children: [
-                          Card(
-                              color: CustomColors.primary,
-                              elevation: 3.0,
-                              margin: const EdgeInsets.only(left: 45.0),
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const SizedBox(width: 30),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.stretch,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: const [
-                                          BoldTextWidget(
-                                              color: Colors.white,
-                                              fontSize: 14,
-                                              text:
-                                                  "Finina Chloie O. Biscocho"),
-                                          SizedBox(height: 5),
-                                          NormalTextWidget(
-                                              color: Colors.white,
-                                              fontSize: 12,
-                                              text:
-                                                  "Flutter Developer Trainee"),
-                                          SizedBox(height: 5),
-                                          NormalTextWidget(
-                                              color: Colors.white,
-                                              fontSize: 12,
-                                              text: "finina.ceosi@gmail.com"),
-                                          SizedBox(height: 5),
-                                          NormalTextWidget(
-                                              color: Colors.white,
-                                              fontSize: 12,
-                                              text: "March 17,1999")
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )),
-                          const Padding(
-                            padding: EdgeInsets.only(top: 12),
-                            child: CircleAvatar(
-                              backgroundColor: CustomColors.secondary,
-                              radius: 45,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    )
-                  ]);
-                },
-              ),
-            ),
+            const TeamList(),
           ],
         ),
       ),
@@ -118,6 +49,91 @@ class _TeamScreenState extends State<TeamScreen> {
         backgroundColor: CustomColors.secondary,
         onPressed: () {},
         child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class TeamList extends StatelessWidget {
+  const TeamList({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView.builder(
+        itemCount: 5,
+        itemBuilder: (context, index) {
+          return Column(children: [
+            InkWell(
+              onTap: (() {}),
+              child: Stack(
+                children: [
+                  Card(
+                      color: CustomColors.primary,
+                      elevation: 3.0,
+                      margin: const EdgeInsets.only(left: 45.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            SizedBox(width: 30),
+                            TeamItem(),
+                          ],
+                        ),
+                      )),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 12),
+                    child: CircleAvatar(
+                      backgroundColor: CustomColors.secondary,
+                      radius: 45,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 15,
+            )
+          ]);
+        },
+      ),
+    );
+  }
+}
+
+class TeamItem extends StatelessWidget {
+  const TeamItem({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: const [
+          BoldTextWidget(
+              color: Colors.white,
+              fontSize: 14,
+              text: "Finina Chloie O. Biscocho"),
+          SizedBox(height: 5),
+          NormalTextWidget(
+              color: Colors.white,
+              fontSize: 12,
+              text: "Flutter Developer Trainee"),
+          SizedBox(height: 5),
+          NormalTextWidget(
+              color: Colors.white,
+              fontSize: 12,
+              text: "finina.ceosi@gmail.com"),
+          SizedBox(height: 5),
+          NormalTextWidget(
+              color: Colors.white, fontSize: 12, text: "March 17,1999")
+        ],
       ),
     );
   }
