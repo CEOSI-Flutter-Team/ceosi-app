@@ -1,6 +1,7 @@
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:ceosi_app/constants/images.dart';
-import 'package:ceosi_app/widgets/socialmedia_widget.dart';
+import 'package:ceosi_app/screens/ceosi_company_app/widgets/drawer_widget.dart';
+import 'package:ceosi_app/screens/ceosi_company_app/widgets/socialmedia_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,16 +17,10 @@ class _AboutScreenState extends State<AboutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const DrawerWidget(),
       appBar: AppBar(
-        backgroundColor: greyAccent,
-        leading: Builder(
-            builder: (context) => IconButton(
-                  icon: const Icon(
-                    Icons.menu,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {},
-                )),
+        iconTheme: const IconThemeData(color: Colors.black),
+        backgroundColor: CustomColors.greyAccent,
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -35,14 +30,14 @@ class _AboutScreenState extends State<AboutScreen> {
               height: 20,
             ),
             Image.asset(
-              coesiIcon,
+              Images.coesiIcon,
               width: 60,
             ),
             const SizedBox(
               height: 40,
             ),
             Card(
-                color: primaryColor,
+                color: CustomColors.primary,
                 elevation: 3.0,
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
@@ -71,22 +66,22 @@ class _AboutScreenState extends State<AboutScreen> {
               children: [
                 SocialMediaWidget(
                     onTap: () {},
-                    containerColor: facebookIcon,
+                    containerColor: CustomColors.facebookIcon,
                     icon: FontAwesomeIcons.facebookF,
                     iconColor: Colors.white),
                 SocialMediaWidget(
                     onTap: () {},
-                    containerColor: twitterIcon,
+                    containerColor: CustomColors.twitterIcon,
                     icon: FontAwesomeIcons.twitter,
                     iconColor: Colors.white),
                 SocialMediaWidget(
                     onTap: () {},
-                    containerColor: instagramIcon,
+                    containerColor: CustomColors.instagramIcon,
                     icon: FontAwesomeIcons.instagram,
                     iconColor: Colors.white),
                 SocialMediaWidget(
                     onTap: () {},
-                    containerColor: linkedinIcon,
+                    containerColor: CustomColors.linkedinIcon,
                     icon: FontAwesomeIcons.linkedinIn,
                     iconColor: Colors.white),
               ],
@@ -95,7 +90,7 @@ class _AboutScreenState extends State<AboutScreen> {
               height: 20,
             ),
             Card(
-                color: primaryColor,
+                color: CustomColors.primary,
                 elevation: 3.0,
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
@@ -120,7 +115,7 @@ class _AboutScreenState extends State<AboutScreen> {
               height: 20,
             ),
             Card(
-                color: primaryColor,
+                color: CustomColors.primary,
                 elevation: 3.0,
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),

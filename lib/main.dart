@@ -1,5 +1,4 @@
-import 'package:ceosi_app/constants/app_names.dart';
-import 'package:ceosi_app/screens/add_announcement_screen.dart';
+import 'package:ceosi_app/screens/ceosi_company_app/screens/add_announcement_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/screens/add_team_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/screens/team_screen.dart';
 import 'package:ceosi_app/screens/login_screen.dart';
@@ -9,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'screens/ceosi_company_app/screens/about_screen.dart';
 import 'screens/ceosi_company_app/screens/announcement_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'constants/labels.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         '/addteamscreen': (context) => const AddTeamScreen(),
         '/aboutscreen': (context) => const AboutScreen(),
       },
-      title: chloieApp,
+      title: Labels.ceosiApp,
     );
   }
 }

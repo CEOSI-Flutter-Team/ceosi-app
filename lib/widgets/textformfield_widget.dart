@@ -1,17 +1,20 @@
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-class AddtextformfieldWidget extends StatelessWidget {
+class TextformfieldWidget extends StatelessWidget {
   late String label;
   late Color colorFill;
+
+  late bool isObscure;
   Widget? suffixIcon;
   late TextEditingController textFieldController;
 
-  AddtextformfieldWidget(
+  TextformfieldWidget(
       {super.key,
       required this.label,
       this.suffixIcon,
-      required this.colorFill,
+      this.colorFill = Colors.white,
+      this.isObscure = false,
       required this.textFieldController});
 
   @override
@@ -19,6 +22,7 @@ class AddtextformfieldWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
       child: TextFormField(
+        obscureText: isObscure,
         controller: textFieldController,
         style: const TextStyle(color: Colors.black),
         decoration: InputDecoration(
@@ -26,14 +30,14 @@ class AddtextformfieldWidget extends StatelessWidget {
           fillColor: colorFill,
           filled: true,
           enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 2, color: primaryColor),
+            borderSide: const BorderSide(width: 1, color: Colors.white),
             borderRadius: BorderRadius.circular(10),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 2, color: primaryColor),
+            borderSide: const BorderSide(width: 1, color: CustomColors.primary),
             borderRadius: BorderRadius.circular(10),
           ),
-          hintText: label,
+          labelText: label,
           labelStyle: const TextStyle(
             color: Colors.black,
             fontSize: 12.0,
