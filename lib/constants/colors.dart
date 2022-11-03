@@ -7,15 +7,15 @@ class CustomColors {
       darkGrey = Color(0xFF5B6076);
 
   List<Color> masonryListbackgroundColors = [
-    const Color.fromARGB(255, 159, 147, 46),
-    const Color.fromARGB(255, 175, 75, 75),
-    const Color.fromARGB(255, 40, 116, 43),
-    const Color.fromARGB(255, 81, 59, 122),
-    const Color.fromARGB(255, 88, 49, 95),
-    const Color.fromARGB(255, 75, 139, 147),
-    const Color.fromARGB(255, 51, 114, 108),
-    const Color.fromARGB(255, 49, 113, 98),
-    const Color.fromARGB(255, 121, 59, 80),
-    const Color.fromARGB(255, 46, 101, 152),
+    const Color.fromARGB(255, 194, 181, 59),
+    const Color.fromARGB(255, 210, 86, 86),
+    const Color.fromARGB(255, 52, 149, 55),
+    const Color.fromARGB(255, 99, 71, 150),
+    const Color.fromARGB(255, 129, 66, 140),
+    const Color.fromARGB(255, 78, 155, 165),
+    const Color.fromARGB(255, 65, 151, 142),
+    const Color.fromARGB(255, 65, 154, 133),
+    const Color.fromARGB(255, 164, 76, 105),
+    const Color.fromARGB(255, 58, 122, 183),
   ];
 }
