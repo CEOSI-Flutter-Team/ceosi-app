@@ -1,49 +1,65 @@
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-class AddTeamtextformfieldWidget extends StatelessWidget {
+class AddtextformfieldWidget extends StatelessWidget {
   late String label;
   late Color colorFill;
-
-  late bool isObscure;
   Widget? suffixIcon;
   late TextEditingController textFieldController;
+  bool readOnly;
+  final VoidCallback? onTap;
 
-  AddTeamtextformfieldWidget(
+  AddtextformfieldWidget(
       {super.key,
       required this.label,
+      this.onTap,
+      this.colorFill = Colors.white,
       this.suffixIcon,
-      required this.isObscure,
-      required this.colorFill,
-      required this.textFieldController});
+      required this.textFieldController,
+      this.readOnly = false});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
       child: TextFormField(
-        obscureText: isObscure,
-        controller: textFieldController,
-        style: const TextStyle(color: Colors.black),
-        decoration: InputDecoration(
-          suffixIcon: suffixIcon,
-          fillColor: colorFill,
-          filled: true,
-          enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 2, color: CustomColors.primary),
-            borderRadius: BorderRadius.circular(10),
+          controller: textFieldController,
+          style: const TextStyle(color: Colors.black),
+          decoration: InputDecoration(
+            errorStyle: const TextStyle(color: Colors.red),
+            suffixIcon: suffixIcon,
+            filled: true,
+            fillColor: colorFill,
+            enabledBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(width: 2, color: CustomColors.primary),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(width: 2, color: CustomColors.primary),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: const BorderSide(width: 2, color: Colors.red)),
+            focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: const BorderSide(width: 2, color: Colors.red)),
+            hintText: label,
+            labelStyle: const TextStyle(
+              color: Colors.black,
+              fontSize: 12.0,
+            ),
           ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 2, color: CustomColors.primary),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          hintText: label,
-          labelStyle: const TextStyle(
-            color: Colors.black,
-            fontSize: 12.0,
-          ),
-        ),
-      ),
+          onTap: onTap,
+          readOnly: readOnly,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return '$label is required';
+            }
+            return null;
+          }),
     );
   }
 }
