@@ -5,8 +5,6 @@ import 'package:ceosi_app/screens/ceosi_company_app/screens/announcement_screen.
 import 'package:ceosi_app/screens/ceosi_company_app/screens/add_announcement_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/screens/add_team_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/screens/team_screen.dart';
-import 'package:ceosi_app/screens/ceosi_freedomwall/user_search_screen.dart';
-import 'package:ceosi_app/screens/ceosi_freedomwall/user_single_freedom_post_screen.dart';
 import 'package:ceosi_app/screens/login_screen.dart';
 import 'package:ceosi_app/screens/home_screen.dart';
 import 'package:ceosi_app/screens/register_screen.dart';
@@ -30,7 +28,7 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/usersinglefreedompostscreen',
+      initialRoute: '/addfreedompostscreen',
       routes: {
         '/': (context) => LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
@@ -43,9 +41,6 @@ class MyApp extends StatelessWidget {
         '/addteamscreen': (context) => const AddTeamScreen(),
         '/aboutscreen': (context) => const AboutScreen(),
         '/addfreedompostscreen': (context) => const AddFreedomPostScreen(),
-        '/usersearchscreen': (context) => const UserSearchScreen(),
-        '/usersinglefreedompostscreen': (context) =>
-            const UserSingleFreedomPostScreen(),
       },
       title: Labels.ceosiApp,
     );
