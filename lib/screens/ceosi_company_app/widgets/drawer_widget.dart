@@ -51,13 +51,15 @@ class DrawerWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     ButtonWidget(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/announcementscreen');
+                      },
                       buttonHeight: 55.0,
                       buttonWidth: 203.0,
                       borderRadius: 10.0,
                       textWidget: const BoldTextWidget(
                           color: Colors.white,
-                          fontSize: 13.0,
+                          fontSize: 12.0,
                           text: "Announcement"),
                     ),
                     const SizedBox(height: 25.0),
@@ -68,18 +70,20 @@ class DrawerWidget extends StatelessWidget {
                       borderRadius: 10.0,
                       textWidget: const BoldTextWidget(
                           color: Colors.white,
-                          fontSize: 13.0,
+                          fontSize: 12.0,
                           text: "Event Calendar"),
                     ),
                     const SizedBox(height: 25.0),
                     ButtonWidget(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/teamscreen');
+                      },
                       buttonHeight: 55.0,
                       buttonWidth: 203.0,
                       borderRadius: 10.0,
                       textWidget: const BoldTextWidget(
                           color: Colors.white,
-                          fontSize: 13.0,
+                          fontSize: 12.0,
                           text: "The Team"),
                     ),
                     const SizedBox(height: 25.0),
@@ -89,7 +93,7 @@ class DrawerWidget extends StatelessWidget {
                       buttonWidth: 203.0,
                       borderRadius: 10.0,
                       textWidget: const BoldTextWidget(
-                          color: Colors.white, fontSize: 13.0, text: "About"),
+                          color: Colors.white, fontSize: 12.0, text: "About"),
                     ),
                   ],
                 ),
