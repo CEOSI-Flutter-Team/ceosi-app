@@ -2,7 +2,7 @@ import 'package:ceosi_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/button_widget.dart';
-import '../../widgets/dropdown_button_form_field_widget.dart';
+import 'widgets/dropdown_button_form_field_widget.dart';
 
 import '../../widgets/sidebar_widget.dart';
 import '../../widgets/text_widget.dart';
@@ -46,11 +46,16 @@ class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
                   height: 50,
                 ),
                 DropDownButtonFormFieldWidget(
-                    color: Colors.black12,
+                    dropdownbackgroundcolor: Colors.black12,
+                    dropdownitemcolor: Colors.black,
                     padding: const EdgeInsets.fromLTRB(37, 12, 37, 0),
                     label: '',
                     value: mood,
-                    hint: const Center(child: Text('Select Mood')),
+                    hint: const Center(
+                        child: NormalTextWidget(
+                            color: Colors.black,
+                            fontSize: 20,
+                            text: 'Select Mood')),
                     onChanged: (newValue) {
                       setState(() {
                         mood = newValue;

@@ -3,4 +3,5 @@ class CustomIcons {
   final filtericon = 'assets/icons/filter.png';
   final continuousdoticon = 'assets/icons/continuousdot.png';
   final plusicon = 'assets/icons/plus.png';
+  final datepickericon = 'assets/icons/datepickericon.png';
 }

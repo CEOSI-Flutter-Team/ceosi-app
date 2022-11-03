@@ -2,6 +2,7 @@ import 'package:ceosi_app/screens/ceosi_flutter_catalog/code_list_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/add_freedom_post_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/freedomposts_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/screens/announcement_screen.dart';
+import 'package:ceosi_app/screens/ceosi_freedomwall/user_search_screen.dart';
 import 'package:ceosi_app/screens/home_screen.dart';
 import 'package:ceosi_app/screens/login_screen.dart';
 import 'package:ceosi_app/screens/register_screen.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/addfreedompostscreen',
+      initialRoute: '/usersearchscreen',
       routes: {
         '/': (context) => const HomeScreen(),
         '/loginscreen': (context) => LoginScreen(),
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         '/freedompostsscreen': (context) => const FreedomPostsScreen(),
         '/announcementscreen': (context) => const AnnouncementScreen(),
         '/addfreedompostscreen': (context) => const AddFreedomPostScreen(),
+        '/usersearchscreen': (context) => const UserSearchScreen(),
       },
       title: 'CEOSI App',
     );

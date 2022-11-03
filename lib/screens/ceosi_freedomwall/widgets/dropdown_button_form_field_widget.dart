@@ -7,14 +7,18 @@ class DropDownButtonFormFieldWidget extends StatefulWidget {
       required this.value,
       required this.items,
       required this.padding,
-      this.color,
+      this.dropdownIconcolor,
+      this.dropdownbackgroundcolor,
+      this.dropdownitemcolor,
       this.onChanged,
       this.hint,
       this.hintText});
 
   final String label;
   final Object? value;
-  final Color? color;
+  final Color? dropdownitemcolor;
+  final Color? dropdownbackgroundcolor;
+  final Color? dropdownIconcolor;
   final List<DropdownMenuItem<Object>> items;
   final void Function(Object?)? onChanged;
   final String? hintText;
@@ -35,20 +39,20 @@ class _DropDownButtonFormFieldWidgetState
       child: Column(children: [
         Container(
           decoration: BoxDecoration(
-            color: widget.color,
+            color: widget.dropdownbackgroundcolor,
             borderRadius: BorderRadius.circular(20),
           ),
           child: DropdownButtonFormField(
             hint: widget.hint,
+            iconEnabledColor: widget.dropdownIconcolor,
             dropdownColor: Colors.grey,
-            style: const TextStyle(color: Colors.black),
+            style: TextStyle(color: widget.dropdownitemcolor),
             decoration: InputDecoration(
                 border: InputBorder.none,
                 hoverColor: Colors.white,
                 focusColor: Colors.white,
                 fillColor: Colors.grey,
-                hintStyle:
-                    const TextStyle(color: Color.fromARGB(255, 16, 14, 14)),
+                hintStyle: const TextStyle(color: Colors.black),
                 floatingLabelBehavior: FloatingLabelBehavior.always,
                 labelText: widget.label,
                 labelStyle:
