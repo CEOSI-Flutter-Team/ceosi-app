@@ -1,8 +1,11 @@
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-import '../../widgets/dropdown_widget.dart';
+import '../../widgets/button_widget.dart';
+import '../../widgets/dropdown_button_form_field_widget.dart';
+
 import '../../widgets/sidebar_widget.dart';
+import '../../widgets/text_widget.dart';
 import '../../widgets/textformfield_widget.dart';
 
 class AddFreedomPostScreen extends StatefulWidget {
@@ -13,6 +16,13 @@ class AddFreedomPostScreen extends StatefulWidget {
 }
 
 class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
+  final moods = [
+    "Enjoyment",
+    "Sadness",
+    "Anger",
+    "Disgust",
+    "Fear",
+  ];
   final _moodController = TextEditingController();
 
   final _contentController = TextEditingController();
@@ -33,11 +43,14 @@ class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 10,
+                  height: 50,
                 ),
-                DropDownButtonWidget(
-                    label: 'Is published?',
-                    value: 'happy',
+                DropDownButtonFormFieldWidget(
+                    color: Colors.black12,
+                    padding: const EdgeInsets.fromLTRB(37, 12, 37, 0),
+                    label: '',
+                    value: mood,
+                    hint: const Center(child: Text('Select Mood')),
                     onChanged: (newValue) {
                       setState(() {
                         mood = newValue;
@@ -45,24 +58,41 @@ class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
                         print(mood.runtimeType);
                       });
                     },
-                    items: ['Enjoyment', 'Sadness', 'Anger', 'Disgust', 'Fear']
-                        .map<DropdownMenuItem<String>>((String value) {
+                    items: moods.map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
+                        alignment: AlignmentDirectional.center,
                         value: value,
-                        child: Text(value.toString()),
+                        child: Center(child: Text(value)),
                       );
                     }).toList()),
                 const SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
-                TextformfieldWidget(
-                  isObscure: false,
-                  textFieldController: _contentController,
-                  label: 'Content',
-                  colorFill: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  child: TextformfieldWidget(
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    maxLines: 14,
+                    hintText: 'What\'s on your mind?',
+                    radius: 10,
+                    isObscure: false,
+                    textFieldController: _contentController,
+                    label: '',
+                    colorFill: Colors.black12,
+                  ),
                 ),
                 const SizedBox(
                   height: 50,
+                ),
+                ButtonWidget(
+                    borderRadius: 20,
+                    onPressed: () {},
+                    buttonHeight: 53,
+                    buttonWidth: 182,
+                    textWidget: const NormalTextWidget(
+                        color: Colors.white, fontSize: 18, text: 'Add Post')),
+                const SizedBox(
+                  height: 250,
                 ),
               ],
             ),

@@ -1,3 +1,6 @@
+import 'package:ceosi_app/screens/ceosi_flutter_catalog/code_list_screen.dart';
+import 'package:ceosi_app/screens/ceosi_freedomwall/add_freedom_post_screen.dart';
+import 'package:ceosi_app/screens/ceosi_freedomwall/freedomposts_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/screens/announcement_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/screens/add_announcement_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/screens/add_team_screen.dart';
@@ -27,7 +30,7 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/addannouncementscreen',
+      initialRoute: '/addfreedompostscreen',
       routes: {
         '/': (context) => LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
@@ -39,6 +42,7 @@ class MyApp extends StatelessWidget {
         '/teamscreen': (context) => const TeamScreen(),
         '/addteamscreen': (context) => const AddTeamScreen(),
         '/aboutscreen': (context) => const AboutScreen(),
+        '/addfreedompostscreen': (context) => const AddFreedomPostScreen(),
       },
       title: Labels.ceosiApp,
     );

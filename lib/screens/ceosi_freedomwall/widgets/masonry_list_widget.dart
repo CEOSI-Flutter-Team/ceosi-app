@@ -33,6 +33,7 @@ class _MasonryListWidgetState extends State<MasonryListWidget> {
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 100, 20, 12),
       child: MasonryGridView.builder(
+        physics: const BouncingScrollPhysics(),
         crossAxisSpacing: 8,
         mainAxisSpacing: 6,
         scrollDirection: Axis.vertical,
@@ -74,7 +75,7 @@ class MasonryItem extends StatelessWidget {
       Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Colors.grey,
+          color: Colors.black12,
         ),
         padding: const EdgeInsets.fromLTRB(5, 30, 5, 5),
         child: Stack(children: [
