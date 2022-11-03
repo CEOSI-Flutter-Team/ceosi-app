@@ -47,7 +47,9 @@ class _TeamScreenState extends State<TeamScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: CustomColors.secondary,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/addteamscreen');
+        },
         child: const Icon(Icons.add),
       ),
     );
