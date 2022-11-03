@@ -3,7 +3,6 @@ import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:ceosi_app/widgets/textformfield_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:ceosi_app/constants/images.dart';
 
 class RegisterScreen extends StatelessWidget {
   final _nameController = TextEditingController();

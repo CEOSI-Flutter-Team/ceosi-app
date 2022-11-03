@@ -11,12 +11,13 @@ class TextformfieldWidget extends StatelessWidget {
   late TextEditingController textFieldController;
   FloatingLabelBehavior? floatingLabelBehavior;
   final double labelfontSize;
-  final int? maxLines;
+  final int maxLines;
   final String? hintText;
+
   TextformfieldWidget(
       {super.key,
       required this.label,
-      this.maxLines,
+      this.maxLines = 1,
       this.hintText,
       this.labelfontSize = 12.0,
       this.radius = 10,

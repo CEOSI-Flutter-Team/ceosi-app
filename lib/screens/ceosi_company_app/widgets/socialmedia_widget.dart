@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 

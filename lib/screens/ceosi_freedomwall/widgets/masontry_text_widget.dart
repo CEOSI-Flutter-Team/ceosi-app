@@ -19,7 +19,7 @@ class MasonryTextWidget extends StatelessWidget {
       text,
       style: TextStyle(
         fontSize: fontSize,
-        fontFamily: "lato",
+        fontFamily: 'lato',
         color: Colors.black87,
       ),
     );

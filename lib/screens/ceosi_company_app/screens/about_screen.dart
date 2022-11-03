@@ -51,7 +51,7 @@ class _AboutScreenState extends State<AboutScreen> {
                             BoldTextWidget(
                                 color: Colors.white,
                                 fontSize: 14,
-                                text: "About"),
+                                text: 'About'),
                           ],
                         ),
                       ),
@@ -104,7 +104,7 @@ class _AboutScreenState extends State<AboutScreen> {
                             BoldTextWidget(
                                 color: Colors.white,
                                 fontSize: 14,
-                                text: "Mission"),
+                                text: 'Mission'),
                           ],
                         ),
                       ),
@@ -129,7 +129,7 @@ class _AboutScreenState extends State<AboutScreen> {
                             BoldTextWidget(
                                 color: Colors.white,
                                 fontSize: 14,
-                                text: "Vision"),
+                                text: 'Vision'),
                           ],
                         ),
                       ),
