@@ -38,13 +38,9 @@ dependencies:
   flutter_riverpod: ^2.1.1
   google_fonts:
   flutter_staggered_grid_view: ^0.6.2
-<<<<<<< HEAD
   intl: ^0.17.0
-=======
   font_awesome_flutter:
   image_picker:
-  intl: 
->>>>>>> 61a6dbf279cddbd93d26fd3f5c4ddbbe8745726a
   
 dev_dependencies:
   flutter_test:
