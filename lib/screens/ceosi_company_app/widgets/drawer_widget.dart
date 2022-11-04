@@ -64,7 +64,9 @@ class DrawerWidget extends StatelessWidget {
                     ),
                     const SizedBox(height: 25.0),
                     ButtonWidget(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/eventcalendarscreen');
+                      },
                       buttonHeight: 55.0,
                       buttonWidth: 203.0,
                       borderRadius: 10.0,
