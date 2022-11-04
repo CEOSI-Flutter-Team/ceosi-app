@@ -29,7 +29,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
               height: 20,
             ),
             BoldTextWidget(
-                color: Colors.black, fontSize: 23, text: "Announcements"),
+                color: Colors.black, fontSize: 23, text: 'Announcements'),
             SizedBox(
               height: 20,
             ),
@@ -38,7 +38,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
               height: 20,
             ),
             BoldTextWidget(
-                color: Colors.black, fontSize: 23, text: "Upcoming Events"),
+                color: Colors.black, fontSize: 23, text: 'Upcoming Events'),
             SizedBox(
               height: 20,
             ),
@@ -102,10 +102,10 @@ class AnnouncementItems extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: const [
           BoldTextWidget(
-              color: Colors.white, fontSize: 14, text: "Emergency Meeting"),
+              color: Colors.white, fontSize: 14, text: 'Emergency Meeting'),
           NormalTextWidget(
-              color: Colors.white, fontSize: 13, text: "October 25, 2022"),
-          NormalTextWidget(color: Colors.white, fontSize: 13, text: "10:00 AM")
+              color: Colors.white, fontSize: 13, text: 'October 25, 2022'),
+          NormalTextWidget(color: Colors.white, fontSize: 13, text: '10:00 AM')
         ],
       ),
     );
@@ -166,10 +166,10 @@ class EventItems extends StatelessWidget {
           BoldTextWidget(
               color: Colors.white,
               fontSize: 14,
-              text: "CEOSI Town-Hall Meeting & Halloween Party"),
+              text: 'CEOSI Town-Hall Meeting & Halloween Party'),
           NormalTextWidget(
-              color: Colors.white, fontSize: 13, text: "October 25, 2022"),
-          NormalTextWidget(color: Colors.white, fontSize: 13, text: "3:00 PM")
+              color: Colors.white, fontSize: 13, text: 'October 25, 2022'),
+          NormalTextWidget(color: Colors.white, fontSize: 13, text: '3:00 PM')
         ],
       ),
     );

@@ -17,11 +17,11 @@ class AddFreedomPostScreen extends StatefulWidget {
 
 class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
   final moods = [
-    "Enjoyment",
-    "Sadness",
-    "Anger",
-    "Disgust",
-    "Fear",
+    'Enjoyment',
+    'Sadness',
+    'Anger',
+    'Disgust',
+    'Fear',
   ];
   final _moodController = TextEditingController();
 

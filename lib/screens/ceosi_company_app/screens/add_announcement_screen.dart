@@ -1,11 +1,9 @@
 import 'dart:io';
-
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/widgets/addbutton_widget.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/widgets/addtextformfield_widget.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/widgets/dialog_widget.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/widgets/drawer_widget.dart';
-import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -64,7 +62,7 @@ class _AddAnnouncementscreenState extends State<AddAnnouncementscreen> {
 
     if (pickedTime != null) {
       DateTime parsedTime =
-          DateFormat.jm().parse(pickedTime.format(context).toString());
+          DateFormat.jm().parse(parseTime(pickedTime).toString());
 
       String formattedTime = DateFormat('HH:mm a').format(parsedTime);
 
@@ -75,6 +73,8 @@ class _AddAnnouncementscreenState extends State<AddAnnouncementscreen> {
       return null;
     }
   }
+
+  String parseTime(TimeOfDay pickedTime) => pickedTime.format(context);
 
   displayEmployeePhoto() {
     if (_pickedImage == null) {
@@ -220,7 +220,7 @@ class _AddAnnouncementscreenState extends State<AddAnnouncementscreen> {
               isProcessing: _isProcessing,
               validated: () {
                 if (_addAnnouncementFormKey.currentState!.validate()) {
-                  print("Validated");
+                  print('Validated');
                 }
               },
             ),

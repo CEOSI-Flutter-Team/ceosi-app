@@ -16,11 +16,11 @@ class UserSearchScreen extends StatefulWidget {
 
 class _UserSearchScreenState extends State<UserSearchScreen> {
   final moods = [
-    "Enjoyment",
-    "Sadness",
-    "Anger",
-    "Disgust",
-    "Fear",
+    'Enjoyment',
+    'Sadness',
+    'Anger',
+    'Disgust',
+    'Fear',
   ];
   DateTimeRange? dateRange;
 

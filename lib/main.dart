@@ -29,9 +29,9 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/addfreedompostscreen',
+      initialRoute: '/aboutscreen',
       routes: {
-        '/': (context) => LoginScreen(),
+        '/': (context) => const LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
         '/registerscreen': (context) => RegisterScreen(),
         '/codelistscreen': (context) => const CodeListScreen(),
