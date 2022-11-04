@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:markdown_widget/markdown_widget.dart';
 import 'package:markdown_widget/config/highlight_themes.dart' as theme;
+import 'package:share_plus/share_plus.dart';
 
 import '../../constants/colors.dart';
 import '../../widgets/sidebar_widget.dart';
@@ -14,6 +15,16 @@ import 'code_list_screen.dart';
 
 class SourceCodeScreen extends StatelessWidget {
   const SourceCodeScreen({super.key});
+
+  share(String code, String subject) async {
+    await Share.share(
+      code
+          .replaceAll(RegExp('``````dart'), '')
+          .replaceAll(RegExp('``````'), '')
+          .trim(),
+      subject: subject,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +106,10 @@ class SourceCodeScreen extends StatelessWidget {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 110.0),
                           child: ButtonWidget(
-                            onPressed: () {},
+                            onPressed: () => share(
+                              dataList[args.index].data,
+                              dataList[args.index].title,
+                            ),
                             buttonHeight: 60.0,
                             buttonWidth: 30.0,
                             borderRadius: 20.0,

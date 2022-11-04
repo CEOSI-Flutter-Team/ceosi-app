@@ -39,6 +39,7 @@ dependencies:
   flutter_riverpod:
   google_fonts:
   markdown_widget:
+  share_plus:
 
 dev_dependencies:
   flutter_test:
