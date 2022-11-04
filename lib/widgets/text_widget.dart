@@ -30,6 +30,7 @@ class BoldTextWidget extends StatelessWidget {
   final double fontSize;
   final Function()? onTap;
   final Color color;
+  final TextDecoration? decoration;
   final TextAlign? textAlign;
   const BoldTextWidget({
     super.key,
@@ -38,6 +39,7 @@ class BoldTextWidget extends StatelessWidget {
     this.textAlign,
     required this.fontSize,
     required this.text,
+    this.decoration,
   });
 
   @override
@@ -46,7 +48,7 @@ class BoldTextWidget extends StatelessWidget {
       onTap: onTap,
       child: Text(
         text,
-        textAlign: TextAlign.center,
+        textAlign: textAlign,
         style: GoogleFonts.alfaSlabOne(color: color, fontSize: fontSize),
       ),
     );

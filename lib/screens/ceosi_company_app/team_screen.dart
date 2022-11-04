@@ -31,7 +31,7 @@ class _TeamScreenState extends State<TeamScreen> {
             ),
             Row(children: const [
               BoldTextWidget(
-                  color: Colors.black, fontSize: 23, text: "The Team"),
+                  color: Colors.black, fontSize: 23, text: 'The Team'),
               FliterTeam(),
             ]),
             const SizedBox(
@@ -121,20 +121,20 @@ class TeamItem extends StatelessWidget {
           BoldTextWidget(
               color: Colors.white,
               fontSize: 14,
-              text: "Finina Chloie O. Biscocho"),
+              text: 'Finina Chloie O. Biscocho'),
           SizedBox(height: 5),
           NormalTextWidget(
               color: Colors.white,
               fontSize: 12,
-              text: "Flutter Developer Trainee"),
+              text: 'Flutter Developer Trainee'),
           SizedBox(height: 5),
           NormalTextWidget(
               color: Colors.white,
               fontSize: 12,
-              text: "finina.ceosi@gmail.com"),
+              text: 'finina.ceosi@gmail.com'),
           SizedBox(height: 5),
           NormalTextWidget(
-              color: Colors.white, fontSize: 12, text: "March 17,1999")
+              color: Colors.white, fontSize: 12, text: 'March 17,1999')
         ],
       ),
     );
@@ -156,7 +156,7 @@ class SearchTeam extends StatelessWidget {
       child: TextField(
         controller: searchController,
         decoration: InputDecoration(
-          hintText: "Search",
+          hintText: 'Search',
           prefixIcon: const Icon(
             Icons.search,
             color: CustomColors.primary,
