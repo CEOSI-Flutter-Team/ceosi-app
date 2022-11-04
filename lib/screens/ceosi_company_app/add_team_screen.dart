@@ -184,7 +184,7 @@ class _AddTeamScreenState extends State<AddTeamScreen> {
                 isProcessing: _isProcessing,
                 validated: () {
                   if (_addTeamFormKey.currentState!.validate()) {
-                    print("Validated");
+                    print('Validated');
                   }
                 },
               ),

@@ -1,3 +1,5 @@
+import '../../models/ceosi_flutter_catalog/code_model.dart';
+
 abstract class CodeRepositoryInterface {
-  Future<Map<String, dynamic>?> getCodeList();
+  Future<CodeModel?> getCodeData();
 }

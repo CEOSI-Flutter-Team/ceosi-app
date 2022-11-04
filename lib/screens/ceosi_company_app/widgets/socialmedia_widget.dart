@@ -1,4 +1,3 @@
-import 'package:ceosi_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class SocialMediaWidget extends StatelessWidget {

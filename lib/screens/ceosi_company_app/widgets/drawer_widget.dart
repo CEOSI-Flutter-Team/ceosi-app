@@ -60,7 +60,7 @@ class DrawerWidget extends StatelessWidget {
                       textWidget: const BoldTextWidget(
                           color: Colors.white,
                           fontSize: 12.0,
-                          text: "Announcement"),
+                          text: 'Announcement'),
                     ),
                     const SizedBox(height: 25.0),
                     ButtonWidget(
@@ -73,7 +73,7 @@ class DrawerWidget extends StatelessWidget {
                       textWidget: const BoldTextWidget(
                           color: Colors.white,
                           fontSize: 12.0,
-                          text: "Event Calendar"),
+                          text: 'Event Calendar'),
                     ),
                     const SizedBox(height: 25.0),
                     ButtonWidget(
@@ -86,7 +86,7 @@ class DrawerWidget extends StatelessWidget {
                       textWidget: const BoldTextWidget(
                           color: Colors.white,
                           fontSize: 12.0,
-                          text: "The Team"),
+                          text: 'The Team'),
                     ),
                     const SizedBox(height: 25.0),
                     ButtonWidget(
@@ -97,7 +97,7 @@ class DrawerWidget extends StatelessWidget {
                       buttonWidth: 203.0,
                       borderRadius: 10.0,
                       textWidget: const BoldTextWidget(
-                          color: Colors.white, fontSize: 12.0, text: "About"),
+                          color: Colors.white, fontSize: 12.0, text: 'About'),
                     ),
                   ],
                 ),

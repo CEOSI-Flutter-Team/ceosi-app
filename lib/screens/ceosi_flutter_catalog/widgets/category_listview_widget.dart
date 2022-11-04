@@ -1,9 +1,10 @@
+import 'package:ceosi_app/models/ceosi_flutter_catalog/category_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../constants/colors.dart';
 import '../../../constants/labels.dart';
-import '../../../providers/ceosi_flutter_catalog/category_list_notifier.dart';
+import '../../../providers/ceosi_flutter_catalog/category_list_provider.dart';
 import '../../../widgets/text_widget.dart';
 
 class CategoryListViewWidget extends ConsumerWidget {
@@ -11,11 +12,11 @@ class CategoryListViewWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AsyncValue<Map<String, dynamic>?> categoryListData =
+    AsyncValue<CategoryModel?> categoryListData =
         ref.watch(categoryListStateNotifierProvider);
     return categoryListData.when(
       data: (data) {
-        List<Map<String, dynamic>> categoryList = data!['category_list'];
+        List<CategoryItem> categoryList = data!.categoryList;
         return CategoryListItemWidget(categoryList);
       },
       error: (error, stackTrace) => Text(error.toString()),
@@ -28,8 +29,8 @@ class CategoryListViewWidget extends ConsumerWidget {
 }
 
 class CategoryListItemWidget extends StatelessWidget {
-  const CategoryListItemWidget(this.categoryList, {super.key});
-  final List<Map<String, dynamic>> categoryList;
+  const CategoryListItemWidget(this.categoryItem, {super.key});
+  final List<CategoryItem> categoryItem;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,7 @@ class CategoryListItemWidget extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               physics: const BouncingScrollPhysics(),
-              itemCount: categoryList.length,
+              itemCount: categoryItem.length,
               itemBuilder: (context, index) {
                 return InkWell(
                   borderRadius: BorderRadius.circular(20.0),
@@ -80,7 +81,7 @@ class CategoryListItemWidget extends StatelessWidget {
                                 color: CustomColors.primary,
                                 fontSize: 12.0,
                                 text:
-                                    '${categoryList[index]['title']} (${categoryList[index]['items']})',
+                                    '${categoryItem[index].title} (${categoryItem[index].items})',
                               ),
                             ],
                           ),

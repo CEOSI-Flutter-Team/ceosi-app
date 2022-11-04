@@ -4,4 +4,6 @@ class CustomIcons {
   final continuousdoticon = 'assets/icons/continuousdot.png';
   final plusicon = 'assets/icons/plus.png';
   final datepickericon = 'assets/icons/datepickericon.png';
+  final deleteicon = 'assets/icons/deleteicon.png';
+  final editicon = 'assets/icons/editicon.png';
 }

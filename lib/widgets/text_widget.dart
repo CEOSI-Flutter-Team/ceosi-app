@@ -23,22 +23,28 @@ class NormalTextWidget extends StatelessWidget {
 }
 
 class BoldTextWidget extends StatelessWidget {
+  final TextAlign? textAlign;
   final String text;
   final double fontSize;
   final Color color;
+  final TextDecoration? decoration;
 
   const BoldTextWidget({
     super.key,
+    this.textAlign,
     required this.color,
     required this.fontSize,
     required this.text,
+    this.decoration,
   });
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: GoogleFonts.alfaSlabOne(color: color, fontSize: fontSize),
+      textAlign: textAlign,
+      style: GoogleFonts.alfaSlabOne(
+          color: color, fontSize: fontSize, decoration: decoration),
     );
   }
 }
