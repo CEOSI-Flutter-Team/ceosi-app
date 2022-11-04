@@ -1,6 +1,7 @@
 import 'package:ceosi_app/screens/ceosi_company_app/add_announcement_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/add_team_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/event_calendar_screen.dart';
+import 'package:ceosi_app/screens/ceosi_company_app/event_details_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/team_screen.dart';
 import 'package:ceosi_app/screens/login_screen.dart';
 import 'package:ceosi_app/screens/home_screen.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/addannouncementscreen',
+      initialRoute: '/eventdetailsscreen',
       routes: {
         '/': (context) => LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         '/addteamscreen': (context) => const AddTeamScreen(),
         '/aboutscreen': (context) => const AboutScreen(),
         '/eventcalendarscreen': (context) => const EventCalendarScreen(),
+        '/eventdetailsscreen': (context) => const EventDetailsScreen(),
       },
       title: Labels.ceosiApp,
     );
