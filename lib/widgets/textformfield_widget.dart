@@ -10,13 +10,16 @@ class TextformfieldWidget extends StatelessWidget {
   final Widget? suffixIcon;
   final TextEditingController textFieldController;
   final FloatingLabelBehavior? floatingLabelBehavior;
-  final int? maxLines;
+  final double labelfontSize;
+  final int maxLines;
   final String? hintText;
+
   const TextformfieldWidget(
       {super.key,
       required this.label,
       this.maxLines = 1,
       this.hintText,
+      this.labelfontSize = 12.0,
       this.radius = 10,
       this.floatingLabelBehavior,
       this.suffixIcon,
@@ -50,9 +53,9 @@ class TextformfieldWidget extends StatelessWidget {
           ),
           labelText: label,
           floatingLabelBehavior: floatingLabelBehavior,
-          labelStyle: const TextStyle(
+          labelStyle: TextStyle(
             color: Colors.black,
-            fontSize: 12.0,
+            fontSize: labelfontSize,
           ),
         ),
       ),

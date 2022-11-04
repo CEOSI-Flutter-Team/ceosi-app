@@ -43,6 +43,7 @@ dependencies:
   image_picker:
   markdown_widget:
   table_calendar: ^3.0.8
+  pie_chart: ^5.3.2
   
 dev_dependencies:
   flutter_test:

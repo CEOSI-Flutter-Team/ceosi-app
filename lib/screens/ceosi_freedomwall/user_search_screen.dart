@@ -41,10 +41,6 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
   }
 
   Future pickDateRange(BuildContext context) async {
-    final initialDateRange = DateTimeRange(
-      start: DateTime.now(),
-      end: DateTime.now().add(const Duration(hours: 24 * 3)),
-    );
     final newDateRange = await showDateRangePicker(
       context: context,
       firstDate: DateTime(DateTime.now().year - 5),
@@ -57,7 +53,6 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
     setState(() => dateRange = newDateRange);
   }
 
-  final _contentController = TextEditingController();
   Object? mood;
 
   @override
