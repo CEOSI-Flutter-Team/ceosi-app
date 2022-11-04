@@ -5,6 +5,7 @@ import 'package:ceosi_app/screens/ceosi_company_app/screens/announcement_screen.
 import 'package:ceosi_app/screens/ceosi_company_app/screens/add_announcement_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/screens/add_team_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/screens/team_screen.dart';
+import 'package:ceosi_app/screens/ceosi_freedomwall/pie_chart_report_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/user_search_screen.dart';
 import 'package:ceosi_app/screens/login_screen.dart';
 import 'package:ceosi_app/screens/home_screen.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/usersearchscreen',
+      initialRoute: '/piechartreportscreen',
       routes: {
         '/': (context) => const LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         '/aboutscreen': (context) => const AboutScreen(),
         '/addfreedompostscreen': (context) => const AddFreedomPostScreen(),
         '/usersearchscreen': (context) => const UserSearchScreen(),
+        '/piechartreportscreen': (context) => const PieChartReportScreen(),
       },
       title: Labels.ceosiApp,
     );

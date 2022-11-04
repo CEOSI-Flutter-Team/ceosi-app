@@ -22,4 +22,13 @@ class CustomColors {
     const Color.fromARGB(255, 164, 76, 105),
     const Color.fromARGB(255, 58, 122, 183),
   ];
+
+  List<Color> piechartColors = [
+    const Color.fromRGBO(82, 98, 255, 1),
+    const Color.fromRGBO(46, 198, 255, 1),
+    const Color.fromRGBO(123, 201, 82, 1),
+    const Color.fromRGBO(255, 171, 67, 1),
+    const Color.fromRGBO(252, 91, 57, 1),
+    const Color.fromRGBO(139, 135, 130, 1),
+  ];
 }

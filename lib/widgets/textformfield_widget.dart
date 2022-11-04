@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TextformfieldWidget extends StatelessWidget {
-  late String label;
-  late Color colorFill;
+  final String label;
+  final Color colorFill;
   final double radius;
-  late bool isObscure;
-  Widget? suffixIcon;
-  late TextEditingController textFieldController;
-  FloatingLabelBehavior? floatingLabelBehavior;
+  final bool isObscure;
+  final Widget? suffixIcon;
+  final TextEditingController textFieldController;
+  final FloatingLabelBehavior? floatingLabelBehavior;
   final double labelfontSize;
   final int maxLines;
   final String? hintText;
 
-  TextformfieldWidget(
+  const TextformfieldWidget(
       {super.key,
       required this.label,
       this.maxLines = 1,
