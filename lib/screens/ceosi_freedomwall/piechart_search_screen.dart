@@ -2,26 +2,21 @@ import 'package:ceosi_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 import '../../constants/icons.dart';
 import '../../widgets/button_widget.dart';
-import 'widgets/dropdown_button_form_field_widget.dart';
 import '../../widgets/sidebar_widget.dart';
 import '../../widgets/text_widget.dart';
 import 'package:intl/intl.dart';
 
-class UserSearchScreen extends StatefulWidget {
-  const UserSearchScreen({super.key});
+import '../../widgets/textformfield_widget.dart';
+
+class PieChartSearchScreen extends StatefulWidget {
+  const PieChartSearchScreen({super.key});
 
   @override
-  State<UserSearchScreen> createState() => _UserSearchScreenState();
+  State<PieChartSearchScreen> createState() => _PieChartSearchScreenState();
 }
 
-class _UserSearchScreenState extends State<UserSearchScreen> {
-  final moods = [
-    'Enjoyment',
-    'Sadness',
-    'Anger',
-    'Disgust',
-    'Fear',
-  ];
+class _PieChartSearchScreenState extends State<PieChartSearchScreen> {
+  final _searcheduserController = TextEditingController();
   DateTimeRange? dateRange;
 
   String getFrom() {
@@ -76,6 +71,22 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                   height: 100,
                 ),
                 Padding(
+                  padding: const EdgeInsets.fromLTRB(2, 0, 2, 0),
+                  child: TextformfieldWidget(
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    maxLines: 1,
+                    hintText: 'Enter user\'s email',
+                    radius: 20,
+                    isObscure: false,
+                    textFieldController: _searcheduserController,
+                    label: '',
+                    colorFill: Colors.black12,
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Padding(
                   padding: const EdgeInsets.fromLTRB(35, 0, 35, 0),
                   child: ButtonWidget(
                       borderRadius: 20,
@@ -114,36 +125,7 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                       )),
                 ),
                 const SizedBox(
-                  height: 15,
-                ),
-                DropDownButtonFormFieldWidget(
-                    dropdownbackgroundcolor: CustomColors.primary,
-                    dropdownIconcolor: Colors.white,
-                    dropdownitemcolor: Colors.white,
-                    padding: const EdgeInsets.fromLTRB(37, 12, 37, 0),
-                    label: '',
-                    value: mood,
-                    hint: const Center(
-                        child: NormalTextWidget(
-                            color: Colors.white,
-                            fontSize: 20,
-                            text: 'Select Mood')),
-                    onChanged: (newValue) {
-                      setState(() {
-                        mood = newValue;
-                        print(mood);
-                        print(mood.runtimeType);
-                      });
-                    },
-                    items: moods.map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        alignment: AlignmentDirectional.center,
-                        value: value,
-                        child: Center(child: Text(value)),
-                      );
-                    }).toList()),
-                const SizedBox(
-                  height: 350,
+                  height: 365,
                 ),
                 ButtonWidget(
                     borderRadius: 20,
