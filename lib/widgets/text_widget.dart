@@ -28,12 +28,13 @@ class NormalTextWidget extends StatelessWidget {
 class BoldTextWidget extends StatelessWidget {
   final String text;
   final double fontSize;
-
+  final Function()? onTap;
   final Color color;
   final TextAlign? textAlign;
   const BoldTextWidget({
     super.key,
     required this.color,
+    this.onTap,
     this.textAlign,
     required this.fontSize,
     required this.text,
@@ -41,10 +42,13 @@ class BoldTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      textAlign: TextAlign.center,
-      style: GoogleFonts.alfaSlabOne(color: color, fontSize: fontSize),
+    return InkWell(
+      onTap: onTap,
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: GoogleFonts.alfaSlabOne(color: color, fontSize: fontSize),
+      ),
     );
   }
 }
