@@ -411,11 +411,11 @@ class _ListViewSeparatedItemState extends State<ListViewSeparatedItem> {
                 isObscure = !isObscure;
               });
             },
-            color: Colors.black,
+            color: const Color.fromARGB(255, 104, 103, 103),
             fontSize: 14,
             text: isObscure == true
                 ? widget.userlist[widget.index].email
-                    .replaceAll(RegExp(r'.'), '\u{3030}')
+                    .replaceAll(RegExp(r'.'), '\u{2733}')
                 : widget.userlist[widget.index].email,
           ),
         ),
