@@ -5,8 +5,9 @@ import 'package:ceosi_app/screens/ceosi_company_app/screens/announcement_screen.
 import 'package:ceosi_app/screens/ceosi_company_app/screens/add_announcement_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/screens/add_team_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/screens/team_screen.dart';
-import 'package:ceosi_app/screens/login_screen.dart';
+import 'package:ceosi_app/screens/ceosi_flutter_catalog/source_code_screen.dart';
 import 'package:ceosi_app/screens/home_screen.dart';
+import 'package:ceosi_app/screens/login_screen.dart';
 import 'package:ceosi_app/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         '/addteamscreen': (context) => const AddTeamScreen(),
         '/aboutscreen': (context) => const AboutScreen(),
         '/addfreedompostscreen': (context) => const AddFreedomPostScreen(),
+        '/sourcecodescreen': (context) => const SourceCodeScreen(),
       },
       title: Labels.ceosiApp,
     );

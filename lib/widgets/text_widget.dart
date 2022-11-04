@@ -26,19 +26,22 @@ class BoldTextWidget extends StatelessWidget {
   final String text;
   final double fontSize;
   final Color color;
+  final TextDecoration? decoration;
 
   const BoldTextWidget({
     super.key,
     required this.color,
     required this.fontSize,
     required this.text,
+    this.decoration,
   });
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: GoogleFonts.alfaSlabOne(color: color, fontSize: fontSize),
+      style: GoogleFonts.alfaSlabOne(
+          color: color, fontSize: fontSize, decoration: decoration),
     );
   }
 }

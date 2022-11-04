@@ -41,7 +41,8 @@ dependencies:
   intl: ^0.17.0
   font_awesome_flutter:
   image_picker:
-  
+  markdown_widget:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

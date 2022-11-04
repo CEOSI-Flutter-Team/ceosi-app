@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../constants/labels.dart';
-import '../../providers/ceosi_flutter_catalog/code_list_notifier.dart';
+import '../../providers/ceosi_flutter_catalog/code_list_provider.dart';
 import 'widgets/category_listview_widget.dart';
 
 class CodeListScreen extends StatelessWidget {
@@ -93,6 +93,19 @@ class AppbarExtensionWidget extends StatelessWidget {
   }
 }
 
+class SourceCodeArguments {
+  SourceCodeArguments(this.title);
+
+  final String title;
+}
+
+navigateToSourceCodeScreen(NavigatorState navigator, String title) {
+  navigator.pushNamed(
+    '/sourcecodescreen',
+    arguments: SourceCodeArguments(title),
+  );
+}
+
 class CodeListViewWidget extends ConsumerWidget {
   const CodeListViewWidget({super.key});
 
@@ -120,6 +133,7 @@ class CodeListItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final navigator = Navigator.of(context);
     return Expanded(
       child: ListView.builder(
         physics: const BouncingScrollPhysics(),
@@ -128,7 +142,8 @@ class CodeListItemWidget extends StatelessWidget {
           return InkWell(
             borderRadius: BorderRadius.circular(20.0),
             splashColor: Colors.transparent,
-            onTap: () {},
+            onTap: () => navigateToSourceCodeScreen(
+                navigator, codeList[index]['title'].toUpperCase()),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(36.0, 20.0, 36.0, 20.0),
               child: Container(
