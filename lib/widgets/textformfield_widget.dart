@@ -15,7 +15,7 @@ class TextformfieldWidget extends StatelessWidget {
   const TextformfieldWidget(
       {super.key,
       required this.label,
-      this.maxLines,
+      this.maxLines = 1,
       this.hintText,
       this.radius = 10,
       this.floatingLabelBehavior,

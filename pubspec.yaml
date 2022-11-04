@@ -42,7 +42,8 @@ dependencies:
   font_awesome_flutter:
   image_picker:
   markdown_widget:
-
+  table_calendar: ^3.0.8
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

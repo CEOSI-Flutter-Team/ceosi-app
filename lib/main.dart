@@ -1,18 +1,16 @@
-import 'package:ceosi_app/screens/ceosi_flutter_catalog/code_list_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/add_freedom_post_screen.dart';
-import 'package:ceosi_app/screens/ceosi_freedomwall/freedomposts_screen.dart';
-import 'package:ceosi_app/screens/ceosi_company_app/screens/announcement_screen.dart';
-import 'package:ceosi_app/screens/ceosi_company_app/screens/add_announcement_screen.dart';
-import 'package:ceosi_app/screens/ceosi_company_app/screens/add_team_screen.dart';
-import 'package:ceosi_app/screens/ceosi_company_app/screens/team_screen.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/source_code_screen.dart';
-import 'package:ceosi_app/screens/home_screen.dart';
+import 'package:ceosi_app/screens/ceosi_company_app/add_team_screen.dart';
+import 'package:ceosi_app/screens/ceosi_company_app/event_calendar_screen.dart';
+import 'package:ceosi_app/screens/ceosi_company_app/team_screen.dart';
 import 'package:ceosi_app/screens/login_screen.dart';
+import 'package:ceosi_app/screens/home_screen.dart';
 import 'package:ceosi_app/screens/register_screen.dart';
 import 'package:flutter/material.dart';
+import 'screens/ceosi_company_app/about_screen.dart';
+import 'screens/ceosi_company_app/announcement_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'constants/labels.dart';
-import 'screens/ceosi_company_app/screens/about_screen.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -29,20 +27,18 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/aboutscreen',
+      initialRoute: '/eventcalendarscreen',
       routes: {
         '/': (context) => const LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
         '/registerscreen': (context) => RegisterScreen(),
-        '/codelistscreen': (context) => const CodeListScreen(),
-        '/freedompostsscreen': (context) => const FreedomPostsScreen(),
         '/announcementscreen': (context) => const AnnouncementScreen(),
-        '/addannouncementscreen': (context) => const AddAnnouncementscreen(),
         '/teamscreen': (context) => const TeamScreen(),
         '/addteamscreen': (context) => const AddTeamScreen(),
         '/aboutscreen': (context) => const AboutScreen(),
         '/addfreedompostscreen': (context) => const AddFreedomPostScreen(),
         '/sourcecodescreen': (context) => const SourceCodeScreen(),
+        '/eventcalendarscreen': (context) => const EventCalendarScreen(),
       },
       title: Labels.ceosiApp,
     );
