@@ -8,6 +8,7 @@ class AddtextformfieldWidget extends StatelessWidget {
   late TextEditingController textFieldController;
   bool readOnly;
   final VoidCallback? onTap;
+  final int maxLine;
 
   AddtextformfieldWidget(
       {super.key,
@@ -16,7 +17,8 @@ class AddtextformfieldWidget extends StatelessWidget {
       this.colorFill = Colors.white,
       this.suffixIcon,
       required this.textFieldController,
-      this.readOnly = false});
+      this.readOnly = false,
+      this.maxLine = 1});
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +56,7 @@ class AddtextformfieldWidget extends StatelessWidget {
           ),
           onTap: onTap,
           readOnly: readOnly,
+          maxLines: maxLine,
           validator: (value) {
             if (value == null || value.isEmpty) {
               return '$label is required';
