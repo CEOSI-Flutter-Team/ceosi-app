@@ -1,18 +1,18 @@
+import 'package:ceosi_app/models/ceosi_flutter_catalog/category_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../repositories/ceosi_flutter_catalog/category_repository.dart';
 
-final categoryListFutureProvider = FutureProvider<Map<String, dynamic>?>(
+final categoryListFutureProvider = FutureProvider<CategoryModel?>(
   (ref) async {
     return ref.watch(categoryRepositoryProvider).getCategoryList();
   },
 );
 
-class CategoryListNotifier
-    extends StateNotifier<AsyncValue<Map<String, dynamic>?>> {
+class CategoryListNotifier extends StateNotifier<AsyncValue<CategoryModel?>> {
   CategoryListNotifier(
     this.ref, [
-    AsyncValue<Map<String, dynamic>>? categoryList,
+    AsyncValue<CategoryModel>? categoryList,
   ]) : super(categoryList ?? const AsyncValue.loading()) {
     _getCategoryList();
   }
@@ -26,7 +26,7 @@ class CategoryListNotifier
 }
 
 final categoryListStateNotifierProvider = StateNotifierProvider.autoDispose<
-    CategoryListNotifier, AsyncValue<Map<String, dynamic>?>>(
+    CategoryListNotifier, AsyncValue<CategoryModel?>>(
   (ref) {
     return CategoryListNotifier(ref);
   },

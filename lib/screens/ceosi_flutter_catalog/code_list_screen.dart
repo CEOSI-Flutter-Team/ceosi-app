@@ -1,11 +1,12 @@
 import 'package:ceosi_app/constants/colors.dart';
+import 'package:ceosi_app/models/ceosi_flutter_catalog/code_model.dart';
 import 'package:ceosi_app/widgets/sidebar_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../constants/labels.dart';
-import '../../providers/ceosi_flutter_catalog/code_list_provider.dart';
+import '../../providers/ceosi_flutter_catalog/code_provider.dart';
 import 'widgets/category_listview_widget.dart';
 
 class CodeListScreen extends StatelessWidget {
@@ -94,15 +95,16 @@ class AppbarExtensionWidget extends StatelessWidget {
 }
 
 class SourceCodeArguments {
-  SourceCodeArguments(this.title);
+  SourceCodeArguments(this.title, this.index);
 
   final String title;
+  final int index;
 }
 
-navigateToSourceCodeScreen(NavigatorState navigator, String title) {
+navigateToSourceCodeScreen(NavigatorState navigator, String title, int index) {
   navigator.pushNamed(
     '/sourcecodescreen',
-    arguments: SourceCodeArguments(title),
+    arguments: SourceCodeArguments(title, index),
   );
 }
 
@@ -111,12 +113,11 @@ class CodeListViewWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AsyncValue<Map<String, dynamic>?> codeListData =
-        ref.watch(codeListStateNotifierProvider);
-    return codeListData.when(
+    AsyncValue<CodeModel?> codeData = ref.watch(codeStateNotifierProvider);
+    return codeData.when(
       data: (data) {
-        List<Map<String, dynamic>> codeList = data!['code_list'];
-        return CodeListItemWidget(codeList);
+        List<CodeDatum> dataList = data!.codeData;
+        return CodeListItemWidget(dataList);
       },
       error: (error, stackTrace) => Text(error.toString()),
       loading: () => const Center(
@@ -128,8 +129,8 @@ class CodeListViewWidget extends ConsumerWidget {
 }
 
 class CodeListItemWidget extends StatelessWidget {
-  const CodeListItemWidget(this.codeList, {super.key});
-  final List<Map<String, dynamic>> codeList;
+  const CodeListItemWidget(this.dataList, {super.key});
+  final List<CodeDatum> dataList;
 
   @override
   Widget build(BuildContext context) {
@@ -137,13 +138,13 @@ class CodeListItemWidget extends StatelessWidget {
     return Expanded(
       child: ListView.builder(
         physics: const BouncingScrollPhysics(),
-        itemCount: codeList.length,
+        itemCount: dataList.length,
         itemBuilder: (context, index) {
           return InkWell(
             borderRadius: BorderRadius.circular(20.0),
             splashColor: Colors.transparent,
             onTap: () => navigateToSourceCodeScreen(
-                navigator, codeList[index]['title'].toUpperCase()),
+                navigator, dataList[index].title.toUpperCase(), index),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(36.0, 20.0, 36.0, 20.0),
               child: Container(
@@ -167,14 +168,14 @@ class CodeListItemWidget extends StatelessWidget {
                         BoldTextWidget(
                           color: Colors.white,
                           fontSize: 12.0,
-                          text: codeList[index]['title'],
+                          text: dataList[index].title,
                         ),
                       ],
                     ),
                     BoldTextWidget(
                       color: Colors.white,
                       fontSize: 10.0,
-                      text: codeList[index]['category'],
+                      text: dataList[index].category,
                     ),
                   ],
                 ),
