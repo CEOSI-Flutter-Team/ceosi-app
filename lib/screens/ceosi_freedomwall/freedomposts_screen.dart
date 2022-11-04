@@ -50,7 +50,7 @@ class _FreedomPostsScreenState extends State<FreedomPostsScreen> {
                     borderRadius: 20,
                     onPressed: () {},
                     buttonHeight: 70,
-                    buttonWidth: 60,
+                    buttonWidth: 70,
                     textWidget: Image.asset(CustomIcons().piecharticon,
                         fit: BoxFit.contain)),
                 ButtonWidget(

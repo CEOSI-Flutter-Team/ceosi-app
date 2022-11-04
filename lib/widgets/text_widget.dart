@@ -5,10 +5,12 @@ class NormalTextWidget extends StatelessWidget {
   final String text;
   final double fontSize;
   final Color color;
+  final TextAlign? textAlign;
 
   const NormalTextWidget({
     super.key,
     required this.color,
+    this.textAlign,
     required this.fontSize,
     required this.text,
   });
@@ -17,6 +19,7 @@ class NormalTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      textAlign: textAlign,
       style: GoogleFonts.aleo(color: color, fontSize: fontSize),
     );
   }
@@ -25,11 +28,13 @@ class NormalTextWidget extends StatelessWidget {
 class BoldTextWidget extends StatelessWidget {
   final String text;
   final double fontSize;
-  final Color color;
 
+  final Color color;
+  final TextAlign? textAlign;
   const BoldTextWidget({
     super.key,
     required this.color,
+    this.textAlign,
     required this.fontSize,
     required this.text,
   });
@@ -38,6 +43,7 @@ class BoldTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      textAlign: TextAlign.center,
       style: GoogleFonts.alfaSlabOne(color: color, fontSize: fontSize),
     );
   }

@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class Mood {
   String amount;
   String category;
@@ -18,4 +19,18 @@ class Mood {
       description: json['description'],
     );
   }
+}
+
+class Usermodel {
+  int fp_id;
+  String email;
+  DateTime date;
+  String mood;
+
+  Usermodel({
+    required this.fp_id,
+    required this.email,
+    required this.date,
+    required this.mood,
+  });
 }
