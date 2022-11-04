@@ -1,3 +1,4 @@
+import 'package:ceosi_app/screens/ceosi_company_app/add_announcement_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/add_team_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/event_calendar_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/team_screen.dart';
@@ -25,12 +26,13 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/eventcalendarscreen',
+      initialRoute: '/addannouncementscreen',
       routes: {
         '/': (context) => LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
         '/registerscreen': (context) => RegisterScreen(),
         '/announcementscreen': (context) => const AnnouncementScreen(),
+        '/addannouncementscreen': (context) => const AddAnnouncementScreen(),
         '/teamscreen': (context) => const TeamScreen(),
         '/addteamscreen': (context) => const AddTeamScreen(),
         '/aboutscreen': (context) => const AboutScreen(),

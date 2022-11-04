@@ -71,7 +71,12 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: CustomColors.secondary,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(
+              context,
+              '/addannouncementscreen',
+            );
+          },
           child: const Icon(Icons.add),
         ));
   }
