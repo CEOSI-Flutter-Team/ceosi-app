@@ -22,13 +22,13 @@ class Mood {
 }
 
 class Usermodel {
-  int fp_id;
+  int fpid;
   String email;
   DateTime date;
   String mood;
 
   Usermodel({
-    required this.fp_id,
+    required this.fpid,
     required this.email,
     required this.date,
     required this.mood,

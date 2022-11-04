@@ -18,207 +18,207 @@ class AdminPostsDataScreen extends StatefulWidget {
 class _AdminPostsDataScreenState extends State<AdminPostsDataScreen> {
   List<Usermodel> userlist = [
     Usermodel(
-        fp_id: 1,
+        fpid: 1,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Enjoyment'),
     Usermodel(
-        fp_id: 2,
+        fpid: 2,
         email: 'sancheja2@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 3,
+        fpid: 3,
         email: 'sancheja3@gmail.com',
         date: DateTime.now(),
         mood: 'Anger'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Sadness'),
     Usermodel(
-        fp_id: 4,
+        fpid: 4,
         email: 'sancheja1@gmail.com',
         date: DateTime.now(),
         mood: 'Enjoyment'),
@@ -257,7 +257,7 @@ class _AdminPostsDataScreenState extends State<AdminPostsDataScreen> {
                 return ListViewSeparatedItem(
                   userlist: userlist,
                   index: index,
-                  fp_id: userlist[index].fp_id,
+                  fpid: userlist[index].fpid,
                   email: userlist[index].email,
                   date: userlist[index].date,
                   mood: userlist[index].mood,
@@ -366,11 +366,11 @@ class ListViewSeparatedHeader extends StatelessWidget {
   }
 }
 
-class ListViewSeparatedItem extends StatelessWidget {
+class ListViewSeparatedItem extends StatefulWidget {
   const ListViewSeparatedItem({
     Key? key,
     required this.userlist,
-    required this.fp_id,
+    required this.fpid,
     required this.email,
     required this.date,
     required this.mood,
@@ -379,11 +379,18 @@ class ListViewSeparatedItem extends StatelessWidget {
 
   final List<Usermodel> userlist;
   final int index;
-  final int fp_id;
+  final int fpid;
   final String email;
   final DateTime date;
   final String mood;
-  final bool isObscure = true;
+
+  @override
+  State<ListViewSeparatedItem> createState() => _ListViewSeparatedItemState();
+}
+
+class _ListViewSeparatedItemState extends State<ListViewSeparatedItem> {
+  bool isObscure = true;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -394,16 +401,22 @@ class ListViewSeparatedItem extends StatelessWidget {
             textAlign: TextAlign.center,
             color: Colors.black,
             fontSize: 14,
-            text: userlist[index].fp_id.toString(),
+            text: widget.userlist[widget.index].fpid.toString(),
           ),
         ),
         Expanded(
           child: NormalTextWidget(
+            onTap: () {
+              setState(() {
+                isObscure = !isObscure;
+              });
+            },
             color: Colors.black,
             fontSize: 14,
             text: isObscure == true
-                ? userlist[index].email.replaceAll(RegExp(r'.'), '\u{3030}')
-                : userlist[index].email,
+                ? widget.userlist[widget.index].email
+                    .replaceAll(RegExp(r'.'), '\u{3030}')
+                : widget.userlist[widget.index].email,
           ),
         ),
         Expanded(
@@ -412,7 +425,8 @@ class ListViewSeparatedItem extends StatelessWidget {
             child: NormalTextWidget(
               color: Colors.black,
               fontSize: 14,
-              text: DateFormat('MM/dd/yyyy').format(userlist[index].date),
+              text: DateFormat('MM/dd/yyyy')
+                  .format(widget.userlist[widget.index].date),
             ),
           ),
         ),
@@ -422,7 +436,7 @@ class ListViewSeparatedItem extends StatelessWidget {
             child: NormalTextWidget(
               color: Colors.black,
               fontSize: 14,
-              text: userlist[index].mood,
+              text: widget.userlist[widget.index].mood,
             ),
           ),
         ),
