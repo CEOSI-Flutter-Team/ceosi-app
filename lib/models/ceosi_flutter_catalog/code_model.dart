@@ -22,19 +22,20 @@ class CodeModel {
 }
 
 class CodeDatum {
-  CodeDatum({
-    required this.title,
-    required this.category,
-    required this.description,
-    required this.isCode,
-    required this.data,
-  });
+  CodeDatum(
+      {required this.title,
+      required this.category,
+      required this.description,
+      required this.isCode,
+      required this.data,
+      required this.previewImage});
 
   String title;
   String category;
   String description;
   bool isCode;
   String data;
+  String previewImage;
 
   factory CodeDatum.fromJson(Map<String, dynamic> json) => CodeDatum(
         title: json['title'],
@@ -42,6 +43,7 @@ class CodeDatum {
         description: json['description'],
         isCode: json['is_code'],
         data: json['data'],
+        previewImage: json['previewImage'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -50,5 +52,6 @@ class CodeDatum {
         'description': description,
         'is_code': isCode,
         'data': data,
+        'previewImage': previewImage,
       };
 }

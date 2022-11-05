@@ -55,7 +55,9 @@ class SidebarWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     ButtonWidget(
-                      onPressed: () {},
+                      onPressed: () => Navigator.of(context)
+                          .pushNamedAndRemoveUntil(
+                              '/codelistscreen', (route) => false),
                       buttonHeight: 55.0,
                       buttonWidth: 203.0,
                       borderRadius: 10.0,
@@ -66,7 +68,9 @@ class SidebarWidget extends StatelessWidget {
                     ),
                     const SizedBox(height: 25.0),
                     ButtonWidget(
-                      onPressed: () {},
+                      onPressed: () => Navigator.of(context)
+                          .pushNamedAndRemoveUntil(
+                              '/freedompostsscreen', (route) => false),
                       buttonHeight: 55.0,
                       buttonWidth: 203.0,
                       borderRadius: 10.0,
@@ -77,7 +81,9 @@ class SidebarWidget extends StatelessWidget {
                     ),
                     const SizedBox(height: 25.0),
                     ButtonWidget(
-                      onPressed: () {},
+                      onPressed: () => Navigator.of(context)
+                          .pushNamedAndRemoveUntil(
+                              '/announcementscreen', (route) => false),
                       buttonHeight: 55.0,
                       buttonWidth: 203.0,
                       borderRadius: 10.0,
@@ -88,7 +94,9 @@ class SidebarWidget extends StatelessWidget {
                     ),
                     const SizedBox(height: 25.0),
                     ButtonWidget(
-                      onPressed: () {},
+                      onPressed: () => Navigator.of(context)
+                          .pushNamedAndRemoveUntil(
+                              '/homescreen', (route) => false),
                       buttonHeight: 55.0,
                       buttonWidth: 203.0,
                       borderRadius: 10.0,

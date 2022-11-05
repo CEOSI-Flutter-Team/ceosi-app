@@ -101,7 +101,7 @@ class SourceCodeArguments {
   final int index;
 }
 
-navigateToSourceCodeScreen(NavigatorState navigator, String title, int index) {
+_navigateToSourceCodeScreen(NavigatorState navigator, String title, int index) {
   navigator.pushNamed(
     '/sourcecodescreen',
     arguments: SourceCodeArguments(title, index),
@@ -143,7 +143,7 @@ class CodeListItemWidget extends StatelessWidget {
           return InkWell(
             borderRadius: BorderRadius.circular(20.0),
             splashColor: Colors.transparent,
-            onTap: () => navigateToSourceCodeScreen(
+            onTap: () => _navigateToSourceCodeScreen(
                 navigator, dataList[index].title.toUpperCase(), index),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(36.0, 20.0, 36.0, 20.0),
