@@ -1,11 +1,9 @@
 import 'package:ceosi_app/constants/colors.dart';
-import 'package:ceosi_app/constants/icons.dart';
+import 'package:ceosi_app/screens/ceosi_freedomwall/widgets/freedomwallbutton_widget.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/widgets/masonry_list_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../widgets/button_widget.dart';
 import '../../widgets/sidebar_widget.dart';
-import '../../widgets/text_widget.dart';
 
 class FreedomPostsScreen extends StatefulWidget {
   const FreedomPostsScreen({super.key});
@@ -14,9 +12,23 @@ class FreedomPostsScreen extends StatefulWidget {
   State<FreedomPostsScreen> createState() => _FreedomPostsScreenState();
 }
 
-class _FreedomPostsScreenState extends State<FreedomPostsScreen> {
+class _FreedomPostsScreenState extends State<FreedomPostsScreen>
+    with TickerProviderStateMixin {
+  TabController? tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    tabController = TabController(
+      initialIndex: 0,
+      length: 2,
+      vsync: this,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return WillPopScope(
       onWillPop: () async {
         return false;
@@ -25,55 +37,35 @@ class _FreedomPostsScreenState extends State<FreedomPostsScreen> {
         drawer: const SidebarWidget(),
         appBar: AppBar(
           backgroundColor: CustomColors.primary,
+          bottom: PreferredSize(
+              preferredSize: const Size.fromHeight(20.0),
+              child: SizedBox(
+                width: size.width,
+                child: Center(
+                  child: TabBar(
+                    isScrollable: true,
+                    labelColor: Colors.white,
+                    indicatorColor: const Color.fromRGBO(8, 120, 93, 3),
+                    unselectedLabelColor: Colors.grey,
+                    controller: tabController,
+                    tabs: const [
+                      Text('FREEDOM WALL'),
+                      Text('MY FREEDOM POSTS'),
+                    ],
+                  ),
+                ),
+              )),
         ),
-        body: Stack(children: [
-          const MasonryListWidget(),
-          freedomWallButtons(),
+        body: TabBarView(controller: tabController, children: [
+          Stack(children: const [
+            MasonryListWidget(),
+            FreedomWallButtonWidget(theHeader: '                '),
+          ]),
+          Stack(children: const [
+            MasonryListWidget(),
+            FreedomWallButtonWidget(theHeader: '                '),
+          ]),
         ]),
-      ),
-    );
-  }
-
-  Padding freedomWallButtons() {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const BoldTextWidget(
-                    color: Colors.black, fontSize: 20, text: 'Freedom Posts'),
-                ButtonWidget(
-                    borderRadius: 20,
-                    onPressed: () {},
-                    buttonHeight: 70,
-                    buttonWidth: 70,
-                    textWidget: Image.asset(CustomIcons().piecharticon,
-                        fit: BoxFit.contain)),
-                ButtonWidget(
-                    borderRadius: 20,
-                    onPressed: () {},
-                    buttonHeight: 70,
-                    buttonWidth: 70,
-                    textWidget: Image.asset(CustomIcons().filtericon,
-                        fit: BoxFit.contain)),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(256, 520, 12, 0),
-              child: ButtonWidget(
-                  borderRadius: 100,
-                  onPressed: () {},
-                  buttonHeight: 70,
-                  buttonWidth: 70,
-                  textWidget:
-                      Image.asset(CustomIcons().plusicon, fit: BoxFit.contain)),
-            ),
-          ],
-        ),
       ),
     );
   }

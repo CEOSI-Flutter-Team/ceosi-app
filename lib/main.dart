@@ -5,6 +5,7 @@ import 'package:ceosi_app/screens/ceosi_company_app/team_screen.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/source_code_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/add_freedom_post_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/admin_posts_data_screen.dart';
+import 'package:ceosi_app/screens/ceosi_freedomwall/freedomposts_screen.dart';
 
 import 'package:ceosi_app/screens/ceosi_freedomwall/pie_chart_report_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/piechart_search_screen.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/adminpostsdatascreen',
+      initialRoute: '/freedompostsscreen',
       routes: {
         '/': (context) => const LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         '/addteamscreen': (context) => const AddTeamScreen(),
         '/aboutscreen': (context) => const AboutScreen(),
         '/addfreedompostscreen': (context) => const AddFreedomPostScreen(),
+        '/freedompostsscreen': (context) => const FreedomPostsScreen(),
         '/sourcecodescreen': (context) => const SourceCodeScreen(),
         '/eventcalendarscreen': (context) => const EventCalendarScreen(),
         '/usersearchscreen': (context) => const UserSearchScreen(),
