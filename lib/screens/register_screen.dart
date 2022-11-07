@@ -3,6 +3,7 @@ import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:ceosi_app/widgets/textformfield_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:unique_name_generator/unique_name_generator.dart';
 
 class RegisterScreen extends StatelessWidget {
   final _nameController = TextEditingController();
@@ -14,6 +15,11 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var ung = UniqueNameGenerator(
+      dictionaries: [adjectives, animals],
+      style: NameStyle.capital,
+      separator: '_',
+    );
     return Scaffold(
       backgroundColor: Colors.grey[200],
       body: Center(
@@ -65,7 +71,12 @@ class RegisterScreen extends StatelessWidget {
             ),
             ButtonWidget(
                 borderRadius: 100,
-                onPressed: () {},
+                onPressed: () {
+                  List<String> anonNames =
+                      List.generate(10, (index) => ung.generate());
+                  //add filter here if anonNames exists then randomized again
+                  print(anonNames[1]);
+                },
                 buttonHeight: 50,
                 buttonWidth: 300,
                 textWidget: const NormalTextWidget(
