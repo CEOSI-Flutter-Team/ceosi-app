@@ -1,5 +1,5 @@
-import 'package:ceosi_app/models/ceosi_flutter_catalog/code_model.dart';
-import 'package:ceosi_app/providers/ceosi_flutter_catalog/code_provider.dart';
+import 'package:ceosi_app/models/ceosi_flutter_catalog/catalog_entry_model.dart';
+import 'package:ceosi_app/providers/ceosi_flutter_catalog/catalog_entry_provider.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,14 +11,14 @@ import 'package:share_plus/share_plus.dart';
 import '../../constants/colors.dart';
 import '../../widgets/sidebar_widget.dart';
 import '../../widgets/text_widget.dart';
-import 'code_list_screen.dart';
+import 'catalog_entries_screen.dart';
 
 class SourceCodeScreen extends StatelessWidget {
   const SourceCodeScreen({super.key});
 
-  _share(String code, String subject) async {
+  _share(String body, String subject) async {
     await Share.share(
-      code
+      body
           .replaceAll(RegExp('``````dart'), '')
           .replaceAll(RegExp('``````'), '')
           .trim(),
@@ -38,7 +38,7 @@ class SourceCodeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final args =
         ModalRoute.of(context)!.settings.arguments as SourceCodeArguments;
-    List<CodeDatum> dataList = [];
+    List<EntryDatum> dataList = [];
     String itemData = '';
     String itemTitle = '';
 
@@ -75,11 +75,11 @@ class SourceCodeScreen extends StatelessWidget {
       drawer: const SidebarWidget(),
       body: Consumer(
         builder: (context, ref, child) {
-          AsyncValue<CodeModel?> codeData =
-              ref.watch(codeStateNotifierProvider);
-          return codeData.when(
+          AsyncValue<CatalogEntryModel?> entryData =
+              ref.watch(catalogEntryStateNotifierProvider);
+          return entryData.when(
             data: (data) {
-              dataList = data!.codeData;
+              dataList = data!.entryData;
               itemData = dataList[args.index].data;
               itemTitle = dataList[args.index].title;
               return Column(
@@ -88,7 +88,7 @@ class SourceCodeScreen extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 20.0),
                     text: dataList[args.index].description,
                   ),
-                  CodeViewWidget(
+                  DataViewWidget(
                     isCode: dataList[args.index].isCode,
                     data: itemData,
                   ),
@@ -136,8 +136,8 @@ class DescriptionWidget extends StatelessWidget {
   }
 }
 
-class CodeViewWidget extends StatelessWidget {
-  const CodeViewWidget({
+class DataViewWidget extends StatelessWidget {
+  const DataViewWidget({
     super.key,
     required this.isCode,
     required this.data,

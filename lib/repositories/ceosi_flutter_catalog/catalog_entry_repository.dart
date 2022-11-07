@@ -1,45 +1,45 @@
-import 'package:ceosi_app/models/ceosi_flutter_catalog/code_model.dart';
-import 'package:ceosi_app/repositories/ceosi_flutter_catalog/code_repository_interface.dart';
+import 'package:ceosi_app/models/ceosi_flutter_catalog/catalog_entry_model.dart';
+import 'package:ceosi_app/repositories/ceosi_flutter_catalog/catalog_entry_repository_interface.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final codeRepositoryProvider =
-    Provider<CodeRepository>((ref) => CodeRepository());
+final catalogEntryRepositoryProvider =
+    Provider<CatalogEntryRepository>((ref) => CatalogEntryRepository());
 
-class CodeRepository implements CodeRepositoryInterface {
+class CatalogEntryRepository implements CatalogEntryRepositoryInterface {
   @override
-  Future<CodeModel?> getCodeData() async {
+  Future<CatalogEntryModel?> getEntryData() async {
     final data = await Future.value(
-      CodeModel(
-        codeData: [
-          CodeDatum(
+      CatalogEntryModel(
+        entryData: [
+          EntryDatum(
               title: 'Code Sample 1',
               category: 'Category 1',
               description: sampleDescription,
               isCode: true,
               data: sampleSourceCode,
               previewImage: sampleImage),
-          CodeDatum(
+          EntryDatum(
               title: 'Code Sample 2',
               category: 'Category 4',
               description: sampleDescription,
               isCode: false,
               data: sampleImage,
               previewImage: sampleImage),
-          CodeDatum(
+          EntryDatum(
               title: 'Code Sample 3',
               category: 'Category 2',
               description: sampleDescription,
               isCode: true,
               data: sampleSourceCode,
               previewImage: sampleImage),
-          CodeDatum(
+          EntryDatum(
               title: 'Code Sample 4',
               category: 'Category 8',
               description: sampleDescription,
               isCode: true,
               data: sampleSourceCode,
               previewImage: sampleImage),
-          CodeDatum(
+          EntryDatum(
               title: 'Code Sample 5',
               category: 'Category 1',
               description: sampleDescription,

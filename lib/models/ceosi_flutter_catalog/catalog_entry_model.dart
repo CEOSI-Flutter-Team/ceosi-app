@@ -1,28 +1,30 @@
 import 'dart:convert';
 
-CodeModel codeFromJson(String str) => CodeModel.fromJson(json.decode(str));
+CatalogEntryModel catalogEntryFromJson(String str) =>
+    CatalogEntryModel.fromJson(json.decode(str));
 
-String codeToJson(CodeModel data) => json.encode(data.toJson());
+String catalogEntryToJson(CatalogEntryModel data) => json.encode(data.toJson());
 
-class CodeModel {
-  CodeModel({
-    required this.codeData,
+class CatalogEntryModel {
+  CatalogEntryModel({
+    required this.entryData,
   });
 
-  List<CodeDatum> codeData;
+  List<EntryDatum> entryData;
 
-  factory CodeModel.fromJson(Map<String, dynamic> json) => CodeModel(
-        codeData: List<CodeDatum>.from(
-            json['code_data'].map((x) => CodeDatum.fromJson(x))),
+  factory CatalogEntryModel.fromJson(Map<String, dynamic> json) =>
+      CatalogEntryModel(
+        entryData: List<EntryDatum>.from(
+            json['entry_data'].map((x) => EntryDatum.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        'code_data': List<dynamic>.from(codeData.map((x) => x.toJson())),
+        'entry_data': List<dynamic>.from(entryData.map((x) => x.toJson())),
       };
 }
 
-class CodeDatum {
-  CodeDatum(
+class EntryDatum {
+  EntryDatum(
       {required this.title,
       required this.category,
       required this.description,
@@ -37,7 +39,7 @@ class CodeDatum {
   String data;
   String previewImage;
 
-  factory CodeDatum.fromJson(Map<String, dynamic> json) => CodeDatum(
+  factory EntryDatum.fromJson(Map<String, dynamic> json) => EntryDatum(
         title: json['title'],
         category: json['category'],
         description: json['description'],

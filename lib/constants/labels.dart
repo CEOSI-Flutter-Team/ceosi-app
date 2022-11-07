@@ -3,8 +3,7 @@ class Labels {
       ceosiFreedomWall = 'CEOSI Freedom Wall',
       ceosiCompanyApp = 'CEOSI Company App',
       ceosiRewards = 'CEOSI Rewards',
-      codeList = 'CODE LIST',
+      catalogEntries = 'CATALOG ENTRIES',
       ceosiApp = 'CEOSI App',
-      categories = 'Categories',
-      preview = 'Preview';
+      categories = 'CATEGORIES';
 }

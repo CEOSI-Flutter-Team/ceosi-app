@@ -1,4 +1,4 @@
-import 'package:ceosi_app/screens/ceosi_flutter_catalog/code_list_screen.dart';
+import 'package:ceosi_app/screens/ceosi_flutter_catalog/catalog_entries_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/add_freedom_post_screen.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/source_code_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/add_announcement_screen.dart';
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/codelistscreen',
+      initialRoute: '/catalogentriesscreen',
       routes: {
         '/': (context) => const LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
         '/aboutscreen': (context) => const AboutScreen(),
         '/freedompostsscreen': (context) => const FreedomPostsScreen(),
         '/addfreedompostscreen': (context) => const AddFreedomPostScreen(),
-        '/codelistscreen': (context) => const CodeListScreen(),
+        '/catalogentriesscreen': (context) => const CatalogEntriesScreen(),
         '/sourcecodescreen': (context) => const SourceCodeScreen(),
         '/eventcalendarscreen': (context) => const EventCalendarScreen(),
         '/usersearchscreen': (context) => const UserSearchScreen(),
