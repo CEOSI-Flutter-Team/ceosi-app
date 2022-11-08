@@ -45,6 +45,12 @@ dependencies:
   table_calendar: ^3.0.8
   pie_chart: ^5.3.2
   share_plus:
+  flutter_zoom_drawer: ^3.0.3
+  riverpod:
+  firebase_core: ^2.1.1
+  cloud_firestore:
+  firebase_storage:
+  
 
 dev_dependencies:
   flutter_test:

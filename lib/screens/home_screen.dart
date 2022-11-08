@@ -43,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 40,
             ),
             ButtonWidget(
+              color: CustomColors.primary,
               borderRadius: 20,
               onPressed: () {},
               buttonHeight: 100,
@@ -56,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 20,
             ),
             ButtonWidget(
+              color: CustomColors.primary,
               borderRadius: 20,
               onPressed: () {},
               buttonHeight: 100,
@@ -69,6 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 20,
             ),
             ButtonWidget(
+              color: CustomColors.primary,
               borderRadius: 20,
               onPressed: () {},
               buttonHeight: 100,
@@ -82,6 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 20,
             ),
             ButtonWidget(
+              color: CustomColors.primary,
               borderRadius: 20,
               onPressed: () {},
               buttonHeight: 100,

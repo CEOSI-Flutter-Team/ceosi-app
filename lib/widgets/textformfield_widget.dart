@@ -1,6 +1,7 @@
-import 'package:ceosi_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../constants/colors.dart';
 
 class TextformfieldWidget extends StatelessWidget {
   final String label;

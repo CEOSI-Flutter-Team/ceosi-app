@@ -1,5 +1,6 @@
-import 'package:ceosi_app/constants/colors.dart';
 import 'package:flutter/material.dart';
+
+import '../constants/colors.dart';
 
 class ButtonWidget extends StatelessWidget {
   final VoidCallback onPressed;

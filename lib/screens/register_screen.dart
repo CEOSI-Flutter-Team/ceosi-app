@@ -3,6 +3,7 @@ import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:ceosi_app/widgets/textformfield_widget.dart';
 import 'package:flutter/material.dart';
+import '../constants/colors.dart';
 
 class RegisterScreen extends StatelessWidget {
   final _nameController = TextEditingController();
@@ -15,7 +16,7 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: const Color.fromRGBO(238, 238, 238, 1),
       body: Center(
         child: Column(
           children: [
@@ -64,6 +65,7 @@ class RegisterScreen extends StatelessWidget {
               height: 50,
             ),
             ButtonWidget(
+                color: CustomColors.primary,
                 borderRadius: 100,
                 onPressed: () {},
                 buttonHeight: 50,
