@@ -40,6 +40,10 @@ dependencies:
   flutter_zoom_drawer: ^3.0.3
   google_fonts:
   riverpod:
+  firebase_core: ^2.1.1
+  cloud_firestore:
+  firebase_storage:
+  image_picker:
   
 
 dev_dependencies:
