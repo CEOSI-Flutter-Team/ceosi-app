@@ -1,4 +1,4 @@
-import 'package:ceosi_app/screens/ceosi_rewards/repositories/user_repository_interface.dart';
+import 'package:ceosi_app/repositories/user_repository_interface.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserRepository implements UsertRepositoryInterface {

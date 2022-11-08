@@ -6,8 +6,8 @@ import '../../../../constants/colors.dart';
 import '../../../../widgets/button_widget.dart';
 import '../../../../widgets/text_widget.dart';
 import '../../../../widgets/textformfield_widget.dart';
-import '../../plugins/image_picker.dart';
-import '../../repositories/productRepository.dart';
+import '../../../../plugins/image_picker.dart';
+import '../../../../repositories/productRepository.dart';
 import '../buttons/dropdown_item_widget.dart';
 
 class AddItemDialogWidget extends StatefulWidget {
