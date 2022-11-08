@@ -1,4 +1,5 @@
 import 'package:ceosi_app/constants/colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/button_widget.dart';
@@ -16,6 +17,25 @@ class AddFreedomPostScreen extends StatefulWidget {
 }
 
 class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
+  final contentController = TextEditingController();
+
+  Future addItem(int uid, int fpid, String mood, String content,
+      String anonName, DateTime dateTime) async {
+    CollectionReference freedomPostsref =
+        FirebaseFirestore.instance.collection('CEOSI-FREEDOMWALL-FREEDOMPOSTS');
+
+    var data = {
+      'uid': uid,
+      'fpid': fpid,
+      'mood': mood,
+      'content': content,
+      'anonName': anonName,
+      'created': dateTime,
+    };
+
+    await freedomPostsref.add(data);
+  }
+
   final moods = [
     'Enjoyment',
     'Sadness',
@@ -24,7 +44,6 @@ class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
     'Fear',
   ];
 
-  final _contentController = TextEditingController();
   Object? mood;
   @override
   Widget build(BuildContext context) {
@@ -80,7 +99,7 @@ class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
                     hintText: 'What\'s on your mind?',
                     radius: 10,
                     isObscure: false,
-                    textFieldController: _contentController,
+                    textFieldController: contentController,
                     label: '',
                     colorFill: Colors.black12,
                   ),
@@ -90,7 +109,10 @@ class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
                 ),
                 ButtonWidget(
                     borderRadius: 20,
-                    onPressed: () {},
+                    onPressed: () {
+                      addItem(2, 2, mood.toString(), 'Lorem Ipsum Dol Lorem',
+                          'CarL_Knight2', DateTime.now());
+                    },
                     buttonHeight: 53,
                     buttonWidth: 182,
                     textWidget: const NormalTextWidget(

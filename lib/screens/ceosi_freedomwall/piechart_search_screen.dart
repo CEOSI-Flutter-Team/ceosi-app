@@ -75,7 +75,7 @@ class _PieChartSearchScreenState extends State<PieChartSearchScreen> {
                   child: TextformfieldWidget(
                     floatingLabelBehavior: FloatingLabelBehavior.always,
                     maxLines: 1,
-                    hintText: 'Enter user\'s email',
+                    hintText: 'Enter Freedom Post ID (FP ID)',
                     radius: 20,
                     isObscure: false,
                     textFieldController: _searcheduserController,

@@ -1,6 +1,8 @@
-import 'package:ceosi_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
+import '../constants/colors.dart';
+
+// ignore: must_be_immutable
 class ButtonWidget extends StatelessWidget {
   final VoidCallback onPressed;
   final double buttonWidth;

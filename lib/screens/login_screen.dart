@@ -1,8 +1,9 @@
-import 'package:ceosi_app/widgets/button_widget.dart';
-import 'package:ceosi_app/widgets/text_widget.dart';
-import 'package:ceosi_app/widgets/textformfield_widget.dart';
 import 'package:flutter/material.dart';
+import '../constants/colors.dart';
 import '../constants/images.dart';
+import '../widgets/button_widget.dart';
+import '../widgets/text_widget.dart';
+import '../widgets/textformfield_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -64,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 50,
               ),
               ButtonWidget(
+                  color: CustomColors.primary,
                   borderRadius: 100,
                   onPressed: () {},
                   buttonHeight: 50,
@@ -74,6 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 10,
               ),
               ButtonWidget(
+                  color: CustomColors.primary,
                   borderRadius: 100,
                   onPressed: () {},
                   buttonHeight: 50,

@@ -1,12 +1,15 @@
 import 'dart:math';
 
 import 'package:ceosi_app/constants/colors.dart';
-import 'package:ceosi_app/constants/icons.dart';
+import 'package:ceosi_app/screens/ceosi_freedomwall/widgets/gesture_detector_widget.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/widgets/masontry_text_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import 'gesture_detector_widget.dart';
+import '../../../constants/icons.dart';
+import '../../../utils/datagetter.dart';
 
 class MasonryListWidget extends StatefulWidget {
   const MasonryListWidget({super.key});
@@ -30,6 +33,7 @@ class _MasonryListWidgetState extends State<MasonryListWidget> {
       'Lorem ipsum dol Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et',
       'Lorem ipsum dolor sit Lorem'
     ];
+
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 100, 20, 12),
       child: MasonryGridView.builder(
@@ -58,7 +62,7 @@ class _MasonryListWidgetState extends State<MasonryListWidget> {
 }
 
 class MasonryItem extends StatelessWidget {
-  const MasonryItem(
+  MasonryItem(
       {Key? key,
       required this.backgroudColor,
       required this.content,
@@ -69,56 +73,78 @@ class MasonryItem extends StatelessWidget {
   final String content;
   final int id;
 
+  final List<TextStyle> tempFontLists = [
+    GoogleFonts.cedarvilleCursive(fontSize: 20, fontWeight: FontWeight.bold),
+    GoogleFonts.ebGaramond(fontSize: 20),
+    GoogleFonts.fasterOne(fontSize: 20),
+    GoogleFonts.bangers(fontSize: 20),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.black12,
-        ),
-        padding: const EdgeInsets.fromLTRB(5, 30, 5, 5),
-        child: Stack(children: [
-          InkWell(
-            onTap: () {},
-            child: Card(
-              color: backgroudColor,
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    MasonryTextWidget(
-                      text: content,
-                      fontSize: 20,
-                      textAlign: TextAlign.center,
-                    ),
-                    const MasonryTextWidget(
-                      text: '12-21-22',
-                      fontSize: 12,
-                      textAlign: TextAlign.right,
-                    ),
-                    MasonryTextWidget(
-                      text: 'FP ID #$id',
-                      fontSize: 12,
-                      textAlign: TextAlign.right,
-                    ),
-                  ],
+    return SizedBox(
+      child: Container(
+        color: Colors.transparent,
+        child: Column(
+          children: [
+            Stack(children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.black12,
                 ),
+                padding: const EdgeInsets.fromLTRB(5, 30, 5, 5),
+                child: Stack(children: [
+                  InkWell(
+                    onTap: () {},
+                    child: Card(
+                      color: backgroudColor,
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            MasonryTextWidget(
+                              text: content,
+                              style: tempFontLists[Random().nextInt(4)],
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            const MasonryTextWidget(
+                              text: '12-21-22',
+                              fontSize: 12,
+                              textAlign: TextAlign.right,
+                            ),
+                            MasonryTextWidget(
+                              text: 'FP ID #$id',
+                              fontSize: 12,
+                              textAlign: TextAlign.right,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ]),
               ),
-            ),
-          ),
-        ]),
-      ),
-      Padding(
-        padding: const EdgeInsets.fromLTRB(140, 10, 0, 0),
-        child: GestureDetectorWidget(
-          childWidget: Image.asset(CustomIcons().continuousdoticon),
-          onTap: () {
-            print('hello id $id');
-          },
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 20, 11, 0),
+                child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                  GestureDetectorWidget(
+                    childWidget: Image.asset(CustomIcons().continuousdoticon),
+                    onTap: () {
+                      getPosts();
+                      print('hello id $id');
+                    },
+                  ),
+                ]),
+              )
+            ]),
+          ],
         ),
-      )
-    ]);
+      ),
+    );
   }
 }

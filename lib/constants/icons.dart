@@ -6,4 +6,6 @@ class CustomIcons {
   final datepickericon = 'assets/icons/datepickericon.png';
   final deleteicon = 'assets/icons/deleteicon.png';
   final editicon = 'assets/icons/editicon.png';
+  final coinIcon = 'assets/icons/coin.png';
+  final freedompostsicon = 'assets/icons/freedompostsicon.png';
 }

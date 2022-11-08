@@ -29,7 +29,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
               height: 20,
             ),
             const BoldTextWidget(
-                color: Colors.black, fontSize: 23, text: "Announcements"),
+                color: Colors.black, fontSize: 23, text: 'Announcements'),
             const SizedBox(
               height: 20,
             ),
@@ -47,7 +47,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
               height: 20,
             ),
             const BoldTextWidget(
-                color: Colors.black, fontSize: 23, text: "Upcoming Events"),
+                color: Colors.black, fontSize: 23, text: 'Upcoming Events'),
             const SizedBox(
               height: 20,
             ),
@@ -97,13 +97,13 @@ class AnnouncementList extends StatelessWidget {
                     BoldTextWidget(
                         color: Colors.white,
                         fontSize: 14,
-                        text: "Emergency Meeting"),
+                        text: 'Emergency Meeting'),
                     NormalTextWidget(
                         color: Colors.white,
                         fontSize: 13,
-                        text: "October 25, 2022"),
+                        text: 'October 25, 2022'),
                     NormalTextWidget(
-                        color: Colors.white, fontSize: 13, text: "10:00 AM")
+                        color: Colors.white, fontSize: 13, text: '10:00 AM')
                   ],
                 ),
               ),
@@ -142,13 +142,13 @@ class EventList extends StatelessWidget {
                     BoldTextWidget(
                         color: Colors.white,
                         fontSize: 14,
-                        text: "CEOSI Town-Hall Meeting & Halloween Party"),
+                        text: 'CEOSI Town-Hall Meeting & Halloween Party'),
                     NormalTextWidget(
                         color: Colors.white,
                         fontSize: 13,
-                        text: "October 25, 2022"),
+                        text: 'October 25, 2022'),
                     NormalTextWidget(
-                        color: Colors.white, fontSize: 13, text: "3:00 PM")
+                        color: Colors.white, fontSize: 13, text: '3:00 PM')
                   ],
                 ),
               ),

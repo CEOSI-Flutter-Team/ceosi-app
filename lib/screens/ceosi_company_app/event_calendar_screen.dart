@@ -33,7 +33,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                   height: 20,
                 ),
                 const BoldTextWidget(
-                    color: Colors.black, fontSize: 23, text: "Event Calendar"),
+                    color: Colors.black, fontSize: 23, text: 'Event Calendar'),
                 const SizedBox(
                   height: 40,
                 ),

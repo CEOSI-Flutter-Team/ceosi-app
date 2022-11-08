@@ -1,7 +1,9 @@
-import 'package:ceosi_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../constants/colors.dart';
+
+// ignore: must_be_immutable
 class TextformfieldWidget extends StatelessWidget {
   final String label;
   final Color colorFill;
