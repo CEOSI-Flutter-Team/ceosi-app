@@ -4,6 +4,7 @@ import '../../../../constants/colors.dart';
 import '../../../../constants/icons.dart';
 import '../../../../widgets/text_widget.dart';
 
+// ignore: must_be_immutable
 class ProductItemWidget extends StatelessWidget {
   late String productName;
   late String productCategory;
@@ -11,7 +12,8 @@ class ProductItemWidget extends StatelessWidget {
   late String imageURL;
 
   ProductItemWidget(
-      {required this.productName,
+      {super.key,
+      required this.productName,
       required this.productCategory,
       required this.pointsEquivalent,
       required this.imageURL});

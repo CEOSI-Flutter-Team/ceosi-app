@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../../../../widgets/text_widget.dart';
 
+// ignore: must_be_immutable
 class DropDownItem extends StatelessWidget {
   late String label;
 
   DropDownItem({
+    super.key,
     required this.label,
   });
 

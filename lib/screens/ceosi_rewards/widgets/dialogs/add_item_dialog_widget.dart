@@ -7,14 +7,16 @@ import '../../../../widgets/button_widget.dart';
 import '../../../../widgets/text_widget.dart';
 import '../../../../widgets/textformfield_widget.dart';
 import '../../../../plugins/image_picker.dart';
-import '../../../../repositories/productRepository.dart';
+import '../../../../repositories/product_repository.dart';
 import '../buttons/dropdown_item_widget.dart';
 
+// ignore: must_be_immutable
 class AddItemDialogWidget extends StatefulWidget {
   late var itemNameController = TextEditingController();
   late var pointsEqualController = TextEditingController();
 
   AddItemDialogWidget({
+    super.key,
     required this.itemNameController,
     required this.pointsEqualController,
   });
@@ -116,21 +118,21 @@ class _AddItemDialogWidgetState extends State<AddItemDialogWidget> {
                         items: [
                           DropdownMenuItem(
                             onTap: () {
-                              itemCategory = "Snacks";
+                              itemCategory = 'Snacks';
                             },
                             value: 0,
                             child: DropDownItem(label: 'Snacks'),
                           ),
                           DropdownMenuItem(
                             onTap: () {
-                              itemCategory = "Drinks";
+                              itemCategory = 'Drinks';
                             },
                             value: 1,
                             child: DropDownItem(label: 'Drinks'),
                           ),
                           DropdownMenuItem(
                             onTap: () {
-                              itemCategory = "Candies";
+                              itemCategory = 'Candies';
                             },
                             value: 2,
                             child: DropDownItem(label: 'Candies'),

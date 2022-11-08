@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import '../../../../constants/colors.dart';
 import '../../../../widgets/text_widget.dart';
 
+// ignore: must_be_immutable
 class DrawerButtonWidget extends StatelessWidget {
   late VoidCallback onPressed;
   late IconData icon;
   late String text;
 
   DrawerButtonWidget({
+    super.key,
     required this.icon,
     required this.onPressed,
     required this.text,

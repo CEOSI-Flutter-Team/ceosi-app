@@ -80,21 +80,21 @@ class _RewardHomeScreenState extends State<RewardHomeScreen> {
                             items: [
                               DropdownMenuItem(
                                 onTap: () {
-                                  itemCategory = "Snacks";
+                                  itemCategory = 'Snacks';
                                 },
                                 value: 0,
                                 child: DropDownItem(label: 'Snacks'),
                               ),
                               DropdownMenuItem(
                                 onTap: () {
-                                  itemCategory = "Drinks";
+                                  itemCategory = 'Drinks';
                                 },
                                 value: 1,
                                 child: DropDownItem(label: 'Drinks'),
                               ),
                               DropdownMenuItem(
                                 onTap: () {
-                                  itemCategory = "Candies";
+                                  itemCategory = 'Candies';
                                 },
                                 value: 2,
                                 child: DropDownItem(label: 'Candies'),

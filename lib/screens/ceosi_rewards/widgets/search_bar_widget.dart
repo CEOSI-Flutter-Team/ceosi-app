@@ -51,21 +51,21 @@ class _SearchUserWidgetState extends State<SearchUserWidget> {
                     items: [
                       DropdownMenuItem(
                         onTap: () {
-                          itemCategory = "Flutter Developers";
+                          itemCategory = 'Flutter Developers';
                         },
                         value: 0,
                         child: DropDownItem(label: 'Flutter Developers'),
                       ),
                       DropdownMenuItem(
                         onTap: () {
-                          itemCategory = "Front End Developers";
+                          itemCategory = 'Front End Developers';
                         },
                         value: 1,
                         child: DropDownItem(label: 'Frontend Developers'),
                       ),
                       DropdownMenuItem(
                         onTap: () {
-                          itemCategory = "Backend Developers";
+                          itemCategory = 'Backend Developers';
                         },
                         value: 2,
                         child: DropDownItem(label: 'Backend Developers'),
@@ -133,21 +133,21 @@ class _SearchItemWidgetState extends State<SearchItemWidget> {
                     items: [
                       DropdownMenuItem(
                         onTap: () {
-                          itemCategory = "Snacks";
+                          itemCategory = 'Snacks';
                         },
                         value: 0,
                         child: DropDownItem(label: 'Snacks'),
                       ),
                       DropdownMenuItem(
                         onTap: () {
-                          itemCategory = "Drinks";
+                          itemCategory = 'Drinks';
                         },
                         value: 1,
                         child: DropDownItem(label: 'Drinks'),
                       ),
                       DropdownMenuItem(
                         onTap: () {
-                          itemCategory = "Candies";
+                          itemCategory = 'Candies';
                         },
                         value: 2,
                         child: DropDownItem(label: 'Candies'),

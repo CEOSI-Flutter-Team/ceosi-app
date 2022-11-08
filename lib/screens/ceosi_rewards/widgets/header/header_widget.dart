@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import '../../../../constants/colors.dart';
 import '../../../../widgets/text_widget.dart';
 
+// ignore: must_be_immutable
 class HeaderWidget extends StatelessWidget {
   late String headerTitle;
 
-  HeaderWidget({required this.headerTitle});
+  HeaderWidget({super.key, required this.headerTitle});
 
   @override
   Widget build(BuildContext context) {

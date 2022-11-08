@@ -99,7 +99,7 @@ class DrawerWidget extends StatelessWidget {
                       height: 20,
                     ),
                     applicationLegalese:
-                        "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+                        'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum',
                     applicationVersion: 'v1.0');
               },
               text: 'ABOUT'),
