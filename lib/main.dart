@@ -1,3 +1,4 @@
+import 'package:ceosi_app/screens/ceosi_flutter_catalog/add_catalog_entry_screen.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/catalog_entries_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/add_freedom_post_screen.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/source_code_screen.dart';
@@ -12,13 +13,16 @@ import 'package:ceosi_app/screens/ceosi_freedomwall/user_search_screen.dart';
 import 'package:ceosi_app/screens/login_screen.dart';
 import 'package:ceosi_app/screens/home_screen.dart';
 import 'package:ceosi_app/screens/register_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'screens/ceosi_company_app/about_screen.dart';
 import 'screens/ceosi_company_app/announcement_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'constants/labels.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -51,6 +55,7 @@ class MyApp extends StatelessWidget {
         '/usersearchscreen': (context) => const UserSearchScreen(),
         '/piechartreportscreen': (context) => const PieChartReportScreen(),
         '/piechartsearchscreen': (context) => const PieChartSearchScreen(),
+        '/addcatalogentryscreen': (context) => const AddCatalogEntryScreen(),
       },
       title: Labels.ceosiApp,
     );

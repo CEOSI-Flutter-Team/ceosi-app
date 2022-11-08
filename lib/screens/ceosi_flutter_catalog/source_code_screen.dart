@@ -1,5 +1,6 @@
 import 'package:ceosi_app/models/ceosi_flutter_catalog/catalog_entry_model.dart';
 import 'package:ceosi_app/providers/ceosi_flutter_catalog/catalog_entry_provider.dart';
+import 'package:ceosi_app/screens/ceosi_flutter_catalog/widgets/flutter_catalog_appbar_widget.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -43,12 +44,8 @@ class SourceCodeScreen extends StatelessWidget {
     String itemTitle = '';
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: BoldTextWidget(
-            color: Colors.white, fontSize: 14.0, text: args.title),
-        centerTitle: true,
-        backgroundColor: CustomColors.primary,
+      appBar: flutterCatalogAppbarWidget(
+        title: args.title,
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.only(right: 10.0),

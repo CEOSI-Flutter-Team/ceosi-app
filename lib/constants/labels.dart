@@ -5,5 +5,7 @@ class Labels {
       ceosiRewards = 'CEOSI Rewards',
       catalogEntries = 'CATALOG ENTRIES',
       ceosiApp = 'CEOSI App',
-      categories = 'CATEGORIES';
+      categories = 'CATEGORIES',
+      addEntry = 'Add Entry',
+      addCatalogEntry = 'ADD CATALOG ENTRY';
 }
