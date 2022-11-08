@@ -1,16 +1,16 @@
 import 'package:ceosi_app/constants/colors.dart';
-import 'package:ceosi_app/models/ceosi_flutter_catalog/code_model.dart';
+import 'package:ceosi_app/models/ceosi_flutter_catalog/catalog_entry_model.dart';
 import 'package:ceosi_app/widgets/sidebar_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../constants/labels.dart';
-import '../../providers/ceosi_flutter_catalog/code_provider.dart';
+import '../../providers/ceosi_flutter_catalog/catalog_entry_provider.dart';
 import 'widgets/category_listview_widget.dart';
 
-class CodeListScreen extends StatelessWidget {
-  const CodeListScreen({super.key});
+class CatalogEntriesScreen extends StatelessWidget {
+  const CatalogEntriesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class CodeListScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         title: const BoldTextWidget(
-            color: Colors.white, fontSize: 14.0, text: Labels.codeList),
+            color: Colors.white, fontSize: 14.0, text: Labels.catalogEntries),
         centerTitle: true,
         backgroundColor: CustomColors.primary,
       ),
@@ -30,7 +30,7 @@ class CodeListScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const <Widget>[
-                CodeListViewWidget(),
+                CatalogEntriesViewWidget(),
               ],
             ),
           ),
@@ -78,7 +78,7 @@ class AppbarExtensionWidget extends StatelessWidget {
         ),
         child: Row(
           children: <Widget>[
-            CodeListSearchFieldWidget(),
+            CatalogEntriesSearchFieldWidget(),
             IconButton(
               onPressed: () => showCategoryFilter(context),
               icon: const Icon(
@@ -101,23 +101,24 @@ class SourceCodeArguments {
   final int index;
 }
 
-navigateToSourceCodeScreen(NavigatorState navigator, String title, int index) {
+_navigateToSourceCodeScreen(NavigatorState navigator, String title, int index) {
   navigator.pushNamed(
     '/sourcecodescreen',
     arguments: SourceCodeArguments(title, index),
   );
 }
 
-class CodeListViewWidget extends ConsumerWidget {
-  const CodeListViewWidget({super.key});
+class CatalogEntriesViewWidget extends ConsumerWidget {
+  const CatalogEntriesViewWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AsyncValue<CodeModel?> codeData = ref.watch(codeStateNotifierProvider);
-    return codeData.when(
+    AsyncValue<CatalogEntryModel?> entryData =
+        ref.watch(catalogEntryStateNotifierProvider);
+    return entryData.when(
       data: (data) {
-        List<CodeDatum> dataList = data!.codeData;
-        return CodeListItemWidget(dataList);
+        List<EntryDatum> dataList = data!.entryData;
+        return CatalogEntryWidget(dataList);
       },
       error: (error, stackTrace) => Text(error.toString()),
       loading: () => const Center(
@@ -128,9 +129,9 @@ class CodeListViewWidget extends ConsumerWidget {
   }
 }
 
-class CodeListItemWidget extends StatelessWidget {
-  const CodeListItemWidget(this.dataList, {super.key});
-  final List<CodeDatum> dataList;
+class CatalogEntryWidget extends StatelessWidget {
+  const CatalogEntryWidget(this.dataList, {super.key});
+  final List<EntryDatum> dataList;
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +144,7 @@ class CodeListItemWidget extends StatelessWidget {
           return InkWell(
             borderRadius: BorderRadius.circular(20.0),
             splashColor: Colors.transparent,
-            onTap: () => navigateToSourceCodeScreen(
+            onTap: () => _navigateToSourceCodeScreen(
                 navigator, dataList[index].title.toUpperCase(), index),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(36.0, 20.0, 36.0, 20.0),
@@ -188,8 +189,8 @@ class CodeListItemWidget extends StatelessWidget {
   }
 }
 
-class CodeListSearchFieldWidget extends StatelessWidget {
-  CodeListSearchFieldWidget({super.key});
+class CatalogEntriesSearchFieldWidget extends StatelessWidget {
+  CatalogEntriesSearchFieldWidget({super.key});
 
   final TextEditingController searchController = TextEditingController();
 

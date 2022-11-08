@@ -1,6 +1,6 @@
-import 'package:ceosi_app/models/ceosi_flutter_catalog/code_model.dart';
-import 'package:ceosi_app/providers/ceosi_flutter_catalog/code_provider.dart';
-import 'package:ceosi_app/widgets/button_widget.dart';
+import 'package:ceosi_app/models/ceosi_flutter_catalog/catalog_entry_model.dart';
+import 'package:ceosi_app/providers/ceosi_flutter_catalog/catalog_entry_provider.dart';
+import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,14 +11,14 @@ import 'package:share_plus/share_plus.dart';
 import '../../constants/colors.dart';
 import '../../widgets/sidebar_widget.dart';
 import '../../widgets/text_widget.dart';
-import 'code_list_screen.dart';
+import 'catalog_entries_screen.dart';
 
 class SourceCodeScreen extends StatelessWidget {
   const SourceCodeScreen({super.key});
 
-  share(String code, String subject) async {
+  _share(String body, String subject) async {
     await Share.share(
-      code
+      body
           .replaceAll(RegExp('``````dart'), '')
           .replaceAll(RegExp('``````'), '')
           .trim(),
@@ -26,10 +26,21 @@ class SourceCodeScreen extends StatelessWidget {
     );
   }
 
+  _preview(context, dataList, args) {
+    showImageViewer(
+      context,
+      NetworkImage(dataList[args.index].previewImage),
+      useSafeArea: true,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final args =
         ModalRoute.of(context)!.settings.arguments as SourceCodeArguments;
+    List<EntryDatum> dataList = [];
+    String itemData = '';
+    String itemTitle = '';
 
     return Scaffold(
       appBar: AppBar(
@@ -38,114 +49,50 @@ class SourceCodeScreen extends StatelessWidget {
             color: Colors.white, fontSize: 14.0, text: args.title),
         centerTitle: true,
         backgroundColor: CustomColors.primary,
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: GestureDetector(
+              onTap: () => _share(itemData, itemTitle),
+              child: const Icon(
+                Icons.share,
+                size: 20.0,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: GestureDetector(
+              onTap: () => _preview(context, dataList, args),
+              child: const Icon(
+                Icons.preview_rounded,
+                size: 20.0,
+              ),
+            ),
+          )
+        ],
       ),
       drawer: const SidebarWidget(),
       body: Consumer(
         builder: (context, ref, child) {
-          AsyncValue<CodeModel?> codeData =
-              ref.watch(codeStateNotifierProvider);
-          return codeData.when(
+          AsyncValue<CatalogEntryModel?> entryData =
+              ref.watch(catalogEntryStateNotifierProvider);
+          return entryData.when(
             data: (data) {
-              List<CodeDatum> dataList = data!.codeData;
+              dataList = data!.entryData;
+              itemData = dataList[args.index].data;
+              itemTitle = dataList[args.index].title;
               return Column(
                 children: <Widget>[
-                  Padding(
+                  DescriptionWidget(
                     padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 20.0),
-                    child: RichText(
-                        overflow: TextOverflow.clip,
-                        textAlign: TextAlign.start,
-                        textDirection: TextDirection.ltr,
-                        softWrap: true,
-                        text: TextSpan(
-                          text: dataList[args.index].description,
-                          style: GoogleFonts.aleo(
-                              color: Colors.black, fontSize: 12.0, height: 1.5),
-                        )),
+                    text: dataList[args.index].description,
                   ),
-                  Expanded(
-                    flex: 3,
-                    child: dataList[args.index].isCode
-                        ? Container(
-                            margin:
-                                const EdgeInsets.symmetric(horizontal: 30.0),
-                            decoration: BoxDecoration(
-                              color: CustomColors.greyAccent,
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            child: MarkdownWidget(
-                              selectable: true,
-                              data: dataList[args.index].data,
-                              physics: const BouncingScrollPhysics(),
-                              padding: const EdgeInsets.all(20.0),
-                              styleConfig: StyleConfig(
-                                preConfig: PreConfig(
-                                  decoration: const BoxDecoration(
-                                    color: Colors.transparent,
-                                  ),
-                                  padding: const EdgeInsets.all(0.0),
-                                  language: 'dart',
-                                  textStyle: GoogleFonts.ubuntuMono().copyWith(
-                                    fontSize: 14.0,
-                                  ),
-                                  theme: theme.a11yLightTheme,
-                                ),
-                              ),
-                            ),
-                          )
-                        : ClipRRect(
-                            borderRadius: BorderRadius.circular(20.0),
-                            child: Image.network(dataList[args.index].data),
-                          ),
+                  DataViewWidget(
+                    isCode: dataList[args.index].isCode,
+                    data: itemData,
                   ),
-                  const SizedBox(height: 20.0),
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding:
-                              const EdgeInsets.symmetric(horizontal: 110.0),
-                          child: ButtonWidget(
-                            onPressed: () => share(
-                              dataList[args.index].data,
-                              dataList[args.index].title,
-                            ),
-                            buttonHeight: 60.0,
-                            buttonWidth: 30.0,
-                            borderRadius: 20.0,
-                            color: CustomColors.secondary,
-                            textWidget: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Image.asset(
-                                  'assets/icons/send.png',
-                                  scale: 25.0,
-                                ),
-                                const SizedBox(width: 10.0),
-                                const BoldTextWidget(
-                                  color: Colors.white,
-                                  fontSize: 14.0,
-                                  text: 'Share Code',
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.all(
-                                  Colors.transparent)),
-                          child: const BoldTextWidget(
-                            color: CustomColors.primary,
-                            fontSize: 14.0,
-                            text: 'Preview',
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  const SizedBox(height: 50.0),
                 ],
               );
             },
@@ -157,6 +104,87 @@ class SourceCodeScreen extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+}
+
+class DescriptionWidget extends StatelessWidget {
+  const DescriptionWidget({
+    super.key,
+    required this.padding,
+    required this.text,
+  });
+
+  final EdgeInsetsGeometry padding;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: padding,
+      child: RichText(
+          overflow: TextOverflow.clip,
+          textAlign: TextAlign.start,
+          textDirection: TextDirection.ltr,
+          softWrap: true,
+          text: TextSpan(
+            text: text,
+            style: GoogleFonts.aleo(
+                color: Colors.black, fontSize: 12.0, height: 1.5),
+          )),
+    );
+  }
+}
+
+class DataViewWidget extends StatelessWidget {
+  const DataViewWidget({
+    super.key,
+    required this.isCode,
+    required this.data,
+    this.backgroundColor = CustomColors.greyAccent,
+    this.radius = 20.0,
+  });
+
+  final bool isCode;
+  final String data;
+  final Color backgroundColor;
+  final double radius;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 3,
+      child: isCode
+          ? Container(
+              margin: const EdgeInsets.symmetric(horizontal: 30.0),
+              decoration: BoxDecoration(
+                color: backgroundColor,
+                borderRadius: BorderRadius.circular(radius),
+              ),
+              child: MarkdownWidget(
+                selectable: true,
+                data: data,
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.all(20.0),
+                styleConfig: StyleConfig(
+                  preConfig: PreConfig(
+                    decoration: const BoxDecoration(
+                      color: Colors.transparent,
+                    ),
+                    padding: const EdgeInsets.all(0.0),
+                    language: 'dart',
+                    textStyle: GoogleFonts.ubuntuMono().copyWith(
+                      fontSize: 14.0,
+                    ),
+                    theme: theme.a11yLightTheme,
+                  ),
+                ),
+              ),
+            )
+          : ClipRRect(
+              borderRadius: BorderRadius.circular(20.0),
+              child: Image.network(data),
+            ),
     );
   }
 }

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 
-<<<<<<< HEAD
 import '../constants/colors.dart';
 
-=======
 // ignore: must_be_immutable
->>>>>>> sprint-addded-linter-reward
 class ButtonWidget extends StatelessWidget {
   final VoidCallback onPressed;
   final double buttonWidth;
