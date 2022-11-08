@@ -10,16 +10,20 @@ import 'package:ceosi_app/screens/ceosi_freedomwall/freedomposts_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/pie_chart_report_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/piechart_search_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/user_search_screen.dart';
+import 'package:ceosi_app/screens/ceosi_freedomwall/user_single_freedom_post_screen.dart';
 import 'package:ceosi_app/screens/login_screen.dart';
 import 'package:ceosi_app/screens/home_screen.dart';
 import 'package:ceosi_app/screens/register_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'screens/ceosi_company_app/about_screen.dart';
 import 'screens/ceosi_company_app/announcement_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'constants/labels.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -34,7 +38,7 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/registerscreen',
+      initialRoute: '/usersinglefreedompostscreen',
       routes: {
         '/': (context) => const LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
@@ -52,6 +56,8 @@ class MyApp extends StatelessWidget {
         '/piechartreportscreen': (context) => const PieChartReportScreen(),
         '/piechartsearchscreen': (context) => const PieChartSearchScreen(),
         '/adminpostsdatascreen': (context) => const AdminPostsDataScreen(),
+        '/usersinglefreedompostscreen': (context) =>
+            const UserSingleFreedomPostScreen(),
       },
       title: Labels.ceosiApp,
     );
