@@ -11,6 +11,7 @@ class ProductRepository implements ProductRepositoryInterface {
   Future<List<ProductModel>> getProducts(BuildContext context) async {
     print('called');
     await Future.delayed(const Duration(seconds: 3));
+    // ignore: use_build_context_synchronously
     final assetBundle = DefaultAssetBundle.of(context);
     final data = await assetBundle.loadString('assets/products.json');
     final body = json.decode(data);

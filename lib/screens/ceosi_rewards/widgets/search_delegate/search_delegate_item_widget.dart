@@ -6,10 +6,6 @@ import '../../../../widgets/text_widget.dart';
 class SearchDelegateProduct extends SearchDelegate {
   @override
   List<Widget>? buildActions(BuildContext context) {
-    // TODO: implement buildActions
-
-    late String result = '';
-
     return [
       IconButton(
         onPressed: () {
@@ -33,8 +29,6 @@ class SearchDelegateProduct extends SearchDelegate {
 
   @override
   Widget? buildLeading(BuildContext context) {
-    // TODO: implement buildLeading
-
     return IconButton(
       onPressed: () {
         close(context, null);
@@ -45,13 +39,11 @@ class SearchDelegateProduct extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    // TODO: implement buildResults
     return Container();
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    // TODO: implement buildSuggestions
     return SizedBox(child: ListView.builder(itemBuilder: ((context, index) {
       return ListTile(
           onTap: () {

@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:image_picker/image_picker.dart';
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart' as path;
 
 firebase_storage.FirebaseStorage storage =
@@ -63,6 +64,7 @@ Future<void> uploadPicture(String inputSource, BuildContext context) async {
 
       hasLoaded = true;
 
+      // ignore: use_build_context_synchronously
       Navigator.of(context).pop();
     } on firebase_storage.FirebaseException catch (error) {
       if (kDebugMode) {
