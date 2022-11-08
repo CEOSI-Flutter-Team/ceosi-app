@@ -6,9 +6,11 @@ import 'package:ceosi_app/screens/ceosi_company_app/add_team_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/event_calendar_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/team_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/freedomposts_screen.dart';
+import 'package:ceosi_app/screens/ceosi_freedomwall/admin_posts_data_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/pie_chart_report_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/piechart_search_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/user_search_screen.dart';
+import 'package:ceosi_app/screens/ceosi_freedomwall/user_single_freedom_post_screen.dart';
 import 'package:ceosi_app/screens/login_screen.dart';
 import 'package:ceosi_app/screens/home_screen.dart';
 import 'package:ceosi_app/screens/register_screen.dart';
@@ -17,16 +19,16 @@ import 'package:flutter/material.dart';
 import 'screens/ceosi_company_app/about_screen.dart';
 import 'screens/ceosi_company_app/announcement_screen.dart';
 import 'constants/labels.dart';
-import 'screens/ceosi_freedomwall/freedomposts_screen.dart';
 import 'screens/ceosi_rewards/admin_panel_screen.dart';
 import 'screens/ceosi_rewards/profile_screen.dart';
 import 'screens/ceosi_rewards/reward_home_screen.dart';
 import 'screens/ceosi_rewards/view_item_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/catalogentriesscreen',
+      initialRoute: '/usersinglefreedompostscreen',
       routes: {
         '/': (context) => const LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
@@ -62,6 +64,9 @@ class MyApp extends StatelessWidget {
         '/rewardviewitemscreen': (context) => const RewardViewItemScreen(),
         '/profilescreenreward': (context) => const ProfileScreenReward(),
         '/adminpanelscreenreward': (context) => const AdminPanelScreen(),
+        '/adminpostsdatascreen': (context) => const AdminPostsDataScreen(),
+        '/usersinglefreedompostscreen': (context) =>
+            const UserSingleFreedomPostScreen(),
       },
       title: Labels.ceosiApp,
     );

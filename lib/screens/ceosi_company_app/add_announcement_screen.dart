@@ -203,7 +203,7 @@ class _AddAnnouncementScreenState extends State<AddAnnouncementScreen> {
                 isProcessing: _isProcessing,
                 validated: () {
                   if (_addAnnouncementFormKey.currentState!.validate()) {
-                    print("Validated");
+                    print('Validated');
                   }
                 },
               ),
