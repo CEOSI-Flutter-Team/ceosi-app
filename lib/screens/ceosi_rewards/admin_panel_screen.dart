@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants/colors.dart';
-import '../../../constants/images.dart';
-import '../../../widgets/button_widget.dart';
-import '../../../widgets/text_widget.dart';
-import '../widgets/dialogs/add_coin_dialog_widget.dart';
-import '../widgets/dialogs/add_item_dialog_widget.dart';
-import '../widgets/dialogs/subtract_coin_dialog_widget.dart';
-import '../widgets/drawer_widget.dart';
-import '../widgets/header/header_admin_panel_widget.dart';
-import '../widgets/product/product_list_widget.dart';
-import '../widgets/search_bar_widget.dart';
+import '../../constants/colors.dart';
+import '../../constants/images.dart';
+import '../../widgets/button_widget.dart';
+import '../../widgets/text_widget.dart';
+import 'widgets/dialogs/add_coin_dialog_widget.dart';
+import 'widgets/dialogs/add_item_dialog_widget.dart';
+import 'widgets/dialogs/subtract_coin_dialog_widget.dart';
+import 'widgets/drawer_widget.dart';
+import 'widgets/header/header_admin_panel_widget.dart';
+import 'widgets/product/product_list_widget.dart';
+import 'widgets/search_bar_widget.dart';
 
 class AdminPanelScreen extends StatefulWidget {
   const AdminPanelScreen({super.key});

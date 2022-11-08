@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../../constants/colors.dart';
-import '../widgets/banner_widget.dart';
-import '../widgets/buttons/dropdown_item_widget.dart';
-import '../widgets/drawer_widget.dart';
-import '../widgets/header/header_widget.dart';
-import '../widgets/product/product_list_widget.dart';
-import '../widgets/search_delegate/search_delegate_item_widget.dart';
+import '../../constants/colors.dart';
+import 'widgets/banner_widget.dart';
+import 'widgets/buttons/dropdown_item_widget.dart';
+import 'widgets/drawer_widget.dart';
+import 'widgets/header/header_widget.dart';
+import 'widgets/product/product_list_widget.dart';
+import 'widgets/search_delegate/search_delegate_item_widget.dart';
 
 class RewardHomeScreen extends StatefulWidget {
   const RewardHomeScreen({super.key});

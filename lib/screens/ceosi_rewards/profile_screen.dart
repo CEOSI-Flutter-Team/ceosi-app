@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants/colors.dart';
-import '../../../constants/icons.dart';
-import '../../../constants/images.dart';
-import '../../../widgets/text_widget.dart';
-import '../widgets/banner_widget.dart';
-import '../widgets/drawer_widget.dart';
-import '../widgets/header/header_widget.dart';
+import '../../constants/colors.dart';
+import '../../constants/icons.dart';
+import '../../constants/images.dart';
+import '../../widgets/text_widget.dart';
+import 'widgets/banner_widget.dart';
+import 'widgets/drawer_widget.dart';
+import 'widgets/header/header_widget.dart';
 
 class ProfileScreenReward extends StatefulWidget {
   const ProfileScreenReward({super.key});

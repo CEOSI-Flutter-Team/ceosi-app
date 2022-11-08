@@ -1,7 +1,7 @@
 import 'package:ceosi_app/screens/ceosi_freedomwall/freedomposts_screen.dart';
-import 'package:ceosi_app/screens/ceosi_rewards/screens/admin_panel_screen.dart';
-import 'package:ceosi_app/screens/ceosi_rewards/screens/profile_screen.dart';
-import 'package:ceosi_app/screens/ceosi_rewards/screens/reward_home_screen.dart';
+import 'package:ceosi_app/screens/ceosi_rewards/admin_panel_screen.dart';
+import 'package:ceosi_app/screens/ceosi_rewards/profile_screen.dart';
+import 'package:ceosi_app/screens/ceosi_rewards/reward_home_screen.dart';
 import 'package:ceosi_app/screens/home_screen.dart';
 import 'package:ceosi_app/screens/login_screen.dart';
 import 'package:ceosi_app/screens/register_screen.dart';
@@ -9,7 +9,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'constants/app_names.dart';
-import 'screens/ceosi_rewards/screens/view_item_screen.dart';
+import 'screens/ceosi_rewards/view_item_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
