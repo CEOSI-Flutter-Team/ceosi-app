@@ -52,7 +52,7 @@ dependencies:
   cloud_firestore:
   firebase_storage:
   unique_name_generator: ^1.0.0
-  firebase: 
+  firebase_auth: 
 
 dev_dependencies:
   flutter_test:
