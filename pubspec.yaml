@@ -44,6 +44,8 @@ dependencies:
   cloud_firestore:
   firebase_storage:
   image_picker:
+  firebase_auth:
+  unique_name_generator:
   
 
 dev_dependencies:
