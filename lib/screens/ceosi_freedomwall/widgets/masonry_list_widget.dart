@@ -24,8 +24,8 @@ class _MasonryListWidgetState extends State<MasonryListWidget> {
     List<String> myNoteContent = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ',
       'Lorem ipsum dolor sit amet, consectetur ad',
-      'Lorem ipsum dol ',
-      'Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et',
+      'Hi ',
+      'Hi ',
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
       'Lorem ipsum dolor sit amet, consectetur ',
       'Lorem ipsum dolor sit amet',
@@ -74,8 +74,8 @@ class MasonryItem extends StatelessWidget {
   final int id;
 
   final List<TextStyle> tempFontLists = [
-    GoogleFonts.cedarvilleCursive(fontSize: 20, fontWeight: FontWeight.bold),
-    GoogleFonts.ebGaramond(fontSize: 20),
+    GoogleFonts.justAnotherHand(fontSize: 20),
+    GoogleFonts.cedarvilleCursive(fontSize: 20),
     GoogleFonts.fasterOne(fontSize: 20),
     GoogleFonts.bangers(fontSize: 20),
   ];
@@ -89,6 +89,7 @@ class MasonryItem extends StatelessWidget {
           children: [
             Stack(children: [
               Container(
+                width: 300,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.black12,
@@ -97,32 +98,36 @@ class MasonryItem extends StatelessWidget {
                 child: Stack(children: [
                   InkWell(
                     onTap: () {},
-                    child: Card(
-                      color: backgroudColor,
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            MasonryTextWidget(
-                              text: content,
-                              style: tempFontLists[Random().nextInt(4)],
-                              textAlign: TextAlign.center,
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            const MasonryTextWidget(
-                              text: '12-21-22',
-                              fontSize: 12,
-                              textAlign: TextAlign.right,
-                            ),
-                            MasonryTextWidget(
-                              text: 'FP ID #$id',
-                              fontSize: 12,
-                              textAlign: TextAlign.right,
-                            ),
-                          ],
+                    child: SizedBox(
+                      width: 300,
+                      child: Card(
+                        color: backgroudColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              MasonryTextWidget(
+                                text: content,
+                                presetFontSizes: const [20, 14],
+                                style: tempFontLists[Random().nextInt(4)],
+                                textAlign: TextAlign.center,
+                              ),
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              const MasonryTextWidget(
+                                text: '12-21-22',
+                                presetFontSizes: [12],
+                                textAlign: TextAlign.right,
+                              ),
+                              MasonryTextWidget(
+                                text: 'FP ID #$id',
+                                presetFontSizes: const [12],
+                                textAlign: TextAlign.right,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

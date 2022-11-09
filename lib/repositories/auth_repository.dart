@@ -10,6 +10,7 @@ class AuthRepository implements AuthRepositoryInterface {
 
   NavigatorState? navigator;
 
+  final FirebaseAuth _Auth = FirebaseAuth.instance;
   @override
   void initNavigator() {
     navigator = Navigator.of(context);
@@ -18,11 +19,12 @@ class AuthRepository implements AuthRepositoryInterface {
   @override
   Future<List<UserModel>?> loginOfuser(String email, password) async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential = await _Auth.signInWithEmailAndPassword(
+          email: email, password: password);
 
       print('sucessfully logged in $userCredential');
       initNavigator();
+      // _Auth.signOut();
       navigator!.pushNamed('/homescreen');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -41,7 +43,7 @@ class AuthRepository implements AuthRepositoryInterface {
   Future<List<UserModel>?> registerOfuser(
       String name, email, password, passwordConfirmation) {
     //insert register function here @lance
-    List name = ['hehe', 'heeh'];
+    List name = ['hehe', 'heehe'];
     return name[0];
   }
 }

@@ -4,6 +4,5 @@ abstract class AuthRepositoryInterface {
   Future<List<UserModel>?> loginOfuser(String email, password);
   Future<List<UserModel>?> registerOfuser(
       String name, email, password, passwordConfirmation);
-
   initNavigator();
 }
