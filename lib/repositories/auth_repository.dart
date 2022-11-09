@@ -1,6 +1,8 @@
 import 'package:ceosi_app/repositories/auth_repository_interface.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:unique_name_generator/unique_name_generator.dart';
 
 import '../models/user_model.dart';
 
@@ -10,7 +12,7 @@ class AuthRepository implements AuthRepositoryInterface {
 
   NavigatorState? navigator;
 
-  final FirebaseAuth _Auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   void initNavigator() {
     navigator = Navigator.of(context);
@@ -19,7 +21,7 @@ class AuthRepository implements AuthRepositoryInterface {
   @override
   Future<List<UserModel>?> loginOfuser(String email, password) async {
     try {
-      UserCredential userCredential = await _Auth.signInWithEmailAndPassword(
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
 
       print('sucessfully logged in $userCredential');
@@ -40,10 +42,37 @@ class AuthRepository implements AuthRepositoryInterface {
   }
 
   @override
-  Future<List<UserModel>?> registerOfuser(
-      String name, email, password, passwordConfirmation) {
-    //insert register function here @lance
-    List name = ['hehe', 'heehe'];
-    return name[0];
+  Future<List<UserModel>?> addUser(
+    String fullName,
+    String email,
+    String password,
+    String confirmPassword,
+    String role,
+  ) async {
+    var ung = UniqueNameGenerator(
+      dictionaries: [adjectives, animals],
+      style: NameStyle.capital,
+      separator: '_',
+    );
+    List<String> anonNames = List.generate(10, (index) => ung.generate());
+    //add filter here if anonNames exists then randomized again
+
+    final docUser = FirebaseFirestore.instance.collection('CEOSI-USERS').doc();
+
+    final json = {
+      'fullName': fullName,
+      'userPoints': 0,
+      'email': email,
+      'id': docUser.id,
+      'password': password,
+      'confirmPassword': confirmPassword,
+      'role': role,
+      'contributions': 0,
+      'anonymousName': anonNames[1],
+    };
+
+    await docUser.set(json);
+
+    return null;
   }
 }

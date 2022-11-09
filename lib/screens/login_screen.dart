@@ -84,7 +84,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ButtonWidget(
                     color: CustomColors.primary,
                     borderRadius: 100,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/registerscreen');
+                    },
                     buttonHeight: 50,
                     buttonWidth: 300,
                     textWidget: const NormalTextWidget(
