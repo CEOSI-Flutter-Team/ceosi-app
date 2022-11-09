@@ -96,7 +96,7 @@ class SidebarWidget extends StatelessWidget {
                     ButtonWidget(
                       onPressed: () => Navigator.of(context)
                           .pushNamedAndRemoveUntil(
-                              '/homescreen', (route) => false),
+                              '/rewardhomescreen', (route) => false),
                       buttonHeight: 55.0,
                       buttonWidth: 203.0,
                       borderRadius: 10.0,

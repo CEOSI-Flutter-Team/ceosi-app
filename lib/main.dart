@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/usersinglefreedompostscreen',
+      initialRoute: '/catalogentriesscreen',
       routes: {
         '/': (context) => const LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
         '/usersearchscreen': (context) => const UserSearchScreen(),
         '/piechartreportscreen': (context) => const PieChartReportScreen(),
         '/piechartsearchscreen': (context) => const PieChartSearchScreen(),
-        '/addcatalogentryscreen': (context) => const AddCatalogEntryScreen(),
+        '/addcatalogentryscreen': (context) => AddCatalogEntryScreen(),
         '/rewardhomescreen': (context) => const RewardHomeScreen(),
         '/rewardviewitemscreen': (context) => const RewardViewItemScreen(),
         '/profilescreenreward': (context) => const ProfileScreenReward(),

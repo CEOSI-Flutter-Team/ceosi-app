@@ -7,5 +7,7 @@ class Labels {
       ceosiApp = 'CEOSI App',
       categories = 'CATEGORIES',
       addEntry = 'Add Entry',
-      addCatalogEntry = 'ADD CATALOG ENTRY';
+      addCatalogEntry = 'ADD CATALOG ENTRY',
+      checkYourInternetConnectivity =
+          'Check your internet connectivity. Cannot fetch data.';
 }
