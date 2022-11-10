@@ -7,6 +7,7 @@ import 'package:ceosi_app/screens/login_screen.dart';
 import 'package:ceosi_app/screens/register_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'constants/app_names.dart';
 import 'screens/ceosi_rewards/view_item_screen.dart';
@@ -14,7 +15,7 @@ import 'screens/ceosi_rewards/view_item_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/rewardhomescreen',
+      initialRoute: '/registerscreen',
       routes: {
         '/': (context) => const LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),

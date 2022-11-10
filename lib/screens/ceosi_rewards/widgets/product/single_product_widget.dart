@@ -1,11 +1,14 @@
+import 'package:ceosi_app/models/product_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../constants/colors.dart';
 import '../../../../constants/icons.dart';
+import '../../../../providers/product_provider.dart';
 import '../../../../widgets/text_widget.dart';
 
 // ignore: must_be_immutable
-class ProductItemWidget extends StatelessWidget {
+class ProductItemWidget extends ConsumerWidget {
   late String productName;
   late String productCategory;
   late String pointsEquivalent;
@@ -19,11 +22,24 @@ class ProductItemWidget extends StatelessWidget {
       required this.imageURL});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 5, 20, 10),
       child: GestureDetector(
-        onTap: () {
+        onTap: () async {
+          ref.read(getItemProvider.notifier).state ==
+              ProductModel(
+                productName: productName,
+                productCategory: productCategory,
+                pointsEquivalent: pointsEquivalent,
+                productImage: imageURL,
+              );
+
+          print(productName);
+          print(productCategory);
+          print(pointsEquivalent);
+          print(imageURL);
+
           Navigator.pushNamed(context, '/rewardviewitemscreen');
         },
         child: Container(

@@ -1,16 +1,21 @@
+import 'package:ceosi_app/providers/product_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../constants/colors.dart';
 import '../../constants/images.dart';
+import '../../models/product_model.dart';
 import '../../widgets/button_widget.dart';
 import '../../widgets/text_widget.dart';
 import 'widgets/dialogs/claim_reward_dialog_widget.dart';
 
-class RewardViewItemScreen extends StatelessWidget {
+class RewardViewItemScreen extends ConsumerWidget {
   const RewardViewItemScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final itemProvider = ref.watch(getItemProvider);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
@@ -84,6 +89,8 @@ class RewardViewItemScreen extends StatelessWidget {
                                   color: Colors.white,
                                   borderRadius: 100,
                                   onPressed: () {
+                                    print(itemProvider.productName);
+                                    print(ProductModel().productCategory);
                                     showDialog(
                                         context: context,
                                         builder: (context) {

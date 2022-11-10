@@ -5,12 +5,13 @@ import 'package:unique_name_generator/unique_name_generator.dart';
 class UserRepository implements UsertRepositoryInterface {
   @override
   Future addUser(
-    String fullName,
-    String email,
-    String password,
-    String confirmPassword,
-    String role,
-  ) async {
+      String fullName,
+      String email,
+      String password,
+      String confirmPassword,
+      String role,
+      String uid,
+      String profileImage) async {
     var ung = UniqueNameGenerator(
       dictionaries: [adjectives, animals],
       style: NameStyle.capital,
@@ -22,15 +23,38 @@ class UserRepository implements UsertRepositoryInterface {
     final docUser = FirebaseFirestore.instance.collection('CEOSI-USERS').doc();
 
     final json = {
-      'fullName': fullName,
-      'userPoints': 0,
+      'name': fullName,
+      'user_points': 0,
       'email': email,
-      'id': docUser.id,
-      'password': password,
-      'confirmPassword': confirmPassword,
-      'role': role,
+      'id': docUser,
+      'user_id': uid,
+      'position': role,
       'contributions': 0,
-      'anonymousName': anonNames[1],
+      'anon_name': anonNames[1],
+      'claimed_rewards': [{}],
+      'earned_points': [{}],
+      'profile_image': profileImage,
+    };
+
+    await docUser.set(json);
+  }
+
+  Future addPoints(
+    int pointsEquivalent,
+    String comment,
+    String earnedThrough,
+    String userEmail,
+  ) async {
+    final docUser = FirebaseFirestore.instance
+        .collection('CEOSI-POINTS-EARNED-REWARD')
+        .doc();
+
+    final json = {
+      'id': docUser.id,
+      'points_equivalent': pointsEquivalent,
+      'comment': comment,
+      'earned_through': earnedThrough,
+      'email': userEmail,
     };
 
     await docUser.set(json);

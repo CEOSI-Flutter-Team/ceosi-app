@@ -209,7 +209,7 @@ class AdminListReward extends StatelessWidget {
     return Stack(
       children: [
         ProductListWidget(
-          query: 'Snacks',
+          query: 'Drinks',
         ),
         Padding(
           padding: const EdgeInsets.only(bottom: 20),
