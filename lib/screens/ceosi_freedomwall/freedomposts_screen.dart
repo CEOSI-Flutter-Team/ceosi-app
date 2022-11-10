@@ -16,6 +16,7 @@ class _FreedomPostsScreenState extends State<FreedomPostsScreen>
     with TickerProviderStateMixin {
   TabController? tabController;
 
+  
   @override
   void initState() {
     super.initState();
