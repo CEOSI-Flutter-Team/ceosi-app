@@ -9,5 +9,10 @@ class Labels {
       addEntry = 'Add Entry',
       addCatalogEntry = 'ADD CATALOG ENTRY',
       checkYourInternetConnectivity =
-          'Check your internet connectivity. Cannot fetch data.';
+          'Check your internet connectivity. Cannot fetch data.',
+      permissionRecommended = 'This permission is recommended.',
+      title = 'Title',
+      description = 'Description',
+      submit = 'Submit',
+      uploadImage = 'Upload Image';
 }

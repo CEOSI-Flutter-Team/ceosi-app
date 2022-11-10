@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/widgets/flutter_catalog_appbar_widget.dart';
 import 'package:ceosi_app/widgets/button_widget.dart';
+import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:code_editor/code_editor.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -45,7 +46,7 @@ class AddCatalogEntryScreen extends StatelessWidget {
 
     var scaffoldMessenger = ScaffoldMessenger.of(context);
 
-    Future uploadImage() async {
+    Future<void> uploadImage() async {
       final imagePicker = ImagePicker();
       PickedFile image;
       PermissionStatus status = await Permission.photos.request();
@@ -57,13 +58,14 @@ class AddCatalogEntryScreen extends StatelessWidget {
         print('File Path: $file');
       } else {
         scaffoldMessenger.showSnackBar(
-            const SnackBar(content: Text('This permission is recommended.')));
+            const SnackBar(content: Text(Labels.permissionRecommended)));
       }
     }
 
     return Scaffold(
       appBar: flutterCatalogAppbarWidget(title: Labels.addCatalogEntry),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: <Widget>[
             Padding(
@@ -82,7 +84,7 @@ class AddCatalogEntryScreen extends StatelessWidget {
                 decoration: InputDecoration(
                   isDense: true,
                   label: const Text(
-                    'Title',
+                    Labels.title,
                     style: TextStyle(
                       color: CustomColors.primary,
                       fontWeight: FontWeight.bold,
@@ -122,7 +124,7 @@ class AddCatalogEntryScreen extends StatelessWidget {
                 decoration: InputDecoration(
                   isDense: false,
                   label: const Text(
-                    'Description',
+                    Labels.description,
                     style: TextStyle(
                       color: CustomColors.primary,
                       fontWeight: FontWeight.bold,
@@ -146,62 +148,120 @@ class AddCatalogEntryScreen extends StatelessWidget {
                 ),
               ),
             ),
-            DefaultTabController(
-              length: 2,
-              child: Column(
-                children: [
-                  const TabBar(
-                    tabs: [
-                      Tab(
-                        icon: Icon(
-                          Icons.code,
-                          color: CustomColors.primary,
-                        ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 10.0),
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.0),
+                    border: const Border(
+                        left: BorderSide(color: CustomColors.primary),
+                        top: BorderSide(color: CustomColors.primary),
+                        right: BorderSide(color: CustomColors.primary),
+                        bottom: BorderSide(color: CustomColors.primary))),
+                child: DefaultTabController(
+                  length: 2,
+                  child: Column(
+                    children: [
+                      const TabBar(
+                        indicatorColor: CustomColors.secondary,
+                        indicatorWeight: 5,
+                        padding: EdgeInsets.all(10.0),
+                        tabs: [
+                          Tab(
+                            icon: Icon(
+                              Icons.code,
+                              color: CustomColors.primary,
+                            ),
+                          ),
+                          Tab(
+                            icon: Icon(
+                              Icons.image,
+                              color: CustomColors.primary,
+                            ),
+                          ),
+                        ],
                       ),
-                      Tab(
-                        icon: Icon(
-                          Icons.image,
-                          color: CustomColors.primary,
-                        ),
-                      )
+                      TabBarViewWidget(
+                        editorModel: editorModel,
+                        onPressed: () {
+                          uploadImage();
+                        },
+                      ),
                     ],
                   ),
-                  SizedBox(
-                    height: 200.0,
-                    child: TabBarView(children: [
-                      Container(),
-                      Container(),
-                    ]),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 20.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  uploadImage();
-                },
-                child: const Text('Upload Image'),
+                ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 20.0),
               child: ButtonWidget(
-                  onPressed: () {},
-                  buttonHeight: 50.0,
-                  buttonWidth: 100.0,
-                  borderRadius: 10.0,
-                  textWidget: const Text(
-                    'Submit',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )),
+                onPressed: () {},
+                buttonHeight: 50.0,
+                buttonWidth: 100.0,
+                borderRadius: 10.0,
+                textWidget: const BoldTextWidget(
+                  color: Colors.white,
+                  fontSize: 12.0,
+                  text: Labels.submit,
+                ),
+              ),
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class TabBarViewWidget extends StatelessWidget {
+  const TabBarViewWidget({
+    super.key,
+    required this.editorModel,
+    required this.onPressed,
+  });
+
+  final EditorModel editorModel;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height / 2.2,
+      child: TabBarView(
+        physics: const BouncingScrollPhysics(),
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: CodeEditor(
+                  model: editorModel,
+                  edit: true,
+                  onSubmit: (language, value) {},
+                  disableNavigationbar: true,
+                ),
+              ),
+            ],
+          ),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 20.0),
+              child: ButtonWidget(
+                buttonHeight: 75.0,
+                buttonWidth: 150.0,
+                borderRadius: 10.0,
+                onPressed: onPressed,
+                textWidget: const BoldTextWidget(
+                  color: Colors.white,
+                  fontSize: 12.0,
+                  text: Labels.uploadImage,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
