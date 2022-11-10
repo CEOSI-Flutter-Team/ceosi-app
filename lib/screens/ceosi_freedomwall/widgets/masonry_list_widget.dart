@@ -3,10 +3,14 @@ import 'dart:math';
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/widgets/gesture_detector_widget.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/widgets/masontry_text_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
+import 'package:rxdart/rxdart.dart';
 
 import '../../../constants/icons.dart';
 import '../../../utils/datagetter.dart';
@@ -19,44 +23,70 @@ class MasonryListWidget extends StatefulWidget {
 }
 
 class _MasonryListWidgetState extends State<MasonryListWidget> {
+  Stream<List<DocumentSnapshot>> combine2Streams(
+      Stream<DocumentSnapshot> stream1, Stream<QuerySnapshot> stream2) {
+    return Rx.combineLatest2(
+        stream1,
+        stream2,
+        (DocumentSnapshot a, QuerySnapshot b) =>
+            List.from(a['anon_name'])..addAll(b.docs));
+  }
+
   @override
   Widget build(BuildContext context) {
-    List<String> myNoteContent = [
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ',
-      'Lorem ipsum dolor sit amet, consectetur ad',
-      'Hi ',
-      'Hi ',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
-      'Lorem ipsum dolor sit amet, consectetur ',
-      'Lorem ipsum dolor sit amet',
-      'Lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ',
-      'Lorem ipsum dol Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et',
-      'Lorem ipsum dolor sit Lorem'
-    ];
+    return StreamBuilder<QuerySnapshot>(
+      stream: FirebaseFirestore.instance
+          .collection('CEOSI-FREEDOMPOSTS')
+          .snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          if (snapshot.data!.docs.isEmpty) {
+            return const Center(
+              child: Text(
+                'You have no saved Posts!',
+                style: TextStyle(
+                  color: Colors.white70,
+                ),
+              ),
+            );
+          }
+          return Container(
+            margin: const EdgeInsets.fromLTRB(20, 100, 20, 12),
+            child: MasonryGridView.builder(
+              physics: const BouncingScrollPhysics(),
+              crossAxisSpacing: 8,
+              mainAxisSpacing: 6,
+              scrollDirection: Axis.vertical,
+              itemCount: snapshot.data!.docs.length,
+              itemBuilder: (context, index) {
+                Map data = snapshot.data!.docs[index].data() as Map;
+                DateTime mydateTime = data['created'].toDate();
+                String formattedTime =
+                    DateFormat.yMMMd().add_jm().format(mydateTime);
 
-    return Container(
-      margin: const EdgeInsets.fromLTRB(20, 100, 20, 12),
-      child: MasonryGridView.builder(
-        physics: const BouncingScrollPhysics(),
-        crossAxisSpacing: 8,
-        mainAxisSpacing: 6,
-        scrollDirection: Axis.vertical,
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          Random random = Random();
-          int randomNumber = random.nextInt(8) + 1;
-          Color backgroudColor =
-              CustomColors().masonryListbackgroundColors[(randomNumber)];
-          String content = myNoteContent[(randomNumber)];
-          return MasonryItem(
-            backgroudColor: backgroudColor,
-            content: content,
-            id: index,
+                Random random = Random();
+                int randomNumber = random.nextInt(8) + 1;
+                Color backgroudColor =
+                    CustomColors().masonryListbackgroundColors[(randomNumber)];
+
+                return MasonryItem(
+                  backgroudColor: backgroudColor,
+                  content: data['content'],
+                  anonname: FirebaseAuth.instance.currentUser!.uid,
+                  date: formattedTime,
+                );
+              },
+              gridDelegate:
+                  const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2),
+            ),
           );
-        },
-        gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2),
-      ),
+        } else {
+          return const Center(
+            child: Text('Loading...'),
+          );
+        }
+      },
     );
   }
 }
@@ -66,12 +96,16 @@ class MasonryItem extends StatelessWidget {
       {Key? key,
       required this.backgroudColor,
       required this.content,
-      required this.id})
+      this.id,
+      required this.date,
+      required this.anonname})
       : super(key: key);
 
   final Color backgroudColor;
   final String content;
-  final int id;
+  final String? id;
+  final String date;
+  final String anonname;
 
   final List<TextStyle> tempFontLists = [
     GoogleFonts.justAnotherHand(fontSize: 20),
@@ -116,13 +150,13 @@ class MasonryItem extends StatelessWidget {
                               const SizedBox(
                                 height: 15,
                               ),
-                              const MasonryTextWidget(
-                                text: '12-21-22',
-                                presetFontSizes: [12],
+                              MasonryTextWidget(
+                                text: date,
+                                presetFontSizes: const [12],
                                 textAlign: TextAlign.right,
                               ),
                               MasonryTextWidget(
-                                text: 'FP ID #$id',
+                                text: anonname,
                                 presetFontSizes: const [12],
                                 textAlign: TextAlign.right,
                               ),

@@ -150,12 +150,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   color: CustomColors.primary,
                   borderRadius: 100,
                   onPressed: () {
-                    AuthRepository(context).addUser(
+                    AuthRepository(context).userSignUp(
                         _nameController.text,
                         _emailController.text,
                         _passwordController.text,
                         _confirmPasswordController.text,
-                        roleCategory);
+                        roleCategory,
+                        context);
                   },
                   buttonHeight: 50,
                   buttonWidth: 300,

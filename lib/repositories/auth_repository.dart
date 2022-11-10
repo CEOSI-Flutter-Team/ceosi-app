@@ -1,8 +1,7 @@
 import 'package:ceosi_app/repositories/auth_repository_interface.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ceosi_app/repositories/user_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:unique_name_generator/unique_name_generator.dart';
 
 import '../models/user_model.dart';
 
@@ -26,7 +25,7 @@ class AuthRepository implements AuthRepositoryInterface {
 
       print('sucessfully logged in $userCredential');
       initNavigator();
-      // _Auth.signOut();
+      // _auth.signOut();
       navigator!.pushNamed('/homescreen');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -42,37 +41,30 @@ class AuthRepository implements AuthRepositoryInterface {
   }
 
   @override
-  Future<List<UserModel>?> addUser(
-    String fullName,
-    String email,
-    String password,
-    String confirmPassword,
-    String role,
-  ) async {
-    var ung = UniqueNameGenerator(
-      dictionaries: [adjectives, animals],
-      style: NameStyle.capital,
-      separator: '_',
-    );
-    List<String> anonNames = List.generate(10, (index) => ung.generate());
-    //add filter here if anonNames exists then randomized again
+  userSignUp(String name, email, password, confirmPassword, role,
+      BuildContext context) async {
+    try {
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
 
-    final docUser = FirebaseFirestore.instance.collection('CEOSI-USERS').doc();
+      final user = FirebaseAuth.instance.currentUser!;
 
-    final json = {
-      'fullName': fullName,
-      'userPoints': 0,
-      'email': email,
-      'id': docUser.id,
-      'password': password,
-      'confirmPassword': confirmPassword,
-      'role': role,
-      'contributions': 0,
-      'anonymousName': anonNames[1],
-    };
-
-    await docUser.set(json);
-
-    return null;
+      UserRepository().addUser(
+        name,
+        email,
+        password,
+        confirmPassword,
+        role,
+        user.uid,
+        'https://cdn-icons-png.flaticon.com/512/1177/1177568.png',
+      );
+    } catch (e) {
+      // ErrorDialog(
+      //     caption: e.toString(),
+      //     onPressed: () {
+      //       Navigator.of(context).pop();
+      //     });
+      print(e);
+    }
   }
 }

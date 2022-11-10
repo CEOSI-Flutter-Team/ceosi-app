@@ -49,8 +49,8 @@ class _FreedomPostsScreenState extends State<FreedomPostsScreen>
                     unselectedLabelColor: Colors.grey,
                     controller: tabController,
                     tabs: const [
-                      Text('FREEDOM WALL'),
-                      Text('MY FREEDOM POSTS'),
+                      Text('FREEDOM WALL \u{1F4DC}'),
+                      Text('MY FREEDOM POSTS \u{1F4C4}'),
                     ],
                   ),
                 ),

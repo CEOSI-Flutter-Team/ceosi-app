@@ -1,6 +1,7 @@
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/labels.dart';
@@ -118,6 +119,8 @@ class SidebarWidget extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 20.0),
                     child: ButtonWidget(
                       onPressed: () {
+                        final FirebaseAuth auth = FirebaseAuth.instance;
+                        auth.signOut();
                         Navigator.pushNamed(context, '/');
                       },
                       buttonHeight: 42.0,

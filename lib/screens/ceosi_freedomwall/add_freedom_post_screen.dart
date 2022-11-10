@@ -1,5 +1,6 @@
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/button_widget.dart';
@@ -19,21 +20,21 @@ class AddFreedomPostScreen extends StatefulWidget {
 class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
   final contentController = TextEditingController();
 
-  Future addItem(int uid, int fpid, String mood, String content,
-      String anonName, DateTime dateTime) async {
-    CollectionReference freedomPostsref =
-        FirebaseFirestore.instance.collection('CEOSI-FREEDOMWALL-FREEDOMPOSTS');
+  Future addItem(
+      String mood, String content, String anonName, DateTime dateTime) async {
+    final freedomPostsref =
+        FirebaseFirestore.instance.collection('CEOSI-FREEDOMPOSTS').doc();
 
     var data = {
-      'uid': uid,
-      'fpid': fpid,
+      'id': freedomPostsref.id,
+      'user_id': FirebaseAuth.instance.currentUser!.uid,
       'mood': mood,
       'content': content,
-      'anonName': anonName,
+      'anon_name': anonName,
       'created': dateTime,
     };
 
-    await freedomPostsref.add(data);
+    await freedomPostsref.set(data);
   }
 
   final moods = [
@@ -110,7 +111,32 @@ class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
                 ButtonWidget(
                     borderRadius: 20,
                     onPressed: () {
-                      addItem(2, 2, mood.toString(), 'Lorem Ipsum Dol Lorem',
+                      FirebaseFirestore.instance
+                          .collection('CEOSI-USERS')
+                          .where('user_id',
+                              isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+                          .get()
+                          .then((QuerySnapshot querySnapshot) {
+                        for (var doc in querySnapshot.docs) {
+                          print(doc['anon_name']);
+                          // if (doc['status'] == 'enabled') {
+                          //   currentuseremail = doc['email'];
+                          //   Navigator.of(context).push(MaterialPageRoute(
+                          //     builder: (context) => homescreen(
+                          //         currentuseremail: currentuseremail),
+                          //   ));
+                          //   print(doc['email']);
+                          //   print(doc['pw']);
+                          // } else {
+                          //   // FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+                          //   // firebaseAuth.signOut();
+                          //   // showAlertDialoguserdisabled(context);
+                          //   // print('account is disabled');
+                          // }
+                        }
+                      });
+
+                      addItem(mood.toString(), contentController.text,
                           'CarL_Knight2', DateTime.now());
                     },
                     buttonHeight: 53,

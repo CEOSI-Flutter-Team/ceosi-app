@@ -67,7 +67,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ButtonWidget(
                   color: CustomColors.primary,
                   borderRadius: 20,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/freedompostsscreen');
+                  },
                   buttonHeight: 100,
                   buttonWidth: 300,
                   textWidget: const BoldTextWidget(

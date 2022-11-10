@@ -54,6 +54,9 @@ dependencies:
   unique_name_generator: ^1.0.0
   firebase_auth: 
   auto_size_text: ^3.0.0
+  rxdart: ^0.27.5
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
