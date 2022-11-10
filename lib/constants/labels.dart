@@ -14,5 +14,9 @@ class Labels {
       title = 'Title',
       description = 'Description',
       submit = 'Submit',
-      uploadImage = 'Upload Image';
+      uploadImage = 'Upload Image',
+      confirmationTitle =
+          'This action will redirect you to the Home Screen.\n\nContinue?',
+      yes = 'Yes',
+      no = 'No';
 }

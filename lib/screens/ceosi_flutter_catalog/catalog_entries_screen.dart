@@ -15,40 +15,96 @@ class CatalogEntriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: flutterCatalogAppbarWidget(title: Labels.catalogEntries),
-      drawer: const SidebarWidget(),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 5.0, right: 5.0),
-        child: FloatingActionButton(
-          tooltip: Labels.addEntry,
-          backgroundColor: Colors.white,
-          elevation: 5,
-          splashColor: CustomColors.greyAccent,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-          child: const Icon(
-            Icons.add_rounded,
-            color: CustomColors.primary,
-            size: 35.0,
+    return WillPopScope(
+      onWillPop: () async {
+        final confirm = await showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialogWidget(
+              title: Labels.confirmationTitle,
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/homescreen', (route) => false);
+                  },
+                  child: const Text(
+                    Labels.yes,
+                    style: TextStyle(color: CustomColors.secondary),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context, false);
+                  },
+                  child: const Text(
+                    Labels.no,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+        return confirm;
+      },
+      child: Scaffold(
+        appBar: flutterCatalogAppbarWidget(title: Labels.catalogEntries),
+        drawer: const SidebarWidget(),
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(bottom: 5.0, right: 5.0),
+          child: FloatingActionButton(
+            tooltip: Labels.addEntry,
+            backgroundColor: Colors.white,
+            elevation: 5,
+            splashColor: CustomColors.greyAccent,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)),
+            child: const Icon(
+              Icons.add_rounded,
+              color: CustomColors.primary,
+              size: 35.0,
+            ),
+            onPressed: () =>
+                Navigator.of(context).pushNamed('/addcatalogentryscreen'),
           ),
-          onPressed: () =>
-              Navigator.of(context).pushNamed('/addcatalogentryscreen'),
+        ),
+        body: Column(
+          children: [
+            const AppbarExtensionWidget(),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const <Widget>[
+                  CatalogEntriesViewWidget(),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
-      body: Column(
-        children: [
-          const AppbarExtensionWidget(),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const <Widget>[
-                CatalogEntriesViewWidget(),
-              ],
-            ),
-          ),
-        ],
+    );
+  }
+}
+
+class AlertDialogWidget extends StatelessWidget {
+  const AlertDialogWidget(
+      {super.key, required this.title, required this.actions});
+
+  final String title;
+  final List<Widget> actions;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      elevation: 2,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+      backgroundColor: CustomColors.primary,
+      title: Text(
+        title,
+        style: const TextStyle(color: Colors.white, fontSize: 14.0),
       ),
+      actions: actions,
     );
   }
 }
