@@ -22,8 +22,9 @@ class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
 
   Future addItem(
       String mood, String content, String anonName, DateTime dateTime) async {
-    final freedomPostsref =
-        FirebaseFirestore.instance.collection('CEOSI-FREEDOMPOSTS').doc();
+    final freedomPostsref = FirebaseFirestore.instance
+        .collection('CEOSI-FREEDOMWALL-FREEDOMPOSTS')
+        .doc();
 
     var data = {
       'id': freedomPostsref.id,
@@ -33,6 +34,9 @@ class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
       'anon_name': anonName,
       'created': dateTime,
     };
+    if (data.isNotEmpty) {
+      Navigator.pushNamed(context, '/freedompostsscreen');
+    }
 
     await freedomPostsref.set(data);
   }
@@ -46,8 +50,17 @@ class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
   ];
 
   Object? mood;
+
+  @override
+  void dispose() {
+    contentController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    String anonNames = '';
+
     return WillPopScope(
       onWillPop: () async {
         return false;
@@ -118,26 +131,12 @@ class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
                           .get()
                           .then((QuerySnapshot querySnapshot) {
                         for (var doc in querySnapshot.docs) {
-                          print(doc['anon_name']);
-                          // if (doc['status'] == 'enabled') {
-                          //   currentuseremail = doc['email'];
-                          //   Navigator.of(context).push(MaterialPageRoute(
-                          //     builder: (context) => homescreen(
-                          //         currentuseremail: currentuseremail),
-                          //   ));
-                          //   print(doc['email']);
-                          //   print(doc['pw']);
-                          // } else {
-                          //   // FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-                          //   // firebaseAuth.signOut();
-                          //   // showAlertDialoguserdisabled(context);
-                          //   // print('account is disabled');
-                          // }
+                          anonNames = doc['anon_name'];
                         }
+                      }).whenComplete(() {
+                        addItem(mood.toString(), contentController.text,
+                            anonNames, DateTime.now());
                       });
-
-                      addItem(mood.toString(), contentController.text,
-                          'CarL_Knight2', DateTime.now());
                     },
                     buttonHeight: 53,
                     buttonWidth: 182,

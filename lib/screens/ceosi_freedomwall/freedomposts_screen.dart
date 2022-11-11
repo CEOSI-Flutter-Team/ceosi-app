@@ -1,6 +1,8 @@
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/widgets/freedomwallbutton_widget.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/widgets/masonry_list_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/sidebar_widget.dart';
@@ -16,7 +18,6 @@ class _FreedomPostsScreenState extends State<FreedomPostsScreen>
     with TickerProviderStateMixin {
   TabController? tabController;
 
-  
   @override
   void initState() {
     super.initState();
@@ -58,13 +59,21 @@ class _FreedomPostsScreenState extends State<FreedomPostsScreen>
               )),
         ),
         body: TabBarView(controller: tabController, children: [
-          Stack(children: const [
-            MasonryListWidget(),
-            FreedomWallButtonWidget(theHeader: '                '),
+          Stack(children: [
+            MasonryListWidget(
+                stream: FirebaseFirestore.instance
+                    .collection('CEOSI-FREEDOMWALL-FREEDOMPOSTS')
+                    .snapshots()),
+            const FreedomWallButtonWidget(theHeader: '                '),
           ]),
-          Stack(children: const [
-            MasonryListWidget(),
-            FreedomWallButtonWidget(theHeader: '                '),
+          Stack(children: [
+            MasonryListWidget(
+                stream: FirebaseFirestore.instance
+                    .collection('CEOSI-FREEDOMWALL-FREEDOMPOSTS')
+                    .where('user_id',
+                        isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+                    .snapshots()),
+            const FreedomWallButtonWidget(theHeader: '                '),
           ]),
         ]),
       ),
