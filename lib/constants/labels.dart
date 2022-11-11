@@ -18,5 +18,7 @@ class Labels {
       confirmationTitle =
           'This action will redirect you to the Home Screen.\n\nContinue?',
       yes = 'Yes',
-      no = 'No';
+      no = 'No',
+      share = 'Share',
+      preview = 'Preview';
 }

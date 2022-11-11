@@ -1,11 +1,11 @@
 import 'package:ceosi_app/models/ceosi_flutter_catalog/catalog_entry_model.dart';
 import 'package:ceosi_app/providers/ceosi_flutter_catalog/catalog_entry_provider.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/widgets/flutter_catalog_appbar_widget.dart';
+import 'package:ceosi_app/widgets/text_widget.dart';
+import 'package:code_editor/code_editor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:markdown_widget/markdown_widget.dart';
-import 'package:markdown_widget/config/highlight_themes.dart' as theme;
 import 'package:share_plus/share_plus.dart';
 
 import '../../constants/colors.dart';
@@ -70,28 +70,6 @@ class SourceCodeScreen extends StatelessWidget {
     return Scaffold(
       appBar: flutterCatalogAppbarWidget(
         title: args.title,
-        actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: GestureDetector(
-              onTap: () => _share(itemData, itemTitle),
-              child: const Icon(
-                Icons.share,
-                size: 20.0,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: GestureDetector(
-              onTap: () => _preview(context, dataList, args),
-              child: const Icon(
-                Icons.preview_rounded,
-                size: 20.0,
-              ),
-            ),
-          )
-        ],
       ),
       drawer: const SidebarWidget(),
       body: Consumer(
@@ -103,18 +81,22 @@ class SourceCodeScreen extends StatelessWidget {
               dataList = data!.entryData;
               itemData = dataList[args.index].data;
               itemTitle = dataList[args.index].title;
-              return Column(
-                children: <Widget>[
-                  DescriptionWidget(
-                    padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 20.0),
-                    text: dataList[args.index].description,
-                  ),
-                  DataViewWidget(
-                    isCode: dataList[args.index].isCode,
-                    data: itemData,
-                  ),
-                  const SizedBox(height: 50.0),
-                ],
+              return SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                  children: <Widget>[
+                    DescriptionWidget(
+                      padding:
+                          const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 20.0),
+                      text: dataList[args.index].description,
+                    ),
+                    DataViewWidget(
+                      isCode: dataList[args.index].isCode,
+                      data: itemData,
+                    ),
+                    const SizedBox(height: 50.0),
+                  ],
+                ),
               );
             },
             error: (error, stackTrace) => Text(error.toString()),
@@ -124,6 +106,19 @@ class SourceCodeScreen extends StatelessWidget {
             )),
           );
         },
+      ),
+      bottomSheet: BottomSheetWidget(
+        content: [
+          BottomSheetButtonWidget(
+              onPressed: () => _share(itemData, itemTitle),
+              icon: Icons.share,
+              label: Labels.share),
+          const SizedBox(width: 20.0),
+          BottomSheetButtonWidget(
+              onPressed: () => _preview(context, dataList, args),
+              icon: Icons.preview,
+              label: Labels.preview),
+        ],
       ),
     );
   }
@@ -173,36 +168,46 @@ class DataViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 3,
-      child: isCode
-          ? Container(
-              margin: const EdgeInsets.symmetric(horizontal: 30.0),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(radius),
-              ),
-              child: MarkdownWidget(
-                selectable: true,
-                data: data,
-                physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.all(20.0),
-                styleConfig: StyleConfig(
-                  preConfig: PreConfig(
-                    decoration: const BoxDecoration(
-                      color: Colors.transparent,
-                    ),
-                    padding: const EdgeInsets.all(0.0),
-                    language: 'dart',
-                    textStyle: GoogleFonts.ubuntuMono().copyWith(
-                      fontSize: 14.0,
-                    ),
-                    theme: theme.a11yLightTheme,
+    final List<FileEditor> files = [
+      FileEditor(
+        name: 'code.dart',
+        language: 'dart',
+        code: <String>[data].join('\n'),
+      ),
+    ];
+
+    EditorModel editorModel = EditorModel(
+      files: files,
+      styleOptions: EditorModelStyleOptions(
+        fontSize: 10.0,
+        toolbarOptions: const ToolbarOptions(
+          copy: true,
+          selectAll: true,
+        ),
+      ),
+    );
+
+    return isCode
+        ? Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20.0),
+                  child: CodeEditor(
+                    model: editorModel,
+                    edit: false,
+                    disableNavigationbar: true,
                   ),
                 ),
-              ),
-            )
-          : ClipRRect(
+              ],
+            ),
+          )
+        : Padding(
+            padding:
+                const EdgeInsets.only(left: 30.0, right: 30.0, bottom: 150.0),
+            child: ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
               child: Image.network(
                 data,
@@ -228,6 +233,63 @@ class DataViewWidget extends StatelessWidget {
                 },
               ),
             ),
+          );
+  }
+}
+
+class BottomSheetWidget extends StatelessWidget {
+  const BottomSheetWidget({super.key, required this.content});
+
+  final List<Widget> content;
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomSheet(
+      backgroundColor: CustomColors.primary,
+      elevation: 2,
+      enableDrag: false,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(20.0),
+        topRight: Radius.circular(20.0),
+      )),
+      onClosing: () {},
+      builder: (context) {
+        return SizedBox(
+          height: 150.0,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: content,
+          ),
+        );
+      },
+    );
+  }
+}
+
+class BottomSheetButtonWidget extends StatelessWidget {
+  const BottomSheetButtonWidget(
+      {super.key,
+      required this.onPressed,
+      required this.icon,
+      this.label = ''});
+
+  final VoidCallback onPressed;
+  final String label;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        IconButton(
+          iconSize: 50.0,
+          onPressed: onPressed,
+          icon: Icon(icon, color: Colors.white, size: 50.0),
+        ),
+        BoldTextWidget(color: Colors.white, fontSize: 14.0, text: label),
+      ],
     );
   }
 }
