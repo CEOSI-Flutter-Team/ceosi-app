@@ -22,57 +22,31 @@ class _LoginScreenState extends State<LoginScreen> {
   final loginformKey = GlobalKey<FormState>();
   // final List<GlobalObjectKey<FormState>> loginformKey =
   //     List.generate(10, (index) => GlobalObjectKey<FormState>(index));
+
+  gotoLoginScreen() {
+    Navigator.pushNamed(context, '/homescreen');
+  }
+
+  validateLogin(dynamic e) {
+    showDialog(
+      context: context,
+      builder: ((context) {
+        return ErrorDialog(
+            caption: e.code,
+            onPressed: () {
+              Navigator.of(context).pop();
+            });
+      }),
+    );
+  }
+
   loginUser() async {
     try {
       await AuthRepository()
           .loginOfuser(_usernameController.text, _passwordController.text);
-      Navigator.pushNamed(context, '/homescreen');
+      gotoLoginScreen();
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        showDialog(
-          context: context,
-          builder: ((context) {
-            return ErrorDialog(
-                caption: e.code,
-                onPressed: () {
-                  Navigator.of(context).pop();
-                });
-          }),
-        );
-      } else if (e.code == 'wrong-password') {
-        showDialog(
-          context: context,
-          builder: ((context) {
-            return ErrorDialog(
-                caption: e.code,
-                onPressed: () {
-                  Navigator.of(context).pop();
-                });
-          }),
-        );
-      } else if (e.code == 'invalid-email') {
-        showDialog(
-          context: context,
-          builder: ((context) {
-            return ErrorDialog(
-                caption: e.code,
-                onPressed: () {
-                  Navigator.of(context).pop();
-                });
-          }),
-        );
-      } else if (e.code == 'user-disabled') {
-        showDialog(
-          context: context,
-          builder: ((context) {
-            return ErrorDialog(
-                caption: e.code,
-                onPressed: () {
-                  Navigator.of(context).pop();
-                });
-          }),
-        );
-      }
+      validateLogin(e);
     }
   }
 

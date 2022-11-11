@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:ceosi_app/constants/colors.dart';
-import 'package:ceosi_app/screens/ceosi_freedomwall/widgets/gesture_detector_widget.dart';
+import 'package:ceosi_app/screens/ceosi_freedomwall/widgets/ink_well_widget.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/widgets/masontry_text_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -156,17 +156,18 @@ class MasonryItem extends StatelessWidget {
                   ),
                 ]),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 20, 11, 0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                  GestureDetectorWidget(
-                    childWidget: Image.asset(CustomIcons().continuousdoticon),
-                    onTap: () {
-                      print('hello id');
-                    },
+              Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                InkWellWidget(
+                  childWidget: Image.asset(
+                    CustomIcons().continuousdoticon,
+                    height: 30,
+                    width: 30,
                   ),
-                ]),
-              )
+                  onTap: () {
+                    print('hello id');
+                  },
+                ),
+              ])
             ]),
           ],
         ),
