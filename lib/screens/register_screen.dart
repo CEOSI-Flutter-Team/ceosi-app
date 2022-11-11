@@ -1,6 +1,7 @@
 import 'package:ceosi_app/providers/user_provider.dart';
 import 'package:ceosi_app/repositories/auth_repository.dart';
 import 'package:ceosi_app/screens/ceosi_rewards/widgets/dialogs/error_dialog_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -153,7 +154,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   return ButtonWidget(
                       color: CustomColors().primaryColor,
                       borderRadius: 100,
-                      onPressed: () {
+                      onPressed: () async {
                         // ignore: unrelated_type_equality_checks
                         if (_passwordController.text !=
                             _confirmPasswordController.text) {
@@ -199,9 +200,27 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               roleCategory,
                               context);
 
-                          ref.watch(getUserEmail.notifier).state =
-                              _emailController.text;
+                          var collection = FirebaseFirestore.instance
+                              .collection('CEOSI-USERS')
+                              .where('email', isEqualTo: _emailController.text);
 
+                          late String id = '';
+
+                          var querySnapshot = await collection.get();
+                          if (mounted) {
+                            setState(() {
+                              for (var queryDocumentSnapshot
+                                  in querySnapshot.docs) {
+                                Map<String, dynamic> data =
+                                    queryDocumentSnapshot.data();
+                                id = data['id'];
+                              }
+                            });
+                          }
+
+                          ref.watch(getUserId.notifier).state = id;
+
+                          // ignore: use_build_context_synchronously
                           Navigator.pushNamed(context, '/rewardhomescreen');
                         }
                       },

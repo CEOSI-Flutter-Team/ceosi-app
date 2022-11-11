@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import '../../../../constants/colors.dart';
+import '../../../../repositories/product_repository.dart';
 import '../../../../widgets/button_widget.dart';
 import '../../../../widgets/text_widget.dart';
 import '../../../../widgets/textformfield_widget.dart';
 import '../../../../plugins/image_picker.dart';
-import '../../../../repositories/product_repository.dart';
 import '../buttons/dropdown_item_widget.dart';
 
 // ignore: must_be_immutable
@@ -31,6 +31,9 @@ class _AddItemDialogWidgetState extends State<AddItemDialogWidget> {
   String itemCategory = 'Snacks';
   late File imageFile;
   late String fileName;
+
+  final _remindersController = TextEditingController();
+  final _detailsController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -154,25 +157,64 @@ class _AddItemDialogWidgetState extends State<AddItemDialogWidget> {
               ButtonWidget(
                   borderRadius: 100,
                   onPressed: () {
-                    print(hasLoaded);
-                    print(widget.itemNameController.text);
-                    print(widget.pointsEqualController.text);
-                    print(itemCategory);
-                    print(imageURL);
-                    ProductRepository().addItem(
-                        widget.itemNameController.text,
-                        itemCategory,
-                        widget.pointsEqualController.text,
-                        imageURL);
-
                     Navigator.of(context).pop();
+                    showDialog(
+                        context: context,
+                        builder: ((context) {
+                          return Dialog(
+                            backgroundColor: CustomColors().primaryColor,
+                            child: SizedBox(
+                              height: 300,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(
+                                    height: 40,
+                                  ),
+                                  TextformfieldWidget(
+                                      label: 'Product Details',
+                                      colorFill: Colors.white,
+                                      textFieldController: _detailsController),
+                                  TextformfieldWidget(
+                                      label: 'Reminders',
+                                      colorFill: Colors.white,
+                                      textFieldController:
+                                          _remindersController),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Center(
+                                    child: ButtonWidget(
+                                        borderRadius: 100,
+                                        onPressed: () {
+                                          ProductRepository().addItem(
+                                              widget.itemNameController.text,
+                                              itemCategory,
+                                              widget.pointsEqualController.text,
+                                              imageURL,
+                                              _detailsController.text,
+                                              _remindersController.text);
+                                        },
+                                        buttonHeight: 50,
+                                        buttonWidth: 220,
+                                        textWidget: BoldTextWidget(
+                                            color: CustomColors().primaryColor,
+                                            fontSize: 18,
+                                            text: 'ADD ITEM'),
+                                        color: Colors.white),
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        }));
                   },
                   buttonHeight: 50,
                   buttonWidth: 220,
                   textWidget: BoldTextWidget(
                       color: CustomColors().primaryColor,
                       fontSize: 18,
-                      text: 'ADD ITEM'),
+                      text: 'CONTINUE'),
                   color: Colors.white)
             ],
           ),
