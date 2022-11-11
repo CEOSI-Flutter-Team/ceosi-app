@@ -1,10 +1,12 @@
 import 'package:ceosi_app/repositories/auth_repository.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 import '../constants/images.dart';
 import '../widgets/button_widget.dart';
 import '../widgets/text_widget.dart';
 import '../widgets/textformfield_widget.dart';
+import 'ceosi_freedomwall/widgets/error_dialogue_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -17,10 +19,61 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _secureText = true;
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
-
+  final loginformKey = GlobalKey<FormState>();
+  // final List<GlobalObjectKey<FormState>> loginformKey =
+  //     List.generate(10, (index) => GlobalObjectKey<FormState>(index));
   loginUser() async {
-    await AuthRepository(context)
-        .loginOfuser(_usernameController.text, _passwordController.text);
+    try {
+      await AuthRepository()
+          .loginOfuser(_usernameController.text, _passwordController.text);
+      Navigator.pushNamed(context, '/homescreen');
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        showDialog(
+          context: context,
+          builder: ((context) {
+            return ErrorDialog(
+                caption: e.code,
+                onPressed: () {
+                  Navigator.of(context).pop();
+                });
+          }),
+        );
+      } else if (e.code == 'wrong-password') {
+        showDialog(
+          context: context,
+          builder: ((context) {
+            return ErrorDialog(
+                caption: e.code,
+                onPressed: () {
+                  Navigator.of(context).pop();
+                });
+          }),
+        );
+      } else if (e.code == 'invalid-email') {
+        showDialog(
+          context: context,
+          builder: ((context) {
+            return ErrorDialog(
+                caption: e.code,
+                onPressed: () {
+                  Navigator.of(context).pop();
+                });
+          }),
+        );
+      } else if (e.code == 'user-disabled') {
+        showDialog(
+          context: context,
+          builder: ((context) {
+            return ErrorDialog(
+                caption: e.code,
+                onPressed: () {
+                  Navigator.of(context).pop();
+                });
+          }),
+        );
+      }
+    }
   }
 
   @override
@@ -33,69 +86,78 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: Colors.grey[200],
         body: Center(
           child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 50,
-                ),
-                Image.asset(
-                  Images.coesiLogoCompleteAndMaroonBlueText,
-                  width: 350,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                TextformfieldWidget(
-                  textFieldController: _usernameController,
-                  label: 'Username',
-                  colorFill: Colors.white,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                TextformfieldWidget(
-                  isObscure: _secureText,
-                  textFieldController: _passwordController,
-                  label: 'Password',
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _secureText ? Icons.visibility : Icons.visibility_off,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _secureText = !_secureText;
-                      });
-                    },
+            child: Form(
+              key: loginformKey,
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 50,
                   ),
-                  colorFill: Colors.white,
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-                ButtonWidget(
-                    color: CustomColors.primary,
-                    borderRadius: 100,
-                    onPressed: () {
-                      loginUser();
-                    },
-                    buttonHeight: 50,
-                    buttonWidth: 300,
-                    textWidget: const NormalTextWidget(
-                        color: Colors.white, fontSize: 18, text: 'Login')),
-                const SizedBox(
-                  height: 10,
-                ),
-                ButtonWidget(
-                    color: CustomColors.primary,
-                    borderRadius: 100,
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/registerscreen');
-                    },
-                    buttonHeight: 50,
-                    buttonWidth: 300,
-                    textWidget: const NormalTextWidget(
-                        color: Colors.white, fontSize: 18, text: 'Register')),
-              ],
+                  Image.asset(
+                    Images.coesiLogoCompleteAndMaroonBlueText,
+                    width: 350,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  TextformfieldWidget(
+                    textFieldController: _usernameController,
+                    label: 'Username',
+                    colorFill: Colors.white,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  TextformfieldWidget(
+                    isObscure: _secureText,
+                    textFieldController: _passwordController,
+                    label: 'Password',
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _secureText ? Icons.visibility : Icons.visibility_off,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _secureText = !_secureText;
+                        });
+                      },
+                    ),
+                    colorFill: Colors.white,
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  ButtonWidget(
+                      color: CustomColors.primary,
+                      borderRadius: 100,
+                      onPressed: () {
+                        if (loginformKey.currentState!.validate()) {
+                          loginUser();
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text('Check your credentials')));
+                        }
+                      },
+                      buttonHeight: 50,
+                      buttonWidth: 300,
+                      textWidget: const NormalTextWidget(
+                          color: Colors.white, fontSize: 18, text: 'Login')),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ButtonWidget(
+                      color: CustomColors.primary,
+                      borderRadius: 100,
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/registerscreen');
+                      },
+                      buttonHeight: 50,
+                      buttonWidth: 300,
+                      textWidget: const NormalTextWidget(
+                          color: Colors.white, fontSize: 18, text: 'Register')),
+                ],
+              ),
             ),
           ),
         ),

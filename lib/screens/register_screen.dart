@@ -191,7 +191,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             }),
                           );
                         } else {
-                          AuthRepository(context).userSignUp(
+                          AuthRepository().userSignUp(
                               _nameController.text,
                               _emailController.text,
                               _passwordController.text,

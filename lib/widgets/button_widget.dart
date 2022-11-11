@@ -10,10 +10,12 @@ class ButtonWidget extends StatelessWidget {
   final double borderRadius;
   final Widget textWidget;
   final Color color;
+  final Key? formKey;
 
   const ButtonWidget({
     super.key,
     required this.onPressed,
+    this.formKey,
     required this.buttonHeight,
     required this.buttonWidth,
     required this.textWidget,
