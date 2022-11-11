@@ -4,27 +4,40 @@ import 'package:ceosi_app/constants/colors.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/widgets/gesture_detector_widget.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/widgets/masontry_text_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:rxdart/rxdart.dart';
 
 import '../../../constants/icons.dart';
+import '../../../utils/datagetter.dart';
 
 class MasonryListWidget extends StatefulWidget {
-  const MasonryListWidget({required this.stream, super.key});
+  const MasonryListWidget({super.key});
 
-  final Stream<QuerySnapshot<Object?>>? stream;
   @override
   State<MasonryListWidget> createState() => _MasonryListWidgetState();
 }
 
 class _MasonryListWidgetState extends State<MasonryListWidget> {
+  Stream<List<DocumentSnapshot>> combine2Streams(
+      Stream<DocumentSnapshot> stream1, Stream<QuerySnapshot> stream2) {
+    return Rx.combineLatest2(
+        stream1,
+        stream2,
+        (DocumentSnapshot a, QuerySnapshot b) =>
+            List.from(a['anon_name'])..addAll(b.docs));
+  }
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: widget.stream,
+      stream: FirebaseFirestore.instance
+          .collection('CEOSI-FREEDOMPOSTS')
+          .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           if (snapshot.data!.docs.isEmpty) {
@@ -59,7 +72,7 @@ class _MasonryListWidgetState extends State<MasonryListWidget> {
                 return MasonryItem(
                   backgroudColor: backgroudColor,
                   content: data['content'],
-                  anonname: data['anon_name'],
+                  anonname: FirebaseAuth.instance.currentUser!.uid,
                   date: formattedTime,
                 );
               },
@@ -143,7 +156,7 @@ class MasonryItem extends StatelessWidget {
                                 textAlign: TextAlign.right,
                               ),
                               MasonryTextWidget(
-                                text: 'by: $anonname',
+                                text: anonname,
                                 presetFontSizes: const [12],
                                 textAlign: TextAlign.right,
                               ),
@@ -161,6 +174,7 @@ class MasonryItem extends StatelessWidget {
                   GestureDetectorWidget(
                     childWidget: Image.asset(CustomIcons().continuousdoticon),
                     onTap: () {
+                      getPosts();
                       print('hello id $id');
                     },
                   ),
