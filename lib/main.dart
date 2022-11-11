@@ -1,3 +1,4 @@
+import 'package:ceosi_app/screens/ceosi_flutter_catalog/add_catalog_entry_screen.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/catalog_entries_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/add_freedom_post_screen.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/source_code_screen.dart';
@@ -43,7 +44,11 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
+<<<<<<< HEAD
       initialRoute: '/mainscreen',
+=======
+      initialRoute: '/catalogentriesscreen',
+>>>>>>> 6fc290028dcf92782b6361141be1759ef41c6ebe
       routes: {
         '/': (context) => const LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
@@ -61,6 +66,7 @@ class MyApp extends StatelessWidget {
         '/usersearchscreen': (context) => const UserSearchScreen(),
         '/piechartreportscreen': (context) => const PieChartReportScreen(),
         '/piechartsearchscreen': (context) => const PieChartSearchScreen(),
+        '/addcatalogentryscreen': (context) => AddCatalogEntryScreen(),
         '/rewardhomescreen': (context) => const RewardHomeScreen(),
         '/rewardviewitemscreen': (context) => const RewardViewItemScreen(),
         '/profilescreenreward': (context) => const ProfileScreenReward(),

@@ -1,6 +1,6 @@
 import 'package:ceosi_app/models/ceosi_flutter_catalog/catalog_entry_model.dart';
 import 'package:ceosi_app/providers/ceosi_flutter_catalog/catalog_entry_provider.dart';
-import 'package:easy_image_viewer/easy_image_viewer.dart';
+import 'package:ceosi_app/screens/ceosi_flutter_catalog/widgets/flutter_catalog_appbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,8 +9,8 @@ import 'package:markdown_widget/config/highlight_themes.dart' as theme;
 import 'package:share_plus/share_plus.dart';
 
 import '../../constants/colors.dart';
+import '../../constants/labels.dart';
 import '../../widgets/sidebar_widget.dart';
-import '../../widgets/text_widget.dart';
 import 'catalog_entries_screen.dart';
 
 class SourceCodeScreen extends StatelessWidget {
@@ -27,10 +27,35 @@ class SourceCodeScreen extends StatelessWidget {
   }
 
   _preview(context, dataList, args) {
-    showImageViewer(
-      context,
-      NetworkImage(dataList[args.index].previewImage),
-      useSafeArea: true,
+    showDialog(
+      barrierColor: CustomColors.primary,
+      context: context,
+      builder: (context) {
+        return Image.network(
+          dataList[args.index].previewImage,
+          loadingBuilder: (context, child, loadingProgress) {
+            return loadingProgress != null
+                ? const Center(
+                    child: CircularProgressIndicator(
+                      color: CustomColors.primary,
+                    ),
+                  )
+                : child;
+          },
+          errorBuilder: (context, error, stackTrace) {
+            return const Center(
+              child: Text(
+                Labels.checkYourInternetConnectivity,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            );
+          },
+        );
+      },
     );
   }
 
@@ -43,12 +68,8 @@ class SourceCodeScreen extends StatelessWidget {
     String itemTitle = '';
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: BoldTextWidget(
-            color: Colors.white, fontSize: 14.0, text: args.title),
-        centerTitle: true,
-        backgroundColor: CustomColors.primary,
+      appBar: flutterCatalogAppbarWidget(
+        title: args.title,
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.only(right: 10.0),
@@ -183,7 +204,29 @@ class DataViewWidget extends StatelessWidget {
             )
           : ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
-              child: Image.network(data),
+              child: Image.network(
+                data,
+                loadingBuilder: (context, child, loadingProgress) {
+                  return loadingProgress != null
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                            color: CustomColors.primary,
+                          ),
+                        )
+                      : child;
+                },
+                errorBuilder: (context, error, stackTrace) {
+                  return const Center(
+                    child: Text(
+                      Labels.checkYourInternetConnectivity,
+                      style: TextStyle(
+                        color: CustomColors.secondary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
     );
   }

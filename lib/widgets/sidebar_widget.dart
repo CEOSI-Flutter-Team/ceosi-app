@@ -32,8 +32,40 @@ class SidebarWidget extends StatelessWidget {
                     icon: const Icon(
                       Icons.menu,
                       size: 26.0,
+                      color: CustomColors.primary,
                     )),
               ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  const CircleAvatar(
+                      radius: 45.0,
+                      backgroundImage: AssetImage('assets/images/profile.png')),
+                  const SizedBox(width: 10.0),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const <Widget>[
+                        BoldTextWidget(
+                          color: Colors.black,
+                          fontSize: 16.0,
+                          text: 'Lou Ard Soriano',
+                        ),
+                        NormalTextWidget(
+                          color: Colors.black,
+                          fontSize: 10.0,
+                          text: 'Flutter Developer',
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
             Flexible(
               flex: 1,
@@ -48,70 +80,16 @@ class SidebarWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Flexible(
+            const Flexible(
               flex: 3,
               child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    ButtonWidget(
-                      onPressed: () => Navigator.of(context)
-                          .pushNamedAndRemoveUntil(
-                              '/catalogentriesscreen', (route) => false),
-                      buttonHeight: 55.0,
-                      buttonWidth: 203.0,
-                      borderRadius: 10.0,
-                      textWidget: const BoldTextWidget(
-                          color: Colors.white,
-                          fontSize: 12.0,
-                          text: Labels.ceosiFlutterCatalog),
-                    ),
-                    const SizedBox(height: 25.0),
-                    ButtonWidget(
-                      onPressed: () => Navigator.of(context)
-                          .pushNamedAndRemoveUntil(
-                              '/freedompostsscreen', (route) => false),
-                      buttonHeight: 55.0,
-                      buttonWidth: 203.0,
-                      borderRadius: 10.0,
-                      textWidget: const BoldTextWidget(
-                          color: Colors.white,
-                          fontSize: 12.0,
-                          text: Labels.ceosiFreedomWall),
-                    ),
-                    const SizedBox(height: 25.0),
-                    ButtonWidget(
-                      onPressed: () => Navigator.of(context)
-                          .pushNamedAndRemoveUntil(
-                              '/announcementscreen', (route) => false),
-                      buttonHeight: 55.0,
-                      buttonWidth: 203.0,
-                      borderRadius: 10.0,
-                      textWidget: const BoldTextWidget(
-                          color: Colors.white,
-                          fontSize: 12.0,
-                          text: Labels.ceosiCompanyApp),
-                    ),
-                    const SizedBox(height: 25.0),
-                    ButtonWidget(
-                      onPressed: () => Navigator.of(context)
-                          .pushNamedAndRemoveUntil(
-                              '/homescreen', (route) => false),
-                      buttonHeight: 55.0,
-                      buttonWidth: 203.0,
-                      borderRadius: 10.0,
-                      textWidget: const BoldTextWidget(
-                          color: Colors.white,
-                          fontSize: 12.0,
-                          text: Labels.ceosiRewards),
-                    ),
-                  ],
-                ),
+                padding: EdgeInsets.all(20.0),
+                child: NavigationColumn(),
               ),
             ),
-            Flexible(
+            const Flexible(
               flex: 1,
+<<<<<<< HEAD
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
@@ -134,10 +112,99 @@ class SidebarWidget extends StatelessWidget {
                   ),
                 ],
               ),
+=======
+              child: LogoutButton(),
+>>>>>>> 6fc290028dcf92782b6361141be1759ef41c6ebe
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class NavigationColumn extends StatelessWidget {
+  const NavigationColumn({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        ButtonWidget(
+          onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(
+              '/catalogentriesscreen', (route) => false),
+          buttonHeight: 55.0,
+          buttonWidth: 203.0,
+          borderRadius: 10.0,
+          textWidget: const BoldTextWidget(
+              color: Colors.white,
+              fontSize: 12.0,
+              text: Labels.ceosiFlutterCatalog),
+        ),
+        const SizedBox(height: 25.0),
+        ButtonWidget(
+          onPressed: () => Navigator.of(context)
+              .pushNamedAndRemoveUntil('/freedompostsscreen', (route) => false),
+          buttonHeight: 55.0,
+          buttonWidth: 203.0,
+          borderRadius: 10.0,
+          textWidget: const BoldTextWidget(
+              color: Colors.white,
+              fontSize: 12.0,
+              text: Labels.ceosiFreedomWall),
+        ),
+        const SizedBox(height: 25.0),
+        ButtonWidget(
+          onPressed: () => Navigator.of(context)
+              .pushNamedAndRemoveUntil('/announcementscreen', (route) => false),
+          buttonHeight: 55.0,
+          buttonWidth: 203.0,
+          borderRadius: 10.0,
+          textWidget: const BoldTextWidget(
+              color: Colors.white,
+              fontSize: 12.0,
+              text: Labels.ceosiCompanyApp),
+        ),
+        const SizedBox(height: 25.0),
+        ButtonWidget(
+          onPressed: () => Navigator.of(context)
+              .pushNamedAndRemoveUntil('/rewardhomescreen', (route) => false),
+          buttonHeight: 55.0,
+          buttonWidth: 203.0,
+          borderRadius: 10.0,
+          textWidget: const BoldTextWidget(
+              color: Colors.white, fontSize: 12.0, text: Labels.ceosiRewards),
+        ),
+      ],
+    );
+  }
+}
+
+class LogoutButton extends StatelessWidget {
+  const LogoutButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(left: 20.0),
+          child: ButtonWidget(
+            onPressed: () {
+              Navigator.pushNamed(context, '/');
+            },
+            buttonHeight: 42.0,
+            buttonWidth: 57,
+            borderRadius: 10.0,
+            textWidget: const Icon(
+              Icons.logout_rounded,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

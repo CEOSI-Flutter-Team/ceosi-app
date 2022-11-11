@@ -1,5 +1,6 @@
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:ceosi_app/models/ceosi_flutter_catalog/catalog_entry_model.dart';
+import 'package:ceosi_app/screens/ceosi_flutter_catalog/widgets/flutter_catalog_appbar_widget.dart';
 import 'package:ceosi_app/widgets/sidebar_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
@@ -14,28 +15,96 @@ class CatalogEntriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: const BoldTextWidget(
-            color: Colors.white, fontSize: 14.0, text: Labels.catalogEntries),
-        centerTitle: true,
-        backgroundColor: CustomColors.primary,
-      ),
-      drawer: const SidebarWidget(),
-      body: Column(
-        children: [
-          const AppbarExtensionWidget(),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const <Widget>[
-                CatalogEntriesViewWidget(),
+    return WillPopScope(
+      onWillPop: () async {
+        final confirm = await showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialogWidget(
+              title: Labels.confirmationTitle,
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/homescreen', (route) => false);
+                  },
+                  child: const Text(
+                    Labels.yes,
+                    style: TextStyle(color: CustomColors.secondary),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context, false);
+                  },
+                  child: const Text(
+                    Labels.no,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
               ],
+            );
+          },
+        );
+        return confirm;
+      },
+      child: Scaffold(
+        appBar: flutterCatalogAppbarWidget(title: Labels.catalogEntries),
+        drawer: const SidebarWidget(),
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(bottom: 5.0, right: 5.0),
+          child: FloatingActionButton(
+            tooltip: Labels.addEntry,
+            backgroundColor: Colors.white,
+            elevation: 5,
+            splashColor: CustomColors.greyAccent,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)),
+            child: const Icon(
+              Icons.add_rounded,
+              color: CustomColors.primary,
+              size: 35.0,
             ),
+            onPressed: () =>
+                Navigator.of(context).pushNamed('/addcatalogentryscreen'),
           ),
-        ],
+        ),
+        body: Column(
+          children: [
+            const AppbarExtensionWidget(),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const <Widget>[
+                  CatalogEntriesViewWidget(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
+    );
+  }
+}
+
+class AlertDialogWidget extends StatelessWidget {
+  const AlertDialogWidget(
+      {super.key, required this.title, required this.actions});
+
+  final String title;
+  final List<Widget> actions;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      elevation: 2,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+      backgroundColor: CustomColors.primary,
+      title: Text(
+        title,
+        style: const TextStyle(color: Colors.white, fontSize: 14.0),
+      ),
+      actions: actions,
     );
   }
 }
