@@ -105,7 +105,7 @@ class RewardsClaimedListItemWidget extends ConsumerWidget {
 
     final Stream<DocumentSnapshot> listProducts = FirebaseFirestore.instance
         .collection('CEOSI-USERS')
-        .doc('GZ4hqaEj1vggZeeJ0j0j')
+        .doc(userIdProvider)
         .snapshots();
 
     return SizedBox(

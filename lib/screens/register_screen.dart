@@ -32,6 +32,79 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   String roleCategory = 'Flutter Developer';
 
+  registorValidator(WidgetRef ref) async {
+    if (_passwordController.text != _confirmPasswordController.text) {
+      showDialog(
+        context: context,
+        builder: ((context) {
+          return ErrorDialog(
+              caption: 'Password do not match!',
+              onPressed: () {
+                Navigator.of(context).pop();
+              });
+        }),
+      );
+    } else if (_passwordController.text == '' || _emailController.text == '') {
+      showDialog(
+        context: context,
+        builder: ((context) {
+          return ErrorDialog(
+              caption: 'Invalid Input',
+              onPressed: () {
+                Navigator.of(context).pop();
+              });
+        }),
+      );
+    } else if (_passwordController.text.length < 6) {
+      showDialog(
+        context: context,
+        builder: ((context) {
+          return ErrorDialog(
+              caption: 'Password too short!',
+              onPressed: () {
+                Navigator.of(context).pop();
+              });
+        }),
+      );
+    } else {
+      try {
+        AuthRepository().userSignUp(
+            _nameController.text,
+            _emailController.text,
+            _passwordController.text,
+            _confirmPasswordController.text,
+            roleCategory);
+
+        var collection = FirebaseFirestore.instance
+            .collection('CEOSI-USERS')
+            .where('email', isEqualTo: _emailController.text);
+
+        late String id = '';
+
+        var querySnapshot = await collection.get();
+        if (mounted) {
+          setState(() {
+            for (var queryDocumentSnapshot in querySnapshot.docs) {
+              Map<String, dynamic> data = queryDocumentSnapshot.data();
+              id = data['id'];
+            }
+          });
+        }
+
+        ref.watch(getUserId.notifier).state = id;
+
+        // ignore: use_build_context_synchronously
+        Navigator.pushNamed(context, '/rewardhomescreen');
+      } catch (e) {
+        ErrorDialog(
+            caption: e.toString(),
+            onPressed: () {
+              Navigator.of(context).pop();
+            });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -155,74 +228,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       color: CustomColors().primaryColor,
                       borderRadius: 100,
                       onPressed: () async {
-                        // ignore: unrelated_type_equality_checks
-                        if (_passwordController.text !=
-                            _confirmPasswordController.text) {
-                          showDialog(
-                            context: context,
-                            builder: ((context) {
-                              return ErrorDialog(
-                                  caption: 'Password do not match!',
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  });
-                            }),
-                          );
-                        } else if (_passwordController.text == '' ||
-                            _emailController.text == '') {
-                          showDialog(
-                            context: context,
-                            builder: ((context) {
-                              return ErrorDialog(
-                                  caption: 'Invalid Input',
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  });
-                            }),
-                          );
-                        } else if (_passwordController.text.length < 6) {
-                          showDialog(
-                            context: context,
-                            builder: ((context) {
-                              return ErrorDialog(
-                                  caption: 'Password too short!',
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  });
-                            }),
-                          );
-                        } else {
-                          AuthRepository().userSignUp(
-                              _nameController.text,
-                              _emailController.text,
-                              _passwordController.text,
-                              _confirmPasswordController.text,
-                              roleCategory,
-                              context);
-
-                          var collection = FirebaseFirestore.instance
-                              .collection('CEOSI-USERS')
-                              .where('email', isEqualTo: _emailController.text);
-
-                          late String id = '';
-
-                          var querySnapshot = await collection.get();
-                          if (mounted) {
-                            setState(() {
-                              for (var queryDocumentSnapshot
-                                  in querySnapshot.docs) {
-                                Map<String, dynamic> data =
-                                    queryDocumentSnapshot.data();
-                                id = data['id'];
-                              }
-                            });
-                          }
-
-                          ref.watch(getUserId.notifier).state = id;
-
-                          // ignore: use_build_context_synchronously
-                          Navigator.pushNamed(context, '/rewardhomescreen');
-                        }
+                        registorValidator(ref);
                       },
                       buttonHeight: 50,
                       buttonWidth: 300,
