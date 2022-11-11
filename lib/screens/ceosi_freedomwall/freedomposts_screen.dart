@@ -1,6 +1,8 @@
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/widgets/freedomwallbutton_widget.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/widgets/masonry_list_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/sidebar_widget.dart';
@@ -49,21 +51,30 @@ class _FreedomPostsScreenState extends State<FreedomPostsScreen>
                     unselectedLabelColor: Colors.grey,
                     controller: tabController,
                     tabs: const [
-                      Text('FREEDOM WALL'),
-                      Text('MY FREEDOM POSTS'),
+                      Text('FREEDOM WALL \u{1F4DC}'),
+                      Text('MY FREEDOM POSTS \u{1F4C4}'),
                     ],
                   ),
                 ),
               )),
         ),
         body: TabBarView(controller: tabController, children: [
-          Stack(children: const [
-            MasonryListWidget(),
-            FreedomWallButtonWidget(theHeader: '                '),
+          Stack(children: [
+            MasonryListWidget(
+                stream: FirebaseFirestore.instance
+                    .collection('CEOSI-FREEDOMWALL-FREEDOMPOSTS')
+                    .snapshots()),
+            const FreedomWallButtonWidget(theHeader: '                '),
           ]),
-          Stack(children: const [
-            MasonryListWidget(),
-            FreedomWallButtonWidget(theHeader: '                '),
+          Stack(children: [
+            MasonryListWidget(
+              stream: FirebaseFirestore.instance
+                  .collection('CEOSI-FREEDOMWALL-FREEDOMPOSTS')
+                  .where('user_id',
+                      isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+                  .snapshots(),
+            ),
+            const FreedomWallButtonWidget(theHeader: '                '),
           ]),
         ]),
       ),

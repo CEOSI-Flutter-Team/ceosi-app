@@ -68,7 +68,7 @@ class AddCoinDialogWidget extends StatelessWidget {
                   onPressed: () {},
                   buttonHeight: 50,
                   buttonWidth: 220,
-                  textWidget: BoldTextWidget(
+                  textWidget: const BoldTextWidget(
                       color: CustomColors.primary,
                       fontSize: 18,
                       text: 'CONTINUE'),

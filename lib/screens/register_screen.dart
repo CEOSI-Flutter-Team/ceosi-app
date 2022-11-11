@@ -34,13 +34,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var ung = UniqueNameGenerator(
-      dictionaries: [adjectives, animals],
-      style: NameStyle.capital,
-      separator: '_',
-    );
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(238, 238, 238, 1),
+      backgroundColor: Colors.grey[200],
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -197,7 +192,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             }),
                           );
                         } else {
-                          AuthRepository().userSignUp(
+                          AuthRepository(context).userSignUp(
                               _nameController.text,
                               _emailController.text,
                               _passwordController.text,

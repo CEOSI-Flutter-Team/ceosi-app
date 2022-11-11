@@ -48,7 +48,9 @@ class _FreedomWallButtonWidgetState extends State<FreedomWallButtonWidget> {
               padding: const EdgeInsets.fromLTRB(256, 520, 12, 0),
               child: ButtonWidget(
                   borderRadius: 100,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/addfreedompostscreen');
+                  },
                   buttonHeight: 70,
                   buttonWidth: 70,
                   textWidget:

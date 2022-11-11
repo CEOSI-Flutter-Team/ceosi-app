@@ -70,7 +70,7 @@ class _AddItemDialogWidgetState extends State<AddItemDialogWidget> {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(5),
                         ),
-                        child: Center(
+                        child: const Center(
                           child: Icon(
                             Icons.camera_alt_rounded,
                             color: CustomColors.primary,
@@ -169,7 +169,7 @@ class _AddItemDialogWidgetState extends State<AddItemDialogWidget> {
                   },
                   buttonHeight: 50,
                   buttonWidth: 220,
-                  textWidget: BoldTextWidget(
+                  textWidget: const BoldTextWidget(
                       color: CustomColors.primary,
                       fontSize: 18,
                       text: 'ADD ITEM'),

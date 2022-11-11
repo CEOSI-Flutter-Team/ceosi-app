@@ -43,7 +43,7 @@ class ClaimRewardDialogWidget extends StatelessWidget {
                 },
                 buttonHeight: 50,
                 buttonWidth: 220,
-                textWidget: BoldTextWidget(
+                textWidget: const BoldTextWidget(
                     color: CustomColors.primary,
                     fontSize: 18,
                     text: 'Claim Reward'),

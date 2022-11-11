@@ -1,5 +1,6 @@
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/button_widget.dart';
@@ -19,21 +20,25 @@ class AddFreedomPostScreen extends StatefulWidget {
 class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
   final contentController = TextEditingController();
 
-  Future addItem(int uid, int fpid, String mood, String content,
-      String anonName, DateTime dateTime) async {
-    CollectionReference freedomPostsref =
-        FirebaseFirestore.instance.collection('CEOSI-FREEDOMWALL-FREEDOMPOSTS');
+  Future addItem(
+      String mood, String content, String anonName, DateTime dateTime) async {
+    final freedomPostsref = FirebaseFirestore.instance
+        .collection('CEOSI-FREEDOMWALL-FREEDOMPOSTS')
+        .doc();
 
     var data = {
-      'uid': uid,
-      'fpid': fpid,
+      'id': freedomPostsref.id,
+      'user_id': FirebaseAuth.instance.currentUser!.uid,
       'mood': mood,
       'content': content,
-      'anonName': anonName,
+      'anon_name': anonName,
       'created': dateTime,
     };
+    if (data.isNotEmpty) {
+      Navigator.pushNamed(context, '/freedompostsscreen');
+    }
 
-    await freedomPostsref.add(data);
+    await freedomPostsref.set(data);
   }
 
   final moods = [
@@ -45,8 +50,16 @@ class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
   ];
 
   Object? mood;
+
+  @override
+  void dispose() {
+    contentController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    String anonNames = '';
     return WillPopScope(
       onWillPop: () async {
         return false;
@@ -110,8 +123,19 @@ class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
                 ButtonWidget(
                     borderRadius: 20,
                     onPressed: () {
-                      addItem(2, 2, mood.toString(), 'Lorem Ipsum Dol Lorem',
-                          'CarL_Knight2', DateTime.now());
+                      FirebaseFirestore.instance
+                          .collection('CEOSI-USERS')
+                          .where('user_id',
+                              isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+                          .get()
+                          .then((QuerySnapshot querySnapshot) {
+                        for (var doc in querySnapshot.docs) {
+                          anonNames = doc['anon_name'];
+                        }
+                      }).whenComplete(() {
+                        addItem(mood.toString(), contentController.text,
+                            anonNames, DateTime.now());
+                      });
                     },
                     buttonHeight: 53,
                     buttonWidth: 182,

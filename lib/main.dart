@@ -15,6 +15,7 @@ import 'package:ceosi_app/screens/ceosi_freedomwall/user_search_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/user_single_freedom_post_screen.dart';
 import 'package:ceosi_app/screens/login_screen.dart';
 import 'package:ceosi_app/screens/home_screen.dart';
+import 'package:ceosi_app/screens/main_screen.dart';
 import 'package:ceosi_app/screens/register_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/registerscreen',
+      initialRoute: '/mainscreen',
       routes: {
         '/': (context) => const LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
@@ -72,6 +73,7 @@ class MyApp extends StatelessWidget {
         '/adminpostsdatascreen': (context) => const AdminPostsDataScreen(),
         '/usersinglefreedompostscreen': (context) =>
             const UserSingleFreedomPostScreen(),
+        '/mainscreen': (context) => const MainScreen(),
       },
       title: Labels.ceosiApp,
     );
