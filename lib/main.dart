@@ -44,11 +44,7 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-<<<<<<< HEAD
       initialRoute: '/mainscreen',
-=======
-      initialRoute: '/catalogentriesscreen',
->>>>>>> 6fc290028dcf92782b6361141be1759ef41c6ebe
       routes: {
         '/': (context) => const LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
