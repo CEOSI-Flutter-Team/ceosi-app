@@ -18,6 +18,11 @@ class _LoginScreenState extends State<LoginScreen> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  loginUser() async {
+    await AuthRepository(context)
+        .loginOfuser(_usernameController.text, _passwordController.text);
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -71,8 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     color: CustomColors.primary,
                     borderRadius: 100,
                     onPressed: () {
-                      AuthRepository(context).loginOfuser(
-                          _usernameController.text, _passwordController.text);
+                      loginUser();
                     },
                     buttonHeight: 50,
                     buttonWidth: 300,
