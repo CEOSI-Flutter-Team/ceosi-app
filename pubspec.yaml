@@ -46,6 +46,7 @@ dependencies:
   image_picker:
   firebase_auth:
   unique_name_generator:
+  email_validator:
   
 
 dev_dependencies:

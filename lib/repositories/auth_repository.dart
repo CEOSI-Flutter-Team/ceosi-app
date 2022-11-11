@@ -4,7 +4,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepository implements AuthRepositoryInterface {
   @override
-  userSignUp(String name, email, password, confirmPassword, role) async {
+  userSignUp(
+    String name,
+    email,
+    password,
+    confirmPassword,
+    role,
+  ) async {
     await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
 

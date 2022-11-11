@@ -1,17 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../constants/colors.dart';
 import '../../../constants/icons.dart';
 import '../../../constants/images.dart';
 import '../../../widgets/text_widget.dart';
 
-class BannerWidget extends StatelessWidget {
+class BannerWidget extends ConsumerWidget {
   const BannerWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final Stream<DocumentSnapshot> listProducts = FirebaseFirestore.instance
+        .collection('CEOSI-USERS')
+        .doc('GZ4hqaEj1vggZeeJ0j0j')
+        .snapshots();
     return Padding(
       padding: const EdgeInsets.only(top: 80),
       child: Center(
@@ -22,17 +27,24 @@ class BannerWidget extends StatelessWidget {
           ),
           width: 350,
           height: 120,
-          child: StreamBuilder<Object>(
-              stream: FirebaseFirestore.instance
-                  .collection('CEOSI-USERS')
-                  .doc(FirebaseAuth.instance.currentUser!.uid)
-                  .snapshots(),
-              builder: (context, snapshot) {
+          child: StreamBuilder<DocumentSnapshot>(
+              stream: listProducts,
+              builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+                if (!snapshot.hasData) {
+                  return const Center(child: Text('Loading'));
+                } else if (snapshot.hasError) {
+                  return const Center(child: Text('Something went wrong'));
+                } else if (snapshot.connectionState ==
+                    ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                dynamic data = snapshot.data;
+
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      CustomImages().sampleProfileImage,
+                    Image.network(
+                      data['profile_image'],
                       height: 75,
                     ),
                     const SizedBox(
@@ -41,15 +53,15 @@ class BannerWidget extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         BoldTextWidget(
                             color: Colors.black,
                             fontSize: 16,
-                            text: 'Lance Olana'),
+                            text: data['name']),
                         NormalTextWidget(
                             color: Colors.black,
                             fontSize: 12,
-                            text: 'Flutter Developer')
+                            text: data['position'])
                       ],
                     ),
                     const SizedBox(
@@ -77,7 +89,7 @@ class BannerWidget extends StatelessWidget {
                               BoldTextWidget(
                                   color: CustomColors().primaryColor,
                                   fontSize: 14,
-                                  text: '1,000cc')
+                                  text: '${data['user_points']}cc')
                             ],
                           ),
                         ],
