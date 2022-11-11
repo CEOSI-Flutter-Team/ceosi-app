@@ -1,5 +1,6 @@
 import 'package:ceosi_app/models/ceosi_flutter_catalog/catalog_entry_model.dart';
 import 'package:ceosi_app/providers/ceosi_flutter_catalog/catalog_entry_provider.dart';
+import 'package:ceosi_app/widgets/error_builder_widget.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/widgets/flutter_catalog_appbar_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:code_editor/code_editor.dart';
@@ -43,15 +44,11 @@ class SourceCodeScreen extends StatelessWidget {
                 : child;
           },
           errorBuilder: (context, error, stackTrace) {
-            return const Center(
-              child: Text(
-                Labels.checkYourInternetConnectivity,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+            return const ErrorBuilderWidget(
+              label: Labels.checkYourInternetConnectivity,
+              textAlign: TextAlign.center,
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             );
           },
         );
@@ -221,14 +218,11 @@ class DataViewWidget extends StatelessWidget {
                       : child;
                 },
                 errorBuilder: (context, error, stackTrace) {
-                  return const Center(
-                    child: Text(
-                      Labels.checkYourInternetConnectivity,
-                      style: TextStyle(
+                  return const ErrorBuilderWidget(
+                    label: Labels.checkYourInternetConnectivity,
+                    style: TextStyle(
                         color: CustomColors.secondary,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                        fontWeight: FontWeight.bold),
                   );
                 },
               ),
