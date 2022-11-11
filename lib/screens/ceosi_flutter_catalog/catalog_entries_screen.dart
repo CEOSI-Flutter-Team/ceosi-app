@@ -1,6 +1,7 @@
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:ceosi_app/models/ceosi_flutter_catalog/catalog_entry_model.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/widgets/flutter_catalog_appbar_widget.dart';
+import 'package:ceosi_app/screens/ceosi_flutter_catalog/widgets/flutter_catalog_sidebar_widget.dart';
 import 'package:ceosi_app/widgets/sidebar_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +51,7 @@ class CatalogEntriesScreen extends StatelessWidget {
       },
       child: Scaffold(
         appBar: flutterCatalogAppbarWidget(title: Labels.catalogEntries),
-        drawer: const SidebarWidget(),
+        drawer: const FlutterCatalogSidebarWidget(),
         floatingActionButton: Padding(
           padding: const EdgeInsets.only(bottom: 5.0, right: 5.0),
           child: FloatingActionButton(

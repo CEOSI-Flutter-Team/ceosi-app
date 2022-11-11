@@ -20,5 +20,7 @@ class Labels {
       yes = 'Yes',
       no = 'No',
       share = 'Share',
-      preview = 'Preview';
+      preview = 'Preview',
+      userContributions = 'USER CONTRIBUTIONS',
+      home = 'Home';
 }
