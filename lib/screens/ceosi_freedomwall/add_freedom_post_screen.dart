@@ -125,12 +125,26 @@ class _AddFreedomPostScreenState extends State<AddFreedomPostScreen> {
                           .get()
                           .then((QuerySnapshot querySnapshot) {
                         for (var doc in querySnapshot.docs) {
-                          anonNames = doc['anon_name'];
+                          print(doc['anon_name']);
+                          // if (doc['status'] == 'enabled') {
+                          //   currentuseremail = doc['email'];
+                          //   Navigator.of(context).push(MaterialPageRoute(
+                          //     builder: (context) => homescreen(
+                          //         currentuseremail: currentuseremail),
+                          //   ));
+                          //   print(doc['email']);
+                          //   print(doc['pw']);
+                          // } else {
+                          //   // FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+                          //   // firebaseAuth.signOut();
+                          //   // showAlertDialoguserdisabled(context);
+                          //   // print('account is disabled');
+                          // }
                         }
-                      }).whenComplete(() {
-                        addItem(mood.toString(), contentController.text,
-                            anonNames, DateTime.now());
                       });
+
+                      addItem(mood.toString(), contentController.text,
+                          'CarL_Knight2', DateTime.now());
                     },
                     buttonHeight: 53,
                     buttonWidth: 182,
