@@ -12,12 +12,10 @@ class AuthRepository implements AuthRepositoryInterface {
   NavigatorState? navigator;
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  @override
   void initNavigator() {
     navigator = Navigator.of(context);
   }
 
-  @override
   Future<List<UserModel>?> loginOfuser(String email, password) async {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
@@ -33,6 +31,7 @@ class AuthRepository implements AuthRepositoryInterface {
       } else if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
       } else if (e.code == 'invalid-email') {
+        print('Wrong password provided for that user.');
       } else if (e.code == 'user-disabled') {
         print('user disabled.');
       }

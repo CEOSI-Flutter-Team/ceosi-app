@@ -1,9 +1,11 @@
-import 'package:ceosi_app/constants/images.dart';
+import 'package:ceosi_app/providers/user_provider.dart';
 import 'package:ceosi_app/repositories/auth_repository.dart';
-
+import 'package:ceosi_app/screens/ceosi_rewards/widgets/dialogs/error_dialog_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../constants/colors.dart';
+import '../constants/images.dart';
 import '../widgets/button_widget.dart';
 import '../widgets/text_widget.dart';
 import '../widgets/textformfield_widget.dart';
@@ -41,7 +43,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 height: 30,
               ),
               Image.asset(
-                CustomImages.coesiLogoCompleteAndMaroonBlueText,
+                Images.coesiLogoCompleteAndMaroonBlueText,
                 width: 350,
               ),
               const SizedBox(
@@ -146,22 +148,69 @@ class _RegisterScreenState extends State<RegisterScreen> {
               const SizedBox(
                 height: 50,
               ),
-              ButtonWidget(
-                  color: CustomColors.primary,
-                  borderRadius: 100,
-                  onPressed: () {
-                    AuthRepository(context).userSignUp(
-                        _nameController.text,
-                        _emailController.text,
-                        _passwordController.text,
-                        _confirmPasswordController.text,
-                        roleCategory,
-                        context);
-                  },
-                  buttonHeight: 50,
-                  buttonWidth: 300,
-                  textWidget: const NormalTextWidget(
-                      color: Colors.white, fontSize: 18, text: 'Register')),
+              Consumer(
+                builder: (context, ref, child) {
+                  return ButtonWidget(
+                      color: CustomColors.primary,
+                      borderRadius: 100,
+                      onPressed: () {
+                        // ignore: unrelated_type_equality_checks
+                        if (_passwordController.text !=
+                            _confirmPasswordController.text) {
+                          showDialog(
+                            context: context,
+                            builder: ((context) {
+                              return ErrorDialog(
+                                  caption: 'Password do not match!',
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  });
+                            }),
+                          );
+                        } else if (_passwordController.text == '' ||
+                            _emailController.text == '') {
+                          showDialog(
+                            context: context,
+                            builder: ((context) {
+                              return ErrorDialog(
+                                  caption: 'Invalid Input',
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  });
+                            }),
+                          );
+                        } else if (_passwordController.text.length < 6) {
+                          showDialog(
+                            context: context,
+                            builder: ((context) {
+                              return ErrorDialog(
+                                  caption: 'Password too short!',
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  });
+                            }),
+                          );
+                        } else {
+                          AuthRepository(context).userSignUp(
+                              _nameController.text,
+                              _emailController.text,
+                              _passwordController.text,
+                              _confirmPasswordController.text,
+                              roleCategory,
+                              context);
+
+                          ref.watch(getUserEmail.notifier).state =
+                              _emailController.text;
+
+                          Navigator.pushNamed(context, '/rewardhomescreen');
+                        }
+                      },
+                      buttonHeight: 50,
+                      buttonWidth: 300,
+                      textWidget: const NormalTextWidget(
+                          color: Colors.white, fontSize: 18, text: 'Register'));
+                },
+              ),
               const SizedBox(
                 height: 30,
               ),
@@ -173,9 +222,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       fontSize: 14,
                       text: 'Already have an account?'),
                   TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/');
-                    },
+                    onPressed: () {},
                     child: const BoldTextWidget(
                         color: Colors.black, fontSize: 18, text: 'Login'),
                   ),

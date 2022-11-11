@@ -9,3 +9,7 @@ final getProductListProvider =
         (ref, context) async {
   return ProductRepository().getProducts(context);
 });
+
+final getItemProvider = StateProvider<ProductModel>((ref) {
+  return ProductModel();
+});

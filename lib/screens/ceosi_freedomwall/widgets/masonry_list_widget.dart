@@ -11,7 +11,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 import '../../../constants/icons.dart';
-import '../../../utils/datagetter.dart';
 
 class MasonryListWidget extends StatefulWidget {
   const MasonryListWidget({required this.stream, super.key});
@@ -163,8 +162,7 @@ class MasonryItem extends StatelessWidget {
                   GestureDetectorWidget(
                     childWidget: Image.asset(CustomIcons().continuousdoticon),
                     onTap: () {
-                      getPosts();
-                      print('hello id $id');
+                      print('hello id');
                     },
                   ),
                 ]),
