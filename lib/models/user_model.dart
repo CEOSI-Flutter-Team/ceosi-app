@@ -1,41 +1,86 @@
+// To parse this JSON data, do
+//
+//     final userModel = userModelFromJson(jsonString);
+
+import 'dart:convert';
+
+List<UserModel> userModelFromJson(String str) =>
+    List<UserModel>.from(json.decode(str).map((x) => UserModel.fromJson(x)));
+
+String userModelToJson(List<UserModel> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
 class UserModel {
-  String? fullName;
-  String? userPoints;
-  String? email;
-  String? id;
-  String? password;
-  String? confirmPassword;
-  String? role;
+  UserModel({
+    required this.id,
+    required this.userId,
+    required this.email,
+    required this.name,
+    required this.profileImage,
+    required this.position,
+    required this.anonName,
+    required this.points,
+    required this.contributions,
+    required this.claimedRewards,
+    required this.earnedPoints,
+  });
 
-  UserModel(
-      {this.fullName,
-      this.email,
-      this.password,
-      this.confirmPassword,
-      this.id,
-      this.role,
-      this.userPoints});
+  String id;
+  String userId;
+  String email;
+  String name;
+  String profileImage;
+  String position;
+  String anonName;
+  int points;
+  int contributions;
+  List<ClaimedReward> claimedRewards;
+  List<EarnedPoints> earnedPoints;
 
-  static UserModel fromJson(json) => UserModel(
-      fullName: json['fullName'],
-      userPoints: json['userPoints'],
-      email: json['email'],
-      role: json['role'],
-      id: json['id'],
-      password: json['password'],
-      confirmPassword: json['confirmPassword']);
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+        id: json['id'],
+        userId: json['user_id'],
+        email: json['email'],
+        name: json['name'],
+        profileImage: json['profile_image'],
+        position: json['position'],
+        anonName: json['anon_name'],
+        points: json['points'],
+        contributions: json['contributions'],
+        claimedRewards: List<ClaimedReward>.from(
+            json['claimed_rewards'].map((x) => ClaimedReward.fromJson(x))),
+        earnedPoints: List<EarnedPoints>.from(
+            json['earned_points'].map((x) => ClaimedReward.fromJson(x))),
+      );
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'user_id': userId,
+        'email': email,
+        'name': name,
+        'profile_image': profileImage,
+        'position': position,
+        'anon_name': anonName,
+        'points': points,
+        'contributions': contributions,
+        'claimed_rewards':
+            List<dynamic>.from(claimedRewards.map((x) => x.toJson())),
+        'earned_points': List<dynamic>.from(earnedPoints.map((x) => x.toJson()))
+      };
 }
 
+class ClaimedReward {
+  ClaimedReward();
 
+  factory ClaimedReward.fromJson(Map<String, dynamic> json) => ClaimedReward();
 
-/*
+  Map<String, dynamic> toJson() => {};
+}
 
-Users - Reward
--fullname
--userPoints (init: 0)
--email
--id (auto generated)
--password
--confirm_password
--role (Admin/Flutter Dev/Front-end Dev/Back-end Dev/QA)
- */
+class EarnedPoints {
+  EarnedPoints();
+
+  factory EarnedPoints.fromJson(Map<String, dynamic> json) => EarnedPoints();
+
+  Map<String, dynamic> toJson() => {};
+}

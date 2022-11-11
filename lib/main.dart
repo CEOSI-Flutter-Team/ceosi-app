@@ -24,8 +24,9 @@ import 'constants/labels.dart';
 import 'screens/ceosi_rewards/admin_panel_screen.dart';
 import 'screens/ceosi_rewards/profile_screen.dart';
 import 'screens/ceosi_rewards/reward_home_screen.dart';
-import 'screens/ceosi_rewards/view_item_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'screens/ceosi_rewards/view_item_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,11 +45,11 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/catalogentriesscreen',
+      initialRoute: '/registerscreen',
       routes: {
         '/': (context) => const LoginScreen(),
         '/homescreen': (context) => const HomeScreen(),
-        '/registerscreen': (context) => RegisterScreen(),
+        '/registerscreen': (context) => const RegisterScreen(),
         '/announcementscreen': (context) => const AnnouncementScreen(),
         '/addannouncementscreen': (context) => const AddAnnouncementScreen(),
         '/teamscreen': (context) => const TeamScreen(),

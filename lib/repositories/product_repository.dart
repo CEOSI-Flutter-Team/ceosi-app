@@ -38,4 +38,28 @@ class ProductRepository implements ProductRepositoryInterface {
 
     await docUser.set(json);
   }
+
+  @override
+  Future addItemClaimed(
+    String productName,
+    String productCategory,
+    int pointsEquivalent,
+    String productImage,
+    String userEmail,
+  ) async {
+    final docUser = FirebaseFirestore.instance
+        .collection('CEOSI-REWARDS-ITEMS-CLAIMED')
+        .doc();
+
+    final json = {
+      'product_name': productName,
+      'product_category': productCategory,
+      'points_equivalent': pointsEquivalent,
+      'product_image': productImage,
+      'id': docUser.id,
+      'email': userEmail,
+    };
+
+    await docUser.set(json);
+  }
 }

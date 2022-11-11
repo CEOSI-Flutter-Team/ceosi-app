@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/colors.dart';
@@ -20,61 +22,70 @@ class BannerWidget extends StatelessWidget {
           ),
           width: 350,
           height: 120,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                Images.sampleProfileImage,
-                height: 75,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  BoldTextWidget(
-                      color: Colors.black, fontSize: 16, text: 'Lance Olana'),
-                  NormalTextWidget(
-                      color: Colors.black,
-                      fontSize: 12,
-                      text: 'Flutter Developer')
-                ],
-              ),
-              const SizedBox(
-                width: 50,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: StreamBuilder<Object>(
+              stream: FirebaseFirestore.instance
+                  .collection('CEOSI-USERS')
+                  .doc(FirebaseAuth.instance.currentUser!.uid)
+                  .snapshots(),
+              builder: (context, snapshot) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      Images.coesiIcon,
-                      height: 40,
+                      Images.sampleProfileImage,
+                      height: 75,
                     ),
-                    Row(
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          CustomIcons().coinIcon,
-                          height: 18,
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        const BoldTextWidget(
-                            color: CustomColors.primary,
-                            fontSize: 14,
-                            text: '1,000cc')
+                      children: const [
+                        BoldTextWidget(
+                            color: Colors.black,
+                            fontSize: 16,
+                            text: 'Lance Olana'),
+                        NormalTextWidget(
+                            color: Colors.black,
+                            fontSize: 12,
+                            text: 'Flutter Developer')
                       ],
                     ),
+                    const SizedBox(
+                      width: 50,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10, bottom: 20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Image.asset(
+                            Images.coesiIcon,
+                            height: 40,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                CustomIcons().coinIcon,
+                                height: 18,
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              const BoldTextWidget(
+                                  color: CustomColors.primary,
+                                  fontSize: 14,
+                                  text: '1,000cc')
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
-                ),
-              ),
-            ],
-          ),
+                );
+              }),
         ),
       ),
     );
