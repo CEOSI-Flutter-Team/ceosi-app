@@ -30,15 +30,15 @@ class NormalTextWidget extends StatelessWidget {
 }
 
 class BoldTextWidget extends StatelessWidget {
+  final TextAlign? textAlign;
   final String text;
   final double fontSize;
   final Color color;
   final TextDecoration? decoration;
-  final TextAlign? textAlign;
   const BoldTextWidget({
     super.key,
-    required this.color,
     this.textAlign,
+    required this.color,
     required this.fontSize,
     required this.text,
     this.decoration,
@@ -49,7 +49,8 @@ class BoldTextWidget extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: GoogleFonts.alfaSlabOne(color: color, fontSize: fontSize),
+      style: GoogleFonts.alfaSlabOne(
+          color: color, fontSize: fontSize, decoration: decoration),
     );
   }
 }

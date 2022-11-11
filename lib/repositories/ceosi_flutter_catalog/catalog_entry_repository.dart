@@ -59,7 +59,6 @@ class CatalogEntryRepository implements CatalogEntryRepositoryInterface {
       'https://media.geeksforgeeks.org/wp-content/uploads/20200904104133/Screenshot633.png';
 
   String sampleSourceCode = """
-``````dart
 class SourceCodeScreen extends StatelessWidget {
   const SourceCodeScreen({super.key});
 
@@ -144,7 +143,5 @@ class SourceCodeScreen extends StatelessWidget {
     );
   }
 }
-``````
-
 """;
 }
