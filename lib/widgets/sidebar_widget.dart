@@ -1,7 +1,6 @@
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/labels.dart';
@@ -89,32 +88,7 @@ class SidebarWidget extends StatelessWidget {
             ),
             const Flexible(
               flex: 1,
-<<<<<<< HEAD
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: ButtonWidget(
-                      onPressed: () {
-                        final FirebaseAuth auth = FirebaseAuth.instance;
-                        auth.signOut();
-                        Navigator.pushNamed(context, '/');
-                      },
-                      buttonHeight: 42.0,
-                      buttonWidth: 57,
-                      borderRadius: 10.0,
-                      textWidget: const Icon(
-                        Icons.logout_rounded,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-=======
               child: LogoutButton(),
->>>>>>> 6fc290028dcf92782b6361141be1759ef41c6ebe
             ),
           ],
         ),

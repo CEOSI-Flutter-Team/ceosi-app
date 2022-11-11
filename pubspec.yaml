@@ -55,13 +55,7 @@ dependencies:
   share_plus:
   table_calendar: ^3.0.8
   unique_name_generator: ^1.0.0
-<<<<<<< HEAD
-  firebase_auth: 
   auto_size_text: ^3.0.0
-  rxdart: ^0.27.5
-
-=======
->>>>>>> 6fc290028dcf92782b6361141be1759ef41c6ebe
 
 dev_dependencies:
   flutter_test:
