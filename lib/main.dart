@@ -5,6 +5,7 @@ import 'package:ceosi_app/screens/ceosi_flutter_catalog/source_code_screen.dart'
 import 'package:ceosi_app/screens/ceosi_company_app/add_announcement_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/add_team_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/event_calendar_screen.dart';
+import 'package:ceosi_app/screens/ceosi_company_app/event_details_screen.dart';
 import 'package:ceosi_app/screens/ceosi_company_app/team_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/freedomposts_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/admin_posts_data_screen.dart';
@@ -58,6 +59,7 @@ class MyApp extends StatelessWidget {
         '/catalogentriesscreen': (context) => const CatalogEntriesScreen(),
         '/sourcecodescreen': (context) => const SourceCodeScreen(),
         '/eventcalendarscreen': (context) => const EventCalendarScreen(),
+        '/eventdetailsscreen': (context) => const EventDetailsScreen(),
         '/usersearchscreen': (context) => const UserSearchScreen(),
         '/piechartreportscreen': (context) => const PieChartReportScreen(),
         '/piechartsearchscreen': (context) => const PieChartSearchScreen(),
