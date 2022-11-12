@@ -22,5 +22,6 @@ class Labels {
       share = 'Share',
       preview = 'Preview',
       userContributions = 'USER CONTRIBUTIONS',
-      home = 'Home';
+      home = 'Home',
+      save = 'Save';
 }

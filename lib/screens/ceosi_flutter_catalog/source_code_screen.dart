@@ -136,10 +136,35 @@ class SourceCodeScreen extends StatelessWidget {
               onPressed: () => _preview(context, dataList, args),
               icon: Icons.preview,
               label: Labels.preview),
+
+          //show edit button when author (id) == current user (id)
+          'CEOSI2022' == 'CEOSI2022'
+              ? Row(
+                  children: [
+                    const SizedBox(width: 20.0),
+                    BottomSheetButtonWidget(
+                      onPressed: () {
+                        //redirect to edit catalog entry screen
+                        Navigator.of(context).pushNamed(
+                            '/editcatalogentryscreen',
+                            arguments: EditCatalogEntryArguments(args.title));
+                      },
+                      icon: Icons.edit,
+                      label: 'Edit',
+                    )
+                  ],
+                )
+              : Container()
         ],
       ),
     );
   }
+}
+
+class EditCatalogEntryArguments {
+  EditCatalogEntryArguments(this.title);
+
+  final String title;
 }
 
 class DescriptionWidget extends StatelessWidget {

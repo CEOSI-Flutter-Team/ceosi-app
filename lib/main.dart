@@ -1,5 +1,6 @@
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/add_catalog_entry_screen.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/catalog_entries_screen.dart';
+import 'package:ceosi_app/screens/ceosi_flutter_catalog/edit_catalog_entry_screen.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/user_contributions_screen.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/add_freedom_post_screen.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/source_code_screen.dart';
@@ -72,6 +73,7 @@ class MyApp extends StatelessWidget {
             const UserSingleFreedomPostScreen(),
         '/usercontributionsscreen': (context) =>
             const UserContributionsScreen(),
+        '/editcatalogentryscreen': (context) => const EditCatalogEntryScreen(),
       },
       title: Labels.ceosiApp,
     );

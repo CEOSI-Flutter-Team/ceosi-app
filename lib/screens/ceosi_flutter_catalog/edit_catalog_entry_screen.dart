@@ -1,26 +1,25 @@
-import 'dart:io';
-
-import 'package:ceosi_app/constants/colors.dart';
+import 'package:ceosi_app/screens/ceosi_flutter_catalog/source_code_screen.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/widgets/flutter_catalog_appbar_widget.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/widgets/tabbar_view_widget.dart';
-import 'package:ceosi_app/widgets/button_widget.dart';
-import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:code_editor/code_editor.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
 
+import '../../constants/colors.dart';
 import '../../constants/labels.dart';
+import '../../widgets/button_widget.dart';
+import '../../widgets/text_widget.dart';
 
-class AddCatalogEntryScreen extends StatelessWidget {
-  AddCatalogEntryScreen({super.key});
-
-  final TextEditingController titleController = TextEditingController();
-  final TextEditingController descriptionController = TextEditingController();
-  final TextEditingController codeController = TextEditingController();
+class EditCatalogEntryScreen extends StatelessWidget {
+  const EditCatalogEntryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as EditCatalogEntryArguments;
+    final TextEditingController titleController =
+        TextEditingController(text: args.title);
+    final TextEditingController descriptionController = TextEditingController();
+    final TextEditingController codeController = TextEditingController();
     final List<FileEditor> files = [
       FileEditor(
         name: 'add_entry.dart',
@@ -28,7 +27,6 @@ class AddCatalogEntryScreen extends StatelessWidget {
         code: <String>[].join('\n'),
       ),
     ];
-
     EditorModel editorModel = EditorModel(
       files: files,
       styleOptions: EditorModelStyleOptions(
@@ -45,26 +43,8 @@ class AddCatalogEntryScreen extends StatelessWidget {
       ),
     );
 
-    var scaffoldMessenger = ScaffoldMessenger.of(context);
-
-    Future<void> uploadImage() async {
-      final imagePicker = ImagePicker();
-      PickedFile image;
-      PermissionStatus status = await Permission.photos.request();
-
-      if (status == PermissionStatus.granted) {
-        image = (await imagePicker.pickImage(source: ImageSource.gallery))
-            as PickedFile;
-        var file = File(image.path);
-        print('File Path: $file');
-      } else {
-        scaffoldMessenger.showSnackBar(
-            const SnackBar(content: Text(Labels.permissionRecommended)));
-      }
-    }
-
     return Scaffold(
-      appBar: flutterCatalogAppbarWidget(title: Labels.addCatalogEntry),
+      appBar: flutterCatalogAppbarWidget(title: args.title),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
@@ -185,10 +165,9 @@ class AddCatalogEntryScreen extends StatelessWidget {
                       ),
                       TabBarViewWidget(
                         editorModel: editorModel,
-                        onPressed: () {
-                          uploadImage();
-                        },
+                        onPressed: () {},
                         uploadBtnLabel: Labels.uploadImage,
+                        codeTextController: codeController,
                       ),
                     ],
                   ),
@@ -205,7 +184,7 @@ class AddCatalogEntryScreen extends StatelessWidget {
                 textWidget: const BoldTextWidget(
                   color: Colors.white,
                   fontSize: 12.0,
-                  text: Labels.submit,
+                  text: Labels.save,
                 ),
               ),
             )
