@@ -2,7 +2,6 @@ import 'package:ceosi_app/repositories/auth_repository.dart';
 import 'package:ceosi_app/screens/ceosi_rewards/widgets/dialogs/error_dialog_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import '../constants/colors.dart';
 import '../constants/images.dart';
 import '../widgets/button_widget.dart';
@@ -29,6 +28,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   int _dropdownValue = 0;
 
   String roleCategory = 'Flutter Developer';
+  String departmentCategory = 'Flutter Deparment';
 
   registorValidator(WidgetRef ref) async {
     if (_passwordController.text != _confirmPasswordController.text) {
@@ -44,7 +44,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
             _emailController.text,
             _passwordController.text,
             _confirmPasswordController.text,
-            roleCategory);
+            roleCategory,
+            departmentCategory,
+            '');
         goToHomeScreen();
       } catch (e) {
         showDialogWidget(e.toString());
@@ -141,6 +143,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         DropdownMenuItem(
                           onTap: () {
                             roleCategory = 'Flutter Developer';
+                            departmentCategory = 'Flutter Department';
                           },
                           value: 0,
                           child: DropDownItem(label: 'Flutter Developer'),
@@ -148,6 +151,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         DropdownMenuItem(
                           onTap: () {
                             roleCategory = 'Frontend Developer';
+                            departmentCategory = 'Frontend Department';
                           },
                           value: 1,
                           child: DropDownItem(label: 'Frontend Developer'),
@@ -155,6 +159,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         DropdownMenuItem(
                           onTap: () {
                             roleCategory = 'Backend Developer';
+                            departmentCategory = 'Backend Department';
                           },
                           value: 2,
                           child: DropDownItem(label: 'Backend Developer'),
@@ -162,6 +167,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         DropdownMenuItem(
                           onTap: () {
                             roleCategory = 'Quality Assurance';
+                            departmentCategory = 'Quality Assurance Department';
                           },
                           value: 3,
                           child: DropDownItem(label: 'Quality Assurance'),
@@ -169,6 +175,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         DropdownMenuItem(
                           onTap: () {
                             roleCategory = 'Admin';
+                            departmentCategory = 'Admin Department';
                           },
                           value: 4,
                           child: DropDownItem(label: 'Admin'),

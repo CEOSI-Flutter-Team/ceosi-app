@@ -1,4 +1,5 @@
 import 'package:ceosi_app/repositories/auth_repository_interface.dart';
+import 'package:ceosi_app/repositories/ceosi_company_app/employee_repository.dart';
 import 'package:ceosi_app/repositories/user_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -21,6 +22,8 @@ class AuthRepository implements AuthRepositoryInterface {
     password,
     confirmPassword,
     role,
+    department,
+    birthdate,
   ) async {
     await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
@@ -34,6 +37,16 @@ class AuthRepository implements AuthRepositoryInterface {
       confirmPassword,
       role,
       user.uid,
+      'https://cdn-icons-png.flaticon.com/512/1177/1177568.png',
+    );
+
+    EmployeeRepository().addEmployee(
+      name,
+      email,
+      role,
+      user.uid,
+      department,
+      birthdate,
       'https://cdn-icons-png.flaticon.com/512/1177/1177568.png',
     );
   }

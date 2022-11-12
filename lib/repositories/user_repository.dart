@@ -21,6 +21,7 @@ class UserRepository implements UsertRepositoryInterface {
     //add filter here if anonNames exists then randomized again
 
     final docUser = FirebaseFirestore.instance.collection('CEOSI-USERS').doc();
+    // final eUser = FirebaseFirestore.instance.collection('CEOSI-USERS').doc();
 
     final json = {
       'name': fullName,
@@ -31,12 +32,15 @@ class UserRepository implements UsertRepositoryInterface {
       'position': role,
       'contributions': 0,
       'anon_name': anonNames[1],
-      'claimed_rewards': [],
-      'earned_points': [],
+      'claimed_rewards': [{}],
+      'earned_points': [{}],
       'profile_image': profileImage,
     };
 
     await docUser.set(json);
+    // await eUser.set(json, {
+
+    // });
   }
 
   Future addPoints(
