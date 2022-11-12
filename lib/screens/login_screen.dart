@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   // final List<GlobalObjectKey<FormState>> loginformKey =
   //     List.generate(10, (index) => GlobalObjectKey<FormState>(index));
 
-  gotoLoginScreen() {
+  gotoHomeScreen() {
     Navigator.pushNamed(context, '/homescreen');
   }
 
@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       await AuthRepository()
           .loginOfuser(_usernameController.text, _passwordController.text);
-      gotoLoginScreen();
+      gotoHomeScreen();
     } on FirebaseAuthException catch (e) {
       validateLogin(e);
     }
