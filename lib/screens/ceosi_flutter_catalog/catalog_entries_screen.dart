@@ -110,16 +110,18 @@ class AlertDialogWidget extends StatelessWidget {
 }
 
 class SourceCodeArguments {
-  SourceCodeArguments(this.title, this.index);
+  SourceCodeArguments(this.title, this.index, this.screen);
 
   final String title;
   final int index;
+  final String screen;
 }
 
-navigateToSourceCodeScreen(NavigatorState navigator, String title, int index) {
+navigateToSourceCodeScreen(
+    NavigatorState navigator, String title, int index, String fromScreen) {
   navigator.pushNamed(
     '/sourcecodescreen',
-    arguments: SourceCodeArguments(title, index),
+    arguments: SourceCodeArguments(title, index, fromScreen),
   );
 }
 
@@ -159,8 +161,8 @@ class CatalogEntryWidget extends StatelessWidget {
           return InkWell(
             borderRadius: BorderRadius.circular(20.0),
             splashColor: Colors.transparent,
-            onTap: () => navigateToSourceCodeScreen(
-                navigator, dataList[index].title.toUpperCase(), index),
+            onTap: () => navigateToSourceCodeScreen(navigator,
+                dataList[index].title.toUpperCase(), index, 'catalog-entries'),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(36.0, 20.0, 36.0, 20.0),
               child: Container(

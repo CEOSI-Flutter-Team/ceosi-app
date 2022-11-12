@@ -1,5 +1,7 @@
 import 'package:ceosi_app/models/ceosi_flutter_catalog/catalog_entry_model.dart';
+import 'package:ceosi_app/models/ceosi_flutter_catalog/user_contributions_model.dart';
 import 'package:ceosi_app/providers/ceosi_flutter_catalog/catalog_entry_provider.dart';
+import 'package:ceosi_app/providers/ceosi_flutter_catalog/user_contributions_provider.dart';
 import 'package:ceosi_app/widgets/error_builder_widget.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/widgets/flutter_catalog_appbar_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
@@ -33,7 +35,7 @@ class SourceCodeScreen extends StatelessWidget {
       context: context,
       builder: (context) {
         return Image.network(
-          dataList[args.index].previewImage,
+          dataList[args.index].previewUrl,
           loadingBuilder: (context, child, loadingProgress) {
             return loadingProgress != null
                 ? const Center(
@@ -60,9 +62,10 @@ class SourceCodeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final args =
         ModalRoute.of(context)!.settings.arguments as SourceCodeArguments;
-    List<EntryDatum> dataList = [];
+    List<dynamic> dataList = [];
     String itemData = '';
     String itemTitle = '';
+    String screen = args.screen;
 
     return Scaffold(
       appBar: flutterCatalogAppbarWidget(
@@ -73,35 +76,53 @@ class SourceCodeScreen extends StatelessWidget {
         builder: (context, ref, child) {
           AsyncValue<CatalogEntryModel?> entryData =
               ref.watch(catalogEntryStateNotifierProvider);
-          return entryData.when(
-            data: (data) {
-              dataList = data!.entryData;
-              itemData = dataList[args.index].data;
-              itemTitle = dataList[args.index].title;
-              return SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Column(
-                  children: <Widget>[
-                    DescriptionWidget(
-                      padding:
-                          const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 20.0),
-                      text: dataList[args.index].description,
-                    ),
-                    DataViewWidget(
-                      isCode: dataList[args.index].isCode,
-                      data: itemData,
-                    ),
-                    const SizedBox(height: 50.0),
-                  ],
-                ),
-              );
-            },
-            error: (error, stackTrace) => Text(error.toString()),
-            loading: () => const Center(
-                child: CircularProgressIndicator(
-              color: CustomColors.primary,
-            )),
-          );
+          AsyncValue<UserContributionsModel?> contributionData =
+              ref.watch(userContributionsStateNotifierProvider);
+
+          if (screen == 'catalog-entries') {
+            return entryData.when(
+              data: (data) {
+                dataList = data!.entryData;
+                itemData = dataList[args.index].data;
+                itemTitle = dataList[args.index].title;
+                return SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    children: <Widget>[
+                      DescriptionWidget(
+                        padding:
+                            const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 20.0),
+                        text: dataList[args.index].description,
+                      ),
+                      DataViewWidget(
+                        isCode: dataList[args.index].isCode,
+                        data: itemData,
+                      ),
+                      const SizedBox(height: 50.0),
+                    ],
+                  ),
+                );
+              },
+              error: (error, stackTrace) => Text(error.toString()),
+              loading: () => const Center(
+                  child: CircularProgressIndicator(
+                color: CustomColors.primary,
+              )),
+            );
+          } else if (screen == 'user-contributions') {
+            return contributionData.when(
+              data: (data) {
+                //Data will be added on Firebase implementation
+                return Container();
+              },
+              error: (error, stackTrace) => Text(error.toString()),
+              loading: () => const Center(
+                  child: CircularProgressIndicator(
+                color: CustomColors.primary,
+              )),
+            );
+          }
+          return Container();
         },
       ),
       bottomSheet: BottomSheetWidget(

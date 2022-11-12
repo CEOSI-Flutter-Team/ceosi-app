@@ -1,9 +1,10 @@
 import 'dart:convert';
 
-CatalogEntryModel catalogEntryFromJson(String str) =>
+CatalogEntryModel catalogEntryModelFromJson(String str) =>
     CatalogEntryModel.fromJson(json.decode(str));
 
-String catalogEntryToJson(CatalogEntryModel data) => json.encode(data.toJson());
+String catalogEntryModelToJson(CatalogEntryModel data) =>
+    json.encode(data.toJson());
 
 class CatalogEntryModel {
   CatalogEntryModel({
@@ -24,36 +25,73 @@ class CatalogEntryModel {
 }
 
 class EntryDatum {
-  EntryDatum(
-      {required this.title,
-      required this.category,
-      required this.description,
-      required this.isCode,
-      required this.data,
-      required this.previewImage});
+  EntryDatum({
+    required this.author,
+    required this.category,
+    required this.createdAt,
+    required this.data,
+    required this.description,
+    required this.entryId,
+    required this.isCode,
+    required this.modifiedAt,
+    required this.previewUrl,
+    required this.title,
+  });
 
-  String title;
+  Author author;
   String category;
-  String description;
-  bool isCode;
+  String createdAt;
   String data;
-  String previewImage;
+  String description;
+  String entryId;
+  bool isCode;
+  String modifiedAt;
+  String previewUrl;
+  String title;
 
   factory EntryDatum.fromJson(Map<String, dynamic> json) => EntryDatum(
-        title: json['title'],
+        author: Author.fromJson(json['author']),
         category: json['category'],
-        description: json['description'],
-        isCode: json['is_code'],
+        createdAt: json['created_at'],
         data: json['data'],
-        previewImage: json['previewImage'],
+        description: json['description'],
+        entryId: json['entry_id'],
+        isCode: json['is_code'],
+        modifiedAt: json['modified_at'],
+        previewUrl: json['preview_url'],
+        title: json['title'],
       );
 
   Map<String, dynamic> toJson() => {
-        'title': title,
+        'author': author.toJson(),
         'category': category,
-        'description': description,
-        'is_code': isCode,
+        'created_at': createdAt,
         'data': data,
-        'previewImage': previewImage,
+        'description': description,
+        'entry_id': entryId,
+        'is_code': isCode,
+        'modified_at': modifiedAt,
+        'preview_url': previewUrl,
+        'title': title,
+      };
+}
+
+class Author {
+  Author({
+    required this.id,
+    required this.name,
+  });
+
+  String id;
+  String name;
+
+  factory Author.fromJson(Map<String, dynamic> json) => Author(
+        id: json['id'],
+        name: json['name'],
+      );
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': name,
       };
 }

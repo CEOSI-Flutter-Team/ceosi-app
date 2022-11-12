@@ -12,40 +12,41 @@ class CatalogEntryRepository implements CatalogEntryRepositoryInterface {
       CatalogEntryModel(
         entryData: [
           EntryDatum(
-              title: 'Code Sample 1',
-              category: 'Category 1',
-              description: sampleDescription,
-              isCode: true,
+              author: Author(
+                  id: 'ExyqFN6jJwgafL6E268r', name: 'June Paolo Tabequero'),
+              category: 'Widgets',
+              createdAt: 'Nov. 11, 2022 9:34 AM',
               data: sampleSourceCode,
-              previewImage: sampleImage),
-          EntryDatum(
-              title: 'Code Sample 2',
-              category: 'Category 4',
               description: sampleDescription,
-              isCode: false,
+              entryId: '5qnLZXaoBLPj1yGWoUoz',
+              isCode: true,
+              modifiedAt: 'Nov. 11, 2022 9:35 AM',
+              previewUrl: sampleImage,
+              title: 'Text Widget'),
+          EntryDatum(
+              author: Author(
+                  id: 'ExyqFN6jJwgafL6E268r', name: 'June Paolo Tabequero'),
+              category: 'Conventions',
+              createdAt: 'Nov. 11, 2022 9:34 AM',
               data: sampleImage,
-              previewImage: sampleImage),
-          EntryDatum(
-              title: 'Code Sample 3',
-              category: 'Category 2',
               description: sampleDescription,
-              isCode: true,
-              data: sampleSourceCode,
-              previewImage: sampleImage),
-          EntryDatum(
-              title: 'Code Sample 4',
-              category: 'Category 8',
-              description: sampleDescription,
-              isCode: true,
-              data: sampleSourceCode,
-              previewImage: sampleImage),
-          EntryDatum(
-              title: 'Code Sample 5',
-              category: 'Category 1',
-              description: sampleDescription,
+              entryId: '09KatJ2XoZPpdgL1fPXB',
               isCode: false,
-              data: sampleImage,
-              previewImage: sampleImage),
+              modifiedAt: 'Nov. 11, 2022 9:35 AM',
+              previewUrl: sampleImage,
+              title: 'File Structure'),
+          EntryDatum(
+              author: Author(
+                  id: 'ExyqFN6jJwgafL6E268r', name: 'June Paolo Tabequero'),
+              category: 'Widgets',
+              createdAt: 'Nov. 11, 2022 9:34 AM',
+              data: sampleSourceCode,
+              description: sampleDescription,
+              entryId: 'NRiZbYY66KGZsaU68OGD',
+              isCode: true,
+              modifiedAt: 'Nov. 11, 2022 9:35 AM',
+              previewUrl: sampleImage,
+              title: 'Button Widget'),
         ],
       ),
     );
