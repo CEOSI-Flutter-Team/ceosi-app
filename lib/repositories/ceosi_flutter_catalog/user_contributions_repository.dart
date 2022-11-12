@@ -14,17 +14,22 @@ class UserContributionsRepository
       UserContributionsModel(
         contributionData: [
           ContributionDatum(
-            id: 'YVwMpSe3ATaMjgDa0kTe',
+            profileId: '2BQIPInwGMgIDEDQ4Zn5',
+            author: Author(
+                id: 'ExyqFN6jJwgafL6E268r', name: 'June Paolo Tabequero'),
             contributions: [
               Contribution(
+                entryId: ' YVwMpSe3ATaMjgDaOkTe',
                 category: 'Conventions',
                 title: 'File Structure',
               ),
               Contribution(
+                entryId: 'MUolM97bLTsL34f7DF1W',
                 category: 'Widgets',
                 title: 'Text Widget',
               ),
               Contribution(
+                entryId: 'mI6ppIGwgFdwZy7KLQxO',
                 category: 'Widgets',
                 title: 'Button Widget',
               )

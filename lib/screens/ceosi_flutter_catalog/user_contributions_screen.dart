@@ -73,15 +73,17 @@ class UserContributionWidget extends StatelessWidget {
             onTap: () => navigateToSourceCodeScreen(
                 navigator,
                 contributionDetails[0].contributions[index].title.toUpperCase(),
-                index),
+                index,
+                'user-contributions'),
+            // onTap: () {},
             child: Padding(
               padding: const EdgeInsets.fromLTRB(36.0, 20.0, 36.0, 20.0),
               child: Container(
                 height: 120.0,
                 decoration: BoxDecoration(
                     color: index % 2 == 0
-                        ? CustomColors.secondary
-                        : CustomColors.primary,
+                        ? CustomColors.primary
+                        : CustomColors.secondary,
                     borderRadius: BorderRadius.circular(20.0)),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
