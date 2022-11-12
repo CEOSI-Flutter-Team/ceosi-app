@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:ceosi_app/constants/colors.dart';
-import 'package:ceosi_app/screens/ceosi_freedomwall/widgets/gesture_detector_widget.dart';
+import 'package:ceosi_app/screens/ceosi_freedomwall/widgets/ink_well_widget.dart';
 import 'package:ceosi_app/screens/ceosi_freedomwall/widgets/masontry_text_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -11,7 +11,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 import '../../../constants/icons.dart';
-import '../../../utils/datagetter.dart';
 
 class MasonryListWidget extends StatefulWidget {
   const MasonryListWidget({required this.stream, super.key});
@@ -157,18 +156,18 @@ class MasonryItem extends StatelessWidget {
                   ),
                 ]),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 20, 11, 0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                  GestureDetectorWidget(
-                    childWidget: Image.asset(CustomIcons().continuousdoticon),
-                    onTap: () {
-                      getPosts();
-                      print('hello id $id');
-                    },
+              Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                InkWellWidget(
+                  childWidget: Image.asset(
+                    CustomIcons().continuousdoticon,
+                    height: 30,
+                    width: 30,
                   ),
-                ]),
-              )
+                  onTap: () {
+                    print('hello id');
+                  },
+                ),
+              ])
             ]),
           ],
         ),

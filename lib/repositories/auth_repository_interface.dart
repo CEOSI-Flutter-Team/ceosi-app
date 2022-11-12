@@ -5,5 +5,4 @@ abstract class AuthRepositoryInterface {
   Future<List<UserModel>?> loginOfuser(String email, password);
   userSignUp(String name, email, password, confirmPassword, role,
       BuildContext context);
-  initNavigator();
 }

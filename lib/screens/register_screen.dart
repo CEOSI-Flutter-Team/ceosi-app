@@ -3,7 +3,6 @@ import 'package:ceosi_app/repositories/auth_repository.dart';
 import 'package:ceosi_app/screens/ceosi_rewards/widgets/dialogs/error_dialog_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:unique_name_generator/unique_name_generator.dart';
 
 import '../constants/colors.dart';
 import '../constants/images.dart';
@@ -192,7 +191,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             }),
                           );
                         } else {
-                          AuthRepository(context).userSignUp(
+                          AuthRepository().userSignUp(
                               _nameController.text,
                               _emailController.text,
                               _passwordController.text,
