@@ -42,30 +42,6 @@ class _RewardHomeScreenState extends State<RewardHomeScreen> {
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: GestureDetector(
                 onTap: () {
-                  // UserRepository().addUser(
-                  //   'Lance Olana',
-                  //   0,
-                  //   'lance.ceosi@gmail.com',
-                  //   '123lance',
-                  //   '123lance',
-                  //   'Flutter Developer',
-                  // );
-
-                  // ProductRepository().addItemClaimed(
-                  //   'Sample Product 1',
-                  //   'Snacks',
-                  //   500,
-                  //   'https://firebasestorage.googleapis.com/v0/b/ceosi-app-4c622.appspot.com/o/Rewards%2FItems%2Fscaled_b8327260-af37-4a43-b5a3-20f831ad6ab33560683931965845701.jpg?alt=media&token=65691bb4-103f-4801-bb6c-a582bed203e8',
-                  //   'lance.ceosi@gmail.com',
-                  // );
-
-                  // UserRepository().addPoints(
-                  //   1000,
-                  //   'Padayun gaw',
-                  //   'Being buotan',
-                  //   'lance.ceosi@gmail.com',
-                  // );
-
                   showSearch(
                       context: context, delegate: SearchDelegateProduct());
                 },

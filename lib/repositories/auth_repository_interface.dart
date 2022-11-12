@@ -1,8 +1,7 @@
-import 'package:ceosi_app/models/user_model.dart';
-import 'package:flutter/cupertino.dart';
+import '../models/user_model.dart';
 
 abstract class AuthRepositoryInterface {
+  userSignUp(String name, email, password, confirmPassword, role);
+
   Future<List<UserModel>?> loginOfuser(String email, password);
-  userSignUp(String name, email, password, confirmPassword, role,
-      BuildContext context);
 }

@@ -24,15 +24,19 @@ class ProductRepository implements ProductRepositoryInterface {
     String? productCategory,
     String? pointsEquivalent,
     String? productImage,
+    String? productDetails,
+    String? reminders,
   ) async {
     final docUser =
         FirebaseFirestore.instance.collection('CEOSI-REWARDS-ITEMS').doc();
 
     final json = {
-      'productName': productName,
-      'productCategory': productCategory,
-      'pointsEquivalent': pointsEquivalent,
-      'productImage': productImage,
+      'product_name': productName,
+      'product_category': productCategory,
+      'points_equivalent': pointsEquivalent,
+      'product_image': productImage,
+      'product_details': productDetails,
+      'reminders': reminders,
       'id': docUser.id,
     };
 

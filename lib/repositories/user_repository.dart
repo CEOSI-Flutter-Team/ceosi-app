@@ -26,13 +26,13 @@ class UserRepository implements UsertRepositoryInterface {
       'name': fullName,
       'user_points': 0,
       'email': email,
-      'id': docUser,
+      'id': docUser.id,
       'user_id': uid,
       'position': role,
       'contributions': 0,
       'anon_name': anonNames[1],
-      'claimed_rewards': [{}],
-      'earned_points': [{}],
+      'claimed_rewards': [],
+      'earned_points': [],
       'profile_image': profileImage,
     };
 

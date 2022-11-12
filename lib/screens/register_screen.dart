@@ -1,4 +1,3 @@
-import 'package:ceosi_app/providers/user_provider.dart';
 import 'package:ceosi_app/repositories/auth_repository.dart';
 import 'package:ceosi_app/screens/ceosi_rewards/widgets/dialogs/error_dialog_widget.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +29,45 @@ class _RegisterScreenState extends State<RegisterScreen> {
   int _dropdownValue = 0;
 
   String roleCategory = 'Flutter Developer';
+
+  registorValidator(WidgetRef ref) async {
+    if (_passwordController.text != _confirmPasswordController.text) {
+      showDialogWidget('Password do not match!');
+    } else if (_passwordController.text == '' || _emailController.text == '') {
+      showDialogWidget('Invalid Input!');
+    } else if (_passwordController.text.length < 6) {
+      showDialogWidget('Password too short!');
+    } else {
+      try {
+        AuthRepository().userSignUp(
+            _nameController.text,
+            _emailController.text,
+            _passwordController.text,
+            _confirmPasswordController.text,
+            roleCategory);
+        goToHomeScreen();
+      } catch (e) {
+        showDialogWidget(e.toString());
+      }
+    }
+  }
+
+  showDialogWidget(String error) {
+    return showDialog(
+      context: context,
+      builder: ((context) {
+        return ErrorDialog(
+            caption: error,
+            onPressed: () {
+              Navigator.of(context).pop();
+            });
+      }),
+    );
+  }
+
+  goToHomeScreen() {
+    Navigator.pushNamed(context, '/');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -153,57 +191,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   return ButtonWidget(
                       color: CustomColors.primary,
                       borderRadius: 100,
-                      onPressed: () {
-                        // ignore: unrelated_type_equality_checks
-                        if (_passwordController.text !=
-                            _confirmPasswordController.text) {
-                          showDialog(
-                            context: context,
-                            builder: ((context) {
-                              return ErrorDialog(
-                                  caption: 'Password do not match!',
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  });
-                            }),
-                          );
-                        } else if (_passwordController.text == '' ||
-                            _emailController.text == '') {
-                          showDialog(
-                            context: context,
-                            builder: ((context) {
-                              return ErrorDialog(
-                                  caption: 'Invalid Input',
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  });
-                            }),
-                          );
-                        } else if (_passwordController.text.length < 6) {
-                          showDialog(
-                            context: context,
-                            builder: ((context) {
-                              return ErrorDialog(
-                                  caption: 'Password too short!',
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  });
-                            }),
-                          );
-                        } else {
-                          AuthRepository().userSignUp(
-                              _nameController.text,
-                              _emailController.text,
-                              _passwordController.text,
-                              _confirmPasswordController.text,
-                              roleCategory,
-                              context);
-
-                          ref.watch(getUserEmail.notifier).state =
-                              _emailController.text;
-
-                          Navigator.pushNamed(context, '/rewardhomescreen');
-                        }
+                      onPressed: () async {
+                        registorValidator(ref);
                       },
                       buttonHeight: 50,
                       buttonWidth: 300,
@@ -222,7 +211,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       fontSize: 14,
                       text: 'Already have an account?'),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/');
+                    },
                     child: const BoldTextWidget(
                         color: Colors.black, fontSize: 18, text: 'Login'),
                   ),

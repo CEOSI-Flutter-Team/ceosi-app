@@ -42,6 +42,7 @@ dependencies:
   easy_image_viewer:
   email_validator: ^2.1.17
   firebase_auth:
+<<<<<<< HEAD
   firebase_core: ^2.1.1
   firebase_storage:
   flutter_riverpod: ^2.1.1
@@ -58,6 +59,12 @@ dependencies:
   share_plus:
   table_calendar: ^3.0.8
   unique_name_generator: ^1.0.0
+=======
+  unique_name_generator:
+  email_validator:
+  shared_preferences: ^2.0.15
+  
+>>>>>>> sprint-register-functionality-fix
 
 dev_dependencies:
   flutter_test:
