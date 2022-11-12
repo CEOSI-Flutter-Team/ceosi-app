@@ -122,9 +122,12 @@ class RewardsClaimedListItemWidget extends ConsumerWidget {
               dynamic data = snapshot.data;
 
               List itemList = data['claimed_rewards'];
+
               return ListView.builder(
                   itemCount: itemList.length,
                   itemBuilder: ((context, index) {
+                    print('called');
+                    print(userIdProvider);
                     return RewardsClaimedSingleItemWidget(
                       productName: itemList[index]['productName'],
                       productCategory: itemList[index]['productCategory'],

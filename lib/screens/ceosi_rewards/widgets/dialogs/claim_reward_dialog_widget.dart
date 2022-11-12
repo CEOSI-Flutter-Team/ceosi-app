@@ -52,7 +52,7 @@ class ClaimRewardDialogWidget extends StatelessWidget {
                       .collection('CEOSI-USERS')
                       .doc('GZ4hqaEj1vggZeeJ0j0j')
                       .update({
-                    'claimed_rewards': FieldValue.arrayRemove([newData])
+                    'claimed_rewards': FieldValue.arrayUnion([newData])
                   });
                   Navigator.pushNamed(context, '/rewardhomescreen');
                 },

@@ -1,7 +1,5 @@
-import 'package:ceosi_app/providers/user_provider.dart';
 import 'package:ceosi_app/repositories/auth_repository.dart';
 import 'package:ceosi_app/screens/ceosi_rewards/widgets/dialogs/error_dialog_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -34,38 +32,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   registorValidator(WidgetRef ref) async {
     if (_passwordController.text != _confirmPasswordController.text) {
-      showDialog(
-        context: context,
-        builder: ((context) {
-          return ErrorDialog(
-              caption: 'Password do not match!',
-              onPressed: () {
-                Navigator.of(context).pop();
-              });
-        }),
-      );
+      showDialogWidget('Password do not match!');
     } else if (_passwordController.text == '' || _emailController.text == '') {
-      showDialog(
-        context: context,
-        builder: ((context) {
-          return ErrorDialog(
-              caption: 'Invalid Input',
-              onPressed: () {
-                Navigator.of(context).pop();
-              });
-        }),
-      );
+      showDialogWidget('Invalid Input!');
     } else if (_passwordController.text.length < 6) {
-      showDialog(
-        context: context,
-        builder: ((context) {
-          return ErrorDialog(
-              caption: 'Password too short!',
-              onPressed: () {
-                Navigator.of(context).pop();
-              });
-        }),
-      );
+      showDialogWidget('Password too short!');
     } else {
       try {
         AuthRepository().userSignUp(
@@ -75,34 +46,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
             _confirmPasswordController.text,
             roleCategory);
 
-        var collection = FirebaseFirestore.instance
-            .collection('CEOSI-USERS')
-            .where('email', isEqualTo: _emailController.text);
-
-        late String id = '';
-
-        var querySnapshot = await collection.get();
-        if (mounted) {
-          setState(() {
-            for (var queryDocumentSnapshot in querySnapshot.docs) {
-              Map<String, dynamic> data = queryDocumentSnapshot.data();
-              id = data['id'];
-            }
-          });
-        }
-
-        ref.watch(getUserId.notifier).state = id;
-
         // ignore: use_build_context_synchronously
-        Navigator.pushNamed(context, '/rewardhomescreen');
+        Navigator.pushNamed(context, '/');
       } catch (e) {
-        ErrorDialog(
-            caption: e.toString(),
+        showDialogWidget(e.toString());
+      }
+    }
+  }
+
+  showDialogWidget(String error) {
+    return showDialog(
+      context: context,
+      builder: ((context) {
+        return ErrorDialog(
+            caption: error,
             onPressed: () {
               Navigator.of(context).pop();
             });
-      }
-    }
+      }),
+    );
   }
 
   @override
@@ -247,7 +209,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       fontSize: 14,
                       text: 'Already have an account?'),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/');
+                    },
                     child: const BoldTextWidget(
                         color: Colors.black, fontSize: 18, text: 'Login'),
                   ),

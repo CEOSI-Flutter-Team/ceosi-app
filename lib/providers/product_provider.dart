@@ -11,5 +11,6 @@ final getProductListProvider =
 });
 
 final getItemProvider = StateProvider<ProductModel>((ref) {
+  print('called provider');
   return ProductModel();
 });

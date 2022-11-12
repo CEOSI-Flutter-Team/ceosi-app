@@ -47,6 +47,7 @@ dependencies:
   firebase_auth:
   unique_name_generator:
   email_validator:
+  shared_preferences: ^2.0.15
   
 
 dev_dependencies:

@@ -31,8 +31,8 @@ class UserRepository implements UsertRepositoryInterface {
       'position': role,
       'contributions': 0,
       'anon_name': anonNames[1],
-      'claimed_rewards': [{}],
-      'earned_points': [{}],
+      'claimed_rewards': [],
+      'earned_points': [],
       'profile_image': profileImage,
     };
 

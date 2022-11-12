@@ -2,7 +2,18 @@ import 'package:ceosi_app/repositories/auth_repository_interface.dart';
 import 'package:ceosi_app/repositories/user_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../models/user_model.dart';
+
 class AuthRepository implements AuthRepositoryInterface {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  @override
+  Future<List<UserModel>?> loginOfuser(String email, password) async {
+    await _auth.signInWithEmailAndPassword(email: email, password: password);
+
+    return null;
+  }
+
   @override
   userSignUp(
     String name,

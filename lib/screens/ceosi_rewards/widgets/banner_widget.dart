@@ -1,5 +1,5 @@
+import 'package:ceosi_app/providers/user_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -13,9 +13,9 @@ class BannerWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final Stream<DocumentSnapshot> listProducts = FirebaseFirestore.instance
+    final Stream<DocumentSnapshot> userData = FirebaseFirestore.instance
         .collection('CEOSI-USERS')
-        .doc('GZ4hqaEj1vggZeeJ0j0j')
+        .doc(ref.watch(getUserId.notifier).state)
         .snapshots();
     return Padding(
       padding: const EdgeInsets.only(top: 80),
@@ -28,7 +28,7 @@ class BannerWidget extends ConsumerWidget {
           width: 350,
           height: 120,
           child: StreamBuilder<DocumentSnapshot>(
-              stream: listProducts,
+              stream: userData,
               builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
                 if (!snapshot.hasData) {
                   return const Center(child: Text('Loading'));
