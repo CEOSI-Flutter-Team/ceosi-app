@@ -45,9 +45,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             _passwordController.text,
             _confirmPasswordController.text,
             roleCategory);
-
-        // ignore: use_build_context_synchronously
-        Navigator.pushNamed(context, '/');
+        goToHomeScreen();
       } catch (e) {
         showDialogWidget(e.toString());
       }
@@ -65,6 +63,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
             });
       }),
     );
+  }
+
+  goToHomeScreen() {
+    Navigator.pushNamed(context, '/');
   }
 
   @override
