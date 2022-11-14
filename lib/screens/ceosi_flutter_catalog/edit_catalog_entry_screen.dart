@@ -1,5 +1,6 @@
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/source_code_screen.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/widgets/flutter_catalog_appbar_widget.dart';
+import 'package:ceosi_app/screens/ceosi_flutter_catalog/widgets/flutter_catalog_text_formfield_widget.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/widgets/tabbar_view_widget.dart';
 import 'package:code_editor/code_editor.dart';
 import 'package:flutter/material.dart';
@@ -51,82 +52,14 @@ class EditCatalogEntryScreen extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
-              child: TextFormField(
-                controller: titleController,
-                autofocus: true,
-                maxLength: 50,
-                cursorRadius: const Radius.circular(20.0),
-                cursorColor: CustomColors.primary,
-                toolbarOptions: const ToolbarOptions(
-                    copy: true, cut: true, paste: true, selectAll: true),
-                validator: (value) {
-                  return '';
-                },
-                decoration: InputDecoration(
-                  isDense: true,
-                  label: const Text(
-                    Labels.title,
-                    style: TextStyle(
-                      color: CustomColors.primary,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: const BorderSide(
-                        width: 1.0, color: CustomColors.primary),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: const BorderSide(
-                        width: 1.0, color: CustomColors.primary),
-                  ),
-                  disabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: const BorderSide(
-                        width: 1.0, color: CustomColors.greyAccent),
-                  ),
-                ),
-              ),
+              child: FlutterCatalogTextFormField(controller: titleController),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 10.0),
-              child: TextFormField(
+              child: FlutterCatalogTextFormField(
                 controller: descriptionController,
-                cursorRadius: const Radius.circular(20.0),
-                cursorColor: CustomColors.primary,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                toolbarOptions: const ToolbarOptions(
-                    copy: true, cut: true, paste: true, selectAll: true),
-                validator: (value) {
-                  return '';
-                },
-                decoration: InputDecoration(
-                  isDense: false,
-                  label: const Text(
-                    Labels.description,
-                    style: TextStyle(
-                      color: CustomColors.primary,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: const BorderSide(
-                        width: 1.0, color: CustomColors.primary),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: const BorderSide(
-                        width: 1.0, color: CustomColors.primary),
-                  ),
-                  disabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: const BorderSide(
-                        width: 1.0, color: CustomColors.greyAccent),
-                  ),
-                ),
               ),
             ),
             Padding(

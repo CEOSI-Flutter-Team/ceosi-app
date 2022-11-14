@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../constants/labels.dart';
+import '../../constants/routes.dart';
 import '../../providers/ceosi_flutter_catalog/catalog_entry_provider.dart';
 
 class CatalogEntriesScreen extends StatelessWidget {
@@ -26,7 +27,7 @@ class CatalogEntriesScreen extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     Navigator.pushNamedAndRemoveUntil(
-                        context, '/homescreen', (route) => false);
+                        context, Routes.homescreen, (route) => false);
                   },
                   child: const Text(
                     Labels.yes,
@@ -66,7 +67,7 @@ class CatalogEntriesScreen extends StatelessWidget {
               size: 35.0,
             ),
             onPressed: () =>
-                Navigator.of(context).pushNamed('/addcatalogentryscreen'),
+                Navigator.of(context).pushNamed(Routes.addcatalogentryscreen),
           ),
         ),
         body: Column(
@@ -120,7 +121,7 @@ class SourceCodeArguments {
 navigateToSourceCodeScreen(
     NavigatorState navigator, String title, int index, String fromScreen) {
   navigator.pushNamed(
-    '/sourcecodescreen',
+    Routes.sourcecodescreen,
     arguments: SourceCodeArguments(title, index, fromScreen),
   );
 }

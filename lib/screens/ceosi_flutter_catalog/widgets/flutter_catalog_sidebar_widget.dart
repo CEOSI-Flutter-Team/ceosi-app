@@ -3,6 +3,8 @@ import 'package:recase/recase.dart';
 
 import '../../../constants/colors.dart';
 import '../../../constants/labels.dart';
+import '../../../constants/routes.dart';
+import '../../../services/navigation.dart';
 import '../../../widgets/button_widget.dart';
 import '../../../widgets/sidebar_widget.dart';
 import '../../../widgets/text_widget.dart';
@@ -108,8 +110,7 @@ class _FlutterCatalogNavigationColumn extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         ButtonWidget(
-          onPressed: () => Navigator.of(context)
-              .pushNamedAndRemoveUntil('/homescreen', (route) => false),
+          onPressed: () => Navigation(context).goToHomeScreen(),
           buttonHeight: 55.0,
           buttonWidth: 203.0,
           borderRadius: 10.0,
@@ -118,8 +119,7 @@ class _FlutterCatalogNavigationColumn extends StatelessWidget {
         ),
         const SizedBox(height: 25.0),
         ButtonWidget(
-          onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(
-              '/catalogentriesscreen', (route) => false),
+          onPressed: () => Navigation(context).goToCatalogEntriesScreen(),
           buttonHeight: 55.0,
           buttonWidth: 203.0,
           borderRadius: 10.0,
@@ -130,8 +130,7 @@ class _FlutterCatalogNavigationColumn extends StatelessWidget {
         ),
         const SizedBox(height: 25.0),
         ButtonWidget(
-          onPressed: () =>
-              Navigator.of(context).pushNamed('/usercontributionsscreen'),
+          onPressed: () => Navigation(context).goToUserContributionsScreen(),
           buttonHeight: 55.0,
           buttonWidth: 203.0,
           borderRadius: 10.0,

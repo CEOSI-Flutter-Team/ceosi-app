@@ -19,6 +19,7 @@ import 'package:ceosi_app/screens/home_screen.dart';
 import 'package:ceosi_app/screens/register_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'constants/routes.dart';
 import 'screens/ceosi_company_app/about_screen.dart';
 import 'screens/ceosi_company_app/announcement_screen.dart';
 import 'constants/labels.dart';
@@ -45,35 +46,37 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/catalogentriesscreen',
+      initialRoute: Routes.catalogentriesscreen,
       routes: {
-        '/': (context) => const LoginScreen(),
-        '/homescreen': (context) => const HomeScreen(),
-        '/registerscreen': (context) => RegisterScreen(),
-        '/announcementscreen': (context) => const AnnouncementScreen(),
-        '/addannouncementscreen': (context) => const AddAnnouncementScreen(),
-        '/teamscreen': (context) => const TeamScreen(),
-        '/addteamscreen': (context) => const AddTeamScreen(),
-        '/aboutscreen': (context) => const AboutScreen(),
-        '/freedompostsscreen': (context) => const FreedomPostsScreen(),
-        '/addfreedompostscreen': (context) => const AddFreedomPostScreen(),
-        '/catalogentriesscreen': (context) => const CatalogEntriesScreen(),
-        '/sourcecodescreen': (context) => const SourceCodeScreen(),
-        '/eventcalendarscreen': (context) => const EventCalendarScreen(),
-        '/usersearchscreen': (context) => const UserSearchScreen(),
-        '/piechartreportscreen': (context) => const PieChartReportScreen(),
-        '/piechartsearchscreen': (context) => const PieChartSearchScreen(),
-        '/addcatalogentryscreen': (context) => AddCatalogEntryScreen(),
-        '/rewardhomescreen': (context) => const RewardHomeScreen(),
-        '/rewardviewitemscreen': (context) => const RewardViewItemScreen(),
-        '/profilescreenreward': (context) => const ProfileScreenReward(),
-        '/adminpanelscreenreward': (context) => const AdminPanelScreen(),
-        '/adminpostsdatascreen': (context) => const AdminPostsDataScreen(),
-        '/usersinglefreedompostscreen': (context) =>
+        Routes.loginscreen: (context) => const LoginScreen(),
+        Routes.homescreen: (context) => const HomeScreen(),
+        Routes.registerscreen: (context) => RegisterScreen(),
+        Routes.announcementscreen: (context) => const AnnouncementScreen(),
+        Routes.addannouncementscreen: (context) =>
+            const AddAnnouncementScreen(),
+        Routes.teamscreen: (context) => const TeamScreen(),
+        Routes.addteamscreen: (context) => const AddTeamScreen(),
+        Routes.aboutscreen: (context) => const AboutScreen(),
+        Routes.freedompostsscreen: (context) => const FreedomPostsScreen(),
+        Routes.addfreedompostscreen: (context) => const AddFreedomPostScreen(),
+        Routes.catalogentriesscreen: (context) => const CatalogEntriesScreen(),
+        Routes.sourcecodescreen: (context) => const SourceCodeScreen(),
+        Routes.eventcalendarscreen: (context) => const EventCalendarScreen(),
+        Routes.usersearchscreen: (context) => const UserSearchScreen(),
+        Routes.piechartreportscreen: (context) => const PieChartReportScreen(),
+        Routes.piechartsearchscreen: (context) => const PieChartSearchScreen(),
+        Routes.addcatalogentryscreen: (context) => AddCatalogEntryScreen(),
+        Routes.rewardhomescreen: (context) => const RewardHomeScreen(),
+        Routes.rewardviewitemscreen: (context) => const RewardViewItemScreen(),
+        Routes.profilescreenreward: (context) => const ProfileScreenReward(),
+        Routes.adminpanelscreenreward: (context) => const AdminPanelScreen(),
+        Routes.adminpostsdatascreen: (context) => const AdminPostsDataScreen(),
+        Routes.usersinglefreedompostscreen: (context) =>
             const UserSingleFreedomPostScreen(),
-        '/usercontributionsscreen': (context) =>
+        Routes.usercontributionsscreen: (context) =>
             const UserContributionsScreen(),
-        '/editcatalogentryscreen': (context) => const EditCatalogEntryScreen(),
+        Routes.editcatalogentryscreen: (context) =>
+            const EditCatalogEntryScreen(),
       },
       title: Labels.ceosiApp,
     );
