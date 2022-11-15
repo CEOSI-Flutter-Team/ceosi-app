@@ -1,4 +1,5 @@
 import 'package:ceosi_app/constants/colors.dart';
+import 'package:ceosi_app/services/navigation.dart';
 import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -107,8 +108,7 @@ class NavigationColumn extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         ButtonWidget(
-          onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(
-              '/catalogentriesscreen', (route) => false),
+          onPressed: () => Navigation(context).goToCatalogEntriesScreen(),
           buttonHeight: 55.0,
           buttonWidth: 203.0,
           borderRadius: 10.0,
@@ -119,8 +119,7 @@ class NavigationColumn extends StatelessWidget {
         ),
         const SizedBox(height: 25.0),
         ButtonWidget(
-          onPressed: () => Navigator.of(context)
-              .pushNamedAndRemoveUntil('/freedompostsscreen', (route) => false),
+          onPressed: () => Navigation(context).goToFreedomPostsScreen(),
           buttonHeight: 55.0,
           buttonWidth: 203.0,
           borderRadius: 10.0,
@@ -131,8 +130,7 @@ class NavigationColumn extends StatelessWidget {
         ),
         const SizedBox(height: 25.0),
         ButtonWidget(
-          onPressed: () => Navigator.of(context)
-              .pushNamedAndRemoveUntil('/announcementscreen', (route) => false),
+          onPressed: () => Navigation(context).goToAnnouncementScreen(),
           buttonHeight: 55.0,
           buttonWidth: 203.0,
           borderRadius: 10.0,
@@ -143,8 +141,7 @@ class NavigationColumn extends StatelessWidget {
         ),
         const SizedBox(height: 25.0),
         ButtonWidget(
-          onPressed: () => Navigator.of(context)
-              .pushNamedAndRemoveUntil('/rewardhomescreen', (route) => false),
+          onPressed: () => Navigation(context).goToRewardHomeScreen(),
           buttonHeight: 55.0,
           buttonWidth: 203.0,
           borderRadius: 10.0,
@@ -169,7 +166,7 @@ class LogoutButton extends StatelessWidget {
           child: ButtonWidget(
             onPressed: () {
               FirebaseAuth.instance.signOut();
-              Navigator.pushNamed(context, '/');
+              Navigation(context).goToLoginScreen();
             },
             buttonHeight: 42.0,
             buttonWidth: 57,

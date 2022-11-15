@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:ceosi_app/screens/ceosi_flutter_catalog/widgets/flutter_catalog_appbar_widget.dart';
+import 'package:ceosi_app/screens/ceosi_flutter_catalog/widgets/tabbar_view_widget.dart';
 import 'package:ceosi_app/widgets/button_widget.dart';
 import 'package:ceosi_app/widgets/text_widget.dart';
 import 'package:code_editor/code_editor.dart';
@@ -187,6 +188,7 @@ class AddCatalogEntryScreen extends StatelessWidget {
                         onPressed: () {
                           uploadImage();
                         },
+                        uploadBtnLabel: Labels.uploadImage,
                       ),
                     ],
                   ),
@@ -209,59 +211,6 @@ class AddCatalogEntryScreen extends StatelessWidget {
             )
           ],
         ),
-      ),
-    );
-  }
-}
-
-class TabBarViewWidget extends StatelessWidget {
-  const TabBarViewWidget({
-    super.key,
-    required this.editorModel,
-    required this.onPressed,
-  });
-
-  final EditorModel editorModel;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height / 2.2,
-      child: TabBarView(
-        physics: const BouncingScrollPhysics(),
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20.0),
-                child: CodeEditor(
-                  model: editorModel,
-                  edit: true,
-                  onSubmit: (language, value) {},
-                  disableNavigationbar: true,
-                ),
-              ),
-            ],
-          ),
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 20.0),
-              child: ButtonWidget(
-                buttonHeight: 75.0,
-                buttonWidth: 150.0,
-                borderRadius: 10.0,
-                onPressed: onPressed,
-                textWidget: const BoldTextWidget(
-                  color: Colors.white,
-                  fontSize: 12.0,
-                  text: Labels.uploadImage,
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
