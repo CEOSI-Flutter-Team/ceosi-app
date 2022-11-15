@@ -52,15 +52,16 @@ class EditCatalogEntryScreen extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
-              child: FlutterCatalogTextFormField(controller: titleController),
+              child: FlutterCatalogTextFormField(
+                  controller: titleController, labelText: Labels.title),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 10.0),
               child: FlutterCatalogTextFormField(
-                controller: descriptionController,
-                keyboardType: TextInputType.multiline,
-                maxLines: null,
-              ),
+                  controller: descriptionController,
+                  labelText: Labels.description,
+                  keyboardType: TextInputType.multiline,
+                  maxLines: null),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 10.0),

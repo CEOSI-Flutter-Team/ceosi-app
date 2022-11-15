@@ -1,15 +1,18 @@
 import 'package:ceosi_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants/labels.dart';
-
 class FlutterCatalogTextFormField extends StatelessWidget {
   const FlutterCatalogTextFormField(
-      {super.key, required this.controller, this.keyboardType, this.maxLines});
+      {super.key,
+      required this.controller,
+      required this.labelText,
+      this.keyboardType,
+      this.maxLines});
 
   final TextEditingController controller;
   final TextInputType? keyboardType;
   final int? maxLines;
+  final String labelText;
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +31,9 @@ class FlutterCatalogTextFormField extends StatelessWidget {
       },
       decoration: InputDecoration(
         isDense: true,
-        label: const Text(
-          Labels.title,
-          style: TextStyle(
+        label: Text(
+          labelText,
+          style: const TextStyle(
             color: CustomColors.primary,
             fontWeight: FontWeight.bold,
           ),
